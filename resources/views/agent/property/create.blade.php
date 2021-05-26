@@ -164,14 +164,14 @@
                                                     <label for="itemN-23">Property Type</label>
                                                     <select data-placeholder="Select Option" class="chosen-select"
                                                         id="itemN-23" name="property_type">
-                                                        <option value="1">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="3">All Areas</option>
-                                                        <option value="4">All Areas</option>
+                                                        <option value="For Sale">For Sale</option>
+                                                        <option value="For Rent">For Rent</option>
+                                                        <option value="Forn Investment">For Investment</option>
+                                                    
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-12">
+                                            {{-- <div class="col-xs-12 col-sm-12">
                                                 <div class="form-group">
                                                     <label for="itemN-24">Property Status</label>
                                                     <select data-placeholder="Select Option" class="chosen-select"
@@ -182,7 +182,7 @@
                                                         <option value="4">All Areas</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="itemN-25">Description</label>
@@ -443,7 +443,7 @@
                                             </div>
                                         </header>
                                         <div class="row">
-                                            <div id="map"></div>
+                                            
 
                                             {{-- <div class="col-xs-12">
                                                 <div class="form-group">
@@ -695,9 +695,7 @@
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
+
     <script>
         $(document).ready(function () {
             var form_count = 1,
@@ -754,6 +752,8 @@
             });
         });
     </script>
+
+
 </body>
 
 </html>
