@@ -54,7 +54,6 @@ class PropertyController extends Controller
             $propert->garages = $request->garages;
             $propert->area = $request->area;
             $propert->property_type = $request->property_type;
-            // $propert->propert_status = $request->propert_status;
             $propert->description = $request->description;
             // $propert->location = $request->location;
             $propert->private_note = $request->private_note;

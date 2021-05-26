@@ -164,9 +164,9 @@
                                                     <label for="itemN-23">Property Type</label>
                                                     <select data-placeholder="Select Option" class="chosen-select"
                                                         id="itemN-23" name="property_type">
-                                                        <option value="For Sale">For Sale</option>
-                                                        <option value="For Rent">For Rent</option>
-                                                        <option value="Forn Investment">For Investment</option>
+                                                        <option value="For Sale">For Sale </option>
+                                                        <option value="For Rent">For Rent </option>
+                                                        <option value="Forn Investment">For Investment </option>
                                                     
                                                     </select>
                                                 </div>
