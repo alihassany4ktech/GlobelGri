@@ -396,10 +396,10 @@
 
     <div class="container mt-5">
         <h1 class="text-center" style="margin-top: 6%">Discover a place you'll love to live</h1>
-        <div class="row" style="margin-top: 10%">
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center; margin-left:-2%">
-                <h6 style="">Real Estate Markets</h6>
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center; margin-left:-2%">       
                 <ul style="list-style-type:none;color: black">
+                    <li><h6>Real Estate Markets</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -409,8 +409,19 @@
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">
-                <h6 style="">Popular Searches</h6>
                 <ul style="list-style-type:none;color: black">
+                    <li><h6>Popular Searches</h6></li>
+                    <li>For Professionals</li>
+                    <li>For Professionals</li>
+                    <li>For Professionals</li>
+                    <li>For Professionals</li>
+                    <li>For Professionals</li>
+                    <li>For Professionals</li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">                
+                <ul style="list-style-type:none;color: black">
+                    <li><h6>Explore Globel Gri</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -420,19 +431,8 @@
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">
-                <h6 style="">Explore Globel Gri</h6>
-                <ul style="list-style-type:none;color: black">
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                </ul>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">
-                <h6 style="">For Professionals</h6>
                 <ul style="list-style-type:none; color: black">
+                    <li><h6>For Professionals</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -442,7 +442,7 @@
                 </ul>
             </div>
 
-            <p style="margin-left:4.6%;color: black">Trulia is a registered Trademark of Globelgri, Inc. and MLS listings are provided
+            <p style="margin-left:4.6%;color: black; margin-top:20%">Trulia is a registered Trademark of Globelgri, Inc. and MLS listings are provided
                 by Globelgri, Inc., a licensed real estate brokerage. See here for a list of our real estate licenses. </p>
             <p style="margin-left:4.6%;color: black">Globelgri Group ® Other Brands:Globelgri EastPrivacy PortalCookie
                 Preference
