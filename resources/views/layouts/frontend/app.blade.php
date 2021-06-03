@@ -84,7 +84,9 @@
         }
 
         .fancybox-close-small {
-            background: #8b5925;
+            background: #f1c967; 
+            background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+            background: linear-gradient(to right, #bd7f0a, #f1c967);
         }
 
     </style>
@@ -101,7 +103,7 @@
                 <ul class="nav navbar-nav pageMainNav pageMainNav1">
                     <li class="active">
                     <li class="active dropdown">
-                        <a style="color: #8b5925" href="{{route('index')}}">Home</a>
+                        <a style="color: #bd7f0a" href="{{route('index')}}">Home</a>
                         {{-- <a href="#" class="dropdown-toggle">Home<span class="caret"></span> --}}
 
                     </li>
@@ -109,20 +111,20 @@
                     <li>
 
                     <li class="dropdown dropdownFull">
-                        <a href="#" class="dropdown-toggle" style="color: #8b5925" onclick="menufunction()">Buy <span
+                        <a href="#" class="dropdown-toggle" style="color: #bd7f0a" onclick="menufunction()">Buy <span
                                 class="caret"></span></a>
                         <div class="" id="a" style="background-color:#333;display:none">
                             <ul class="" style=" list-style-type: none;">
 
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Homes for
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Homes for
                                         Sale</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Open
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Open
                                         Houses</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">New
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">New
                                         Homes</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Recently
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Recently
                                         Soled</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">See
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">See
                                         Newest Listning</a></li>
                             </ul>
                         </div>
@@ -130,22 +132,22 @@
                     <li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" style="color: #8b5925" onclick="menufunction1()">Rent<span
+                        <a href="#" class="dropdown-toggle" style="color: #bd7f0a" onclick="menufunction1()">Rent<span
                                 class="caret"></span></a>
                         <div class="" id="b" style="background-color:#333;display:none">
                             <ul class="" style="list-style-type: none;">
 
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">All
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">All
                                         Rentals</a></li>
                                 <li><a href="{{route('home_for_sale')}}"
-                                        style="font-size: 12px;color:#8b5925">Apartments for Rent</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Houses
+                                        style="font-size: 12px;color:#bd7f0a">Apartments for Rent</a></li>
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Houses
                                         for Rent</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Roomes
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Roomes
                                         for Rent</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">See
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">See
                                         Newest Listning</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Post
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Post
                                         Rental Listning</a>
                                 </li>
                             </ul>
@@ -155,14 +157,14 @@
                     <li>
                     <li class="dropdown">
 
-                        <a href="#" class="dropdown-toggle" style="color: #8b5925"
+                        <a href="#" class="dropdown-toggle" style="color: #bd7f0a"
                             onclick="menufunction2()">Mortgage<span class="caret"></span></a>
                         <div class="" id="c" style="background-color:#333;display:none">
                             <ul class="" style="list-style-type: none;">
 
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Mortgage
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Mortgage
                                         Overview </a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#8b5925">Get
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Get
                                         Pre-Qualified</a></li>
                             </ul>
                         </div>
@@ -206,9 +208,8 @@
                                 $logo = $row->logo;
                             }
                         ?>
+                        <?php $roles = App\Role::all(); ?>
                         <div class="container-fluid" style="background-color: #f0f9fb">
-
-
 
 
                             <!-- headerHolder -->
@@ -218,14 +219,14 @@
                                         <ul class="nav navbar-nav pageMainNav pageMainNav1">
                                             <li class="active">
                                                 {{-- <li class="active dropdown"> --}}
-                                                <a style="color: #8b5925" href="{{route('index')}}">Home</a>
+                                                <a style="color: #bd7f0a" href="{{route('index')}}">Home</a>
 
                                             </li>
                                             <!-- remove dropdownFull class when its just regular dropdown -->
                                             <li>
 
                                             <li class="dropdown dropdownFull">
-                                                <a href="#" class="dropdown-toggle" style="color: #8b5925">Buy <span
+                                                <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Buy <span
                                                         class="caret"></span></a>
                                                 <div class="frame-wrap">
                                                     <div class="frame">
@@ -248,7 +249,7 @@
                                             <li>
 
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" style="color: #8b5925">Rent<span
+                                                <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Rent<span
                                                         class="caret"></span></a>
                                                 <div class="frame-wrap">
                                                     <div class="frame">
@@ -275,7 +276,7 @@
                                             <li>
                                             <li class="dropdown">
 
-                                                <a href="#" class="dropdown-toggle" style="color: #8b5925">Mortgage<span
+                                                <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Mortgage<span
                                                         class="caret"></span></a>
                                                 <div class="frame-wrap">
                                                     <div class="frame">
@@ -315,36 +316,38 @@
                                         <ul class="list-unstyled UserLinksList">
                                             <li>
                                                 <a href="{{route('property.create')}}">
-                                                    <i class="fa fa-plus" style="color:#8b5925"></i>&nbsp;<strong
+                                                    <i class="fa fa-plus" style="color:#bd7f0a"></i>&nbsp;<strong
                                                         class="text fwNormal hidden-xs hidden-sm"
-                                                        style="color: #8b5925"> Saved Property</strong>
+                                                        style="color: #bd7f0a"> Saved Property</strong>
                                                 </a>
                                             </li>
                                         </ul>
                                         <a href="{{route('agent.dashboard')}}"
                                             class="headerModalOpener text-uppercase fontNeuron fwBold"
-                                            style="background-color: #8b5925">Dashboard</a>
+                                            style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">Dashboard</a>
                                         @else
                                         <ul class="list-unstyled UserLinksList">
                                             <li>
                                                 <a href="#popup1" class="lightbox">
-                                                    <i class="fi flaticon-social icn" style=" color: #8b5925;"></i>
+                                                    <i class="fi flaticon-social icn" style=" color: #bd7f0a;"></i>
                                                     <strong class="text fwNormal hidden-xs hidden-sm"
-                                                        style="color: #8b5925">Login</strong>
+                                                        style="color: #bd7f0a">Login</strong>
                                                 </a>
                                             </li>
                                             @if (Route::has('register'))
                                             <li>
                                                 <a href="#popup1" class="lightbox">
-                                                    <i class="fi flaticon-edit icn" style="color: #8b5925"></i>
+                                                    <i class="fi flaticon-edit icn" style="color: #bd7f0a"></i>
                                                     <strong class="text fwNormal hidden-xs hidden-sm"
-                                                        style="color: #8b5925">Register</strong>
+                                                        style="color: #bd7f0a">Register</strong>
                                                 </a>
                                             </li>
                                             @endif
                                         </ul>
                                         <a href="" class="headerModalOpener text-uppercase fontNeuron fwBold"
-                                            style="background-color: #8b5925">Saved Property</a>
+                                            style=" background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967);">Saved Property</a>
                                         @endif
                                     </div>
                                 </div>
@@ -512,7 +515,7 @@
                                     </div>
                                     <button type="submit"
                                         class="btn  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
-                                        style="background-color: #8b5925;color:white">LOGIN</button>
+                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white">LOGIN</button>
                                     @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" style="color: darkgray"
                                         class="linkForget">Forgot Password?</a>
@@ -521,10 +524,10 @@
 
                                 <div class="col">
                                     <p>You Can Login using your facebook Profile or Google account</p>
-                                    <button type="button" class="btnSocial btnFb elemenBlock"><i
-                                            class="fab fa-facebook-f btnIco"></i> Facebook Connect</button>
-                                    <button type="button" class="btnSocial btnG elemenBlock"><i
-                                            class="fab fa-google btnIco"></i> Google Connect</button>
+                                    <a href="{{route('login.facebook')}}" type="button" class="btnSocial btnFb elemenBlock"><i
+                                            class="fab fa-facebook-f btnIco"></i> Facebook Connect</a>
+                                    <a href="{{route('login.google')}}"  type="button" class="btnSocial btnG elemenBlock"><i
+                                            class="fab fa-google btnIco"></i> Google</a>
                                 </div>
                             </div>
                         </div>
@@ -553,9 +556,11 @@
                                         placeholder="Your valid email..">
                                 </div>
                                 <div class="form-group">
-                                    <?php $roles = App\Role::all(); ?>
+                                    
+                                   
                                     <select data-placeholder="Type" class="chosen-select" name="agent_role">
                                         <option selected="selected">Select Role</option>
+
                                         @foreach ($roles as $row)
                                         <option value="{{$row->id}}">{{$row->agent_role}}</option>
                                         @endforeach
@@ -570,7 +575,7 @@
                                 </div>
                                 <button type="submit"
                                     class="btn elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
-                                    style="background-color: #8b5925;color:white">REGISTER</button>
+                                    style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white">REGISTER</button>
                             </div>
                             <div class="col">
                                 <p>You Can Login using your facebook Profile or Google account</p>

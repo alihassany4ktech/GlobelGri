@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Agent;
 
 use App\User;
+use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\PropertyResource;
+use App\Http\Resources\PropertyCollection;
 
 class AgentController extends Controller
 {
@@ -87,5 +91,22 @@ class AgentController extends Controller
                 'success' => 'Social Media Updated Successfully!',
             ]);
         }
+    }
+
+    public function property()
+    {
+        $properties = Property::where('user_id', '=', Auth::user()->id)->paginate(5);
+        $data = PropertyCollection::collection($properties);
+        return view('agent.property.all', compact('data')); // for view
+        // return response()->json(PropertyCollection::collection($properties)); for api
+    }
+
+    public function SingleProperty($id)
+    {
+        $property = Property::find($id);
+        $data = new PropertyResource($property);
+        // dd($data->gallery_photos);
+        // return $data->toJson();  for api 
+        return view('agent.property.single', compact('data')); // for view
     }
 }

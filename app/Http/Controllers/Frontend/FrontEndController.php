@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\User;
+use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use PhpParser\Node\Expr\FuncCall;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PropertyResource;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
@@ -28,7 +31,10 @@ class FrontEndController extends Controller
 
     public function SingleProperty()
     {
-        return view('frontend.buy.single-property');
+        // $property = Property::find($id);
+        // $data = new PropertyResource($property);
+        // return $data->toJson();  for api 
+        return view('frontend.buy.single-property'); // for view
     }
 
     public function ContactUs()

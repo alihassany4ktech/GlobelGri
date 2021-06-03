@@ -22,14 +22,14 @@
         <ul class="list-unstyled rightPanelList hidden-xs">
             <li>
                 <a href="#" class="hasOver">
-                    <span class="fi flaticon-photo icn"></span>
+                    <span class="fi flaticon-photo icn" style=""></span>
                     <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">View
                             Photos</span></strong>
                 </a>
             </li>
             <li>
                 <a href="#" class="hasOver">
-                    <span class="fi flaticon-placeholder icn"></span>
+                    <span class="fi flaticon-placeholder icn" ></span>
                     <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">Map View</span></strong>
                 </a>
             </li>
@@ -59,7 +59,7 @@
                     <section id="Detail" class="accountData" style="background-color: #f0f9fb">
                         <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right;">
                             <h3>828 Niagara Ave</h3>
-                            <p style="font-size:12px">San Francisco, CA 94112 <a href=""> Oceanview </a></p>
+                            <p style="font-size:12px">San Francisco, CA 94112 <a href="" style="color: #bd7f0a"> Oceanview </a></p>
                             <p style="margin-top: 20px; font-size:11px"><i class="fa fa-bed" aria-hidden="true"></i> 3
                                 Bed <i class="fa fa-bath" aria-hidden="true"></i> 2 Baths <i
                                     class="fa fa-chart-area"></i> 1,455 sqft</p>
@@ -68,7 +68,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right;">
                             <h3>$759,000</h3>
                             <p style="font-size:12px;">Est. Mortgage $3,013/mo*</p>
-                            <a href="#" class="btn" style="background-color: #8b5925; color:white">Get Pre-Qualified</a>
+                            <a href="#" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Get Pre-Qualified</a>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right; margin-top:10px">
                             {{-- <figure class="hb-author-img"> --}}
@@ -121,15 +121,34 @@
                     <section class="contactFormPage widget">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" style="color:#8b5925"><b>
+                                <a class="nav-link active" data-toggle="tab" href="#home" style="color:#bd7f0a"><b>
                                         Schedule a Tour</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#menu1" style="color:#8b5925"><b>Request
+                                <a class="nav-link" data-toggle="tab" href="#menu1" style="color:#bd7f0a"><b>Request
                                         Info</b></a>
                             </li>
                         </ul>
-
+                        
+	                            <div class="hb-headarea" style="margin-top: 5%">
+											<div class="holder">
+												<figure class="hb-author-img pull-left">
+                                                  
+													    <a href="#"><img src="https://via.placeholder.com/100x75" alt="image description"></a>
+                                                    
+												</figure>
+												<div class="pull-left">
+													<div class="hb-headcontent">
+														<h3>Ali Tufan</h3>
+														<span>Address</span>
+														<a href="mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#111;&#109;&#101;&#115;&#119;&#101;&#101;&#116;&#046;&#099;&#111;&#109;">glodelgri@gmail.com</a>
+													</div>
+												</div>
+											</div>
+											<div class="hb-numberbox text-center">
+												<h3><i class="fi flaticon-24-hours"></i>+111-222-333</h3>
+											</div>
+										</div>      
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home">
@@ -173,7 +192,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btnDark fontNeuron buttonXL"
-                                        style="background-color: #8b5925; color:white">Schedule a
+                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Schedule a
                                         Tour</button>
                                     <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Public Health Advisory</h6>
@@ -181,8 +200,8 @@
                                         that Trulia and real estate professionals may contact you via phone/text about
                                         your inquiry, which may involve the use of automated means. You are not required
                                         to consent as a condition of purchasing any property, goods or services.
-                                        Message/data rates may apply. You also agree to our <a href=""> Terms of Use</a>
-                                        Trulia does not endorse any <a href=""> real estate professionals</a> </p>
+                                        Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
+                                        Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
 
                                 </form>
                             </div>
@@ -219,15 +238,15 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btnDark fontNeuron buttonXL"
-                                        style="background-color: #8b5925; color:white">Request Info</button>
+                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Request Info</button>
                                     <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Public Health Advisory</h6>
                                     <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
                                         that Trulia and real estate professionals may contact you via phone/text about
                                         your inquiry, which may involve the use of automated means. You are not required
                                         to consent as a condition of purchasing any property, goods or services.
-                                        Message/data rates may apply. You also agree to our <a href=""> Terms of Use</a>
-                                        Trulia does not endorse any <a href=""> real estate professionals</a> </p>
+                                        Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
+                                        Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
 
                                 </form>
                             </div>

@@ -37,11 +37,11 @@
                             data-toggle="collapse" href="#otherFeaturescollapse" aria-expanded="false"
                             aria-controls="otherFeaturescollapse">
                             <i class="fas btnIcn fa-plus-circle text-info opener"></i>
-                            <i class="fas fa-minus-circle closer btnIcn text-info"></i>
+                            <i class="fas fa-minus-circle closer btnIcn text-info" style=""></i>
                             Advanced
                         </a>
                         <button type="button"
-                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="background-color: #8b5925; color:white;">SEARCH</button>
+                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">SEARCH</button>
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
@@ -344,7 +344,7 @@
                                     </div>
 
                                     <button type="submit" class="btn alighRight 
-                                     buttonL fontNeuron" style="background-color: #8b5925; color:white;">Update
+                                     buttonL fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Update
                                         Profile</button>
                                 </div>
                             </div>
@@ -384,7 +384,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn alighRight  buttonL fontNeuron" style="background-color: #8b5925; color:white;">Change
+                            <button type="submit" class="btn alighRight  buttonL fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Change
                                 Password</button>
                     </div>
                 </div>
@@ -447,7 +447,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn alighRight  buttonL fontNeuron" style="background-color: #8b5925; color:white;">Save
+                            <button type="submit" class="btn alighRight  buttonL fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Save
                                 Changes</button>
                         </div>
                     </div>

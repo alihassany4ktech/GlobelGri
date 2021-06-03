@@ -1,0 +1,523 @@
+@extends('layouts.frontend.app')
+
+@section('content')
+
+<!-- main -->
+<main>
+    <!-- findFormBlock -->
+    <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop">
+        <div class="container">
+            <div class="row align-center d-flex">
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-5">
+                    <div class="form-group">
+                        <input type="text" class="form-control elemenBlock noBdr sizeMedium"
+                            placeholder="Enter address e.g. street, city and state or zip">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="form-group">
+                        <i class="fi flaticon-target icnInput"></i>
+                        <input type="text" class="form-control elemenBlock noBdr sizeMedium" placeholder="All Cities">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2">
+                    <div class="form-group">
+                        <select data-placeholder="All Areas" class="chosen-select noBdr sizeMedium">
+                            <option value="1">All Areas</option>
+                            <option value="2">All Areas</option>
+                            <option value="2">All Areas</option>
+                            <option value="2">All Areas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4 col-lg-3">
+                    <div class="btnsWrap">
+                        <!-- otherFeaturesOpener -->
+                        <a class="btnPlus otherFeaturesOpener text-capitalize noTopBottom" role="button"
+                            data-toggle="collapse" href="#otherFeaturescollapse" aria-expanded="false"
+                            aria-controls="otherFeaturescollapse">
+                            <i class="fas btnIcn fa-plus-circle text-info opener"></i>
+                            <i class="fas fa-minus-circle closer btnIcn text-info"></i>
+                            Advanced
+                        </a>
+                        <button type="button"
+                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+            <!-- orderRow -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- otherFeaturesCollapse -->
+                    <div class="collapse otherFeaturesCollapse" id="otherFeaturescollapse">
+                        <!-- checkList -->
+                        <ul class="list-unstyled checkList text-primary">
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Air conditioning</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Cofee pot</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Fan</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Hi-fi</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Balcony</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Computer</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Fridge</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Internet</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Bedding</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Cot</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Grill</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Iron</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Cable TV</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Dishwasher</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Hairdryer</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Juicer</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Cleaning after exit</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">DVD</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Heating</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="fwNormal customLabelCheck">
+                                    <input type="checkbox" class="customFormInputReset">
+                                    <span class="fakeCheckbox"></span>
+                                    <span class="fakeLabel">Lift</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                    <button type="button" class="btn  text-uppercase fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white;">SEARCH</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- content -->
+    <section id="content" class="container pabIndent">
+        <!-- contentFiltersHeadingWrap -->
+        <header class="contentFiltersHeadingWrap row">
+            <div class="col-xs-12 col-sm-10">
+                <h1 class="fontNeuron">Profile</h1>
+            </div>
+            
+            <div class="col-xs-12 col-sm-2">
+                <!-- viewFilterLinks -->
+                <ul class="list-unstyled viewFilterLinks">
+                    <li><a href="#"><i class="fi flaticon-share"></i></a></li>
+                    <li><a href="#"><i class="fi flaticon-printer"></i></a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- userProfile -->
+        <div class="userProfile">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <!-- profileSidebar -->
+                    <aside class="profileSidebar">
+                        <header class="head">
+                            <div class="imgProfile">
+                                @if(Auth::user()->image)
+                                <img src="{{asset(Auth::user()->image)}}" alt="" width="74" height="74">
+                                @else 
+                                <img src="https://via.placeholder.com/74x74" alt="" width="74" height="74">
+                                @endif
+                            </div>
+                            <div class="info">
+                                <span class="text">{{Auth::user()->name}}</span>
+                                {{-- <span class="text"><a href="#" class="link">Change Password</a></span> --}}
+                            </div>
+                        </header>
+                        <ul class="navUser list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-user"></i>
+                                    <span>Account Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('agent.property')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Properties</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-heart"></i>
+                                    <span>Favorited Properties</span>
+                                </a>
+                            </li>
+                           
+                                <li>
+                                <a href="{{route('property.create')}}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Saved Property</span>
+                                </a>
+                            </li>
+                        
+                         
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+                </form>
+                  <div class="col-xs-12 col-sm-8 col-lg-9">
+                            <!-- accountData -->
+                            {{-- {{dd($data)}} --}}
+                            <div class="accountData">
+                              <div class="head">
+                                <h4 class="fontNeuron">My Properties</h4>
+                                {{-- <div class="sortGroup">
+                                  <strong class="groupTitle fwNormal">Sort by:</strong>
+                                  <div class="dropdown">
+                                    <button aria-expanded="true" aria-haspopup="false" data-toggle="dropdown" id="sortGroup" type="button" class="dropdown-toggle buttonReset">Default Order <i class="icn fas fa-chevron-down"></i></button>
+                                    <ul aria-labelledby="sortGroup" class="dropdown-menu dropdown-menu-right">
+                                      <li><a href="#">Default Order</a></li>
+                                      <li><a href="#">Default Order</a></li>
+                                      <li><a href="#">Default Order</a></li>
+                                      <li><a href="#">Default Order</a></li>
+                                    </ul>
+                                  </div>
+                                </div> --}}
+                              </div>
+                              <!-- propertiesList -->
+                              <div class="propertiesList">
+                                    @foreach ($data as $row)
+                                        <article class="propertyRow">
+                                  <div class="info">
+                                    <div class="imgThumbnail">
+                                      <a href="{{route('agent.single_property',['id' => $row->id])}}"><img src="{{asset($row->featured_photo)}}" style="height: 85px; width:110px" alt="Featured Image"></a>
+                                    </div>
+                                    <div class="textBox">
+                                      <h4 class="fontNeuron"><a href="{{route('agent.single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h4>
+                                      <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
+                                      <div class="priceArea">
+                                        <span class="price fontNeuron">${{$row->price}}</span>
+                                        <time class="date" datetime="2017-02-27">{{$row->created_at->format('Y/m/d')}}</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="btnArea">
+                                    <span class="status fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">{{$row->property_type}}</span>
+                                    <ul class="links list-unstyled">
+                                      <li><a href="{{route('agent.single_property',['id' => $row->id])}}"><i class="fa fa-eye"></i>View</a></li>
+                                      <li><a href="#"><i class="fa fa-edit"></i>Edit</a></li>
+                                      <li><a href="#" class="delete"><i class="far fa-window-close"></i></a></li>
+                                    </ul>
+                                  </div>
+                                </article>
+                                    @endforeach
+                                
+                                {{-- <article class="propertyRow">
+                                  <div class="info">
+                                    <div class="imgThumbnail">
+                                      <a href="properties-single1.html"><img src="https://via.placeholder.com/110x85" alt=""></a>
+                                    </div>
+                                    <div class="textBox">
+                                      <h4 class="fontNeuron"><a href="properties-single1.html">Meridian Villas</a></h4>
+                                      <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
+                                      <div class="priceArea">
+                                        <span class="price fontNeuron">$ 490,000</span>
+                                        <time class="date" datetime="2017-02-27">2/27/2017</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="btnArea">
+                                    <span class="status fontNeuron disabled">Pending</span>
+                                    <ul class="links list-unstyled">
+                                      <li><a href="#"><i class="fa fa-eye"></i>View</a></li>
+                                      <li><a href="#"><i class="fa fa-edit"></i>Edit</a></li>
+                                      <li><a href="#" class="delete"><i class="far fa-window-close"></i></a></li>
+                                    </ul>
+                                  </div>
+                                </article>
+                                <article class="propertyRow">
+                                  <div class="info">
+                                    <div class="imgThumbnail">
+                                      <a href="properties-single1.html"><img src="https://via.placeholder.com/110x85" alt=""></a>
+                                    </div>
+                                    <div class="textBox">
+                                      <h4 class="fontNeuron"><a href="properties-single1.html">4 Bedroom New House For Sale</a></h4>
+                                      <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
+                                      <div class="priceArea">
+                                        <span class="price fontNeuron">$ 490,000</span>
+                                        <time class="date" datetime="2017-02-27">2/27/2017</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="btnArea">
+                                    <span class="status fontNeuron">Published</span>
+                                    <ul class="links list-unstyled">
+                                      <li><a href="#"><i class="fa fa-eye"></i>View</a></li>
+                                      <li><a href="#"><i class="fa fa-edit"></i>Edit</a></li>
+                                      <li><a href="#" class="delete"><i class="far fa-window-close"></i></a></li>
+                                    </ul>
+                                  </div>
+                                </article>
+                                <article class="propertyRow">
+                                  <div class="info">
+                                    <div class="imgThumbnail">
+                                      <a href="properties-single1.html"><img src="https://via.placeholder.com/110x85" alt=""></a>
+                                    </div>
+                                    <div class="textBox">
+                                      <h4 class="fontNeuron"><a href="properties-single1.html">Villa on Hollywood Boulevard</a></h4>
+                                      <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
+                                      <div class="priceArea">
+                                        <span class="price fontNeuron">$ 490,000</span>
+                                        <time class="date" datetime="2017-02-27">2/27/2017</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="btnArea">
+                                    <span class="status fontNeuron">Published</span>
+                                    <ul class="links list-unstyled">
+                                      <li><a href="#"><i class="fa fa-eye"></i>View</a></li>
+                                      <li><a href="#"><i class="fa fa-edit"></i>Edit</a></li>
+                                      <li><a href="#" class="delete"><i class="far fa-window-close"></i></a></li>
+                                    </ul>
+                                  </div>
+                                </article> --}}
+                              </div>
+                            </div>
+                            <!-- pagination -->
+                            {{ $data->links() }}
+                            {{-- <nav role="navigation" class="navigation pagination pagination1 fontNeuron">
+                              <div class="nav-links">
+                                <a href="#" class="prev page-numbers">Previous</a>
+                                <a href="#" class="page-numbers">1</a>
+                                <span class="page-numbers current">2</span>
+                                <a href="#" class="page-numbers">3</a>
+                                <span class="page-numbers dots">…</span>
+                                <a href="#" class="page-numbers">22</a>
+                                <a href="#" class="next page-numbers">Next</a>
+                              </div>
+					</nav> --}}
+                          </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</main>
+
+
+@endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#agentform').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+
+                url: '{{route("agent.profile.update")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#result').html('<div class="alert alert-success">' + data
+                            .success + '</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                            '</div>');
+                    }
+
+                }
+            });
+        });
+
+        // change password
+         $('#changepassword').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+
+                url: '{{route("agent.password.update")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#result').html('<div class="alert alert-success">' + data
+                            .success + '</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                            '</div>');
+                    }
+
+                }
+            });
+        });
+
+   // social media update
+         $('#social_media_form').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+
+                url: '{{route("agent.social_media.update")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#result').html('<div class="alert alert-success">' + data
+                            .success + '</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                            '</div>');
+                    }
+
+                }
+            });
+        });
+
+    });
+
+</script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#one')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(150);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

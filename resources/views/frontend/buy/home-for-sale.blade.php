@@ -56,8 +56,8 @@
                             Advanced
                         </a>
                         <a href="{{route('home_for_sale')}}" type="button"
-                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs"
-                            style="background-color: #8b5925; color:white">SEARCH</a>
+                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs headerModalOpener"
+                            style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);">SEARCH</a>
                     </div>
                 </div>
             </div>
@@ -468,7 +468,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-offset-6 col-sm-3 order2">
                     <button type="button" class="btn  text-uppercase fontNeuron pull-right"
-                        style="background-color: #8b5925; color:white">SEARCH</button>
+                        style="background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</button>
                 </div>
             </div>
         </div>
@@ -576,7 +576,7 @@
                                         <p>The Village, Jersey City, NJ 07302, USA </p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Sale</span>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
@@ -585,19 +585,19 @@
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -668,7 +668,7 @@
                                         <p>London, United Kingdom</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Rent</span>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 920,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
@@ -677,19 +677,19 @@
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -759,28 +759,28 @@
                                         <p>The Village, Jersey City, NJ 07302, USA</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Rent</span>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
                                     <a href="{{route('single_property')}}">
                                         <footer class="postColumnFoot">
                                             <ul class="list-unstyled">
-                                                <li>
+                                            <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -849,28 +849,28 @@
                                         <p>London, United Kingdom</p>
                                     </address>
                                     <span class="btn btnSmall text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Rent</span>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 920,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
                                     <a href="{{route('single_property')}}">
                                         <footer class="postColumnFoot">
                                             <ul class="list-unstyled">
-                                                <li>
+                                               <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -940,7 +940,7 @@
                                         <p>778 Country St. Panama City, FL</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Rent</span>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 250,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
@@ -949,19 +949,19 @@
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -1030,28 +1030,28 @@
                                         <p>778 Country St. Panama City, FL</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="background-color: #8b5925; color:white">For Rent</span>
+                                        style="border:none;border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 320,000</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
                                     <a href="{{route('single_property')}}">
                                         <footer class="postColumnFoot">
                                             <ul class="list-unstyled">
-                                                <li>
+                                               <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
                                                 </li>
                                             </ul>
                                         </footer>
@@ -1074,8 +1074,8 @@
                     </nav>
                 </div>
 
-                <p style="text-align: center"><a href=""> United States </a> <i class="fa fa-angle-right"></i> <a
-                        href=""> California </a><i class="fa fa-angle-right"></i> San Francisco</p>
+                <p style="text-align: center"><a href="" style="color: #bd7f0a"> United States </a> <i class="fa fa-angle-right"></i> <a
+                        href="" style="color: #bd7f0a"> California </a><i class="fa fa-angle-right"></i> San Francisco</p>
                 <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
                 <p style="color: black">Learn about the San Francisco, CA housing market through trends and averages.
                 </p>
@@ -1098,7 +1098,7 @@
                                             </address>
 
                                             <button type="button"
-                                                style="margin-left:10%; margin-top:10%;background-color: #8b5925; color:white"
+                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
                                                 class="btn">See home for sale</button>
                                         </div>
                                     </figcaption>
@@ -1119,7 +1119,7 @@
                                             </address>
 
                                             <button type="button"
-                                                style="margin-left:10%; margin-top:10%;background-color: #8b5925; color:white"
+                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
                                                 class="btn ">See home for sale</button>
                                         </div>
                                     </figcaption>
@@ -1140,7 +1140,7 @@
                                             </address>
 
                                             <button type="button"
-                                                style="margin-left:10%; margin-top:10%;background-color: #8b5925; color:white"
+                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
                                                 class="btn ">See home for sale</button>
                                         </div>
                                     </figcaption>

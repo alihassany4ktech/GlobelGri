@@ -18,7 +18,9 @@
                                     <li class="active color1">
                                         <a href="#tab1-0">Buy</a>
                                     </li>
-                                    <li class="color2">
+                                    <li class="color2" style="border:none; background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">
                                         <a href="#tab2-0">Rent</a>
                                     </li>
                                     <li class="color3">
@@ -40,7 +42,9 @@
                                                 <div class="col-xs-12 col-sm-4">
                                                     
                                                     <a href="{{route('home_for_sale')}}" type="button"
-                                                        class="btn  text-uppercase fontNeuron"  style="background-color: #8b5925; color:white; ">SEARCH</a>
+                                                        class="btn  text-uppercase fontNeuron"  style="border:none; background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; ">SEARCH</a>
                                                 </div>
 
                                             </div>
@@ -60,7 +64,9 @@
 
                                                 <div class="col-xs-12 col-sm-4">
                                                     <a href="{{route('home_for_sale')}}" type="button"
-                                                        class="btn  text-uppercase fontNeuron" style="background-color: #8b5925; color:white">SEARCH</a>
+                                                        class="btn  text-uppercase fontNeuron" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                                                 </div>
 
                                             </div>
@@ -79,7 +85,9 @@
 
                                                 <div class="col-xs-12 col-sm-4">
                                                     <a href="{{route('home_for_sale')}}" type="button"
-                                                        class="btn  text-uppercase fontNeuron" style="background-color: #8b5925; color:white">SEARCH</a>
+                                                        class="btn  text-uppercase fontNeuron" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                                                 </div>
 
                                             </div>
@@ -108,7 +116,9 @@
                     you with a house you will want to call home.</p>
 
                 <div class="col text-center">
-                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="background-color: #8b5925; color:white;">Find a home </a>
+                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Find a home </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -122,7 +132,9 @@
                     home or apartment for rent that you'll love.</p>
 
                 <div class="col text-center">
-                     <a href="{{route('home_for_sale')}}" type="button" class="btn" style="background-color: #8b5925; color:white">Find a home </a>
+                     <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Find a home </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -136,7 +148,9 @@
                     captured the color and diversity of communities.</p>
 
                 <div class="col text-center">
-                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="background-color: #8b5925; color:white">Learn more </a>
+                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Learn more </a>
                 </div>
             </div>
         </div>
@@ -163,7 +177,9 @@
                                                             style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="background-color: #8b5925; color:white">For Sale</span></a>
+                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -182,7 +198,9 @@
                                             <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="background-color: #8b5925; color:white">For Rent</span></a>
+                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -204,7 +222,9 @@
                                             <img src="{{asset('frontend/images/p1.jpg')}}" style="height: 391px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="background-color: #8b5925; color:white">For Investmet</span></a>
+                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Investmet</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -226,7 +246,9 @@
                                             <img src="{{asset('frontend/images/2.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="background-color: #8b5925; color:white">For Rent</span></a>
+                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -245,7 +267,9 @@
                                             <img src="{{asset('frontend/images/3.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="background-color: #8b5925; color:white" >For Sale</span></a>
+                                <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >For Sale</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -267,7 +291,9 @@
                                             <img src="{{asset('frontend/images/4.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="background-color: #8b5925; color:white">For Sale</span></a>
+                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
                                                 Family Home</a></h2>
@@ -286,7 +312,9 @@
                                             <img src="{{asset('frontend/images/5.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="background-color: #8b5925; color:white">For Rent</span></a>
+                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
                                         <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
@@ -310,7 +338,9 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-2">
-                    <a href="{{route('home_for_sale')}}" type="button" class="btn btnSmall  text-uppercase fontNeuron" style="background-color: #8b5925; color:white">SEARCH</a>
+                    <a href="{{route('home_for_sale')}}" type="button" class="btn btnSmall  text-uppercase fontNeuron" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                 </div>
             </form>
         </div>
@@ -323,7 +353,9 @@
                     <h4 class="fontNeuron" style="color: white;">Everything you need to know <br> when you're looking to buy,rent, or sell - all in one place.
                     </h4>
 
-                    <a href="{{route('home_for_sale')}}" style="font-size: 20px; background-color: #8b5925; color:white; margin-top:7%"  type="button" class="btn  text-uppercase fontNeuron">See all the guides</a>
+                    <a href="{{route('home_for_sale')}}" style="border:none;font-size: 20px; background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:7%"  type="button" class="btn  text-uppercase fontNeuron">See all the guides</a>
                 </div>
                 <div class="col-xs-12 col-sm-6  col-md-6 float-right">
                     <div class="row" style="margin-top: 6%">

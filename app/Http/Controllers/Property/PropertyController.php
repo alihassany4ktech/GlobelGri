@@ -13,26 +13,21 @@ class PropertyController extends Controller
         return view('agent.property.create');
     }
 
+
     public function store(Request $request)
     {
         if ($request->ajax()) {
             $propert = new Property();
-            $propert->agent_id = $request->agent_id;
+            $propert->user_id = $request->agent_id;
             $propert->propert_title = $request->propert_title;
             if ($request->hasFile('gallery_photos')) {
-                $images = [];
                 foreach ($request->file('gallery_photos') as $image) {
-                    if (!empty($propert->gallery_photos)) {
-                        $image_path = $propert->gallery_photos;
-                        unlink($image_path);
-                    }
-
-                    $name = time() . 'property' . '.' . $image->getClientOriginalExtension();
-                    $destinationPath = 'property_images/';
+                    $name = time() . 'gallery' . '.' . $image->getClientOriginalName();
+                    $destinationPath = 'gallery/';
                     $image->move($destinationPath, $name);
-                    array_push($images, 'property_images/' . $name);
-                };
-                $propert->gallery_photos = json_encode($images);
+                    $data[] = $name;
+                    $propert->gallery_photos = json_encode($data);
+                }
             }
 
             if ($request->hasFile('featured_photo')) {

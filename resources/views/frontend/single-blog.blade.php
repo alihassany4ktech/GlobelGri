@@ -40,7 +40,7 @@
                         </a>
                         <a href="{{route('home_for_sale')}}" type="button"
                             class="btn  buttonSmall text-uppercase fontNeuron hidden-xs"
-                            style="background-color: #8b5925; color:white">SEARCH</a>
+                            style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@
                             </div>
                             <h2 class="fontNeuron">Getting Started Designing Apps for the Apple Watch</h2>
                             <p>
-                                <a href="#" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali
+                                <a href="#" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali
                                     Tufan</a>
                                 <time datetime="2011-01-12">February 9, 2017</time>
                                 <a href="#" class="commentsCount">12 comment</a>

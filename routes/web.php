@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//    return view('welcome');
+// }); 
 
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
-    Auth::routes(['register' => true]);
+    Auth::routes(['register' => false]);
 
 
     /****************************** Admin ***************************/
@@ -83,10 +83,21 @@ Route::namespace('Agent')->as('agent.')->group(function () {
 
     Route::post('social-media/update', 'AgentController@social_media_update')->name('social_media.update');
 
+    Route::get('/agent/property', 'AgentController@property')->name('property');
+
+    Route::get('/single/property/{id}', 'AgentController@SingleProperty')->name('single_property');
     // property 
-
-
 });
+
+// google
+Route::get('/login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
+
+Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('google.callback');
+
+// // facebook
+Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
+
+Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback')->name('facebook.callback');
 
 Route::namespace('Property')->as('property.')->group(function () {
 

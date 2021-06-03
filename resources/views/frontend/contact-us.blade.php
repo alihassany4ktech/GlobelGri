@@ -81,7 +81,7 @@
 											<div class="form-group">
 												<textarea class="form-control" id="txtmessage" placeholder="Message" required data-error="NEW ERROR MESSAGE"></textarea>
 											</div>
-											<button type="submit" class="btn  fontNeuron buttonXL" id="form-submit" style="background-color: #8b5925;color:white">Submit</button>
+											<button type="submit" class="btn  fontNeuron buttonXL" id="form-submit" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white">Submit</button>
 										</form>
 									</div>
 								</div>

@@ -28,21 +28,21 @@
 </head>
 
 <body>
-                            <?php
-                           $phone = '';
-                            $email = '';
-                            $address = '';
-                            $description = '';
-                            $logo = '';
-                            $setting = App\GeneralSetting::get();
-                            foreach ($setting as $row) {
-                                $phone = $row->phone;
-                                $email = $row->email;
-                                $address = $row->address;
-                                $description = $row->description;
-                                $logo = $row->logo;
-                            }
-                        ?>
+        <?php
+            $phone = '';
+            $email = '';
+            $address = '';
+            $description = '';
+            $logo = '';
+            $setting = App\GeneralSetting::get();
+            foreach ($setting as $row) {
+            $phone = $row->phone;
+            $email = $row->email;
+            $address = $row->address;
+            $description = $row->description;
+            $logo = $row->logo;
+            }
+        ?>
     <!-- pageWrapper -->
     <div id="pageWrapper">
         <!-- pageMenuPushWrap -->
@@ -109,7 +109,7 @@
                                             <h2 class="fontNeuron">Basic Info</h2>
                                             <div class="btnArea">
 
-                                                <a type="button" id="next1" class="btn  next" style="background-color: #8b5925; color:white;">Next <i
+                                                <a type="button" id="next1" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                         class="fi flaticon-arrows"></i></a>
 
                                             </div>
@@ -192,7 +192,7 @@
                                             </div>
                                         </div>
                                         <div class="btnArea">
-                                            <a type="button" id="next1" class="btn  next" style="background-color: #8b5925; color:white;">Next <i
+                                            <a type="button" id="next1" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                     class="fi flaticon-arrows"></i></a>
 
                                         </div>
@@ -236,7 +236,7 @@
                                                 <a type="button" id="previous1" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
 
-                                                <a type="button" id="next2" class="btn  next" style="background-color: #8b5925; color:white;">Next <i
+                                                <a type="button" id="next2" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                         class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
@@ -395,7 +395,7 @@
                                         <div class="btnArea">
                                             <a type="button" id="previous1" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>
-                                            <a type="button" id="next2" class="btn  next" style="background-color: #8b5925; color:white;">Next <i
+                                            <a type="button" id="next2" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                     class="fi flaticon-arrows"></i></a>
                                         </div>
 
@@ -438,7 +438,7 @@
                                             <div class="btnArea">
                                                 <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
-                                                <a type="button" id="next3" class="btn next" style="background-color: #8b5925; color:white;">Next <i
+                                                <a type="button" id="next3" class="btn next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                         class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
@@ -499,7 +499,7 @@
                                         <div class="btnArea">
                                             <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>
-                                            <a type="button" id="next3" class="btn  next" style="background-color: #8b5925; color:white;">Next <i
+                                            <a type="button" id="next3" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
                                                     class="fi flaticon-arrows"></i></a>
                                         </div>
 
@@ -548,7 +548,7 @@
                                             <div class="btnArea">
                                                 <a type="button" id="previous5" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
-                                                <button type="submit" class="btn" style="background-color: #8b5925; color:white;">Submit Property <i
+                                                <button type="submit" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Submit Property <i
                                                         class="fi flaticon-arrows"></i></button>
                                             </div>
                                         

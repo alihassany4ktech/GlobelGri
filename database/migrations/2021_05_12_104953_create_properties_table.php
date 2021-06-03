@@ -15,7 +15,7 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('agent_id')->default('0');
+            $table->integer('user_id')->unsigned();
             $table->string('propert_title')->default('0');
             $table->string('price')->default('0');
             $table->string('featured_photo')->default('0');

@@ -35,7 +35,7 @@
 											<i class="fas fa-minus-circle closer btnIcn text-info"></i>
 											Advanced
 										</a>
-										<a href="{{route('home_for_sale')}}" type="button" class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="background-color: #8b5925; color:white">SEARCH</a>
+										<a href="{{route('home_for_sale')}}" type="button" class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
 									</div>
 								</div>
 							</div>
@@ -304,7 +304,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">Getting Started Designing Apps for the Apple Watch</a></h2>
 											<p>
-												<a href="{{route('single_blog')}}" class="btn btnSmall " style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('single_blog')}}" class="btn btnSmall " style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -324,7 +324,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">Getting Started Designing Apps for the Apple Watch</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall " style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall " style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -344,7 +344,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">Take Away You Can Get From</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -364,7 +364,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">One Thing That Is Really Make This Blog ...</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white" >Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -384,7 +384,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">This Week I Thought It Would Be Good ...</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -404,7 +404,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">The Leader In Real Estate Information Systems</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -424,7 +424,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">How to design a minimal but productive home office</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
@@ -444,7 +444,7 @@
 											</div>
 											<h2 class="fontNeuron"><a href="{{route('single_blog')}}">6 Tips to help you sell your house</a></h2>
 											<p>
-												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="background-color: #8b5925; color:white">Ali Tufan</a>
+												<a href="{{route('home_for_sale')}}" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali Tufan</a>
 												<time datetime="2011-01-12">February 9, 2017</time>
 												<a href="#" class="commentsCount">12 comment</a>
 											</p>
