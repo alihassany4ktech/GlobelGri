@@ -27,7 +27,8 @@ class CreatePropertiesTable extends Migration
             $table->string('property_type')->default('0');
             $table->string('propert_status')->default('0');
             $table->string('description')->default('0');
-            // $table->string('location')->default('0');
+            $table->string('latitude')->default('0');
+            $table->string('longitude')->default('0');
             $table->string('private_note')->default('0');
             $table->timestamps();
         });

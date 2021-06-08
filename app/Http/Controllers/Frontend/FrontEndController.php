@@ -19,22 +19,32 @@ class FrontEndController extends Controller
     }
     public function index()
     {
-
         $agents = User::all();
         return view('frontend.home', compact('agents'));
     }
 
     public function HomeForSale()
     {
-        return view('frontend.buy.home-for-sale');
+        $mapShops = Property::all();
+        return view('frontend.buy.home-for-sale', compact('mapShops'));
     }
 
-    public function SingleProperty()
+    public function HomeForRent()
     {
-        // $property = Property::find($id);
-        // $data = new PropertyResource($property);
-        // return $data->toJson();  for api 
-        return view('frontend.buy.single-property'); // for view
+        $mapShops = Property::all();
+        return view('frontend.rent.home-for-rent',compact('mapShops'));
+    }
+
+    public function investment()
+    {
+        $mapShops = Property::all();
+        return view('frontend.investment.home-for-investment',compact('mapShops'));
+    }
+
+    public function SingleProperty($id)
+    {
+        $property = Property::find($id);
+        return view('frontend.buy.single-property', compact('property'));
     }
 
     public function ContactUs()

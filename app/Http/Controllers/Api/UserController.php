@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -25,9 +26,11 @@ class UserController extends Controller
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')->accessToken;
-            return response()->json($success, $this->successStatus);
+            $success['name'] =  $user->name;
+            $success['success'] = true;
+            return response()->json(['response' => $success], $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['error' => 'Unauthorised','success' => false], 401);
         }
     }
     /**
@@ -44,14 +47,15 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['error' => $validator->errors(),'success' => false], 401);
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
-        return response()->json($success, $this->successStatus);
+        $success['success'] = true;
+        return response()->json(['response' => $success], $this->successStatus);
     }
 
     /** 
@@ -123,5 +127,52 @@ class UserController extends Controller
         return response()->json([
             'success' => 'Social Media Updated Successfully!',
         ]);
+    }
+
+
+    // google login
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    // google callback
+    public function handleGoogleCallback()
+    {
+
+        $user = Socialite::driver('google')->user();
+        $this->_registerOrLoginUser($user);
+        return redirect('agent/profile');
+    }
+
+
+    // facebook login
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    // facebook callback
+    public function handleFacebookCallback()
+    {
+
+        $user = Socialite::driver('facebook')->user();
+        $this->_registerOrLoginUser($user);
+        return redirect('agent.dashboard');
+    }
+
+    public function _registerOrLoginUser($data)
+    {
+        $user = User::where('email', '=', $data->email)->first();
+
+        if (!$user) {
+
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->provider_id = $data->id;
+            $success['token'] =  $user->createToken('MyApp')->accessToken;
+            $user->save();
+            return response()->json($success, $this->successStatus);
+        }
+        Auth::login($user);
     }
 }

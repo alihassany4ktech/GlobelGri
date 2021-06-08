@@ -177,11 +177,11 @@
                                                             style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                   <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -198,11 +198,11 @@
                                             <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' =>1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -222,11 +222,11 @@
                                             <img src="{{asset('frontend/images/p1.jpg')}}" style="height: 391px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                   <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                   <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Investmet</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -246,11 +246,11 @@
                                             <img src="{{asset('frontend/images/2.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -267,11 +267,11 @@
                                             <img src="{{asset('frontend/images/3.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                <a href="{{route('single_property')}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >For Sale</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -291,11 +291,11 @@
                                             <img src="{{asset('frontend/images/4.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
                                                 Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
@@ -312,11 +312,11 @@
                                             <img src="{{asset('frontend/images/5.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property')}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury Family Home</a></h2>
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
                                             <span class="textUnit fwNormal">/ monthly</span></h3>
                                     </div>

@@ -443,6 +443,15 @@
                                             </div>
                                         </header>
                                         <div class="row">
+                                            <h1>Location Must Be Required</h1>
+                                            <button style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%" onclick="getLocation()">Allow Location</button>
+
+                                            <p id="demo"></p>
+
+                                            <input type="hidden" name="latitude" id="latitude" >
+                                            <input type="hidden" name="longitude"  id="longitude">
+
+
                                             
 
                                             {{-- <div class="col-xs-12">
@@ -753,6 +762,23 @@
         });
     </script>
 
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+    $('#latitude').val(position.coords.latitude);
+    $('#longitude').val(position.coords.longitude);
+}
+</script>
 
 </body>
 

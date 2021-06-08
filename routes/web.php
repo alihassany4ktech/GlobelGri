@@ -86,8 +86,11 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/agent/property', 'AgentController@property')->name('property');
 
     Route::get('/single/property/{id}', 'AgentController@SingleProperty')->name('single_property');
-    // property 
 });
+
+
+
+/****************************** Socialite  ************************/
 
 // google
 Route::get('/login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
@@ -98,6 +101,9 @@ Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback'
 Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
 
 Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback')->name('facebook.callback');
+
+
+/****************************** Property  ************************/
 
 Route::namespace('Property')->as('property.')->group(function () {
 
@@ -110,9 +116,20 @@ Route::namespace('Property')->as('property.')->group(function () {
 
 Route::get('/', 'Frontend\FrontEndController@index')->name('index');
 
+// Home For Sale
+
 Route::get('/home-for-sale', 'Frontend\FrontEndController@HomeForSale')->name('home_for_sale');
 
-Route::get('/single-property', 'Frontend\FrontEndController@SingleProperty')->name('single_property');
+Route::get('/single-property/{id}', 'Frontend\FrontEndController@SingleProperty')->name('single_property');
+
+// Home For Rent
+
+Route::get('/home-for-rent', 'Frontend\FrontEndController@HomeForRent')->name('home_for_rent');
+
+// Investment
+
+Route::get('/home-for-investment', 'Frontend\FrontEndController@investment')->name('investment');
+
 
 Route::get('/contact-us', 'Frontend\FrontEndController@ContactUs')->name('contact_us');
 

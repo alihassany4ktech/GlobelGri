@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
-    protected $fillable = ['gallery_photos'];
+    protected $fillable = ['gallery_photos', 'featured_photo'];
 
     public function user()
     {

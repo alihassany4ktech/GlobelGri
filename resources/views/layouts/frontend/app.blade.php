@@ -143,8 +143,6 @@
                                         style="font-size: 12px;color:#bd7f0a">Apartments for Rent</a></li>
                                 <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Houses
                                         for Rent</a></li>
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Roomes
-                                        for Rent</a></li>
                                 <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">See
                                         Newest Listning</a></li>
                                 <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Post
@@ -158,11 +156,11 @@
                     <li class="dropdown">
 
                         <a href="#" class="dropdown-toggle" style="color: #bd7f0a"
-                            onclick="menufunction2()">Mortgage<span class="caret"></span></a>
+                            onclick="menufunction2()">Investment<span class="caret"></span></a>
                         <div class="" id="c" style="background-color:#333;display:none">
                             <ul class="" style="list-style-type: none;">
 
-                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Mortgage
+                                <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">
                                         Overview </a></li>
                                 <li><a href="{{route('home_for_sale')}}" style="font-size: 12px;color:#bd7f0a">Get
                                         Pre-Qualified</a></li>
@@ -256,17 +254,16 @@
                                                         <ul
                                                             class="dropdown-menu pageMainNavDropdown pageMainNavDropdown1">
 
-                                                            <li><a href="{{route('home_for_sale')}}">All Rentals</a>
+                                                            <li><a href="{{route('home_for_rent')}}">All Rentals</a>
                                                             </li>
-                                                            <li><a href="{{route('home_for_sale')}}">Apartments for
+                                                            <li><a href="{{route('home_for_rent')}}">Apartments for
                                                                     Rent</a></li>
-                                                            <li><a href="{{route('home_for_sale')}}">Houses for Rent</a>
+                                                            <li><a href="{{route('home_for_rent')}}">Houses for Rent</a>
                                                             </li>
-                                                            <li><a href="{{route('home_for_sale')}}">Roomes for Rent</a>
                                                             </li>
-                                                            <li><a href="{{route('home_for_sale')}}">See Newest
+                                                            <li><a href="{{route('home_for_rent')}}">See Newest
                                                                     Listning</a></li>
-                                                            <li><a href="{{route('home_for_sale')}}">Post Rental
+                                                            <li><a href="{{route('home_for_rent')}}">Post Rental
                                                                     Listning</a>
                                                             </li>
                                                         </ul>
@@ -276,16 +273,16 @@
                                             <li>
                                             <li class="dropdown">
 
-                                                <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Mortgage<span
+                                                <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Investment<span
                                                         class="caret"></span></a>
                                                 <div class="frame-wrap">
                                                     <div class="frame">
                                                         <ul
                                                             class="dropdown-menu pageMainNavDropdown pageMainNavDropdown1">
 
-                                                            <li><a href="{{route('home_for_sale')}}">Mortgage Overview
+                                                            <li><a href="{{route('investment')}}"> Overview
                                                                 </a></li>
-                                                            <li><a href="{{route('home_for_sale')}}">Get
+                                                            <li><a href="{{route('investment')}}">Get
                                                                     Pre-Qualified</a></li>
                                                           
                                                         </ul>
@@ -324,7 +321,7 @@
                                         </ul>
                                         <a href="{{route('agent.dashboard')}}"
                                             class="headerModalOpener text-uppercase fontNeuron fwBold"
-                                            style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">Dashboard</a>
+                                            style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Dashboard</a>
                                         @else
                                         <ul class="list-unstyled UserLinksList">
                                             <li>
@@ -593,8 +590,8 @@
     </div>
     </div>
     <!-- include jQuery library -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
-    </script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
+    </script> --}}
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/plugins.js')}}"></script>
     <!-- include bootstrap JavaScript -->

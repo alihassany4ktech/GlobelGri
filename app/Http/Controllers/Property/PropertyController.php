@@ -50,7 +50,8 @@ class PropertyController extends Controller
             $propert->area = $request->area;
             $propert->property_type = $request->property_type;
             $propert->description = $request->description;
-            // $propert->location = $request->location;
+            $propert->latitude = $request->latitude;
+            $propert->longitude = $request->longitude;
             $propert->private_note = $request->private_note;
             $propert->save();
             return response()->json([

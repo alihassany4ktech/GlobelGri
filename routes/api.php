@@ -32,6 +32,15 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset');
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
 
+// google
+Route::get('/login/google', 'Api\UserController@redirectToGoogle');
+
+Route::get('/login/google/callback', 'Api\UserController@handleGoogleCallback');
+
+// // facebook
+Route::get('/login/facebook', 'Api\UserController@redirectToFacebook');
+
+Route::get('/login/facebook/callback', 'Api\UserController@handleFacebookCallback');
 
 Route::group(['middleware' => 'auth:api'], function () {
 

@@ -3,6 +3,18 @@
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
 {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
 <!-- main -->
+<link rel="stylesheet" href="frontend/css/style.css">
+
+<style>
+    .geodir-image-container ul.geodir-images li img {
+    border-radius: 4px;
+    object-fit: cover;
+    height: 93%;
+}
+a:visited {
+    color: #FFF;
+}
+</style>
 <main>
     <!-- findFormBlock -->
     <div class="container-fluid">
@@ -10,9 +22,11 @@
             <div class="col-xs-12 col-sm-6 col-md-12">
                 <div class="map-area" style="height:530px; margin-left:-1%;margin-right:-1%">
                     <div id="map-container">
-                        <div id="map_div">
+                        {{-- <div id="map">
                             &nbsp;
-                        </div>
+                        </div> --}}
+                                <div id="map-canvas" style="height: 525px; width: 100%; position: relative; overflow: hidden;">
+                                </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +71,7 @@
                         </a>
                         <a href="{{route('home_for_sale')}}" type="button"
                             class="btn  buttonSmall text-uppercase fontNeuron hidden-xs headerModalOpener"
-                            style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);">SEARCH</a>
+                            style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                     </div>
                 </div>
             </div>
@@ -489,65 +503,58 @@
                             <ul
                                 class="list-unstyled postsFiltersList postsFiltersList2 text-capitalize text-center isoFiltersList">
                                 <li class="active"><a href="#">All</a></li>
-                                <li><a href="#" data-filter=".rent">For Rent</a></li>
-                                <li><a href="#" data-filter=".sale">For Sale</a></li>
+                                
                             </ul>
                         </div>
-                        {{-- <div class="col-xs-12 col-md-4">
-                            <!-- sortGroup -->
-                            <div class="sortGroup">
-                                <strong class="groupTitle fwNormal">Sort by:</strong>
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle buttonReset" type="button" id="sortGroup"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Default Order
-                                        <i class="icn fas fa-chevron-down"></i></button>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sortGroup">
-                                        <li><a href="#">Default Order</a></li>
-                                        <li><a href="#">Default Order</a></li>
-                                        <li><a href="#">Default Order</a></li>
-                                        <li><a href="#">Default Order</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
                     </header>
                     <!-- isoContentHolder -->
+                    <?php
+                    $property_for_sale = App\Property::where('property_type' , '=', 'For Sale')->get();
+                    $total_for_sale = count($property_for_sale);
+                    ?>
                     <div class="isoContentHolder">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol sale">
+                            @foreach ($property_for_sale as $row)
+                            
+                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol">
                                 <!-- postColumn -->
                                 <article class="postColumn hasOver bgWhite">
                                     <div class="aligncenter">
                                         <!-- postColumnImageSlider -->
                                         <div class="slick-carousel slickSlider postColumnImageSlider">
+                                            @if($row->gallery_photos)
+                                            @foreach(json_decode($row->gallery_photos, true) as $row1)
                                             <div>
-                                                <a href="{{route('single_property')}}">
+                                                <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
-                                                        <img src="{{asset('frontend/images/home01.jpeg')}}"
+                                                        <img src="{{asset('/gallery/'.$row1)}}"
                                                             style="height: 260px; width:370px;" alt="image description">
                                                     </div>
                                                 </a>
                                             </div>
+                                            @endforeach
+                                            @else
                                             <div>
-                                                <a href="{{route('single_property')}}">
+                                                <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
 
                                                         <img src="{{asset('frontend/images/home01.jpeg')}}"
-                                                            alt="image description">
+                                                            alt="image description" style="height: 260px; width:370px;">
 
                                                     </div>
                                                 </a>
                                             </div>
                                             <div>
-                                                <a href="{{route('single_property')}}">
+                                                <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
 
                                                         <img src="{{asset('frontend/images/home01.jpeg')}}"
-                                                            alt="image description">
+                                                            alt="image description" style="height: 260px; width:370px;">
 
                                                     </div>
                                                 </a>
                                             </div>
+                                            @endif
                                         </div>
 
                                         <!-- postHoverLinskList -->
@@ -569,49 +576,65 @@
                                             class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
                                                 class="far fa-heart"></i></a>
                                     </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Luxury
-                                            Family Home</a></h2>
+                                    <h2 class="fontNeuron text-capitalize" ><a href="{{route('single_property',['id' => $row->id])}}" style="color: black">{{$row->propert_title}}</a></h2>
                                     <address>
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
                                         <p>The Village, Jersey City, NJ 07302, USA </p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
-                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
+                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$row->property_type}}</span>
+                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span> <span
+                                            class="textUnit fwNormal"></span></h3>
                                     <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
+                                    <a href="{{route('single_property',['id' => $row->id])}}">
                                         <footer class="postColumnFoot">
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->area}} m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bedroom}}</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bathroom}}</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->garages}}</strong>
                                                 </li>
                                             </ul>
                                         </footer>
                                     </a>
                                 </article>
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol rent">
-                                <!-- postColumn -->
+                                 {{-- <!-- postColumn -->
                                 <article class="postColumn hasOver bgWhite">
                                     <div class="aligncenter">
                                         <!-- postColumnImageSlider -->
                                         <div class="slick-carousel slickSlider postColumnImageSlider">
+                                            @if($row->gallery_photos)
+                                              @foreach(json_decode($row->gallery_photos, true) as $row3)
+                                            <div>
+                                                <a href="{{route('single_property')}}">
+                                                    <div class="imgHolder">
+                                                        <img src="{{asset('/gallery/'.$row3)}}"
+                                                            style="height: 260px; width:370px;" alt="image description">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            @endforeach
+                                            @else
+                                            <div>
+                                                <a href="{{route('single_property')}}">
+                                                    <div class="imgHolder">
+                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
+                                                            style="height: 260px; width:370px;" alt="image description">
+
+                                                    </div>
+                                                </a>
+                                            </div>
                                             <div>
                                                 <a href="{{route('single_property')}}">
                                                     <div class="imgHolder">
@@ -622,25 +645,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            @endif
                                         </div>
                                         <!-- postHoverLinskList -->
                                         <ul class="list-unstyled postHoverLinskList">
@@ -661,15 +666,15 @@
                                             class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
                                                 class="far fa-heart"></i></a>
                                     </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Meridian
-                                            Villas</a></h2>
+                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">{{$row->propert_title}}
+                                            </a></h2>
                                     <address>
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
                                         <p>London, United Kingdom</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
                                         style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 920,000</span> <span
+                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span> <span
                                             class="textUnit fwNormal">/ monthly</span></h3>
                                     <!-- postColumnFoot -->
                                     <a href="{{route('single_property')}}">
@@ -677,387 +682,27 @@
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->area}} m2</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bedroom}}</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bathroom}}</strong>
                                                 </li>
                                                 <li>
                                                     <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
+                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->garages}}</strong>
                                                 </li>
                                             </ul>
                                         </footer>
                                     </a>
-                                </article>
+                                </article> --}}
+
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol rent">
-                                <!-- postColumn -->
-                                <article class="postColumn hasOver bgWhite">
-                                    <div class="aligncenter">
-                                        <!-- postColumnImageSlider -->
-                                        <div class="slick-carousel slickSlider postColumnImageSlider">
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/2.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/2.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/2.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
-                                            <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
-                                            <li class="hasOver">
-                                                <a href="#"><i class="fi flaticon-share"></i></a>
-                                                <!-- postColumnSocial -->
-                                                <ul class="list-unstyled socialNetworks postColumnSocial">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
-                                    </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Elegant
-                                            studio flat</a></h2>
-                                    <address>
-                                        <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>The Village, Jersey City, NJ 07302, USA</p>
-                                    </address>
-                                    <span class="btn btnSmall  text-capitalize"
-                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
-                                    <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
-                                        <footer class="postColumnFoot">
-                                            <ul class="list-unstyled">
-                                            <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                </article>
-                                </a>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol rent">
-                                <!-- postColumn -->
-                                <article class="postColumn hasOver bgWhite">
-                                    <div class="aligncenter">
-                                        <!-- postColumnImageSlider -->
-                                        <div class="slick-carousel slickSlider postColumnImageSlider">
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/3.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/3.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/3.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
-                                            <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
-                                            <li class="hasOver">
-                                                <a href="#"><i class="fi flaticon-share"></i></a>
-                                                <!-- postColumnSocial -->
-                                                <ul class="list-unstyled socialNetworks postColumnSocial">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
-                                    </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="#">Full Floor Office Condo</a></h2>
-                                    <address>
-                                        <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>London, United Kingdom</p>
-                                    </address>
-                                    <span class="btn btnSmall text-capitalize"
-                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 920,000</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
-                                    <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
-                                        <footer class="postColumnFoot">
-                                            <ul class="list-unstyled">
-                                               <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                    </a>
-                                </article>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol rent">
-                                <!-- postColumn -->
-                                <article class="postColumn hasOver bgWhite">
-                                    <div class="aligncenter">
-                                        <!-- postColumnImageSlider -->
-                                        <div class="slick-carousel slickSlider postColumnImageSlider">
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/4.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/4.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/4.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
-                                            <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
-                                            <li class="hasOver">
-                                                <a href="#"><i class="fi flaticon-share"></i></a>
-                                                <!-- postColumnSocial -->
-                                                <ul class="list-unstyled socialNetworks postColumnSocial">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
-                                    </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">4 Bedroom
-                                            New House For Sale</a></h2>
-                                    <address>
-                                        <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>778 Country St. Panama City, FL</p>
-                                    </address>
-                                    <span class="btn btnSmall  text-capitalize"
-                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 250,000</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
-                                    <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
-                                        <footer class="postColumnFoot">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                    </a>
-                                </article>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol rent">
-                                <!-- postColumn -->
-                                <article class="postColumn hasOver bgWhite">
-                                    <div class="aligncenter">
-                                        <!-- postColumnImageSlider -->
-                                        <div class="slick-carousel slickSlider postColumnImageSlider">
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/5.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/5.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-                                                        <img src="{{asset('frontend/images/5.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
-                                            <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
-                                            <li class="hasOver">
-                                                <a href="#"><i class="fi flaticon-share"></i></a>
-                                                <!-- postColumnSocial -->
-                                                <ul class="list-unstyled socialNetworks postColumnSocial">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
-                                    </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">Villa on
-                                            Hollywood Boulevard</a></h2>
-                                    <address>
-                                        <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>778 Country St. Panama City, FL</p>
-                                    </address>
-                                    <span class="btn btnSmall  text-capitalize"
-                                        style="border:none;border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 320,000</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
-                                    <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
-                                        <footer class="postColumnFoot">
-                                            <ul class="list-unstyled">
-                                               <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2100 m2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">3</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">1</strong>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                    </a>
-                                </article>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- navigation pagination -->
@@ -1073,7 +718,7 @@
                         </div>
                     </nav>
                 </div>
-
+                
                 <p style="text-align: center"><a href="" style="color: #bd7f0a"> United States </a> <i class="fa fa-angle-right"></i> <a
                         href="" style="color: #bd7f0a"> California </a><i class="fa fa-angle-right"></i> San Francisco</p>
                 <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
@@ -1083,29 +728,38 @@
                 <!-- introBanner -->
                 <section class="threeBanner">
                     <!-- bannerImageSlideshow -->
+                    {{-- {{dd($property)}} --}}
                     <div class="banner-slider slickSlider">
+                        @foreach($property_for_sale as $row)
                         <div>
                             <div class="banner-content" style="padding: 1%">
                                 <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/p5.jpg')}}" style="height: 462px; width:489px;"
+                                    @if ($row->featured_photo)
+                                        <img src="{{asset($row->featured_photo)}}" style="height: 462px; width:489px;"
                                         alt="image description">
+                                    @else
+                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 462px; width:489px;"
+                                        alt="image description">
+                                    @endif
+                                    
                                     <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">South of Market</h2>
+                                        <h2 class="fontNeuron text-capitalize">{{$row->propert_title}}</h2>
                                         <div class="textwrap ">
                                             <address>
                                                 <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>117 total homes available</p>
+                                                <p>{{$total_for_sale}} total homes available</p>
                                             </address>
 
                                             <button type="button"
                                                 style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
-                                                class="btn">See home for sale</button>
+                                                class="btn">See home {{$row->property_type}}</button>
                                         </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                        <div>
+                        @endforeach
+                        {{-- <div>
                             <div class="banner-content" style="padding: 1%">
                                 <figure class="imgHolder">
                                     <img src="{{asset('frontend/images/p4.jpg')}}" style="height: 462px; width:489px;"
@@ -1208,28 +862,35 @@
                                     </figcaption>
                                 </figure>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </section>
                 <!-- findFormBlock -->
                 <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
                 <!-- introBanner -->
-                <section class="threeBanner" style="margin-bottom: 3%">
+                <section class="threeBanner" style="margin-bottom: -10%">
                     <!-- bannerImageSlideshow -->
                     <div class="banner-slider slickSlider">
+                        @foreach($property_for_sale as $row)
                         <div>
                             <div class="banner-content" style="padding: 1%">
                                 <figure class="imgHolder">
+                                    @if($row->featured_photo)
+                                    <img src="{{asset($row->featured_photo)}}" alt="image description"
+                                        style="height: 226px; width:600px;">
+                                    @else
                                     <img src="{{asset('frontend/images/c.jpg')}}" alt="image description"
                                         style="height: 226px; width:600px;">
+                                    @endif
+                                    
                                     <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Bayview</h2>
+                                        <h2 class="fontNeuron text-capitalize">{{$row->property_title}}</h2>
                                         <div class="textwrap ">
                                             <address>
                                                 <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
+                                                <p>{{$total_for_sale}} Homes for You</p><br>
                                                 <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
+                                                <p>$ {{$row->price}}</p><br>
                                             </address>
 
 
@@ -1243,305 +904,10 @@
                                 </figure>
                             </div>
                         </div>
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/a.jpg')}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Cow Hollow</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
-                                            </address>
-
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/e.jpg')}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">North Beach</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
-                                            </address>
-
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/c.jpg')}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Lower Haight</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
-                                            </address>
-
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/d.jpg')}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Fairmount</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
-                                            </address>
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/d.jpg')}}" alt="image description"
-                                        style="height: 226px; width:370px;">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Portola</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>13 Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>Buy: $639k - $2.95m</p><br>
-                                            </address>
-
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                 </section>
-                <!-- findFormBlock -->
-                {{-- <p style="color:black">Neighborhood stats provided by third party data sources.</p>
-
-                <h3 class="fontNeuron">San Francisco Guide</h3>
-                <h6 class="">What kinds of homes are available in San Francisco?</h6>
-                <hr class="solid"
-                    style="color:black; border-top: 5px solid #80d6dd; width:70px; float: left; margin-top:-.2%">
-                <p style="margin-top: 6%; color:black">In San Francisco, around one third of buildings are large
-                    apartment buildings,
-                    and the rest of the dwellings are mainly small apartment buildings, single detached homes, and
-                    townhouses. This municipality also has a good variety of housing sizes - houses range from lofts to
-                    four or more bedrooms. About 55% of the population of this municipality rent their home whereas
-                    owners make up the remainder. Most of the housing growth in this municipality took place before the
-                    1960s.</p>
-                <h6 class="" style="margin-top: 5%">What are the schools, resturants and shopping like in San Francisco?
-                </h6>
-                <hr class="solid"
-                    style="color:black; border-top: 5px solid #80d6dd; width:70px; float: left; margin-top:-.2%">
-                <p style="margin-top: 6%; color:black">It is a reasonably short walk to get to primary as well as high
-                    schools from
-                    most houses for sale in this municipality. In addition to public schools, there are private
-                    elementary and high schools. In terms of eating, a grocery store is typically accessible within a
-                    short walk from most properties for sale in this municipality. Over 1200 groceries are situated
-                    nearby, and the best selection can be found on streets such as Market Street. In addition, there are
-                    over 3900 restaurants and over 1100 coffee shops to enjoy in this municipality.</p>
-
-                <h6 class="" style="margin-top: 5%">What are the best ways to get around in San Francisco?
-                </h6>
-                <hr class="solid"
-                    style="color:black; border-top: 5px solid #80d6dd; width:70px; float: left; margin-top:-.2%">
-                <p style="margin-top: 6%; color:black">San Francisco will please property owners that use different
-                    means of transportation. With various rapid transit stations on the Dublin/Pleasanton - Daly City
-                    Line, Warm Springs/South Fremont - Daly City Line, Richmond - Daly City/Millbrae Line and Antioch -
-                    SFIA/Millbrae Line, and over 200 nearby bus lines, the very good public transit infrastructure
-                    allows people to get to many destinations without needing a car. Many of the houses for sale in this
-                    municipality are located in places that are also very suitable for those who travel by foot; most
-                    common errands can be run without needing to resort to a car, and a variety of businesses are close
-                    by. Cycling is at times difficult in San Francisco since riding is made arduous by the often steep
-                    terrain. Nevertheless, certain bike-friendly sectors exist, and San Francisco is home to a
-                    reasonably good cycling infrastructure.</p>
-
-                <h6 class="" style="margin-top: 5%">What's it like to live in San Francisco?
-                </h6>
-                <hr class="solid"
-                    style="color:black; border-top: 5px solid #80d6dd; width:70px; float: left; margin-top:-.2%">
-                <p style="margin-top: 6%; color:black">No matter what type of character home buyers prefer in a
-                    municipality, San Francisco is a reasonably good option. This municipality has many areas to
-                    explore. Even though there are few nearby entertainment venues, there are a large number of people
-                    around most of the time, and finding one of the over 500 nightlife venues is very easy since they
-                    are generally situated in very convenient locations. Most areas in San Francisco are quiet, as there
-                    tend to be low levels of noise from traffic, although that is not the case near one of the railway
-                    lines, Interstate 280 or Junipero Serra Freeway. This municipality also features a small amount of
-                    greenery; more specifically, residents will find that the tree canopy coverage for most streets is
-                    sub-par. Nonetheless, there are over 200 public green spaces nearby for residents to explore, such
-                    as Glen Canyon Park and Candlestick Point State Recreation Area, which makes it very easy to access
-                    them from most locations in this municipality.</p>
-
-                <h6>
-                    <img src="{{asset('frontend/images/h.jpeg')}}" alt="image description"
-                style="height: 20px; width:100px;">
-                </h6>
-                <p style="color: black">IDX information is provided exclusively for personal, non-commercial use, and
-                    may not be used for any
-                    purpose other than to identify prospective properties consumers may be interested in purchasing.
-                    Information is deemed reliable but not guaranteed.</p>
-
-                <h6>
-                    <img src="{{asset('frontend/images/h1.jpeg')}}" alt="image description"
-                        style="height: 20px; width:50px;">
-                </h6>
-                <p style="color:black">Property Information © 2021 MLSListings Inc. All rights reserved. Certain
-                    information contained herein is derived from information which is the licensed property of, and
-                    copyrighted by, MLSListings Inc.></p>
-
-                <h6>
-                    <img src="{{asset('frontend/images/h3.jpeg')}}" alt="image description"
-                        style="height: 20px; width:50px;">
-                </h6>
-                <p style="color: black">Bay East 2021. CCAR 2021. bridgeMLS 2021. Information Deemed Reliable But Not
-                    Guaranteed. This information is being provided by the Bay East MLS, or CCAR MLS, or bridgeMLS. The
-                    listings presented here may or may not be listed by the Broker/Agent operating this website. This
-                    information is intended for the personal use of consumers and may not be used for any purpose other
-                    than to identify prospective properties consumers may be interested in purchasing. Data last updated
-                    at 2021-05-20 03:24:27 PDT.</p>
-                <h6>
-                    <img src="{{asset('frontend/images/h4.jpeg')}}" alt="image description"
-                        style="height: 20px; width:150px;">
-                </h6>
-                <p style="color: black">Copyright 2021 globelgri. All rights reserved. Information is deemed reliable
-                    but not guaranteed.</p>
-                <div class="row" style="margin-top:6%">
-                    <div class="col-md-3">
-                        <h6 style="margin-left: 9%">Nearby Real Estate</h6>
-                        <ul style="list-style-type:none;">
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h6 style="margin-left: 0%">San Francisco Neighborhoods</h6>
-                        <ul style="list-style-type:none;">
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h6 style="margin-left: 0%">San Francisco Property Types</h6>
-                        <ul style="list-style-type:none;">
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h6 style="margin-left: 0%">Real Estate and Mortgage Guides</h6>
-                        <ul style="list-style-type:none;">
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                            <li>For Professionals</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="color: black; margin-top:6%;font-weight: bold;">Trulia is a registered Trademark of Zillow,
-                    Inc. and MLS listings are provided by Zillow, Inc., a licensed real estate brokerage. See <a
-                        href=""> here</a> for a list of our real estate licenses. <a href=""> Contact globelgri, Inc
-                        Brokerage</a></p>
-                <p style="color: black;margin-top:5%"> Trulia Corporate <i class="fa fa-circle"
-                        style="font-size: 5px;"></i> About
-                    Trulia <i class="fa fa-circle" style="font-size: 5px;"></i> About Zillow Group <i
-                        class="fa fa-circle" style="font-size: 5px;"></i> Fair Housing
-                    Guide <i class="fa fa-circle" style="font-size: 5px;"></i> Careers <i class="fa fa-circle"
-                        style="font-size: 5px;"></i> Newsroom <i class="fa fa-circle" style="font-size: 5px;"></i>
-                    Investor Relations <i class="fa fa-circle" style="font-size: 5px;"></i> Advertising <i
-                        class="fa fa-circle" style="font-size: 5px;"></i> Terms <i class="fa fa-circle"
-                        style="font-size: 5px;"></i> Privacy <i class="fa fa-circle" style="font-size: 5px;"></i> Terms
-                    of Use <i class="fa fa-circle" style="font-size: 5px;"></i> Listings Quality
-                    Policy <i class="fa fa-circle" style="font-size: 5px;"></i> Subscription Terms <i
-                        class="fa fa-circle" style="font-size: 5px;"></i> Help <i class="fa fa-circle"
-                        style="font-size: 5px;"></i> Privacy Portal <i class="fa fa-circle" style="font-size: 5px;"></i>
-                    Cookie Preference <i class="fa fa-circle" style="font-size: 5px;"></i><br>
-                    <a href=""> <b> Do Not Sell My Personal Information </b><i
-                            class="fi flaticon-arrows readMoreIcn"></i></a>
-                </p>
-                <p style="color: black; margin-top:5%;">Zillow Group is committed to ensuring digital accessibility for
-                    individuals with disabilities. We are continuously working to improve the accessibility of our web
-                    experience for everyone, and we welcome feedback and accommodation requests. If you wish to report
-                    an issue or seek an accommodation, please <a href=""> let us know</a>.</p>
-                <p style="color: black; margin-top:5%;">copyright © 2021 globelgri. All rights reserved. <a href="">
-                        Equal Housing Opportunity</a>. Have a Question? Visit our <a href=""> Help Center</a> to find
-                    the answer.</p> --}}
-
             </div>
 
         </div>
@@ -1578,3 +944,120 @@
     });
 
 </script> --}}
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB&callback=initMap&libraries=&v=weekly" async></script>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+</script> --}}
+
+
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB'></script>
+<script defer>
+    var mainurl = "{{url('/')}}";
+    function initialize() {
+        var mapOptions = {
+            zoom: 6,
+            // minZoom: 6,
+            maxZoom: 17,
+            zoomControl:true,
+            zoomControlOptions: {
+                style:google.maps.ZoomControlStyle.DEFAULT
+            },
+            center: new google.maps.LatLng(-25.344,131.036),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: true,
+            panControl:false,
+            mapTypeControl:false,
+            scaleControl:false,
+            overviewMapControl:false,
+            rotateControl:false
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
+        var places = @json($mapShops);
+        // console.log(places);
+        for(place in places)
+        {
+            place = places[place];
+            console.log(place.propert_title);
+            if(place.latitude && place.longitude)
+            {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(place.latitude, place.longitude),
+                    icon:image,
+                    map: map,
+                    title: place.name
+                });
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, 'click', (function (marker, place) {
+                    return function () {
+                        infowindow.setContent(generateContent(place))
+                        infowindow.open(map, marker);
+                    }
+                })(marker, place));
+            }
+        }
+       
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function generateContent(place)
+    {
+        var content = `
+            <div class="gd-bubble" style="">
+                <div class="gd-bubble-inside">
+                    <div class="geodir-bubble_desc">
+                    <div class="geodir-bubble_image">
+                        <div class="geodir-post-slider">
+                            <div class="geodir-image-container geodir-image-sizes-medium_large ">
+                                <div id="geodir_images_5de53f2a45254_189" class="geodir-image-wrapper" data-controlnav="1">
+                                    <ul class="geodir-post-image geodir-images clearfix">
+                                        <li>
+                                            <div class="geodir-post-title">
+                                                <h4 class="geodir-entry-title">
+                                                    <a href="">`+place.propert_title+`</a>
+                                                </h4>
+                                            </div>
+                                            <a href=""><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="geodir-bubble-meta-side">
+                    <div class="geodir-output-location">
+                    <div class="geodir-output-location geodir-output-location-mapbubble">
+                        <div class="geodir_post_meta  geodir-field-post_title"><span class="geodir_post_meta_icon geodir-i-text">
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+                            <span class="geodir_post_meta_title">Property Type: </span></span>`+place.property_type+`</div>
+                        <div class="geodir_post_meta  geodir-field-address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                            <span class="geodir_post_meta_icon geodir-i-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span class="geodir_post_meta_title">Address: </span></span><span itemprop="streetAddress">`+place.address+`</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>`;
+
+        return content;
+
+    }
+</script>
