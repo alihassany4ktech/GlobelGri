@@ -208,13 +208,6 @@
 
                 <h1 class="fontNeuron">Blog Single</h1>
             </div>
-            <div class="col-xs-12 col-sm-2">
-                <!-- viewFilterLinks -->
-                <ul class="list-unstyled viewFilterLinks">
-                    <li><a href="#"><i class="fi flaticon-share"></i></a></li>
-                    <li><a href="#"><i class="fi flaticon-printer"></i></a></li>
-                </ul>
-            </div>
         </header>
         <div class="row">
             <div class="col-xs-12 col-md-8">

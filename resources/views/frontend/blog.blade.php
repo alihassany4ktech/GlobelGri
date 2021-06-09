@@ -202,13 +202,6 @@
 							<div class="col-xs-12 col-sm-10">
 								<h1 class="fontNeuron">Blog</h1>
 							</div>
-							<div class="col-xs-12 col-sm-2">
-								<!-- viewFilterLinks -->
-								<ul class="list-unstyled viewFilterLinks">
-									<li><a href="#"><i class="fi flaticon-share"></i></a></li>
-									<li><a href="#"><i class="fi flaticon-printer"></i></a></li>
-								</ul>
-							</div>
 						</header>
 						<div class="row">
 							<div class="col-xs-12 col-md-4 col-md-push-8">
@@ -274,7 +267,7 @@
 											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/3.jpg')}}" class="img-responsive" alt="image description"></a></li>
 											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/p2.jpg')}}" class="img-responsive" alt="image description"></a></li>
 											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/home01.jpeg')}}" class="img-responsive" alt="image description"></a></li>
-											<li><a href="{{route('single_blog')}}"><img style="height: 60px; width:100px" src="{{asset('frontend/images/home0.jpg')}}" class="img-responsive" alt="image description"></a></li>
+											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/home01.jpeg')}}" class="img-responsive" alt="image description"></a></li>
 											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/4.jpg')}}" class="img-responsive" alt="image description"></a></li>
 											<li><a href="{{route('single_blog')}}"><img src="{{asset('frontend/images/5.jpg')}}" class="img-responsive" alt="image description"></a></li>
 										</ul>
