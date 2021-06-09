@@ -124,7 +124,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
-                        <img src="{{asset('frontend/images/homes1.png')}}" style="margin-top: 20%;height:160px" alt="image description">
+                        <img src="{{asset('frontend/images/homes2.png')}}" style="margin-top: 20%;height:160px" alt="image description">
                     </a>
                 </div>
                 <h4 class="text-center">Rent a home</h4>
@@ -132,7 +132,7 @@
                     home or apartment for rent that you'll love.</p>
 
                 <div class="col text-center">
-                     <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                     <a href="{{route('home_for_rent')}}" type="button" class="btn" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Find a home </a>
                 </div>
@@ -140,7 +140,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
-                        <img src="{{asset('frontend/images/homes1.png')}}" style="margin-top: 20%;height:160px" alt="image description">
+                        <img src="{{asset('frontend/images/homes3.png')}}" style="margin-top: 20%;height:160px" alt="image description">
                     </a>
                 </div>
                 <h4 class="text-center">Investment</h4>
@@ -148,7 +148,7 @@
                     captured the color and diversity of communities.</p>
 
                 <div class="col text-center">
-                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                    <a href="{{route('investment')}}" type="button" class="btn" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Learn more </a>
                 </div>
@@ -171,10 +171,10 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="{{route('home_for_sale')}}">
                                             <img  src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 185px; width:368px;" alt="image description">
+                                                            style="height: 185px; width:368px;" alt="image description" >
                                         </a>
                                     </div>
                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
@@ -193,7 +193,7 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
@@ -217,7 +217,7 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/p1.jpg')}}" style="height: 391px; width:368px;" alt="image description">
                                         </a>
@@ -241,7 +241,7 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/2.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
@@ -262,7 +262,7 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/3.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
@@ -286,7 +286,7 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/4.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
@@ -307,7 +307,7 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
+                                    <div class="imgHolder" id="pica">
                                         <a href="#">
                                             <img src="{{asset('frontend/images/5.jpg')}}" style="height: 185px; width:368px;" alt="image description">
                                         </a>
@@ -350,7 +350,7 @@
             <div class="row" style="padding: 10%">
                 <div class="col-xs-12 col-sm-12  col-md-6" style="margin-left: 0">
                     <h1 class="fontNeuron" style="color: white;">Globelgri Guides</h1>
-                    <h4 class="fontNeuron" style="color: white;">Everything you need to know <br> when you're looking to buy,rent, or sell - all in one place.
+                    <h4 class="fontNeuron" style="color: white;">Everything you need to know <br> when you're looking to buy,rent, or investment - all in one place.
                     </h4>
 
                     <a href="{{route('home_for_sale')}}" style="border:none;font-size: 20px; background: #f1c967; 
@@ -362,19 +362,19 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 ">
                             <div class="imgHolder" style="display: block; margin-left: 40%; width: 50%;">
                                 <a href="{{route('home_for_sale')}}">
-                                    <img src="{{asset('frontend/images/homes1.png')}}" style="height: 90px" alt="image description">
+                                    <img src="{{asset('frontend/images/homes1.png')}}" class="pic" style="height: 90px" alt="image description">
                                 </a>
                             </div>
                             <div class="imgHolder"
                                 style="display: block; margin-left: 40%; margin-right: auto; width: 50%;">
                                 <a href="{{route('home_for_sale')}}">
-                                    <img src="{{asset('frontend/images/homes1.png')}}" style="height: 90px" alt="image description">
+                                    <img src="{{asset('frontend/images/homes2.png')}}" class="pic" style="height: 90px" alt="image description">
                                 </a>
                             </div>
                             <div class="imgHolder"
                                 style="display: block; margin-left: 40%; margin-right: auto; width: 50%;">
                                 <a href="{{route('home_for_sale')}}">
-                                    <img src="{{asset('frontend/images/homes1.png')}}"  style="height: 90px" alt="image description">
+                                    <img src="{{asset('frontend/images/homes3.png')}}" class="pic"  style="height: 90px" alt="image description">
                                 </a>
                             </div>
 
@@ -385,7 +385,7 @@
                             <h2 class="fontNeuron" style="color: white;">Renter Guides</h2>
                             <a href="{{route('home_for_sale')}}"><p style="color: white;">How to rent <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                             <h2 class="fontNeuron" style="color: white;">Invester Guides</h2>
-                            <a href="{{route('home_for_sale')}}"><p style="color: white;">How to sell <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
+                            <a href="{{route('home_for_sale')}}"><p style="color: white;">How to invest <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                         </div>
                     </div>
                 </div>
@@ -397,8 +397,8 @@
     <div class="container mt-5">
         <h1 class="text-center" style="margin-top: 6%">Discover a place you'll love to live</h1>
         <div class="row" style="margin-top: 5%;">
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center; margin-left:-2%">       
-                <ul style="list-style-type:none;color: black">
+            <div class="col-xs-6 col-sm-6 col-md-3"  style="text-align: center; margin-left:-2%">       
+                <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Real Estate Markets</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -408,8 +408,8 @@
                     <li>For Professionals</li>
                 </ul>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">
-                <ul style="list-style-type:none;color: black">
+            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center;margin-left:-2%">
+                <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Popular Searches</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -419,8 +419,8 @@
                     <li>For Professionals</li>
                 </ul>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">                
-                <ul style="list-style-type:none;color: black">
+            <div class="col-xs-6 col-sm-6 col-md-3"  style="text-align: center;margin-left:-2%">                
+                <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Explore Globel Gri</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>
@@ -430,8 +430,8 @@
                     <li>For Professionals</li>
                 </ul>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center">
-                <ul style="list-style-type:none; color: black">
+            <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center;margin-left:-2%">
+                <ul style="list-style-type:none; color: black" id="l">
                     <li><h6>For Professionals</h6></li>
                     <li>For Professionals</li>
                     <li>For Professionals</li>

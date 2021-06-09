@@ -86,6 +86,10 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/agent/property', 'AgentController@property')->name('property');
 
     Route::get('/single/property/{id}', 'AgentController@SingleProperty')->name('single_property');
+
+    Route::get('/edit/property/{id}', 'AgentController@EditProperty')->name('edit_property');
+
+    Route::get('/delete/property/{id}', 'AgentController@DeleteProperty')->name('delete_property');
 });
 
 
@@ -110,6 +114,8 @@ Route::namespace('Property')->as('property.')->group(function () {
     Route::get('property/create', 'PropertyController@create')->name('create');
 
     Route::post('property/store', 'PropertyController@store')->name('store');
+
+    Route::post('property/update', 'PropertyController@update')->name('update');
 });
 
 /****************************** Frontend ************************/

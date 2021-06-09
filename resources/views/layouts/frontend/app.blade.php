@@ -55,6 +55,24 @@
                 margin-top:0%;
             }
 
+    #pica {
+    margin: 13px;
+    width: 92%;
+    position: relative;
+}
+        .pic {
+        max-width: 100%;
+        height: auto;
+        margin-top: 33%;
+        }
+
+         #l {
+    margin-top: 0;
+    margin-bottom: 15px;
+    margin-left: -16px;
+        }
+
+
 }
 
         #mobile-container {

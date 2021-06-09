@@ -109,4 +109,18 @@ class AgentController extends Controller
         // return $data->toJson();  for api 
         return view('agent.property.single', compact('data')); // for view
     }
+
+    public function EditProperty($id)
+    {
+        $property = Property::find($id);
+        // dd($property);
+        return view('agent.property.edit', compact('property'));
+    }
+
+    public function DeleteProperty($id)
+    {
+        $property = Property::find($id);
+        $property->delete();
+        return redirect()->back();
+    }
 }

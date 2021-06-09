@@ -640,12 +640,11 @@ a:visited {
                 <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
                 <p style="color: black">Learn about the San Francisco, CA housing market through trends and averages.
                 </p>
-                <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3>
+                {{-- <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3> --}}
                 <!-- introBanner -->
-                <section class="threeBanner">
+                {{-- <section class="threeBanner"> --}}
                     <!-- bannerImageSlideshow -->
-                    {{-- {{dd($property)}} --}}
-                    <div class="banner-slider slickSlider">
+                    {{-- <div class="banner-slider slickSlider">
                         @foreach($property_for_sale as $row)
                         <div>
                             <div class="banner-content" style="padding: 1%">
@@ -675,112 +674,8 @@ a:visited {
                             </div>
                         </div>
                         @endforeach
-                        {{-- <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/p4.jpg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Mission</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>89 total homes available</p>
-                                            </address>
-
-                                            <button type="button"
-                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
-                                                class="btn ">See home for sale</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/p03.jpeg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Rincon Hill</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>53 total homes available</p>
-                                            </address>
-
-                                            <button type="button"
-                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
-                                                class="btn ">See home for sale</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/p2.jpg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Pacific Heights</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>48 total homes available</p>
-                                            </address>
-
-                                            <button type="button" style="margin-left:10%; margin-top:10%"
-                                                class="btn btnSecondary">See home for sale</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/p1.jpg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Nob Hill</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>40 total homes available</p>
-                                            </address>
-
-                                            <button type="button" style="margin-left:10%; margin-top:10%"
-                                                class="btn btnSecondary">See home for sale</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    <img src="{{asset('frontend/images/a.jpg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">Russian Hill</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>36 total homes available</p>
-                                            </address>
-
-                                            <button type="button" style="margin-left:10%; margin-top:10%"
-                                                class="btn btnSecondary">See home for sale</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div> --}}
-                    </div>
-                </section>
+                    </div> --}}
+                {{-- </section> --}}
                 <!-- findFormBlock -->
                 <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
                 <!-- introBanner -->

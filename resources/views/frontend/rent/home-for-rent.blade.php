@@ -1,15 +1,30 @@
 @extends('layouts.frontend.app')
 @section('content')
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
+{{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
+<!-- main -->
+<link rel="stylesheet" href="frontend/css/style.css">
+
 <style>
-    .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    .geodir-image-container ul.geodir-images li img {
+    border-radius: 4px;
+    object-fit: cover;
+    height: 93%;
+}
+a:visited {
+    color: #FFF;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
     z-index: 2;
     color: #fff;
     border:1px solid #f1c967 ;
     background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
     /* border-color: #13293d; */
 }
-
-
+.slick-slide {
+        height: 275px !important;
+}
 </style>
 <main>
     <!-- findFormBlock -->
@@ -18,9 +33,11 @@
             <div class="col-xs-12 col-sm-6 col-md-12">
                 <div class="map-area" style="height:530px; margin-left:-1%;margin-right:-1%">
                     <div id="map-container">
-                        <div id="map_div">
+                        {{-- <div id="map">
                             &nbsp;
-                        </div>
+                        </div> --}}
+                                <div id="map-canvas" style="height: 525px; width: 100%; position: relative; overflow: hidden;">
+                                </div>
                     </div>
                 </div>
             </div>
@@ -65,7 +82,7 @@
                         </a>
                         <a href="{{route('home_for_sale')}}" type="button"
                             class="btn  buttonSmall text-uppercase fontNeuron hidden-xs headerModalOpener"
-                            style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);">SEARCH</a>
+                            style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
                     </div>
                 </div>
             </div>
@@ -481,6 +498,9 @@
             </div>
         </div>
     </form>
+    {{-- <div style="float: right; margin-right:15px; margin-top:2%">
+        <input type="checkbox" name="status" id="status" checked autocomplete="off" />
+    </div> --}}
     <!-- latestPostsBlock -->
     <div class="container-fluid">
         <div class="row">
@@ -506,7 +526,8 @@
                     <div class="isoContentHolder">
                         <div class="row">
                             @foreach ($property_for_rent as $row)
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            
+                            <div class="col-xs-12 col-sm-6 col-md-3 col isoCol">
                                 <!-- postColumn -->
                                 <article class="postColumn hasOver bgWhite">
                                     <div class="aligncenter">
@@ -518,7 +539,7 @@
                                                 <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
                                                         <img src="{{asset('/gallery/'.$row1)}}"
-                                                            style="height: 260px; width:380px;" alt="image description">
+                                                            style="height: 260px; width:370px;" alt="image description">
                                                     </div>
                                                 </a>
                                             </div>
@@ -528,8 +549,8 @@
                                                 <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
 
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            alt="image description" style="height: 260px; width:380px;">
+                                                        <img src="{{asset('frontend/images/home01.jpeg')}}"
+                                                            alt="image description" style="height: 260px; width:370px;">
 
                                                     </div>
                                                 </a>
@@ -538,8 +559,8 @@
                                                 <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
 
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            alt="image description"  style="height: 260px; width:380px;">
+                                                        <img src="{{asset('frontend/images/home01.jpeg')}}"
+                                                            alt="image description" style="height: 260px; width:370px;">
 
                                                     </div>
                                                 </a>
@@ -566,7 +587,7 @@
                                             class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
                                                 class="far fa-heart"></i></a>
                                     </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                    <h2 class="fontNeuron text-capitalize" ><a href="{{route('single_property',['id' => $row->id])}}" style="color: black">{{$row->propert_title}}</a></h2>
                                     <address>
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
                                         <p>The Village, Jersey City, NJ 07302, USA </p>
@@ -599,21 +620,17 @@
                                         </footer>
                                     </a>
                                 </article>
+                         
+
                             </div>
                             @endforeach
                         </div>
                     </div>
                     <!-- navigation pagination -->
+
                     <nav class="navigation pagination pagination1 fontNeuron" role="navigation">
                         <div class="nav-links">
                             {{$property_for_rent->links()}}
-                            {{-- <a class="prev page-numbers" href="#">Previous</a>
-                            <a class="page-numbers" href="#">1</a>
-                            <span class="page-numbers current">2</span>
-                            <a class="page-numbers" href="#">3</a>
-                            <span class="page-numbers dots">&hellip;</span>
-                            <a class="page-numbers" href="#">22</a>
-                            <a class="next page-numbers" href="#">Next</a> --}}
                         </div>
                     </nav>
                 </div>
@@ -623,11 +640,11 @@
                 <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
                 <p style="color: black">Learn about the San Francisco, CA housing market through trends and averages.
                 </p>
-                <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3>
+                {{-- <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3> --}}
                 <!-- introBanner -->
-                <section class="threeBanner">
+                {{-- <section class="threeBanner"> --}}
                     <!-- bannerImageSlideshow -->
-                    <div class="banner-slider slickSlider">
+                    {{-- <div class="banner-slider slickSlider">
                         @foreach($property_for_rent as $row)
                         <div>
                             <div class="banner-content" style="padding: 1%">
@@ -636,7 +653,7 @@
                                         <img src="{{asset($row->featured_photo)}}" style="height: 462px; width:489px;"
                                         alt="image description">
                                     @else
-                                        <img src="{{asset('frontend/images/home0.jpg')}}" style="height: 462px; width:489px;"
+                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 462px; width:489px;"
                                         alt="image description">
                                     @endif
                                     
@@ -657,12 +674,12 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>
-                </section>
+                    </div> --}}
+                {{-- </section> --}}
                 <!-- findFormBlock -->
                 <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
                 <!-- introBanner -->
-                <section class="threeBanner" style="margin-bottom: 3%">
+                <section class="threeBanner" id="kuchbe" style="margin-bottom: 3%">
                     <!-- bannerImageSlideshow -->
                     <div class="banner-slider slickSlider">
                         @foreach($property_for_rent as $row)
@@ -700,10 +717,158 @@
                         </div>
                         @endforeach
                     </div>
-
+                    
                 </section>
             </div>
 
         </div>
 </main>
 @endsection
+
+
+
+{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" defer></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#status').bootstrapToggle({
+            on: 'Map',
+            off: 'Search',
+            onstyle: 'info',
+            offstyle: 'primary'
+        });
+
+        $('#status').change(function () {
+            if ($(this).prop('checked')) {
+                $('#form').show();
+                $('#map').hide();
+
+            } else {
+                $('#map').show();
+                $('#form').hide();
+            }
+
+        });
+
+    });
+
+</script> --}}
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB&callback=initMap&libraries=&v=weekly" async></script>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+</script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB'></script>
+<script defer>
+    var mainurl = "{{url('/')}}";
+    function initialize() {
+        var mapOptions = {
+            zoom: 6,
+            // minZoom: 6,
+            maxZoom: 17,
+            zoomControl:true,
+            zoomControlOptions: {
+                style:google.maps.ZoomControlStyle.DEFAULT
+            },
+            center: new google.maps.LatLng(-25.344,131.036),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: true,
+            panControl:false,
+            mapTypeControl:false,
+            scaleControl:false,
+            overviewMapControl:false,
+            rotateControl:false
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
+        var places = @json($mapShops);
+        // console.log(places);
+        for(place in places)
+        {
+            place = places[place];
+            console.log(place.propert_title);
+            if(place.latitude && place.longitude)
+            {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(place.latitude, place.longitude),
+                    icon:image,
+                    map: map,
+                    title: place.name
+                });
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, 'click', (function (marker, place) {
+                    return function () {
+                        infowindow.setContent(generateContent(place))
+                        infowindow.open(map, marker);
+                    }
+                })(marker, place));
+            }
+        }
+       
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function generateContent(place)
+    {
+        var content = `
+            <div class="gd-bubble" style="">
+                <div class="gd-bubble-inside">
+                    <div class="geodir-bubble_desc">
+                    <div class="geodir-bubble_image">
+                        <div class="geodir-post-slider">
+                            <div class="geodir-image-container geodir-image-sizes-medium_large ">
+                                <div id="geodir_images_5de53f2a45254_189" class="geodir-image-wrapper" data-controlnav="1">
+                                    <ul class="geodir-post-image geodir-images clearfix">
+                                        <li>
+                                            <div class="geodir-post-title">
+                                                <h4 class="geodir-entry-title">
+                                                    <a href="">`+place.propert_title+`</a>
+                                                </h4>
+                                            </div>
+                                            <a href=""><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="geodir-bubble-meta-side">
+                    <div class="geodir-output-location">
+                    <div class="geodir-output-location geodir-output-location-mapbubble">
+                        <div class="geodir_post_meta  geodir-field-post_title"><span class="geodir_post_meta_icon geodir-i-text">
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+                            <span class="geodir_post_meta_title">Property Type: </span></span>`+place.property_type+`</div>
+                        <div class="geodir_post_meta  geodir-field-address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                            <span class="geodir_post_meta_icon geodir-i-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span class="geodir_post_meta_title">Address: </span></span><span itemprop="streetAddress">`+place.address+`</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>`;
+
+        return content;
+
+    }
+</script>
