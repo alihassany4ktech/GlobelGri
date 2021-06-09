@@ -254,11 +254,12 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
         a:visited:hover,
         a:focus,
         a:active {
-            color: #E84739;
+            color: #bd7f0a 
+;
         }
 
         a:visited {
-            color: #ED6D62;
+            color: #f1c967;
         }
 
         .content-box,
@@ -312,7 +313,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
         .footer-widgets a:visited:hover,
         .footer-widgets a:focus,
         .footer-widgets a:active {
-            color: #E84739;
+            color: #bd7f0a 
+;
         }
 
         .footer-widgets a:visited {
@@ -340,7 +342,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
         .copyright a:visited:hover,
         .copyright a:focus,
         .copyright a:active {
-            color: #E84739;
+            color: #bd7f0a 
+;
         }
 
         .copyright a:visited {

@@ -310,7 +310,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -330,7 +330,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -350,7 +350,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -370,7 +370,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -390,7 +390,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -410,7 +410,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -430,7 +430,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
@@ -450,7 +450,7 @@
 											</p>
 											<p>Integer mattis magna volutpat euismod habitant mi faucibus elementum proin mi, lobortis iaculis dolor torquent...</p>
 											<footer class="PostColumnFoot">
-												<a href="{{route('single_blog')}}x" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
+												<a href="{{route('single_blog')}}" class="elemenBlock readMore text-capitalize">Read Article <i class="fi flaticon-arrows readMoreIcn"></i></a>
 											</footer>
 										</article>
 									</div>
