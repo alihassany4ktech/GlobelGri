@@ -128,3 +128,6 @@
 					</section>
 				</main>
 @endsection
+
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
+    </script>
