@@ -1,7 +1,15 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-
+<style>
+    .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    z-index: 2;
+    color: #fff;
+    border:1px solid #f1c967 ;
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
+    /* border-color: #13293d; */
+}
+</style>
 <!-- main -->
 <main>
     <!-- findFormBlock -->

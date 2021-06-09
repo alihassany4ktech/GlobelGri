@@ -27,10 +27,11 @@ class UserController extends Controller
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')->accessToken;
             $success['name'] =  $user->name;
+            $success['user_id'] = $user->id;
             $success['success'] = true;
             return response()->json(['response' => $success], $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised','success' => false], 401);
+            return response()->json(['error' => 'Unauthorised', 'success' => false], 401);
         }
     }
     /**
@@ -47,7 +48,7 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors(),'success' => false], 401);
+            return response()->json(['error' => $validator->errors(), 'success' => false], 401);
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);

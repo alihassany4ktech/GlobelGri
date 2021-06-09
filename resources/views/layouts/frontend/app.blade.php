@@ -37,7 +37,25 @@
                 display: block !important;
             }
 
-        }
+                .postColumn {
+                position: relative;
+                padding: 0 50px 13px;
+                margin-bottom: 30px;
+                width: 100%;
+            }
+
+            .slick-slide {
+            float: left;
+            height: 150%;
+            min-height: 1px;
+            display: none;
+            }
+
+            .navigation{
+                margin-top:0%;
+            }
+
+}
 
         #mobile-container {
             max-width: 100%;

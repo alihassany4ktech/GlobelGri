@@ -1,5 +1,16 @@
 @extends('layouts.frontend.app')
 @section('content')
+<style>
+    .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    z-index: 2;
+    color: #fff;
+    border:1px solid #f1c967 ;
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
+    /* border-color: #13293d; */
+}
+
+
+</style>
 <main>
     <!-- findFormBlock -->
     <div class="container-fluid">
@@ -489,7 +500,7 @@
                     </header>
                     <!-- isoContentHolder -->
                     <?php
-                    $property_for_rent = App\Property::where('property_type' , '=', 'For Rent')->get();
+                    $property_for_rent = App\Property::where('property_type' , '=', 'For Rent')->paginate(8);
                     $total_for_rent = count($property_for_rent);
                     ?>
                     <div class="isoContentHolder">
@@ -507,7 +518,7 @@
                                                 <a href="{{route('single_property',['id' => $row->id])}}">
                                                     <div class="imgHolder">
                                                         <img src="{{asset('/gallery/'.$row1)}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
+                                                            style="height: 260px; width:380px;" alt="image description">
                                                     </div>
                                                 </a>
                                             </div>
@@ -518,7 +529,7 @@
                                                     <div class="imgHolder">
 
                                                         <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            alt="image description" style="height: 260px; width:370px;">
+                                                            alt="image description" style="height: 260px; width:380px;">
 
                                                     </div>
                                                 </a>
@@ -528,7 +539,7 @@
                                                     <div class="imgHolder">
 
                                                         <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            alt="image description">
+                                                            alt="image description"  style="height: 260px; width:380px;">
 
                                                     </div>
                                                 </a>
@@ -595,13 +606,14 @@
                     <!-- navigation pagination -->
                     <nav class="navigation pagination pagination1 fontNeuron" role="navigation">
                         <div class="nav-links">
-                            <a class="prev page-numbers" href="#">Previous</a>
+                            {{$property_for_rent->links()}}
+                            {{-- <a class="prev page-numbers" href="#">Previous</a>
                             <a class="page-numbers" href="#">1</a>
                             <span class="page-numbers current">2</span>
                             <a class="page-numbers" href="#">3</a>
                             <span class="page-numbers dots">&hellip;</span>
                             <a class="page-numbers" href="#">22</a>
-                            <a class="next page-numbers" href="#">Next</a>
+                            <a class="next page-numbers" href="#">Next</a> --}}
                         </div>
                     </nav>
                 </div>

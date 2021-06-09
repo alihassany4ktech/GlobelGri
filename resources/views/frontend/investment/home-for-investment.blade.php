@@ -1,5 +1,14 @@
 @extends('layouts.frontend.app')
 @section('content')
+<style>
+    .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    z-index: 2;
+    color: #fff;
+    border:1px solid #f1c967 ;
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
+    /* border-color: #13293d; */
+}
+</style>
 <main>
     <!-- findFormBlock -->
     <div class="container-fluid">
@@ -489,7 +498,7 @@
                     </header>
                     <!-- isoContentHolder -->
                     <?php
-                    $property_for_investment = App\Property::where('property_type' , '=', 'For Investment')->get();
+                    $property_for_investment = App\Property::where('property_type' , '=', 'For Investment')->paginate(8);
                     $total_for_investment = count($property_for_investment);
                     ?>
                     <div class="isoContentHolder">
@@ -597,13 +606,14 @@
                     <!-- navigation pagination -->
                     <nav class="navigation pagination pagination1 fontNeuron" role="navigation">
                         <div class="nav-links">
-                            <a class="prev page-numbers" href="#">Previous</a>
+                            {{$property_for_investment->links()}}
+                            {{-- <a class="prev page-numbers" href="#">Previous</a>
                             <a class="page-numbers" href="#">1</a>
                             <span class="page-numbers current">2</span>
                             <a class="page-numbers" href="#">3</a>
                             <span class="page-numbers dots">&hellip;</span>
                             <a class="page-numbers" href="#">22</a>
-                            <a class="next page-numbers" href="#">Next</a>
+                            <a class="next page-numbers" href="#">Next</a> --}}
                         </div>
                     </nav>
                 </div>

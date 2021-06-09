@@ -14,6 +14,17 @@
 a:visited {
     color: #FFF;
 }
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    z-index: 2;
+    color: #fff;
+    border:1px solid #f1c967 ;
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
+    /* border-color: #13293d; */
+}
+.slick-slide {
+        height: 275px !important;
+}
 </style>
 <main>
     <!-- findFormBlock -->
@@ -509,7 +520,7 @@ a:visited {
                     </header>
                     <!-- isoContentHolder -->
                     <?php
-                    $property_for_sale = App\Property::where('property_type' , '=', 'For Sale')->get();
+                    $property_for_sale = App\Property::where('property_type' , '=', 'For Sale')->paginate(8);
                     $total_for_sale = count($property_for_sale);
                     ?>
                     <div class="isoContentHolder">
@@ -609,112 +620,17 @@ a:visited {
                                         </footer>
                                     </a>
                                 </article>
-                                 {{-- <!-- postColumn -->
-                                <article class="postColumn hasOver bgWhite">
-                                    <div class="aligncenter">
-                                        <!-- postColumnImageSlider -->
-                                        <div class="slick-carousel slickSlider postColumnImageSlider">
-                                            @if($row->gallery_photos)
-                                              @foreach(json_decode($row->gallery_photos, true) as $row3)
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-                                                        <img src="{{asset('/gallery/'.$row3)}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            @endforeach
-                                            @else
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{route('single_property')}}">
-                                                    <div class="imgHolder">
-
-                                                        <img src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 260px; width:370px;" alt="image description">
-
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
-                                            <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
-                                            <li class="hasOver">
-                                                <a href="#"><i class="fi flaticon-share"></i></a>
-                                                <!-- postColumnSocial -->
-                                                <ul class="list-unstyled socialNetworks postColumnSocial">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
-                                    </div>
-                                    <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property')}}">{{$row->propert_title}}
-                                            </a></h2>
-                                    <address>
-                                        <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>London, United Kingdom</p>
-                                    </address>
-                                    <span class="btn btnSmall  text-capitalize"
-                                        style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span> <span
-                                            class="textUnit fwNormal">/ monthly</span></h3>
-                                    <!-- postColumnFoot -->
-                                    <a href="{{route('single_property')}}">
-                                        <footer class="postColumnFoot">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Area</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->area}} m2</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Beds</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bedroom}}</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Baths</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->bathroom}}</strong>
-                                                </li>
-                                                <li>
-                                                    <strong class="fwNormal elemenBlock text-primary">Garages</strong>
-                                                    <strong class="fwNormal elemenBlock" style="color:#bd7f0a">{{$row->garages}}</strong>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                    </a>
-                                </article> --}}
+                         
 
                             </div>
                             @endforeach
                         </div>
                     </div>
                     <!-- navigation pagination -->
+
                     <nav class="navigation pagination pagination1 fontNeuron" role="navigation">
                         <div class="nav-links">
-                            <a class="prev page-numbers" href="#">Previous</a>
-                            <a class="page-numbers" href="#">1</a>
-                            <span class="page-numbers current">2</span>
-                            <a class="page-numbers" href="#">3</a>
-                            <span class="page-numbers dots">&hellip;</span>
-                            <a class="page-numbers" href="#">22</a>
-                            <a class="next page-numbers" href="#">Next</a>
+                            {{$property_for_sale->links()}}
                         </div>
                     </nav>
                 </div>
@@ -868,7 +784,7 @@ a:visited {
                 <!-- findFormBlock -->
                 <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
                 <!-- introBanner -->
-                <section class="threeBanner" style="margin-bottom: -10%">
+                <section class="threeBanner" id="kuchbe" style="margin-bottom: 3%">
                     <!-- bannerImageSlideshow -->
                     <div class="banner-slider slickSlider">
                         @foreach($property_for_sale as $row)
@@ -906,7 +822,7 @@ a:visited {
                         </div>
                         @endforeach
                     </div>
-
+                    
                 </section>
             </div>
 
@@ -918,7 +834,7 @@ a:visited {
 
 {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
 <script>
     $(document).ready(function () {
 
@@ -962,7 +878,7 @@ function initMap() {
   });
 }
 </script> --}}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB'></script>
 <script defer>
