@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Contact;
 use App\User;
 use App\Property;
 use App\GeneralSetting;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PropertyResource;
+use App\Notifications\ContactNotification;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
@@ -65,7 +67,20 @@ class FrontEndController extends Controller
     public function ContactStore(Request $request)
     {
         if ($request->ajax()) {
-            dd($request);
+            $contact  =  new Contact();
+            $contact->owner_id = $request->owner_id;
+            $contact->property_id = $request->property_id;
+            $contact->type = $request->type;
+            $contact->date = $request->date;
+            // $contact->time = $request->time;
+            $contact->phone = $request->phone;
+            $contact->email = $request->email;
+            $contact->check = $request->check;
+            $contact->save();
+            $user = User::find($request->owner_id);
+            $message = 'Notification For Tour';
+            $user->notify(new ContactNotification($message));
+            return response()->json(['success' => 'Contact Add Successfully!']);
         }
     }
 }

@@ -324,7 +324,7 @@
                                 <div class="accountContent">
                                     <div class="form-group">
                                         <label for="itemN-1">Full Name</label>
-                                        <input type="text" class="form-control" name="name"
+                                        <input type="text" class="form-control" name="user_name"
                                             value="{{Auth::user()->name}}" id="itemN-1">
                                     </div>
                                     <div class="form-group">

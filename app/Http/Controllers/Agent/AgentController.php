@@ -31,11 +31,11 @@ class AgentController extends Controller
     {
         if ($request->ajax()) {
             $this->validate($request, [
-                'name' => 'required|min:3|max:50'
+                'user_name' => 'required|min:3|max:50'
             ]);
             $id = $request->id;
             $profile = User::find($id);
-            $profile->name = $request->name;
+            $profile->name = $request->user_name;
             $profile->phone = $request->phone;
             $profile->biography = $request->biography;
             if ($request->hasfile('image')) {
