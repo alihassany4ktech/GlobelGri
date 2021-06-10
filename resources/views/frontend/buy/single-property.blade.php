@@ -218,11 +218,15 @@
                                         Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
                             </div>
                             <div class="tab-pane" id="menu1">
-                                <form class="widgetCalcForm">
+                                <form class="widgetCalcForm" id="contact_form_info">
+                                    @csrf
+                                    <input type="hidden" name="owner_id" value="{{$property->user->id}}">
+                                    <input type="hidden" name="property_id" value="{{$property->id}}">
+                                    <input type="hidden" name="type" value="Info">
                                     <div class="row" style="margin-top: 30px">
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" name="phone_r" placeholder="Phone" class="form-control"
+                                                <input type="text" name="phone" placeholder="Phone" class="form-control"
                                                     
                                                 >
                                             </div>
@@ -237,7 +241,7 @@
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="email" name="email_r" placeholder="Email"
+                                                <input type="email" name="email" placeholder="Email"
                                                     class="form-control" 
                                                     >
                                                 <p style="font-size: 12px; color:red; margin-top:5px"><i
@@ -248,13 +252,16 @@
 
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="check_r"> I want to talk about financing
+                                                <input type="checkbox" name="check"> I want to talk about financing
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="" class="btn btnDark fontNeuron buttonXL"
+                                    <button type="submit" class="btn fontNeuron buttonXL"
                                         style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Request Info</button>
-                                    <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    
+
+                                </form>
+                                <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Public Health Advisory</h6>
                                     <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
                                         that Trulia and real estate professionals may contact you via phone/text about
@@ -262,8 +269,6 @@
                                         to consent as a condition of purchasing any property, goods or services.
                                         Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
                                         Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
-
-                                </form>
                             </div>
 
                         </div>
@@ -289,6 +294,11 @@
  <script>
 
       $(document).ready(function(){
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
            // Contact Add
          $('#contact_form').on('submit', function (event) {
             event.preventDefault();
@@ -301,6 +311,44 @@
                 processData: false,
                 contentType: false,
                 data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#result').html('<div class="alert alert-success">' + data
+                            .success + '</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                            '</div>');
+                    }
+
+                }
+            });
+        });
+      });
+     
+    </script>
+
+     <script>
+
+      $(document).ready(function(){
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+      $('#contact_form_info').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+            $.ajax({
+
+                url: '{{route("contact.info.store")}}',
+                method: 'post', 
+                processData: false,
+                contentType: false,
+                data: formData, 
                 beforeSend: function () {
                     $('#add').attr('disabled', 'disabled');
                 },

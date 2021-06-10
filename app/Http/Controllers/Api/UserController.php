@@ -73,11 +73,11 @@ class UserController extends Controller
     public function profileupdate(Request $request)
     {
         $this->validate($request, [
-            'user_name' => 'min:3|max:50'
+            'name' => 'min:3|max:50'
         ]);
         $id = $request->user()->id;
         $profile = User::find($id);
-        $profile->name = $request->user_name;
+        $profile->name = $request->name;
         $profile->phone = $request->phone;
         $profile->biography = $request->biography;
         if ($request->hasfile('image')) {

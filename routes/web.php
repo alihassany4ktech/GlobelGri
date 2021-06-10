@@ -148,6 +148,7 @@ Route::get('/single-blog', 'Frontend\FrontEndController@SingleBlog')->name('sing
 
 Route::post('contact/store', 'Frontend\FrontEndController@ContactStore')->name('contact.store');
 
+Route::post('contact/info/store', 'Frontend\FrontEndController@ContacInfotStore')->name('contact.info.store');
 
 
 

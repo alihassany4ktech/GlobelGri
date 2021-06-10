@@ -22,7 +22,8 @@ class CreateContactsTable extends Migration
             $table->string('time')->default('0');
             $table->string('phone')->default('0');
             $table->string('email')->default('0');
-            $table->boolean('check')->default('0');
+            $table->string('check')->default('0');
+            $table->text('message')->default('0');
             $table->timestamps();
         });
     }
