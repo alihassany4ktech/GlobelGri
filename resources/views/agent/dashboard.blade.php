@@ -209,13 +209,13 @@
                 <h1 class="fontNeuron">Profile</h1>
             </div>
             
-            <div class="col-xs-12 col-sm-2">
+            {{-- <div class="col-xs-12 col-sm-2">
                 <!-- viewFilterLinks -->
                 <ul class="list-unstyled viewFilterLinks">
                     <li><a href="#"><i class="fi flaticon-share"></i></a></li>
                     <li><a href="#"><i class="fi flaticon-printer"></i></a></li>
                 </ul>
-            </div>
+            </div> --}}
         </header>
         <!-- userProfile -->
         <div class="userProfile">

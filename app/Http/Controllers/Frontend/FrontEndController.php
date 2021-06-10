@@ -32,13 +32,13 @@ class FrontEndController extends Controller
     public function HomeForRent()
     {
         $mapShops = Property::all();
-        return view('frontend.rent.home-for-rent',compact('mapShops'));
+        return view('frontend.rent.home-for-rent', compact('mapShops'));
     }
 
     public function investment()
     {
         $mapShops = Property::all();
-        return view('frontend.investment.home-for-investment',compact('mapShops'));
+        return view('frontend.investment.home-for-investment', compact('mapShops'));
     }
 
     public function SingleProperty($id)
@@ -60,5 +60,12 @@ class FrontEndController extends Controller
     public function SingleBlog()
     {
         return view('frontend.single-blog');
+    }
+
+    public function ContactStore(Request $request)
+    {
+        if ($request->ajax()) {
+            dd($request);
+        }
     }
 }

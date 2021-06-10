@@ -144,6 +144,12 @@ Route::get('/blog', 'Frontend\FrontEndController@blog')->name('blog');
 Route::get('/single-blog', 'Frontend\FrontEndController@SingleBlog')->name('single_blog');
 
 
+// Contact 
+
+Route::post('contact/store', 'Frontend\FrontEndController@ContactStore')->name('contact.store');
+
+
+
 
 
 

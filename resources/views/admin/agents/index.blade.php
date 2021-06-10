@@ -45,7 +45,9 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
+                                  
                                     @foreach ($agents as $row)
+                                      
                                     <tr>
                                         <td class="text-center">{{$i}}</td>
                                         <td class="font-w600">{{$row->name}}</td>

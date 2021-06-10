@@ -171,10 +171,10 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="{{route('home_for_sale')}}">
                                             <img  src="{{asset('frontend/images/home0.jpg')}}"
-                                                            style="height: 185px; width:368px;" alt="image description" >
+                                                            style="height: 185px; width:368px;" id="pica" alt="image description" >
                                         </a>
                                     </div>
                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
@@ -193,9 +193,9 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 185px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/home01.jpeg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                     <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
@@ -217,9 +217,9 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/p1.jpg')}}" style="height: 391px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/p1.jpg')}}" id="pica" style="height: 391px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
@@ -241,9 +241,9 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/2.jpg')}}" style="height: 185px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/2.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                     <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
@@ -262,9 +262,9 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/3.jpg')}}" style="height: 185px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/3.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                 <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
@@ -286,9 +286,9 @@
                             <article class="postColumn" style="border: none">
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/4.jpg')}}" style="height: 185px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/4.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                     <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
@@ -307,9 +307,9 @@
                                 <!-- postColumnFoot -->
                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
-                                    <div class="imgHolder" id="pica">
+                                    <div class="imgHolder">
                                         <a href="#">
-                                            <img src="{{asset('frontend/images/5.jpg')}}" style="height: 185px; width:368px;" alt="image description">
+                                            <img src="{{asset('frontend/images/5.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
                                     <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 

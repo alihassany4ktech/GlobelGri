@@ -47,9 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->hasMany('App\Role');
+        return $this->belongsTo('App\Role');
     }
 
     public function properties()

@@ -73,7 +73,7 @@ class UserController extends Controller
     public function profileupdate(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|max:50'
+            'name' => 'min:3|max:50'
         ]);
         $id = $request->user()->id;
         $profile = User::find($id);
@@ -102,7 +102,7 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'password' => 'required|confirmed|min:6',
+            'password' => 'confirmed|min:6',
         ]);
         $id = $request->user()->id;
         $profile = User::find($id);

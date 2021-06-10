@@ -56,9 +56,8 @@
             }
 
     #pica {
-    margin: 13px;
-    width: 92%;
-    position: relative;
+    margin: 0px;
+    width: 316px !important;
 }
         .pic {
         max-width: 100%;
@@ -66,11 +65,26 @@
         margin-top: 33%;
         }
 
+        .imgHolder {
+            width: 99.5%;
+        }
+
          #l {
     margin-top: 0;
     margin-bottom: 15px;
-    margin-left: -16px;
+    margin-left: -26px;
         }
+
+
+.tags .widgetTaglist li {
+    margin-bottom: 8px;
+}
+
+.tags h3 {
+    margin: 10px 22px 25px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
 
 
 }

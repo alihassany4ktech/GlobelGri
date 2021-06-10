@@ -163,7 +163,11 @@
                             <div class="tab-pane active" id="home">
                                 <h4 style="margin-top: 30px">Tour Type <i class="fa fa-question-circle"
                                         aria-hidden="true"></i></h4>
-                                <form class="widgetCalcForm">
+                                <form  id="contact_form">
+                                    @csrf
+                                    <input type="hidden" name="owner_id" value="{{$property->user->id}}">
+                                    <input type="hidden" name="property_id" value="{{$property->id}}">
+                                    <input type="hidden" name="type" value="Tour">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <label for="" class="fwNormal ">Choose a Date</label>
@@ -175,7 +179,7 @@
                                         <div class="col-xs-12">
                                             <label for="" class="fwNormal ">Choose a time</label>
                                             <div class="form-group">
-                                                <input type="time" name="time" class="form-control" required>
+                                                <input type="time" name="time" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -200,10 +204,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btnDark fontNeuron buttonXL"
+                                    <button type="submit" class="btn  fontNeuron buttonXL"
                                         style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Schedule a
-                                        Tour</button>
-                                    <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                        Tour</button>                                
+                                </form>
+                                <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Public Health Advisory</h6>
                                     <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
                                         that Trulia and real estate professionals may contact you via phone/text about
@@ -211,29 +216,30 @@
                                         to consent as a condition of purchasing any property, goods or services.
                                         Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
                                         Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
-
-                                </form>
                             </div>
                             <div class="tab-pane" id="menu1">
                                 <form class="widgetCalcForm">
                                     <div class="row" style="margin-top: 30px">
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" name="phone" placeholder="Phone" class="form-control"
-                                                    required>
+                                                <input type="text" name="phone_r" placeholder="Phone" class="form-control"
+                                                    
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="" class="fwNormal ">Message</label>
-                                                <textarea name="" id="" cols="10" rows="1" class="form-control"
-                                                    required>I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
+                                                <textarea name="message" id="" cols="10" rows="1" class="form-control"
+                                                    
+                                                >I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="email" name="email" placeholder="Email"
-                                                    class="form-control" required>
+                                                <input type="email" name="email_r" placeholder="Email"
+                                                    class="form-control" 
+                                                    >
                                                 <p style="font-size: 12px; color:red; margin-top:5px"><i
                                                         class="fas fa-exclamation-circle"></i> Enter a valid email.</p>
                                             </div>
@@ -242,11 +248,11 @@
 
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="check"> I want to talk about financing
+                                                <input type="checkbox" name="check_r"> I want to talk about financing
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btnDark fontNeuron buttonXL"
+                                    <button type="" class="btn btnDark fontNeuron buttonXL"
                                         style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Request Info</button>
                                     <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Public Health Advisory</h6>
@@ -279,8 +285,41 @@
     </div>
 </main>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+ <script>
 
-<script>
+      $(document).ready(function(){
+           // Contact Add
+         $('#contact_form').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+            $.ajax({
+
+                url: '{{route("contact.store")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#result').html('<div class="alert alert-success">' + data
+                            .success + '</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                            '</div>');
+                    }
+
+                }
+            });
+        });
+      });
+     
+    </script>
+{{-- <script>
     $(document).ready(function () {
         // Select all tabs
         $('.nav-tabs a').click(function () {
@@ -300,4 +339,4 @@
         $('.nav-tabs li:eq(3) a').tab('show')
     });
 
-</script>
+</script> --}}
