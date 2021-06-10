@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Contact;
 use App\User;
+use App\Contact;
 use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\PropertyResource;
 use App\Notifications\ContactNotification;
-use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
@@ -101,5 +102,13 @@ class FrontEndController extends Controller
             $user->notify(new ContactNotification($message));
             return response()->json(['success' => 'Contact Info Add Successfully!']);
         }
+    }
+
+    // Search 
+
+    public function searchBye(Request $request)
+    {
+        dd($request);
+        $property = DB::table('properties')->where('property_type', 'LIKE', '%' . $request->item . '%')->get();
     }
 }

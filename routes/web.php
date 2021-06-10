@@ -152,6 +152,8 @@ Route::post('contact/info/store', 'Frontend\FrontEndController@ContacInfotStore'
 
 
 
+Route::post('result/buy', 'Frontend\FrontendController@searchBye')->name('BuySearch');
+
 
 
 Auth::routes();

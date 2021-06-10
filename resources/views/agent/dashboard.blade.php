@@ -259,7 +259,7 @@
                                 <li>
                                 <a href="{{route('property.create')}}">
                                     <i class="fa fa-plus"></i>
-                                    <span>Saved Property</span>
+                                    <span>Submit Property</span>
                                 </a>
                             </li>
                         

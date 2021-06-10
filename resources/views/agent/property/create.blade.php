@@ -245,10 +245,23 @@
                                                 <span class="title">Featured Image</span>
                                             </div>
                                             <div class="imageGallery">
-                                                <div class="image imageLoaded">
-                                                    <img src="https://via.placeholder.com/200x150" alt="" width="200"
-                                                        height="150">
+                                                <div>
+                                                    {{-- <img src="https://via.placeholder.com/200x150" alt="" width="200"
+                                                        height="150"> --}}
                                                         <input type="file" name="featured_photo" class="mt-3">
+                                                    {{-- <div class="btnsArea">
+                                                        <a href="#" class="link close"><i
+                                                                class="fa fa-window-close"></i></a>
+                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
+                                                    </div> --}}
+                                                    {{-- <a href="#" class="text">
+                                                        <span>
+                                                            <i class="fi flaticon-cloud-computing"></i>
+                                                            <span>Upload Image</span>
+                                                        </span>
+                                                    </a> --}}
+                                                </div>
+                                                {{-- <div class="image">
                                                     <div class="btnsArea">
                                                         <a href="#" class="link close"><i
                                                                 class="fa fa-window-close"></i></a>
@@ -260,20 +273,7 @@
                                                             <span>Upload Image</span>
                                                         </span>
                                                     </a>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <div class="galleryUploads">
@@ -286,24 +286,24 @@
                                                     image will be considered featured image.</p>
                                             </div>
                                             <div class="imageGallery">
-                                                <div class="image imageLoaded">
-                                                    <img src="https://via.placeholder.com/200x150" alt="" width="200"
-                                                        height="150">
+                                                <div class="">
+                                                    {{-- <img src="https://via.placeholder.com/200x150" alt="" width="200"
+                                                        height="150"> --}}
                                                         <input type="file" name="gallery_photos[]" class="mt-3" multiple>
-                                                    <div class="btnsArea">
+                                                    {{-- <div class="btnsArea">
                                                         <a href="#" class="link close"><i
                                                                 class="fa fa-window-close"></i></a>
                                                         <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                        <a href="#" class="text">
+                                                    </div> --}}
+                                                        {{-- <a href="#" class="text">
                                                             <span>
                                                                 <i class="fi flaticon-cloud-computing"></i>
                                                                 <span>Upload Image</span>
                                                             </span>
-                                                        </a>
+                                                        </a> --}}
                                                 </div>
                                              
-                                                <div class="image">
+                                                {{-- <div class="image">
                                                     <div class="btnsArea">
                                                         <a href="#" class="link close"><i
                                                                 class="fa fa-window-close"></i></a>
@@ -315,7 +315,7 @@
                                                             <span>Upload Image</span>
                                                         </span>
                                                     </a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         {{-- <div class="galleryUploads">

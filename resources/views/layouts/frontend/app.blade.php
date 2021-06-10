@@ -219,6 +219,32 @@
                         </div>
 
                     </li>
+                     @if(Auth::check())
+                      <li>
+                                                <a href="{{route('property.create')}}" style="color: #bd7f0a" >
+                                                    <i class="fa fa-plus" style="color:#bd7f0a"></i> Submit Property
+                                                </a>
+                                            </li>
+                                            <li>
+                        <a href="{{route('agent.dashboard')}}"  style="color: #bd7f0a"> Dashboard</a>
+
+                                            </li>
+                     @else
+                       <li class="">
+                        <a href="#popup1" class="lightbox" style="color: #bd7f0a"><i class="fi flaticon-social icn" style="color: #bd7f0a"></i> Login</a>
+                    </li>
+                    @if (Route::has('register'))
+                     <li class="">
+                        <a href="#popup1" class="lightbox" style="color: #bd7f0a"><i class="fi flaticon-edit icn" style="color: #bd7f0a"></i> Registe </a>
+                    </li>
+                    <li>
+                         <a href="#" style="color: #bd7f0a" >
+                                                    <i class="fa fa-plus" style="color:#bd7f0a"></i> Submit Property
+                                                </a>
+                    </li>
+                    @endif
+                     @endif
+                   
                 </ul>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -366,7 +392,7 @@
                                                 <a href="{{route('property.create')}}">
                                                     <i class="fa fa-plus" style="color:#bd7f0a"></i>&nbsp;<strong
                                                         class="text fwNormal hidden-xs hidden-sm"
-                                                        style="color: #bd7f0a"> Saved Property</strong>
+                                                        style="color: #bd7f0a"> Submit Property</strong>
                                                 </a>
                                             </li>
                                         </ul>
@@ -395,7 +421,7 @@
                                         <a href="" class="headerModalOpener text-uppercase fontNeuron fwBold"
                                             style=" background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967);">Saved Property</a>
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967);">Submit Property</a>
                                         @endif
                                     </div>
                                 </div>

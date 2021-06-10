@@ -30,21 +30,22 @@
                                 <div class="tab-content">
                                     <div id="tab1-0" class="active">
                                         <!-- findFormBlock -->
-                                        <form action="#" class="findFormBlock findFormBlock4">
+                                        <form action="{{route('BuySearch')}}" class="findFormBlock findFormBlock4" method="POST">
+                                            @csrf
                                             <div class="row align-center">
                                                 <div class="col-xs-12 col-sm-8">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control elemenBlock"
-                                                            placeholder="Search Buy...">
+                                                        <input type="text" name="item" class="form-control elemenBlock"
+                                                            placeholder="Search Buy..." autocomplete="off">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-4">
                                                     
-                                                    <a href="{{route('home_for_sale')}}" type="button"
+                                                    <button type="submit"
                                                         class="btn  text-uppercase fontNeuron"  style="border:none; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; ">SEARCH</a>
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; ">SEARCH</button>
                                                 </div>
 
                                             </div>
@@ -53,20 +54,21 @@
                                     </div>
                                     <div id="tab2-0" class="js-tab-hidden">
                                         <!-- findFormBlock -->
-                                        <form action="#" class="findFormBlock findFormBlock4">
+                                        <form action="{{route('BuySearch')}}" class="findFormBlock findFormBlock4" method="POST">
+                                            @csrf
                                             <div class="row align-center">
                                                 <div class="col-xs-12 col-sm-8">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control elemenBlock"
-                                                            placeholder="Search Rent...">
+                                                        <input type="text" name="item" class="form-control elemenBlock"
+                                                            placeholder="Search Rent..." autocomplete="off">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-4">
-                                                    <a href="{{route('home_for_sale')}}" type="button"
+                                                    <button  type="submit"
                                                         class="btn  text-uppercase fontNeuron" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</button>
                                                 </div>
 
                                             </div>
@@ -74,20 +76,21 @@
                                     </div>
                                     <div id="tab3-0" class="js-tab-hidden">
                                         <!-- findFormBlock -->
-                                        <form action="#" class="findFormBlock findFormBlock4">
+                                        <form action="{{route('BuySearch')}}" class="findFormBlock findFormBlock4" method="POST">
+                                            @csrf
                                             <div class="row align-center">
                                                 <div class="col-xs-12 col-sm-8">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control elemenBlock"
-                                                            placeholder="Search Investment...">
+                                                        <input type="text" name="item" class="form-control elemenBlock"
+                                                            placeholder="Search Investment..." autocomplete="off">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-4">
-                                                    <a href="{{route('home_for_sale')}}" type="button"
+                                                    <button type="submit"
                                                         class="btn  text-uppercase fontNeuron" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</a>
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">SEARCH</button>
                                                 </div>
 
                                             </div>
