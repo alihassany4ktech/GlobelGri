@@ -52,6 +52,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('social-media/update', 'Api\UserController@social_media_update');
 
+    // property
+
+    Route::post('/property/store', 'Api\PropertyController@store');
+
     Route::get('/agent/property', 'Api\PropertyController@property');
 
     Route::get('/single/property/{id}', 'Api\PropertyController@SingleProperty');

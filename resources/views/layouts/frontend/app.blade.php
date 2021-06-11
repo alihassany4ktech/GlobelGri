@@ -58,7 +58,7 @@
 
     #pica {
     margin: 0px;
-    width: 316px !important;
+    width: 259px !important;
 }
         .pic {
         max-width: 100%;
@@ -69,6 +69,9 @@
         .imgHolder {
             width: 99.5%;
         }
+         #featured{
+        margin-left: 0px;
+    }
 
          #l {
     margin-top: 0;
@@ -87,6 +90,7 @@
     vertical-align: middle;
 }
 
+   
 
 }
 

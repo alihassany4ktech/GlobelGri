@@ -37,6 +37,7 @@ class AgentController extends Controller
             $profile = User::find($id);
             $profile->name = $request->name;
             $profile->phone = $request->phone;
+            $profile->address = $request->address;
             $profile->biography = $request->biography;
             if ($request->hasfile('image')) {
                 if (!empty($profile->image)) {

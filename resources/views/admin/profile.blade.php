@@ -3,6 +3,14 @@
 @include('layouts.admin.includes.sidebar')
 <!-- Header -->
 @include('layouts.admin.includes.header')
+<style>
+    @media only screen and (max-width: 600px) {
+        #profile_form
+        {
+            margin-left: -4px !important;
+        }
+    }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +30,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6 align-self-center" style="margin-left: 25%">
+                <div class="col-md-6 align-self-center" id="profile_form" style="margin-left: 25%">
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">

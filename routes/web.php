@@ -61,6 +61,9 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
     Route::post('agent/unban', 'Agent\AgentController@unbanAgent')->name('agent.unban');
 
 
+    /****************************** Blog ***************************/
+
+    Route::get('blog/create', 'Blog\BlogController@create')->name('create.blog');
 
     /****************************** General Setting ***************************/
 

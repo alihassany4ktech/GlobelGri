@@ -67,7 +67,7 @@
                 <article id="content">
                     <!-- boxPanelBlock -->
                     <section id="Detail" class="accountData" style="background-color: #f0f9fb">
-                        <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right;">
+                        <div class="col-xs-12 col-sm-12 col-md-4" style="">
                             <h3>{{$property->propert_title}}</h3>
                             <p style="font-size:12px">San Francisco, CA 94112 <a href="" style="color: #bd7f0a"> Oceanview </a></p>
                             <p style="margin-top: 20px; font-size:11px"><i class="fa fa-bed" aria-hidden="true"></i> {{$property->bedroom}}
@@ -75,19 +75,19 @@
                                     class="fa fa-chart-area"></i> {{$property->area}} sqft</p>
 
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right;">
-                            <h3>${{$property->price}}</h3>
-                            <p style="font-size:12px;">Est. Mortgage $3,013/mo*</p>
-                            <a href="#" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$property->property_type}}</a>
+                        <div class="col-xs-12 col-sm-12 col-md-4" style="">
+                            <h3>Price</h3>
+                            <p style="font-size:12px;">${{$property->price}}</p>
+                            <a href="#" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px">{{$property->property_type}}</a>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4" style="text-align: right; margin-top:10px">
+                        <div class="col-xs-12 col-sm-12 col-md-4" style=" margin-top:10px">
                             {{-- <figure class="hb-author-img"> --}}
                             {{-- <a href="#"><img src="https://via.placeholder.com/150x150" alt="image description"></a> --}}
                             <div class="map-area" style="height:200px;">
                                 <div id="map-container">
                                     <div id="map_div">
                                         &nbsp;
-
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                         {{-- <h1>Description</h1> --}}
 
                     </section>
-                    <section id="Video" class="accountData aboutBlock overlaychange" style="margin-left:6% ">
+                    <section id="featured" class="accountData aboutBlock overlaychange">
                         <div class="head">
                 
                             <h4 class="fontNeuron">Featured Image</h4>
@@ -108,16 +108,16 @@
                             <img src="{{asset($property->featured_photo)}}" alt="image description"
                                 class="img-responsive" style="height: 362px; width:645px;">
                                     @else
-                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 362px; width:645px;"
+                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 362px; width:687px;"
                                         alt="image description">
                                     @endif
                         </div>
                     </section>
                     <section id="PageViews" class="Pageviews">
-                        <div class="head" style="margin-left: 45px">
+                        <div class="head" style="margin-left: 0px">
                             <h4 class="fontNeuron">Description</h4>
                         </div>
-                        <p class="" style="margin-left: 45px; color:black">{{$property->description}}
+                        <p class="" style="margin-left: 0px; color:black">{{$property->description}}
                         </p>
                     </section>
 
@@ -149,7 +149,7 @@
 												<div class="pull-left">
 													<div class="hb-headcontent">
 														<h3>{{$property->user->name}}</h3>
-														<span>Address</span>
+														<span>{{$property->user->address}}</span>
 														<a href="mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#111;&#109;&#101;&#115;&#119;&#101;&#101;&#116;&#046;&#099;&#111;&#109;">{{$property->user->email}}</a>
 													</div>
 												</div>
@@ -290,6 +290,8 @@
     </div>
 </main>
 @endsection
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
+    </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
  <script>
 

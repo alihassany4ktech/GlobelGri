@@ -337,9 +337,14 @@
                                         <input type="tel" class="form-control" name="phone"
                                             value="{{Auth::user()->phone}}" id="itemN-3" placeholder="Enter Phone...">
                                     </div>
+                                     <div class="form-group">
+                                         <label for="itemN-3">Address</label>
+                                        <input type="tel" class="form-control" name="address"
+                                            value="{{Auth::user()->address}}" id="itemN-3" placeholder="Enter Your Address...">
+                                    </div>
                                     <div class="form-group">
                                         <label for="itemN-4">Biography</label>
-                                        <textarea id="itemN-4" class="form-control" name="biography"
+                                        <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
                                             placeholder="Biography..">{{Auth::user()->biography}}</textarea>
                                     </div>
 
