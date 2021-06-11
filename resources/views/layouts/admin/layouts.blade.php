@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}"> --}}
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -99,6 +100,13 @@
     <script src="{{asset('dist/js/demo.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
+    {{-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
+    <script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  });
+</script>
     <script>
         
 			$(function() {

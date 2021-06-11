@@ -76,15 +76,16 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4">
                             <h3>Price</h3>
-                            <p style="font-size:12px;">${{$property->price}}</p>
+                            <p style="font-size:12px;">${{$data->price}}</p>
                             <a href="#" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px">{{$data->property_type}}</a>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4" style=" margin-top:10px">
                            
-                            <div class="map-area">
+                            <div class="map-area" style="height:200px;">
                                 <div id="map-container">
                                     <div id="map_div">
                                         &nbsp;
+                                    
                                     </div>
                                 </div>
                             </div>

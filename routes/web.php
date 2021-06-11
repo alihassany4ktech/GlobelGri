@@ -65,6 +65,8 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
 
     Route::get('blog/create', 'Blog\BlogController@create')->name('create.blog');
 
+    Route::post('blog/store', 'Blog\BlogController@store')->name('blog.store');
+
     /****************************** General Setting ***************************/
 
     Route::get('/setting', 'GeneralSetting\GeneralSettingController@create')->name('generalsetting');
@@ -142,9 +144,9 @@ Route::get('/home-for-investment', 'Frontend\FrontEndController@investment')->na
 
 Route::get('/contact-us', 'Frontend\FrontEndController@ContactUs')->name('contact_us');
 
-Route::get('/blog', 'Frontend\FrontEndController@blog')->name('blog');
+Route::get('/blog', 'Frontend\FrontEndController@blogs')->name('blog');
 
-Route::get('/single-blog', 'Frontend\FrontEndController@SingleBlog')->name('single_blog');
+Route::get('/single-blog/{id}', 'Frontend\FrontEndController@SingleBlog')->name('single_blog');
 
 
 // Contact 

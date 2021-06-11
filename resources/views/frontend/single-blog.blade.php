@@ -217,52 +217,13 @@
                         <!-- newsPostColumn -->
                         <article class="accountData newsPostColumn newsPostColumn2 bgWhite bdr-none mb-30">
                             <div class="aligncenter">
-                                <img src="{{asset('frontend/images/3.jpg')}}" style="height:400px"
+                                <img src="{{asset($blog->image)}}" style="height:400px"
                                     alt="image description">
                             </div>
-                            <h2 class="fontNeuron">Getting Started Designing Apps for the Apple Watch</h2>
-                            <p>
-                                <a href="#" class="btn btnSmall" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Ali
-                                    Tufan</a>
-                                <time datetime="2011-01-12">February 9, 2017</time>
-                                <a href="#" class="commentsCount">12 comment</a>
-                            </p>
-                            <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis
-                                lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi
-                                varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit
-                                risus at metus. Sed fermentum, lorem vitae efficitur imperdiet, neque velit tristique
-                                turpis, et iaculis mi tortor finibus turpis.</p>
-                            <p>Donec luctus lacinia sem potenti aptent est platea, orci tortor dui fringilla curae
-                                varius tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis
-                                accumsan lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem
-                                sociosqu nunc convallis curabitur faucibus.</p>
-                            <p>Ornare sagittis ante erat nec ultricies amet aenean netus sodales at, amet vehicula quis
-                                vel platea mattis vel felis hendrerit ad, at rhoncus tortor habitasse venenatis etiam
-                                senectus erat sit varius proin ligula lectus mi accumsan curabitur orci varius justo nec
-                                elit.</p>
-                            <blockquote>
-                                <q>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis
-                                    lectus. sit amet rutrum elementum, est elit tristique turpis, et iaculis mi tortor
-                                    finibus turpis.</q>
-                            </blockquote>
-                            <h2 class="fontNeuron">Phasellus posuere felis sed eros porttitor mattis</h2>
-                            <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis
-                                lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi
-                                varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit
-                                risus at metus. Sed fermentum, lorem vitae efficitur imperdiet, neque velit tristique
-                                turpis, et iaculis mi tortor finibus turpis.</p>
+                            <h2 class="fontNeuron">{{$blog->title}}</h2>
+                               <strong>Date:</strong> <time datetime="2011-01-12">{{$blog->created_at->format('d-m-y')}}</time>
+                            <p>{!!$blog->description!!}</p>
                         </article>
-                        <div class="accountData tags bgWhite">
-                            <h3 class="fontNeuron fwBold text-capitalize">Tags</h3>
-                            <ul class="list-unstyled widgetTaglist">
-                                <li><a href="#">Apartment</a></li>
-                                <li><a href="#">Luxury </a></li>
-                                <li><a href="#">Real Estate</a></li>
-                                <li><a href="#">LemanHouse</a></li>
-                                <li><a href="#">For Rent</a></li>
-                            </ul>
-                        </div>
-                      
                     </div>
                 </div>
             </div>
@@ -349,16 +310,6 @@
                             <li><a href="#"><img src="{{asset('frontend/images/home0.jpg')}}"
                                         style="width: 90px;  height:70px" class="img-responsive"
                                         alt="image description"></a></li>
-                        </ul>
-                    </section>
-                    <section class="widget widgetPadding widgetCalc bgWhite">
-                        <h3 class="fontNeuron fwBold text-capitalize">Tags</h3>
-                        <ul class="list-unstyled widgetTaglist">
-                            <li><a href="#">Apartment</a></li>
-                            <li><a href="#">Luxury </a></li>
-                            <li><a href="#">Real Estate</a></li>
-                            <li><a href="#">LemanHouse</a></li>
-                            <li><a href="#">For Rent</a></li>
                         </ul>
                     </section>
                 </aside>

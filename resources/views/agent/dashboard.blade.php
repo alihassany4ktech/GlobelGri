@@ -334,18 +334,36 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="itemN-3">Phone</label>
+                                        @if(Auth::user()->phone == 0)
+                                        <input type="tel" class="form-control" name="phone"
+                                            id="itemN-3" placeholder="Enter Phone...">
+                                        @else 
+
                                         <input type="tel" class="form-control" name="phone"
                                             value="{{Auth::user()->phone}}" id="itemN-3" placeholder="Enter Phone...">
+                                            @endif
                                     </div>
                                      <div class="form-group">
                                          <label for="itemN-3">Address</label>
-                                        <input type="tel" class="form-control" name="address"
+                                         @if(Auth::user()->address == 0)
+                                         <input type="tel" class="form-control" name="address"
+                                             id="itemN-3" placeholder="Enter Your Address...">
+                                         @else 
+                                         <input type="tel" class="form-control" name="address"
                                             value="{{Auth::user()->address}}" id="itemN-3" placeholder="Enter Your Address...">
+                                         @endif
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label for="itemN-4">Biography</label>
-                                        <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
+                                          @if(Auth::user()->biography == null)
+                                            <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
+                                            placeholder="Biography.."></textarea>
+                                            @else 
+                                              <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
                                             placeholder="Biography..">{{Auth::user()->biography}}</textarea>
+                                            @endif
+                                      
                                     </div>
 
                                     <button type="submit" class="btn alighRight 

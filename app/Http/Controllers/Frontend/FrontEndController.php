@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Blog;
 use App\User;
 use App\Contact;
 use App\Property;
@@ -55,14 +56,16 @@ class FrontEndController extends Controller
         return view('frontend.contact-us');
     }
 
-    public function blog()
+    public function blogs()
     {
-        return view('frontend.blog');
+        $blogs = Blog::paginate(4);
+        return view('frontend.blogs', compact('blogs'));
     }
 
-    public function SingleBlog()
+    public function SingleBlog($id)
     {
-        return view('frontend.single-blog');
+        $blog = Blog::find($id);
+        return view('frontend.single-blog', compact('blog'));
     }
 
     public function ContactStore(Request $request)

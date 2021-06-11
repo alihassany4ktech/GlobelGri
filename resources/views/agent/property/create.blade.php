@@ -23,12 +23,39 @@
         #multistep_form fieldset:not(:first-of-type) {
             display: none;
         }
+        .inputWrapper {
+    height: 25px;
+    line-height: 26px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
 
     </style>
 </head>
 
 <body>
-        <?php
+    <?php
             $phone = '';
             $email = '';
             $address = '';
@@ -60,10 +87,13 @@
                                 <!-- logo -->
                                 @if ($logo)
                                 <div class="logo logoCentered"><a href="{{route('agent.dashboard')}}"><img
-                                            src="{{$logo}}" alt="LemanHouse" style="height:120px; width:135px;margin-top:-16%"></a></div>
+                                            src="{{$logo}}" alt="LemanHouse"
+                                            style="height:120px; width:135px;margin-top:-16%"></a></div>
                                 @else
                                 <div class="logo logoCentered"><a href="{{route('agent.dashboard')}}"><img
-                                            src="{{asset('frontend/images/logo5.png')}}" style="height:120px; width:135px;margin-top:-16%" alt="LemanHouse"></a></div>
+                                            src="{{asset('frontend/images/logo5.png')}}"
+                                            style="height:120px; width:135px;margin-top:-16%" alt="LemanHouse"></a>
+                                </div>
                                 @endif
 
                             </div>
@@ -75,16 +105,16 @@
                     <section id="content" class="container pEqual">
 
                         <form class="form-horizontal" id="multistep_form">
-                          @csrf
-                          <input type="hidden" name="agent_id" value="{{Auth::user()->id}}">
+                            @csrf
+                            <input type="hidden" name="agent_id" value="{{Auth::user()->id}}">
                             <fieldset id="account">
 
                                 <div class="addProperty">
                                     <h1 class="fontNeuron">Add New Property</h1>
-                                    <ol class="navSteps" >
-                                        <li class="current" >
-                                            <a href="#" >
-                                                <span class="text" >Basic Info</span>
+                                    <ol class="navSteps">
+                                        <li class="current">
+                                            <a href="#">
+                                                <span class="text">Basic Info</span>
                                             </a>
                                         </li>
                                         <li>
@@ -97,7 +127,7 @@
                                                 <span class="text">Location</span>
                                             </a>
                                         </li>
-                                     
+
                                         <li>
                                             <a href="#">
                                                 <span class="text">Private Notes</span>
@@ -109,8 +139,9 @@
                                             <h2 class="fontNeuron">Basic Info</h2>
                                             <div class="btnArea">
 
-                                                <a type="button" id="next1" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                        class="fi flaticon-arrows"></i></a>
+                                                <a type="button" id="next1" class="btn  next"
+                                                    style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                    <i class="fi flaticon-arrows"></i></a>
 
                                             </div>
                                         </header>
@@ -118,47 +149,47 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="itemN-15">Property Title*</label>
-                                                    <input type="text" name="propert_title" class="form-control" placeholder="House"
-                                                        id="itemN-15">
+                                                    <input type="text" name="propert_title" class="form-control"
+                                                        placeholder="House" id="itemN-15">
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-8">
                                                 <div class="form-group">
                                                     <label for="itemN-16">Price</label>
-                                                    <input type="text" name="price" class="form-control" placeholder="$158"
-                                                        id="itemN-16">
+                                                    <input type="text" name="price" class="form-control"
+                                                        placeholder="$158" id="itemN-16">
                                                 </div>
                                             </div>
-                                         
+
                                             <div class="col-xs-12 col-sm-4">
                                                 <div class="form-group">
                                                     <label for="itemN-18">Bedrooms</label>
-                                                    <input type="number" name="bedroom" class="form-control" placeholder="5" min="0"
-                                                        max="9999" id="itemN-18">
+                                                    <input type="number" name="bedroom" class="form-control"
+                                                        placeholder="5" min="0" max="9999" id="itemN-18">
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-19">Bathrooms</label>
-                                                    <input type="number" name="bathroom" class="form-control" placeholder="3" min="0"
-                                                        max="9999" id="itemN-19">
+                                                    <input type="number" name="bathroom" class="form-control"
+                                                        placeholder="3" min="0" max="9999" id="itemN-19">
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-20">Garages</label>
-                                                    <input type="number" name="garages" class="form-control" placeholder="8" min="0"
-                                                        max="9999" id="itemN-20">
+                                                    <input type="number" name="garages" class="form-control"
+                                                        placeholder="8" min="0" max="9999" id="itemN-20">
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-21">Area</label>
-                                                    <input type="text" name="area" class="form-control" placeholder="1500"
-                                                        id="itemN-21">
+                                                    <input type="text" name="area" class="form-control"
+                                                        placeholder="1500" id="itemN-21">
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-23">Property Type</label>
@@ -167,7 +198,7 @@
                                                         <option value="For Sale">For Sale </option>
                                                         <option value="For Rent">For Rent </option>
                                                         <option value="Forn Investment">For Investment </option>
-                                                    
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -186,14 +217,15 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="itemN-25">Description</label>
-                                                    <textarea class="form-control" id="itemN-25"
-                                                        placeholder="" name="description"></textarea>
+                                                    <textarea class="form-control" id="itemN-25" placeholder=""
+                                                        name="description"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="btnArea">
-                                            <a type="button" id="next1" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                    class="fi flaticon-arrows"></i></a>
+                                            <a type="button" id="next1" class="btn  next"
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                <i class="fi flaticon-arrows"></i></a>
 
                                         </div>
 
@@ -236,167 +268,65 @@
                                                 <a type="button" id="previous1" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
 
-                                                <a type="button" id="next2" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                        class="fi flaticon-arrows"></i></a>
+                                                <a type="button" id="next2" class="btn  next"
+                                                    style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                    <i class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
-                                         <div class="galleryUploads">
+                                        <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Featured Image</span>
+                                                  <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
+                                                </p>
                                             </div>
                                             <div class="imageGallery">
-                                                <div>
-                                                    {{-- <img src="https://via.placeholder.com/200x150" alt="" width="200"
-                                                        height="150"> --}}
-                                                        <input type="file" name="featured_photo" class="mt-3">
-                                                    {{-- <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div> --}}
-                                                    {{-- <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a> --}}
-                                                </div>
-                                                {{-- <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
+                                                <div>   
+                                                    <div class="col-8" style="margin-left: 14px">
+                                                        <div class="custom-file">
+                                                            <div class="img-thumbnail  text-center" id="imagepreview">
+                                                                <img src="" style="height: 150px; width: 200px;"
+                                                                    class="img-fluid" id="one">
+                                                            </div>
+                                                            <div class="inputWrapper">
+                                                                <label class="custom-file-label" for="thumbnail" style="color: white">Choose file</label>
+                                                            <input type="file" class="fileInput" name="image"
+                                                                onchange="readURL(this);" accept="image/*" autocomplete="off">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Photo Gallery</span>
-                                                <p>*At least one image is for valid submission, minimum width of 817px.
+                                                <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
                                                 </p>
-                                                <p>*You can mark an image as featured by clicking the star icon,
-                                                    Otherwise first
-                                                    image will be considered featured image.</p>
                                             </div>
                                             <div class="imageGallery">
-                                                <div class="">
-                                                    {{-- <img src="https://via.placeholder.com/200x150" alt="" width="200"
-                                                        height="150"> --}}
-                                                        <input type="file" name="gallery_photos[]" class="mt-3" multiple>
-                                                    {{-- <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div> --}}
-                                                        {{-- <a href="#" class="text">
-                                                            <span>
-                                                                <i class="fi flaticon-cloud-computing"></i>
-                                                                <span>Upload Image</span>
-                                                            </span>
-                                                        </a> --}}
+                                                <div>
+                                                     <div class="col-8" style="margin-left: 14px">
+                                                        <div class="custom-file">
+                                                            <div class="img-thumbnail  text-center" id="imagepreview">
+                                                                <img src="" style="height: 150px; width: 200px;"
+                                                                    class="img-fluid" id="two">
+                                                            </div>
+                                                            <div class="inputWrapper">
+                                                                <label class="custom-file-label" for="thumbnail" style="color: white">Choose files</label>
+                                                            <input type="file" class="fileInput" name="gallery_photos[]"
+                                                                onchange="readURLS(this);" accept="image/*"  multiple>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                              
                                                 </div>
-                                             
-                                                {{-- <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div> --}}
                                             </div>
                                         </div>
-                                        {{-- <div class="galleryUploads">
-                                            <div class="titleArea">
-                                                <span class="title">File Documents</span>
-                                                <p>*i.e Energy Performance Certificate - EPC. Allowd extensions are txt,
-                                                    pdf,
-                                                    doc, docx</p>
-                                            </div>
-                                            <div class="imageGallery">
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-pdf"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-word"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-pdf"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload File</span>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                         <div class="btnArea">
                                             <a type="button" id="previous1" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>
-                                            <a type="button" id="next2" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                    class="fi flaticon-arrows"></i></a>
+                                            <a type="button" id="next2" class="btn  next"
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                <i class="fi flaticon-arrows"></i></a>
                                         </div>
 
                                     </div>
@@ -424,7 +354,7 @@
                                                 <span class="text">Location</span>
                                             </a>
                                         </li>
-                        
+
                                         <li>
                                             <a href="#">
                                                 <span class="text">Private Notes</span>
@@ -438,67 +368,21 @@
                                             <div class="btnArea">
                                                 <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
-                                                <a type="button" id="next3" class="btn next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                        class="fi flaticon-arrows"></i></a>
+                                                <a type="button" id="next3" class="btn next"
+                                                    style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                    <i class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
                                         <div class="row">
                                             <h1>Location Must Be Required</h1>
-                                            <button style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%" onclick="getLocation()">Allow Location</button>
+                                            <button
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%"
+                                                onclick="getLocation()">Allow Location</button>
 
                                             <p id="demo"></p>
 
-                                            <input type="hidden" name="latitude" id="latitude" >
-                                            <input type="hidden" name="longitude"  id="longitude">
-
-
-                                            
-
-                                            {{-- <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label>Country</label>
-                                                    <select data-placeholder="Select Option" class="chosen-select" name="country">
-                                                        <option value="Turkey">Turkey</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>State</label>
-                                                    <select data-placeholder="Choose..." class="chosen-select" name="state">
-                                                        <option value="1">State</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>City</label>
-                                                    <select data-placeholder="Select City" class="chosen-select" name="city">
-                                                        <option value="1">City</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label for="item-map">Address / Location</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="item-map"
-                                                            placeholder="Istanbul / Turkey" name="location">
-                                                        <button type="button"
-                                                            class="btn btnSecondary buttonL fontNeuron">Find On
-                                                            Map</button>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
+                                            <input type="hidden" name="latitude" id="latitude">
+                                            <input type="hidden" name="longitude" id="longitude">
                                         </div>
                                         <div class="map-area mapPlacer">
                                             <div id="map-container">
@@ -508,15 +392,16 @@
                                         <div class="btnArea">
                                             <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>
-                                            <a type="button" id="next3" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                    class="fi flaticon-arrows"></i></a>
+                                            <a type="button" id="next3" class="btn  next"
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                <i class="fi flaticon-arrows"></i></a>
                                         </div>
 
                                     </div>
                                 </div>
                             </fieldset>
 
-                            <fieldset id="Private_Notes"> 
+                            <fieldset id="Private_Notes">
                                 <div class="addProperty">
                                     <h1 class="fontNeuron">Add New Property</h1>
                                     <ol class="navSteps">
@@ -535,7 +420,7 @@
                                                 <span class="text">Location</span>
                                             </a>
                                         </li>
-                        
+
                                         <li class="current">
                                             <a href="#">
                                                 <span class="text">Private Notes</span>
@@ -543,27 +428,28 @@
                                         </li>
                                     </ol>
                                     <div class="formContent">
-                                 
-                                            <header class="contentHead">
-                                                <h2 class="fontNeuron">Private Notes</h2>
-                                            </header>
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" name="private_note"></textarea>
-                                                    </div>
+
+                                        <header class="contentHead">
+                                            <h2 class="fontNeuron">Private Notes</h2>
+                                        </header>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="private_note"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="btnArea">
-                                                <a type="button" id="previous5" class="btn btn-lighter previous"><i
-                                                        class="fi flaticon-arrows-1"></i> Back</a>
-                                                <button type="submit" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Submit Property <i
-                                                        class="fi flaticon-arrows"></i></button>
-                                            </div>
-                                        
+                                        </div>
+                                        <div class="btnArea">
+                                            <a type="button" id="previous5" class="btn btn-lighter previous"><i
+                                                    class="fi flaticon-arrows-1"></i> Back</a>
+                                            <button type="submit" class="btn"
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Submit
+                                                Property <i class="fi flaticon-arrows"></i></button>
+                                        </div>
+
                                     </div>
                                 </div>
-                           </fieldset>
+                            </fieldset>
 
                         </form>
                     </section>
@@ -624,9 +510,9 @@
                                         <li><a href="#">Privacy Policy</a></li>
                                         <li><a href="#">Contact Support</a></li>
                                         <li><a href="#">Careers</a></li>
-                                       
+
                                     </ul>
-                                    <ul class="list-unstyled">              
+                                    <ul class="list-unstyled">
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">How It Works</a></li>
                                         <li><a href="#">Contact</a></li>
@@ -676,7 +562,7 @@
                                     <li><a href="#"><i class="fab fa-facebook-f" style="color: white"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter" style="color: white"></i></a></li>
                                     <li><a href="#"><i class="fab fa-instagram" style="color: white"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest" style="color: white" ></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest" style="color: white"></i></a></li>
                                     <li><a href="#"><i class="fab fa-dribbble" style="color: white"></i></a></li>
                                     <li><a href="#"><i class="fab fa-google" style="color: white"></i></a></li>
                                 </ul>
@@ -733,8 +619,8 @@
     </script>
 
     <script>
-      // add property
-         $('#multistep_form').on('submit', function (event) {
+        // add property
+        $('#multistep_form').on('submit', function (event) {
             event.preventDefault();
             var formData = new FormData(this);
             console.log(formData);
@@ -760,25 +646,57 @@
                 }
             });
         });
+
+    </script>
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#one')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(150);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
     </script>
 
+       <script type="text/javascript">
+        function readURLS(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#two')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(150);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-<script>
-var x = document.getElementById("demo");
+    </script>
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+    <script>
+        var x = document.getElementById("demo");
 
-function showPosition(position) {
-    $('#latitude').val(position.coords.latitude);
-    $('#longitude').val(position.coords.longitude);
-}
-</script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            $('#latitude').val(position.coords.latitude);
+            $('#longitude').val(position.coords.longitude);
+        }
+
+    </script>
 
 </body>
 
