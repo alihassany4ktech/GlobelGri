@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/fancybox.css')}}">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
+        <link href="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.css" rel="stylesheet">
+
     <style type="text/css">
         #multistep_form fieldset:not(:first-of-type) {
             display: none;
@@ -48,8 +50,67 @@
     /*Opacity settings for all browsers*/
     opacity: 0;
     -moz-opacity: 0;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
+
+/* input[type="file"] {
+  display: block;
+} */
+.imageThumb {
+  height:100px;
+  width: 150px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+ 
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+ 
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+     background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+
+}
+
+.labels {
+  background-color: indigo;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#kuchbe
+{
+        height: 25px;
+    line-height: 26px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
+
+
+
+
 
     </style>
 </head>
@@ -278,6 +339,8 @@
                                                 <span class="title">Featured Image</span>
                                                   <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
                                                 </p>
+                                                  <hr />
+                                                    <b>Live Preview</b>
                                             </div>
                                             <div class="imageGallery">
                                                 <div>   
@@ -289,7 +352,7 @@
                                                             </div>
                                                             <div class="inputWrapper">
                                                                 <label class="custom-file-label" for="thumbnail" style="color: white">Choose file</label>
-                                                            <input type="file" class="fileInput" name="image"
+                                                            <input type="file" class="fileInput" name="featured_photo"
                                                                 onchange="readURL(this);" accept="image/*" autocomplete="off">
                                                             </div>
                                                         </div>
@@ -306,19 +369,13 @@
                                             <div class="imageGallery">
                                                 <div>
                                                      <div class="col-8" style="margin-left: 14px">
-                                                        <div class="custom-file">
-                                                            <div class="img-thumbnail  text-center" id="imagepreview">
-                                                                <img src="" style="height: 150px; width: 200px;"
-                                                                    class="img-fluid" id="two">
-                                                            </div>
-                                                            <div class="inputWrapper">
-                                                                <label class="custom-file-label" for="thumbnail" style="color: white">Choose files</label>
-                                                            <input type="file" class="fileInput" name="gallery_photos[]"
-                                                                onchange="readURLS(this);" accept="image/*"  multiple>
-                                                            </div>
-                                                        </div>
-                                                    </div>                                              
+                                                        <label id="kuchbe" for="files">Choose files</label> 
+                                                        <hr />
+                                                        <input type="file" id="files" name="gallery_photos[]" multiple autocomplete="off" style="display: none" />
+                                                           
+                                                    </div> 
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="btnArea">
@@ -661,24 +718,9 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        </script>
 
-    </script>
-
-       <script type="text/javascript">
-        function readURLS(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#two')
-                        .attr('src', e.target.result)
-                        .width(200)
-                        .height(150);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-    </script>
+   
 
     <script>
         var x = document.getElementById("demo");
@@ -697,7 +739,73 @@
         }
 
     </script>
+{{-- <script language="javascript" type="text/javascript">
+$(function () {
+    $("#fileupload").change(function () {
+        if (typeof (FileReader) != "undefined") {
+            var dvPreview = $("#dvPreview");
+            dvPreview.html("");
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            $($(this)[0].files).each(function () {
+                var file = $(this);
+                if (regex.test(file[0].name.toLowerCase())) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        img.attr("style", "height:120px;width: 150px;padding:2px");
+                        img.attr("src", e.target.result);
+                        dvPreview.append(img);
+                    }
+                    reader.readAsDataURL(file[0]);
+                } else {
+                    alert(file[0].name + " is not a valid image file.");
+                    dvPreview.html("");
+                    return false;
+                }
+            });
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
+        }
+    });
+});
+</script> --}}
 
-</body>
 
-</html>
+
+<script>
+$(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#files").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+      for (var i = 0; i < filesLength; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"remove\">Remove image</span>" +
+            "</span>").insertAfter("#files");
+          $(".remove").click(function(){
+            $(this).parent(".pip").remove();
+          });
+          
+          // Old code here
+          /*$("<img></img>", {
+            class: "imageThumb",
+            src: e.target.result,
+            title: file.name + " | Click to remove"
+          }).insertAfter("#files").click(function(){$(this).remove();});*/
+          
+        });
+        fileReader.readAsDataURL(f);
+      }
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});</script>
+
+
+

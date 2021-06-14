@@ -23,6 +23,88 @@
         #multistep_form fieldset:not(:first-of-type) {
             display: none;
         }
+            .inputWrapper {
+    height: 25px;
+    line-height: 26px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+/* input[type="file"] {
+  display: block;
+} */
+.imageThumb {
+  max-height: 75px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+   height:150px;
+  width:150px;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+ 
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+     background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+
+}
+
+.labels {
+  background-color: indigo;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#kuchbe
+{
+        height: 25px;
+    line-height: 26px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
 
     </style>
 </head>
@@ -250,154 +332,50 @@
                                                         class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
-                                         <div class="galleryUploads">
+                                       <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Featured Image</span>
+                                                  <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
+                                                </p>
+                                                  <hr />
+                                                    <b>Live Preview</b>
                                             </div>
                                             <div class="imageGallery">
-                                                <div class="image imageLoaded">
-                                                    <img src="{{asset($property->featured_photo)}}" alt="" width="200"
-                                                        height="150">
-                                                        <input type="file" name="featured_photo" class="mt-3">
-                                                    {{-- <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div> --}}
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                {{-- <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
+                                                <div>   
+                                                    <div class="col-8" style="margin-left: 14px">
+                                                        <div class="custom-file">
+                                                            <div class="img-thumbnail  text-center" id="imagepreview">
+                                                                <img src="{{asset($property->featured_photo)}}" style="height: 150px; width: 200px;"
+                                                                    class="img-fluid" id="one">
+                                                            </div>
+                                                            <div class="inputWrapper">
+                                                                <label class="custom-file-label" for="thumbnail" style="color: white">Choose file</label>
+                                                            <input type="file" class="fileInput" name="featured_photo"
+                                                                onchange="readURL(this);" accept="image/*" autocomplete="off">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Photo Gallery</span>
-                                                <p>*At least one image is for valid submission, minimum width of 817px.
+                                                <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
                                                 </p>
-                                                <p>*You can mark an image as featured by clicking the star icon,
-                                                    Otherwise first
-                                                    image will be considered featured image.</p>
                                             </div>
                                             <div class="imageGallery">
-                                                <div class="image imageLoaded">
-                                                    <img src="https://via.placeholder.com/200x150" alt="" width="200"
-                                                        height="150">
-
-                                                        <input type="file" name="gallery_photos[]" class="mt-3" multiple>
-                                                        <a href="#" class="text">
-                                                            <span>
-                                                                <i class="fi flaticon-cloud-computing"></i>
-                                                                <span>Upload Image</span>
-                                                            </span>
-                                                        </a>
+                                                <div>
+                                                     <div class="col-8" style="margin-left: 14px">
+                                                        <label id="kuchbe" for="files">Choose files</label> 
+                                                        <hr />
+                                                        <input type="file" id="files" name="gallery_photos[]" multiple autocomplete="off" style="display: none" />
+                                                           
+                                                    </div> 
                                                 </div>
-                                             
-                                                {{-- <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                </div> --}}
+                                                
                                             </div>
                                         </div>
-                                        {{-- <div class="galleryUploads">
-                                            <div class="titleArea">
-                                                <span class="title">File Documents</span>
-                                                <p>*i.e Energy Performance Certificate - EPC. Allowd extensions are txt,
-                                                    pdf,
-                                                    doc, docx</p>
-                                            </div>
-                                            <div class="imageGallery">
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-pdf"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-word"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image fileLoaded">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload Image</span>
-                                                        </span>
-                                                    </a>
-                                                    <span class="textFile">
-                                                        <i class="far fa-file-pdf"></i>
-                                                        <span class="fileName">Document Name</span>
-                                                    </span>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="btnsArea">
-                                                        <a href="#" class="link close"><i
-                                                                class="fa fa-window-close"></i></a>
-                                                        <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                        <span>
-                                                            <i class="fi flaticon-cloud-computing"></i>
-                                                            <span>Upload File</span>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                         <div class="btnArea">
                                             <a type="button" id="previous1" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>

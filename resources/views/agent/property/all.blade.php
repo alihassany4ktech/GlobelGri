@@ -255,6 +255,7 @@
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
+                          
                            
                                 <li>
                                 <a href="{{route('property.create')}}">
@@ -262,7 +263,12 @@
                                     <span>Saved Property</span>
                                 </a>
                             </li>
-                        
+                              <li>
+                                <a href="{{route('agent.contact')}}">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                    <span>Contacts</span>
+                                </a>
+                            </li>
                          
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -297,7 +303,7 @@
                                       <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
                                       <div class="priceArea">
                                         <span class="price fontNeuron">${{$row->price}}</span>
-                                        <time class="date" datetime="2017-02-27">{{$row->created_at->format('Y/m/d')}}</time>
+                                        <time class="date" datetime="2017-02-27">{{$row->created_at->format('Y-m-d')}}</time>
                                       </div>
                                     </div>
                                   </div>

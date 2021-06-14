@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Agent;
 
 use App\User;
+use App\Contact;
 use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
@@ -123,5 +124,13 @@ class AgentController extends Controller
         $property = Property::find($id);
         $property->delete();
         return redirect()->back();
+    }
+
+    public function contacts()
+    {
+
+        $contacts = Contact::all();
+   
+        return view('agent.contacts', compact('contacts'));
     }
 }

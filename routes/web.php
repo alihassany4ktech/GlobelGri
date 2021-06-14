@@ -95,6 +95,8 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/edit/property/{id}', 'AgentController@EditProperty')->name('edit_property');
 
     Route::get('/delete/property/{id}', 'AgentController@DeleteProperty')->name('delete_property');
+
+    Route::get('/agent/contacts', 'AgentController@contacts')->name('contact');
 });
 
 
