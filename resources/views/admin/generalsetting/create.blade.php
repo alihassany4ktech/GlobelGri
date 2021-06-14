@@ -67,7 +67,7 @@
                                         <label class="custom-file-label" for="thumbnail">Choose file</label>
                                     </div>
                                     <div class="img-thumbnail  text-center" id="imagepreview">
-                                        <img src="" style="height: 80px; width: 80px;"
+                                        <img src="" style="height: 150px; width: 400px;"
                                             class="img-fluid" id="one">
                                     </div>
                                 </div>
@@ -102,8 +102,8 @@
             reader.onload = function (e) {
                 $('#one')
                     .attr('src', e.target.result)
-                    .width(80)
-                    .height(80);
+                    .width(400)
+                    .height(200);
             };
             reader.readAsDataURL(input.files[0]);
         }

@@ -29,8 +29,8 @@ Route::post('register', 'Api\UserController@register');
 Route::post('password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Api\ResetPasswordController@reset');
 
-Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
-Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
+Route::get('/email/resend', 'Api\VerificationController@resend');
+Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify');
 
 // google
 Route::get('/login/google', 'Api\UserController@redirectToGoogle');
@@ -41,6 +41,19 @@ Route::get('/login/google/callback', 'Api\UserController@handleGoogleCallback');
 Route::get('/login/facebook', 'Api\UserController@redirectToFacebook');
 
 Route::get('/login/facebook/callback', 'Api\UserController@handleFacebookCallback');
+
+
+// Contact 
+
+Route::post('contact/store', 'Api\FrontendController@ContactStore');
+
+Route::post('contact/info/store', 'Api\FrontendController@ContacInfotStore');
+
+// blog
+
+Route::get('/blog', 'Api\FrontendController@blogs');
+
+Route::get('/single-blog/{id}', 'Api\FrontendController@SingleBlog');
 
 Route::group(['middleware' => 'auth:api'], function () {
 

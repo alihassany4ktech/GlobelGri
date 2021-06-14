@@ -111,7 +111,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
-                        <img src="{{asset('frontend/images/homes1.png')}}"  style="margin-top: 20%; height:160px" alt="image description">
+                        <img src="{{asset('frontend/images/homes1.png')}}"  style="margin-top: 20%; height:160px;" alt="image description">
                     </a>
                 </div>
                 <h4 class="text-center">Buy a home</h4>

@@ -115,7 +115,6 @@ class AgentController extends Controller
     public function EditProperty($id)
     {
         $property = Property::find($id);
-        // dd($property);
         return view('agent.property.edit', compact('property'));
     }
 
@@ -130,7 +129,7 @@ class AgentController extends Controller
     {
 
         $contacts = Contact::all();
-   
+
         return view('agent.contacts', compact('contacts'));
     }
 }

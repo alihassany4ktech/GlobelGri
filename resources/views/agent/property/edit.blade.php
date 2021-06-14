@@ -173,7 +173,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span class="text">Photos &amp; EPC</span>
+                                                <span class="text">Photos</span>
                                             </a>
                                         </li>
                                         <li>
@@ -201,7 +201,7 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="form-group">
-                                                    <label for="itemN-15">Property Title*</label>
+                                                    <label for="itemN-15">Property Title</label>
                                                     <input type="text" name="propert_title" class="form-control" value="{{$property->propert_title}}"
                                                         id="itemN-15">
                                                 </div>
@@ -305,7 +305,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="#">
-                                                <span class="text">Photos &amp; EPC</span>
+                                                <span class="text">Photos</span>
                                             </a>
                                         </li>
                                         <li>
@@ -322,7 +322,7 @@
                                     <div class="formContent">
 
                                         <header class="contentHead">
-                                            <h2 class="fontNeuron">Photos &amp; EPC</h2>
+                                            <h2 class="fontNeuron">Photos</h2>
                                             <div class="btnArea">
 
                                                 <a type="button" id="previous1" class="btn btn-lighter previous"><i
@@ -400,7 +400,7 @@
                                         </li>
                                         <li class="completed">
                                             <a href="#">
-                                                <span class="text">Photos &amp; EPC</span>
+                                                <span class="text">Photos</span>
                                             </a>
                                         </li>
                                         <li class="current">
@@ -511,7 +511,7 @@
                                         </li>
                                         <li class="completed">
                                             <a href="#">
-                                                <span class="text">Photos &amp; EPC</span>
+                                                <span class="text">Photos</span>
                                             </a>
                                         </li>
                                         <li class="completed">

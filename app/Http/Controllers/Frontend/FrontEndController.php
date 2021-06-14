@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BlogResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\PropertyResource;
 use App\Notifications\ContactNotification;
@@ -65,6 +66,7 @@ class FrontEndController extends Controller
     public function SingleBlog($id)
     {
         $blog = Blog::find($id);
+        $data = new BlogResource($blog);
         return view('frontend.single-blog', compact('blog'));
     }
 

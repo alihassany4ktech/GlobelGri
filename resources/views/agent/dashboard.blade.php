@@ -2,6 +2,24 @@
 
 @section('content')
 
+
+<style>
+    #kuchbe
+{
+    height: 25px;
+    line-height: 26px;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
+</style>
 <!-- main -->
 <main>
     <!-- findFormBlock -->
@@ -309,15 +327,16 @@
                                             <div class="img-thumbnail  text-center" id="imagepreview">
                                                 @if(Auth::user()->image)
                                                 <img src="{{asset(Auth::user()->image)}}"
-                                                    width="200" height="200"  alt="agent image" id="one">
+                                                    width="200" height="186.5"  alt="agent image" id="one">
                                                 @else 
                                                 <img src="https://via.placeholder.com/200x200" alt="" id="one" width="200" height="200">
                                                 
                                                 @endif
                                             </div>
                                             <div class="custom-file mt-5">
-                                                <input type="file" class="custom-file-input" name="image"
-                                                    onchange="readURL(this);" accept="image/*">
+                                                <label id="kuchbe" for="file">Choose file</label>
+                                                <input type="file" id="file" class="custom-file-input" name="image"
+                                                    onchange="readURL(this);" accept="image/*" style="display: none;">
                                                 
                                             </div>
                                         </div>
@@ -583,7 +602,7 @@
                 $('#one')
                     .attr('src', e.target.result)
                     .width(200)
-                    .height(150);
+                    .height(186.5);
             };
             reader.readAsDataURL(input.files[0]);
         }
