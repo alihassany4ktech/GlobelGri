@@ -19,98 +19,105 @@
     <link rel="stylesheet" href="{{asset('frontend/css/fancybox.css')}}">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
-        <link href="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.css" rel="stylesheet">
+    <link href="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <style type="text/css">
         #multistep_form fieldset:not(:first-of-type) {
             display: none;
         }
-        .inputWrapper {
-    height: 25px;
-    line-height: 26px;
-    text-align: center;
-    margin-top: 10px;
-    width: 100px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-     border-radius: 3px;
-    /*Using a background color, but you can use a background image to represent a button*/
-    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
-}
-.fileInput {
-    cursor: pointer;
-    height: 100%;
-    position:absolute;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    /*This makes the button huge. If you want a bigger button, increase the font size*/
-    font-size:50px;
-    /*Opacity settings for all browsers*/
-    opacity: 0;
-    -moz-opacity: 0;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-}
 
-/* input[type="file"] {
+        .inputWrapper {
+            height: 25px;
+            line-height: 26px;
+            text-align: center;
+            margin-top: 10px;
+            width: 100px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border-radius: 3px;
+            /*Using a background color, but you can use a background image to represent a button*/
+            background-color: #f1c967;
+            background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);
+            background: linear-gradient(to right, #bd7f0a, #f1c967);
+        }
+
+        .fileInput {
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 99;
+            /*This makes the button huge. If you want a bigger button, increase the font size*/
+            font-size: 50px;
+            /*Opacity settings for all browsers*/
+            opacity: 0;
+            -moz-opacity: 0;
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+        }
+
+        /* input[type="file"] {
   display: block;
 } */
-.imageThumb {
-  height:100px;
-  width: 150px;
-  border: 2px solid;
-  padding: 1px;
-  cursor: pointer;
- 
-}
-.pip {
-  display: inline-block;
-  margin: 10px 10px 0 0;
- 
-}
-.remove {
-  display: block;
-  background: #444;
-  border: 1px solid black;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-}
-.remove:hover {
-     background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+        .imageThumb {
+            height: 100px;
+            width: 150px;
+            border: 2px solid;
+            padding: 1px;
+            cursor: pointer;
 
-}
+        }
 
-.labels {
-  background-color: indigo;
-  color: white;
-  padding: 0.5rem;
-  font-family: sans-serif;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  margin-top: 1rem;
-}
+        .pip {
+            display: inline-block;
+            margin: 10px 10px 0 0;
 
-#kuchbe
-{
-        height: 25px;
-    line-height: 26px;
-    color: white;
-    text-align: center;
-    margin-top: 10px;
-    width: 100px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-     border-radius: 3px;
-    /*Using a background color, but you can use a background image to represent a button*/
-    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
-}
+        }
 
+        .remove {
+            display: block;
+            background: #444;
+            border: 1px solid black;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
 
+        .remove:hover {
+            background-color: #f1c967;
+            background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);
+            background: linear-gradient(to right, #bd7f0a, #f1c967);
 
+        }
 
+        .labels {
+            background-color: indigo;
+            color: white;
+            padding: 0.5rem;
+            font-family: sans-serif;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        #kuchbe {
+            height: 25px;
+            line-height: 26px;
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+            width: 100px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border-radius: 3px;
+            /*Using a background color, but you can use a background image to represent a button*/
+            background-color: #f1c967;
+            background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);
+            background: linear-gradient(to right, #bd7f0a, #f1c967);
+        }
 
     </style>
 </head>
@@ -337,13 +344,14 @@
                                         <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Featured Image</span>
-                                                  <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
+                                                <p>*At least one image is for valid submission, minimum width of 200px
+                                                    and height 150px.
                                                 </p>
-                                                  <hr />
-                                                    <b>Live Preview</b>
+                                                <hr />
+                                                <b>Live Preview</b>
                                             </div>
                                             <div class="imageGallery">
-                                                <div>   
+                                                <div>
                                                     <div class="col-8" style="margin-left: 14px">
                                                         <div class="custom-file">
                                                             <div class="img-thumbnail  text-center" id="imagepreview">
@@ -351,9 +359,11 @@
                                                                     class="img-fluid" id="one">
                                                             </div>
                                                             <div class="inputWrapper">
-                                                                <label class="custom-file-label" for="thumbnail" style="color: white">Choose file</label>
-                                                            <input type="file" class="fileInput" name="featured_photo"
-                                                                onchange="readURL(this);" accept="image/*" autocomplete="off">
+                                                                <label class="custom-file-label" for="thumbnail"
+                                                                    style="color: white">Choose file</label>
+                                                                <input type="file" class="fileInput"
+                                                                    name="featured_photo" onchange="readURL(this);"
+                                                                    accept="image/*" autocomplete="off">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -363,19 +373,21 @@
                                         <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Photo Gallery</span>
-                                                <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
+                                                <p>*At least one image is for valid submission, minimum width of 200px
+                                                    and height 150px.
                                                 </p>
                                             </div>
                                             <div class="imageGallery">
                                                 <div>
-                                                     <div class="col-8" style="margin-left: 14px">
-                                                        <label id="kuchbe" for="files">Choose files</label> 
+                                                    <div class="col-8" style="margin-left: 14px">
+                                                        <label id="kuchbe" for="files">Choose files</label>
                                                         <hr />
-                                                        <input type="file" id="files" name="gallery_photos[]" multiple autocomplete="off" style="display: none" />
-                                                           
-                                                    </div> 
+                                                        <input type="file" id="files" name="gallery_photos[]" multiple
+                                                            autocomplete="off" style="display: none" />
+
+                                                    </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="btnArea">
@@ -430,7 +442,7 @@
                                                     <i class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <h1>Location Must Be Required</h1>
                                             <button
                                                 style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%"
@@ -440,7 +452,33 @@
 
                                             <input type="hidden" name="latitude" id="latitude">
                                             <input type="hidden" name="longitude" id="longitude">
+                                        </div> --}}
+                                        <!-- Autocomplete location search input -->
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <input type="text" class="form-control" id="search_input"
+                                                placeholder="Type address..."/>
+                                            <input type="hidden" id="loc_lat" name="latitude" />
+                                            <input type="hidden" id="loc_long" name="longitude" />
+                                            <input type="hidden" id="address" name="address" />
+
                                         </div>
+
+                                          <div class="form-group">
+                                            <label>ZipCode</label>
+                                            <input type="text" name="zipcode" class="form-control" 
+                                                placeholder="Type zipcode..."/>
+                                           
+
+                                        </div>
+
+                                        <!-- Display latitude and longitude -->
+                                        {{-- <div class="latlong-view">
+                                            <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+                                            <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+                                        </div> --}}
+
+
                                         <div class="map-area mapPlacer">
                                             <div id="map-container">
                                                 <div id="map_div">&nbsp;</div>
@@ -647,6 +685,61 @@
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    <script>
+        var searchInput = 'search_input';
+
+        $(document).ready(function () {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var near_place = autocomplete.getPlace();
+                document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+                document.getElementById('loc_long').value = near_place.geometry.location.lng();
+                var lat = parseFloat(document.getElementById('loc_lat').value);
+                var lng = parseFloat(document.getElementById('loc_long').value);
+                console.log(lat);
+                console.log(lng);
+                var latlng = new google.maps.LatLng(lat, lng);
+                var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'latLng': latlng
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            var k = results[1].formatted_address;
+                            document.getElementById('address').value = k;
+                            console.log(results[1].address_components[2].long_name);
+                        }
+                    }
+                });
+                // document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+                // document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+            });
+        });
+        $(document).on('change', '#' + searchInput, function () {
+            
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "USA"
+                }
+            });
+        });
+
+    </script>
+
+
 
     <script>
         $(document).ready(function () {
@@ -680,7 +773,6 @@
         $('#multistep_form').on('submit', function (event) {
             event.preventDefault();
             var formData = new FormData(this);
-            console.log(formData);
             $.ajax({
 
                 url: '{{route("property.store")}}',
@@ -692,13 +784,9 @@
                     $('#add').attr('disabled', 'disabled');
                 },
                 success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
+                     if (data.success) {
+                        toastr.success(data.success);
+                    } 
 
                 }
             });
@@ -718,11 +806,9 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        </script>
 
-   
-
-    <script>
+    </script>
+    {{-- <script>
         var x = document.getElementById("demo");
 
         function getLocation() {
@@ -738,74 +824,33 @@
             $('#longitude').val(position.coords.longitude);
         }
 
-    </script>
-{{-- <script language="javascript" type="text/javascript">
-$(function () {
-    $("#fileupload").change(function () {
-        if (typeof (FileReader) != "undefined") {
-            var dvPreview = $("#dvPreview");
-            dvPreview.html("");
-            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-            $($(this)[0].files).each(function () {
-                var file = $(this);
-                if (regex.test(file[0].name.toLowerCase())) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var img = $("<img />");
-                        img.attr("style", "height:120px;width: 150px;padding:2px");
-                        img.attr("src", e.target.result);
-                        dvPreview.append(img);
+    </script> --}}
+    <script>
+        $(document).ready(function () {
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function (e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function (e) {
+                            var file = e.target;
+                            $("<span class=\"pip\">" +
+                                "<img class=\"imageThumb\" src=\"" + e.target.result +
+                                "\" title=\"" + file.name + "\"/>" +
+                                "<br/><span class=\"remove\">Remove image</span>" +
+                                "</span>").insertAfter("#files");
+                            $(".remove").click(function () {
+                                $(this).parent(".pip").remove();
+                            });
+                        });
+                        fileReader.readAsDataURL(f);
                     }
-                    reader.readAsDataURL(file[0]);
-                } else {
-                    alert(file[0].name + " is not a valid image file.");
-                    dvPreview.html("");
-                    return false;
-                }
-            });
-        } else {
-            alert("This browser does not support HTML5 FileReader.");
-        }
-    });
-});
-</script> --}}
-
-
-
-<script>
-$(document).ready(function() {
-  if (window.File && window.FileList && window.FileReader) {
-    $("#files").on("change", function(e) {
-      var files = e.target.files,
-        filesLength = files.length;
-      for (var i = 0; i < filesLength; i++) {
-        var f = files[i]
-        var fileReader = new FileReader();
-        fileReader.onload = (function(e) {
-          var file = e.target;
-          $("<span class=\"pip\">" +
-            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-            "<br/><span class=\"remove\">Remove image</span>" +
-            "</span>").insertAfter("#files");
-          $(".remove").click(function(){
-            $(this).parent(".pip").remove();
-          });
-          
-          // Old code here
-          /*$("<img></img>", {
-            class: "imageThumb",
-            src: e.target.result,
-            title: file.name + " | Click to remove"
-          }).insertAfter("#files").click(function(){$(this).remove();});*/
-          
+                });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
         });
-        fileReader.readAsDataURL(f);
-      }
-    });
-  } else {
-    alert("Your browser doesn't support to File API")
-  }
-});</script>
 
-
-
+    </script>

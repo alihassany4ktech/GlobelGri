@@ -52,6 +52,8 @@ class PropertyController extends Controller
             $propert->description = $request->description;
             $propert->latitude = $request->latitude;
             $propert->longitude = $request->longitude;
+            $propert->address = $request->address;
+            $propert->zipcode = $request->zipcode;
             $propert->private_note = $request->private_note;
             $propert->save();
             return response()->json([
@@ -97,6 +99,8 @@ class PropertyController extends Controller
             $propert->description = $request->description;
             $propert->latitude = $request->latitude;
             $propert->longitude = $request->longitude;
+            $propert->address = $request->address;
+            $propert->zipcode = $request->zipcode;
             $propert->private_note = $request->private_note;
             $propert->update();
             return response()->json([

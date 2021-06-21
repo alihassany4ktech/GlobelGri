@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//    return view('welcome');
-// }); 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
@@ -97,6 +97,8 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/delete/property/{id}', 'AgentController@DeleteProperty')->name('delete_property');
 
     Route::get('/agent/contacts', 'AgentController@contacts')->name('contact');
+
+    Route::get('/favourite/propreties', 'AgentController@favouriteProperty')->name('favourite.property');
 });
 
 
@@ -150,7 +152,6 @@ Route::get('/blog', 'Frontend\FrontEndController@blogs')->name('blog');
 
 Route::get('/single-blog/{id}', 'Frontend\FrontEndController@SingleBlog')->name('single_blog');
 
-
 // Contact 
 
 Route::post('contact/store', 'Frontend\FrontEndController@ContactStore')->name('contact.store');
@@ -158,10 +159,50 @@ Route::post('contact/store', 'Frontend\FrontEndController@ContactStore')->name('
 Route::post('contact/info/store', 'Frontend\FrontEndController@ContacInfotStore')->name('contact.info.store');
 
 
-
 Route::post('result/buy', 'Frontend\FrontendController@searchBye')->name('BuySearch');
 
+// Favourite Property
+
+Route::post('favourite/property/store', 'Frontend\FrontEndController@favourite')->name('property.favourite.store');
+
+// Buy A Home 
+
+Route::get('/buy-home', 'Frontend\FrontEndController@BuyHome')->name('buy_a_home');
+
+// Rent a home 
+
+Route::get('/rent-home', 'Frontend\FrontEndController@RentHome')->name('rent_a_home');
+
+// Invest A home
+
+Route::get('/invest-home', 'Frontend\FrontEndController@InvestHome')->name('invest_a_home');
+
+// All Guide
+
+Route::get('/all-guide', 'Frontend\FrontEndController@AllGuide')->name('all_guide');
+
+// Agent guide
+
+Route::get('/agent-guid','Frontend\FrontEndController@AgentGuide')->name('agent_guide');
+
+// Property Manager guide
+
+Route::get('/property-manager-guid','Frontend\FrontEndController@PropertyManagerGuide')->name('property_manager_guide');
+
+// Lender guide
+
+Route::get('/lender-guid','Frontend\FrontEndController@LenderGuide')->name('lender_guide');
+
+// Builder guide
+
+Route::get('/builder-guid','Frontend\FrontEndController@BuilderGuide')->name('bulider_guide');
+
+// Platform Administrator guide
+
+Route::get('/platform-administrator-guid','Frontend\FrontEndController@PlateformAdministratorGuide')->name('plateform_administrator_guide');
 
 
-Auth::routes();
+
+
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');

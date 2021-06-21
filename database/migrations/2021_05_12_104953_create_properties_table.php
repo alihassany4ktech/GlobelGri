@@ -20,6 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->string('price')->default('0');
             $table->string('featured_photo')->default('0');
             $table->string('gallery_photos')->default('0');
+            $table->string('zipcode')->default('0');
             $table->integer('bedroom')->default('0');
             $table->integer('bathroom')->default('0');
             $table->string('garages')->default('0');
@@ -27,6 +28,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_type')->default('0');
             $table->string('propert_status')->default('0');
             $table->string('description')->default('0');
+            $table->string('address')->default('0');
             $table->string('latitude')->default('0');
             $table->string('longitude')->default('0');
             $table->string('private_note')->default('0');

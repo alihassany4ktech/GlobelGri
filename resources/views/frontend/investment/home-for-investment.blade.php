@@ -582,15 +582,33 @@ a:visited {
                                                 </ul>
                                             </li>
                                         </ul>
-                                        <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
+                                              @if(Auth::check())
+                                         <?php
+
+                                        $f = App\Favourite::where('property_id','=',$row->id)
+                                        ->where('user_id','=',Auth::user()->id)->first();
+                                         ?>
+                                        @endif
+                                        
+                                         
+                                        @if(Auth::check() && $f == null)
+                                            <a type="button"
+                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim f"><i
+                                                class="far fa-heart" onclick="getProperty(this)" id="{{$row->id}}"></i></a>
+                                        @elseif(Auth::check() && $f != null)
+                                         <a type="button"
+                                            class="linkToFavourite roundedCircle  icnHeartBeatAnim f" style="background-color: #dcf2f7; color:#f1c967"><i
+                                                class="far fa-heart" onclick="getProperty(this)" id="{{$row->id}}"></i></a>
+                                        @else 
+                                        <a  href="#popup1" 
+                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim lightbox"><i
+                                                class="far fa-heart" id="{{$row->id}}"></i></a>
+                                        @endif
                                     </div>
                                     <h2 class="fontNeuron text-capitalize" ><a href="{{route('single_property',['id' => $row->id])}}" style="color: black">{{$row->propert_title}}</a></h2>
                                     <address>
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>The Village, Jersey City, NJ 07302, USA </p>
+                                        <p>{{$row->address}}</p>
                                     </address>
                                     <span class="btn btnSmall  text-capitalize"
                                         style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$row->property_type}}</span>
@@ -640,42 +658,6 @@ a:visited {
                 <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
                 <p style="color: black">Learn about the San Francisco, CA housing market through trends and averages.
                 </p>
-                {{-- <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3> --}}
-                <!-- introBanner -->
-                {{-- <section class="threeBanner"> --}}
-                    <!-- bannerImageSlideshow -->
-                    {{-- <div class="banner-slider slickSlider">
-                        @foreach($property_for_investment as $row)
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    @if ($row->featured_photo)
-                                        <img src="{{asset($row->featured_photo)}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    @else
-                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    @endif
-                                    
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">{{$row->propert_title}}</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>{{$total_for_investment}} total homes available</p>
-                                            </address>
-
-                                            <button type="button"
-                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
-                                                class="btn">See home {{$row->property_type}}</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div> --}}
-                {{-- </section> --}}
                 <!-- findFormBlock -->
                 <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
                 <!-- introBanner -->
@@ -775,7 +757,7 @@ function initMap() {
 </script> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB'></script>
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
 <script defer>
     var mainurl = "{{url('/')}}";
     function initialize() {
@@ -871,4 +853,29 @@ function initMap() {
         return content;
 
     }
+</script>
+<script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+             function getProperty(elem){
+            var property_id = $(elem).attr("id");
+            $.ajax({
+                url: "{{ route('property.favourite.store') }}",
+                method: "POST",
+                dataType: "json",
+
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    property_id: property_id,
+                },
+
+                success: function (data) {
+                    toastr.success(data.success);
+                }
+            });
+            };
+
 </script>

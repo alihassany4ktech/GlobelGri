@@ -268,7 +268,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
@@ -316,7 +316,6 @@
                             <input type="hidden" name="id" value="{{Auth::user()->id}}">
                             <div class="head">
                                 <h4 class="fontNeuron">Account Settings</h4>
-                                <span id="result"></span>
                             </div>
                             <div class="accountHolder">
                                 <div class="imgProfile">
@@ -379,7 +378,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="itemN-4">Biography</label>
-                                          @if(Auth::user()->biography == null)
+                                          @if(Auth::user()->biography == 0)
                                             <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
                                             placeholder="Biography.."></textarea>
                                             @else 
@@ -526,13 +525,10 @@
                 },
                 success: function (data) {
                     if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
+                        toastr.success(data.success);
                     } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
+                        toastr.error(data.error[0]);
                     }
-
                 }
             });
         });
@@ -552,12 +548,10 @@
                     $('#add').attr('disabled', 'disabled');
                 },
                 success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
+                     if (data.success) {
+                        toastr.success(data.success);
                     } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
+                        toastr.error(data.error[0]);
                     }
 
                 }
@@ -579,12 +573,8 @@
                     $('#add').attr('disabled', 'disabled');
                 },
                 success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
+                  if (data.success) {
+                        toastr.success(data.success);
                     }
 
                 }

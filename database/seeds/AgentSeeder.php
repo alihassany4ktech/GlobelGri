@@ -71,6 +71,15 @@ class AgentSeeder extends Seeder
                 'password' => Hash::make('12345678'),
                 'remember_token' => Str::random(10),
             ],
+
+            [
+                'name' => 'Buyer ',
+                'role_id' => '8',
+                'email' => 'buyer@gmail.com',
+                'status' => '1',
+                'password' => Hash::make('12345678'),
+                'remember_token' => Str::random(10),
+            ],
         ]);
     }
 }

@@ -19,6 +19,10 @@ class PropertyCollection extends JsonResource
             'propert_title' => $this->propert_title,
             'featured_photo' => $this->featured_photo,
             'price' => $this->price,
+            'address' => $this->address,
+            'zipcode' => $this->zipcode,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'property_type' => $this->property_type,
             'date' => $this->created_at,
         ];

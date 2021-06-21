@@ -18,6 +18,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '2',
                 'bathroom' => '2',
                 'garages' => '1',
@@ -26,6 +27,8 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.4177567',
                 'longitude' => '-93.4343434',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
             ],
@@ -34,6 +37,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '3',
                 'bathroom' => '3',
                 'garages' => '1',
@@ -42,6 +46,8 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.187286',
                 'longitude' => ' -92.773114',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
             ],
@@ -173,6 +179,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '2',
                 'bathroom' => '2',
                 'garages' => '1',
@@ -181,6 +188,8 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.185454',
                 'longitude' => '-92.765503',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
             ],
@@ -189,6 +198,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '3',
                 'bathroom' => '3',
                 'garages' => '1',
@@ -197,8 +207,11 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.188039',
                 'longitude' => '-92.774794',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
+
             ],
 
             // [
@@ -327,6 +340,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '2',
                 'bathroom' => '2',
                 'garages' => '1',
@@ -335,6 +349,8 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.193709',
                 'longitude' => '-92.757317',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
             ],
@@ -343,6 +359,7 @@ class PropertySeeder extends Seeder
                 'user_id' => '3',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
+                'featured_photo' => 'property_featured_image/1623835677property.jpg',
                 'bedroom' => '3',
                 'bathroom' => '3',
                 'garages' => '1',
@@ -351,6 +368,8 @@ class PropertySeeder extends Seeder
                 'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                 'latitude' => '38.196314',
                 'longitude' => '-92.754420',
+                'zipcode' => '12131',
+                'address' => 'San Francisco, CA 94112',
                 'private_note' => 'This is private Note for Property',
                 'created_at' => '2021-06-08 09:40:29'
             ],

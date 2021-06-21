@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/fancybox.css')}}">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <style type="text/css">
         #multistep_form fieldset:not(:first-of-type) {
             display: none;
@@ -361,7 +363,7 @@
                                         <div class="galleryUploads">
                                             <div class="titleArea">
                                                 <span class="title">Photo Gallery</span>
-                                                <p>*At least one image is for valid submission, minimum width of 200px and height 150px.
+                                                <p>*Selecet Gallery Images if You Whant To Update.At least one image is for valid submission, minimum width of 200px and height 150px.
                                                 </p>
                                             </div>
                                             <div class="imageGallery">
@@ -408,7 +410,7 @@
                                                 <span class="text">Location</span>
                                             </a>
                                         </li>
-                        
+
                                         <li>
                                             <a href="#">
                                                 <span class="text">Private Notes</span>
@@ -422,68 +424,48 @@
                                             <div class="btnArea">
                                                 <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                         class="fi flaticon-arrows-1"></i> Back</a>
-                                                <a type="button" id="next3" class="btn next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                        class="fi flaticon-arrows"></i></a>
+                                                <a type="button" id="next3" class="btn next"
+                                                    style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                    <i class="fi flaticon-arrows"></i></a>
                                             </div>
                                         </header>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <h1>Location Must Be Required</h1>
-                                            <button style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%" onclick="getLocation()">Allow Location</button>
+                                            <button
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-left:45%"
+                                                onclick="getLocation()">Allow Location</button>
 
                                             <p id="demo"></p>
 
-                                            <input type="hidden" name="latitude" id="latitude" value="{{$property->latitude}}" >
-                                            <input type="hidden" name="longitude"  id="longitude" value="{{$property->longitude}}">
+                                            <input type="hidden" name="latitude" id="latitude">
+                                            <input type="hidden" name="longitude" id="longitude">
+                                        </div> --}}
+                                        <!-- Autocomplete location search input -->
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <p>*Type New Address if You Want to Update.</p>
+                                            <input type="text" class="form-control" id="search_input"
+                                                placeholder="Type New address..."/>
+                                            <input type="hidden" id="loc_lat" name="latitude" />
+                                            <input type="hidden" id="loc_long" name="longitude" />
+                                            <input type="hidden" id="address" name="address" />
 
-
-                                            
-
-                                            {{-- <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label>Country</label>
-                                                    <select data-placeholder="Select Option" class="chosen-select" name="country">
-                                                        <option value="Turkey">Turkey</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>State</label>
-                                                    <select data-placeholder="Choose..." class="chosen-select" name="state">
-                                                        <option value="1">State</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>City</label>
-                                                    <select data-placeholder="Select City" class="chosen-select" name="city">
-                                                        <option value="1">City</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label for="item-map">Address / Location</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="item-map"
-                                                            placeholder="Istanbul / Turkey" name="location">
-                                                        <button type="button"
-                                                            class="btn btnSecondary buttonL fontNeuron">Find On
-                                                            Map</button>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
+
+                                          <div class="form-group">
+                                            <label>ZipCode</label>
+                                            <input type="text" name="zipcode" class="form-control" value="{{$property->zipcode}}" />
+                                           
+
+                                        </div>
+
+                                        <!-- Display latitude and longitude -->
+                                        {{-- <div class="latlong-view">
+                                            <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+                                            <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+                                        </div> --}}
+
+
                                         <div class="map-area mapPlacer">
                                             <div id="map-container">
                                                 <div id="map_div">&nbsp;</div>
@@ -492,8 +474,9 @@
                                         <div class="btnArea">
                                             <a type="button" id="previous3" class="btn btn-lighter previous"><i
                                                     class="fi flaticon-arrows-1"></i> Back</a>
-                                            <a type="button" id="next3" class="btn  next" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next <i
-                                                    class="fi flaticon-arrows"></i></a>
+                                            <a type="button" id="next3" class="btn  next"
+                                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Next
+                                                <i class="fi flaticon-arrows"></i></a>
                                         </div>
 
                                     </div>
@@ -688,7 +671,60 @@
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
+ <script
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc">
+    </script>
 
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+    <script>
+        var searchInput = 'search_input';
+
+        $(document).ready(function () {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var near_place = autocomplete.getPlace();
+                document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+                document.getElementById('loc_long').value = near_place.geometry.location.lng();
+                var lat = parseFloat(document.getElementById('loc_lat').value);
+                var lng = parseFloat(document.getElementById('loc_long').value);
+                console.log(lat);
+                console.log(lng);
+                var latlng = new google.maps.LatLng(lat, lng);
+                var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'latLng': latlng
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            var k = results[1].formatted_address;
+                            document.getElementById('address').value = k;
+                            console.log(results[1].address_components[2].long_name);
+                        }
+                    }
+                });
+                // document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+                // document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+            });
+        });
+        $(document).on('change', '#' + searchInput, function () {
+            
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "USA"
+                }
+            });
+        });
+
+    </script>
     <script>
         $(document).ready(function () {
             var form_count = 1,
@@ -733,12 +769,8 @@
                     $('#add').attr('disabled', 'disabled');
                 },
                 success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
+                   if (data.success) {
+                        toastr.success(data.success);
                     }
 
                 }

@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 
 @section('content')
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+
 <style>
     .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
     z-index: 2;
@@ -216,8 +218,11 @@
         <header class="contentFiltersHeadingWrap row">
             <div class="col-xs-12 col-sm-10">
                 <h1 class="fontNeuron">Profile</h1>
+
             </div>
+ 
         </header>
+ 
         <!-- userProfile -->
         <div class="userProfile">
             <div class="row">
@@ -250,7 +255,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
@@ -289,7 +294,13 @@
                             <div class="accountData">
                               <div class="head">
                                 <h4 class="fontNeuron">My Properties</h4>
+                                @if(session()->has('delete_property'))
+                                    <div class="alert alert-success" style="float: right">
+                                        {{ session()->get('delete_property') }}
+                                    </div>
+                                @endif
                               </div>
+  
                               <!-- propertiesList -->
                               <div class="propertiesList">
                                     @foreach ($data as $row)
@@ -300,7 +311,7 @@
                                     </div>
                                     <div class="textBox">
                                       <h4 class="fontNeuron"><a href="{{route('agent.single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h4>
-                                      <address><i class="fi flaticon-pin-1"></i>The Village, Jersey City, NJ 07302, USA </address>
+                                      <address><i class="fi flaticon-pin-1"></i>{{$row->address}}</address>
                                       <div class="priceArea">
                                         <span class="price fontNeuron">${{$row->price}}</span>
                                         <time class="date" datetime="2017-02-27">{{$row->created_at->format('Y-m-d')}}</time>
@@ -318,7 +329,7 @@
                                 </article>
                                     @endforeach
                                 
-
+                                <span id="result"></span>
                               </div>
                             </div>
                             <!-- pagination -->
@@ -333,8 +344,15 @@
 
 
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{{-- @if(Session::has('delete_property'))
 <script>
+    toastr.success("{!!Session::get('delete_property')!!}");
+    $('#result').html('<div class="alert alert-success">' "{!!Session::get('delete_property')!!}"'</div>');
+</script>
+@endif --}}
+{{-- <script>
     $(document).ready(function () {
 
         $('#agentform').on('submit', function (event) {
@@ -434,4 +452,4 @@
         }
     }
 
-</script>
+</script> --}}

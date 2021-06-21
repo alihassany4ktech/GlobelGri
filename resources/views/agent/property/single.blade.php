@@ -1,5 +1,19 @@
 @extends('layouts.frontend.app')
 @section('content')
+{{-- <link rel="stylesheet" href="frontend/css/style.css"> --}}
+<style>
+     @media only screen and (max-width: 600px) {
+            #mp {
+                margin-left: -25px !important;
+                width:283px !important;
+            }
+     }
+
+     .geodir_post_meta {
+    text-indent: .25px;
+    margin-top: 6px;
+}
+</style>
 <main>
     <!-- propertyIntroBlock -->
     <section class="propertyIntroBlock" >
@@ -68,7 +82,7 @@
                     <section id="Detail" class="accountData" style="background-color: #f0f9fb">
                         <div class="col-xs-12 col-sm-12 col-md-4">
                             <h3>{{$data->propert_title}}</h3>
-                            <p style="font-size:12px">San Francisco, CA 94112 <a href="" style="color: #bd7f0a"> Oceanview </a></p>
+                            <p style="font-size:12px">{{$data->address}} <a href="" style="color: #bd7f0a"> Oceanview </a></p>
                             <p style="margin-top: 20px; font-size:11px"><i class="fa fa-bed" aria-hidden="true"></i> {{$data->bedroom}}
                                 Bed <i class="fa fa-bath" aria-hidden="true"></i> {{$data->bathroom}} Baths <i
                                     class="fa fa-chart-area"></i>{{$data->area}} sqft</p>
@@ -81,12 +95,10 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4" style=" margin-top:10px">
                            
-                            <div class="map-area" style="height:200px;">
+                         <div class="map-area" id="mp" style="height:200px; margin-left: -95px;width: 324px;">
                                 <div id="map-container">
-                                    <div id="map_div">
-                                        &nbsp;
-                                    
-                                    </div>
+                                    <div id="map-canvas" style="height: 525px; width: 100%; position: relative; overflow: hidden;">
+                                </div>
                                 </div>
                             </div>
                             {{-- </figure> --}}
@@ -260,7 +272,8 @@
                             </div>
 
                         </div>
-
+                        <input type="hidden" name="" value="{{$data->latitude}}" id="lt">
+                        <input type="hidden" name="" value="{{$data->longitude}}" id="lng">
                     </section>
 
                 </aside>
@@ -269,8 +282,102 @@
     </div>
 </main>
 @endsection
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
-    </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
+<script defer>
+    $(document).ready(function(){
+    var lt = $('#lt').val();
+    var lng = $('#lng').val();
+    var mainurl = "{{url('/')}}";
+    function initialize() {
+        var mapOptions = {
+            zoom: 6,
+            // minZoom: 6,
+            maxZoom: 16,
+            zoomControl:true,
+            zoomControlOptions: {
+                style:google.maps.ZoomControlStyle.DEFAULT
+            },
+            center: new google.maps.LatLng(lt,lng),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: true,
+            panControl:false,
+            mapTypeControl:false,
+            scaleControl:false,
+            overviewMapControl:false,
+            rotateControl:false
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
+        var place = @json($data);
+            if(place.latitude && place.longitude)
+            {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(place.latitude, place.longitude),
+                    icon:image,
+                    map: map,
+                    title: place.name
+                });
+                // var infowindow = new google.maps.InfoWindow();
+                // google.maps.event.addListener(marker, 'click', (function (marker, place) {
+                //     return function () {
+                //         infowindow.setContent(generateContent(place))
+                //         infowindow.open(map, marker);
+                //     }
+                // })(marker, place));
+            }
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    // function generateContent(place)
+    // {
+    //     var content = `
+    //         <div class="gd-bubble" style="">
+    //             <div class="gd-bubble-inside">
+    //                 <div class="geodir-bubble_desc">
+    //                 <div class="geodir-bubble_image">
+    //                     <div class="geodir-post-slider">
+    //                         <div class="geodir-image-container geodir-image-sizes-medium_large ">
+    //                             <div id="geodir_images_5de53f2a45254_189" class="geodir-image-wrapper" data-controlnav="1">
+    //                                 <ul class="geodir-post-image geodir-images clearfix">
+    //                                     <li>
+    //                                         <div class="geodir-post-title">
+    //                                             <h4 class="geodir-entry-title">
+    //                                                 <a href="">`+place.propert_title+`</a>
+    //                                             </h4>
+    //                                         </div>
+    //                                         <a href=""><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
+    //                                     </li>
+    //                                 </ul>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //                 </div>
+    //             </div>
+    //             <div class="geodir-bubble-meta-side">
+    //                 <div class="geodir-output-location">
+    //                 <div class="geodir-output-location geodir-output-location-mapbubble">
+    //                     <div class="geodir_post_meta  geodir-field-post_title"><span class="geodir_post_meta_icon geodir-i-text">
+    //                         <i class="fas fa-minus" aria-hidden="true"></i>
+    //                         <span class="geodir_post_meta_title">Property Type: </span></span>`+place.property_type+`</div>
+    //                     <div class="geodir_post_meta  geodir-field-address" itemscope="" itemtype="http://schema.org/PostalAddress">
+    //                         <span class="geodir_post_meta_icon geodir-i-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+    //                         <span class="geodir_post_meta_title">Address: </span></span><span itemprop="streetAddress">`+place.address+`</span>
+    //                     </div>
+    //                 </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         </div>
+    //         </div>`;
+
+    //     return content;
+
+    // }
+    });
+</script>
 <script>
     $(document).ready(function () {
         // Select all tabs

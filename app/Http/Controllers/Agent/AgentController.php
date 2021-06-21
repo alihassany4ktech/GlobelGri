@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Agent;
 
 use App\User;
 use App\Contact;
+use App\Favourite;
 use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\PropertyResource;
 use App\Http\Resources\PropertyCollection;
+use Illuminate\Support\Facades\Validator;
 
 class AgentController extends Controller
 {
@@ -23,7 +25,6 @@ class AgentController extends Controller
 
     public function dashboard()
     {
-
         return view('agent.dashboard');
     }
 
@@ -31,9 +32,15 @@ class AgentController extends Controller
     public function profileupdate(Request $request)
     {
         if ($request->ajax()) {
-            $this->validate($request, [
-                'name' => 'required|min:3|max:50'
-            ]);
+            $rules = array('name' => 'required|min:3|max:50');
+
+
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json([
+                    'error'  => $error->errors()->all()
+                ]);
+            }
             $id = $request->id;
             $profile = User::find($id);
             $profile->name = $request->name;
@@ -62,10 +69,13 @@ class AgentController extends Controller
     public function passwordupdate(Request $request)
     {
         if ($request->ajax()) {
-
-            $this->validate($request, [
-                'password' => 'required|confirmed|min:6',
-            ]);
+            $rules = array('password' => 'required|confirmed|min:6');
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json([
+                    'error'  => $error->errors()->all()
+                ]);
+            }
             $id = $request->id;
             $profile = User::find($id);
             $profile->password = Hash::make($request->password);
@@ -99,17 +109,14 @@ class AgentController extends Controller
     {
         $properties = Property::where('user_id', '=', Auth::user()->id)->paginate(5);
         $data = PropertyCollection::collection($properties);
-        return view('agent.property.all', compact('data')); // for view
-        // return response()->json(PropertyCollection::collection($properties)); for api
+        return view('agent.property.all', compact('data'));
     }
 
     public function SingleProperty($id)
     {
         $property = Property::find($id);
         $data = new PropertyResource($property);
-        // dd($data->gallery_photos);
-        // return $data->toJson();  for api 
-        return view('agent.property.single', compact('data')); // for view
+        return view('agent.property.single', compact('data'));
     }
 
     public function EditProperty($id)
@@ -122,14 +129,19 @@ class AgentController extends Controller
     {
         $property = Property::find($id);
         $property->delete();
-        return redirect()->back();
+        return redirect()->back()->with(['delete_property' => 'Property Deleted Successfully']);
+    }
+
+    public function favouriteProperty()
+    {
+        $properties_id = Favourite::where('user_id', '=', Auth::user()->id)->pluck('property_id');
+        $data = Property::whereIn('id', $properties_id)->paginate(5);
+        return view('agent.property.favourite', compact('data'));
     }
 
     public function contacts()
     {
-
         $contacts = Contact::all();
-
         return view('agent.contacts', compact('contacts'));
     }
 }

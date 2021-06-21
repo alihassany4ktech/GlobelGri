@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Blog;
 use App\User;
 use App\Contact;
+use App\Favourite;
 use App\Property;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
@@ -30,26 +31,26 @@ class FrontEndController extends Controller
 
     public function HomeForSale()
     {
-        $mapShops = Property::all();
+        $mapShops = Property::where('property_type', '=', 'For Sale')->get();
         return view('frontend.buy.home-for-sale', compact('mapShops'));
     }
 
     public function HomeForRent()
     {
-        $mapShops = Property::all();
+        $mapShops = Property::where('property_type', '=', 'For Rent')->get();
         return view('frontend.rent.home-for-rent', compact('mapShops'));
     }
 
     public function investment()
     {
-        $mapShops = Property::all();
+        $mapShops = Property::where('property_type', '=', 'For Investment')->get();
         return view('frontend.investment.home-for-investment', compact('mapShops'));
     }
 
     public function SingleProperty($id)
     {
-        $property = Property::find($id);
-        return view('frontend.buy.single-property', compact('property'));
+        $mapShops = Property::find($id);
+        return view('frontend.buy.single-property', compact('mapShops'));
     }
 
     public function ContactUs()
@@ -113,7 +114,82 @@ class FrontEndController extends Controller
 
     public function searchBye(Request $request)
     {
-        dd($request);
-        $property = DB::table('properties')->where('property_type', 'LIKE', '%' . $request->item . '%')->get();
+        $mapShops = DB::table('properties')->where('address', 'LIKE', '%' . $request->item . '%')
+            ->where('property_type', '=', $request->property_type)
+            ->get();
+        return view('frontend.searchedproperty', compact('mapShops'));
     }
+
+    public function favourite(Request $request)
+    {
+        if ($request->ajax()) {
+
+
+            $already_favourite = Favourite::where('property_id', '=', $request->property_id)
+                ->where('user_id', '=', Auth::user()->id)
+                ->first();
+            if ($already_favourite == null) {
+                $favourite = new Favourite();
+                $favourite->property_id = $request->property_id;
+                $favourite->user_id = Auth::user()->id;
+                $favourite->save();
+                return response()->json([
+                    'success' => 'Add To Favourite',
+                ]);
+            }
+            $already_favourite->delete();
+            return response()->json([
+                'success' => 'UnFavourite',
+            ]);
+        }
+    }
+
+    // buy a home function 
+
+    public function BuyHome()
+    {
+        return view('frontend.home.buy-a-home');
+    }
+
+    public function RentHome()
+    {
+        return view('frontend.home.rent-a-home');
+    }
+
+    public function InvestHome()
+    {
+        return view('frontend.home.invest-a-home');
+    }
+
+
+    public function AllGuide()
+    {
+        return view('frontend.home.all-guide');
+    }
+
+    public function AgentGuide()
+    {
+        return view('frontend.home.allguide.agent-guide');
+    }
+
+    public function PropertyManagerGuide()
+    {
+        return view('frontend.home.allguide.property-manager-guide');
+    }
+
+     public function LenderGuide()
+    {
+        return view('frontend.home.allguide.lender-guide');
+    }
+
+     public function BuilderGuide()
+    {
+        return view('frontend.home.allguide.builder-guide');
+    }
+
+     public function PlateformAdministratorGuide()
+    {
+        return view('frontend.home.allguide.plateform-administrator-guide');
+    }
+
 }

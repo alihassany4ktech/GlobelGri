@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/fancybox.css')}}">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{asset('frontend/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <style>
         .findFormBlock .btn {
             padding: 8px;
@@ -38,12 +40,24 @@
                 display: block !important;
             }
 
+            #noshow{
+                display:none !important;
+            }
+            
+            #headingform{
+                margin-left: 20px !important;
+            }
+
                 .postColumn {
                 position: relative;
                 padding: 0 50px 13px;
                 margin-bottom: 30px;
                 width: 100%;
             }
+
+            .mo .col{
+          width:393px !important;
+    }
 
             .slick-slide {
             float: left;
@@ -55,7 +69,32 @@
             .navigation{
                 margin-top:0%;
             }
-
+            #hide{
+                display:initial !important;
+            }
+            #bheading{
+                margin-top: 15px !important;
+                font-size: 34px !important;
+            }
+               #bheading1{
+                margin-top: -25px !important;
+                font-size: 34px !important;
+            }
+            #bp{
+                 margin-top:-10px !important;
+                 font-size: 13px !important;
+                
+            }
+            #d{
+                margin-left:0px !important;
+            }
+             #d1{
+                margin-left:0px !important;
+            }
+            #cover{
+                background-position: 0px 0px !important;
+                /* background-repeat: no-repeat !important; */
+            }
     #pica {
     margin: 0px;
     width: 259px !important;
@@ -681,6 +720,7 @@
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/map2.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         function myFunction() {

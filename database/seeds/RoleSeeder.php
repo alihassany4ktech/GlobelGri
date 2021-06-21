@@ -33,6 +33,10 @@ class RoleSeeder extends Seeder
             ],
             [
                 'agent_role' => ('Platform Administrator'),
+            ],
+
+            [
+                'agent_role' => ('Buyer'),
             ]
         ]);
     }

@@ -1,8 +1,5 @@
 @extends('layouts.frontend.app')
 @section('content')
-{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
-{{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
-<!-- main -->
 <link rel="stylesheet" href="frontend/css/style.css">
 
 <style>
@@ -33,9 +30,6 @@ a:visited {
             <div class="col-xs-12 col-sm-6 col-md-12">
                 <div class="map-area" style="height:530px; margin-left:-1%;margin-right:-1%">
                     <div id="map-container">
-                        {{-- <div id="map">
-                            &nbsp;
-                        </div> --}}
                                 <div id="map-canvas" style="height: 525px; width: 100%; position: relative; overflow: hidden;">
                                 </div>
                     </div>
@@ -520,7 +514,7 @@ a:visited {
                     </header>
                     <!-- isoContentHolder -->
                     <?php
-                    $property_for_sale = App\Property::where('property_type' , '=', 'For Sale')->paginate(8);
+                    $property_for_sale = App\Property::where('property_type' , '=', 'For Sale')->get();
                     $total_for_sale = count($property_for_sale);
                     ?>
                     <div class="isoContentHolder">
@@ -583,15 +577,36 @@ a:visited {
                                             </li>
                                         </ul>
                                         <!-- linkToFavourite -->
-                                        <a href="#"
-                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim"><i
-                                                class="far fa-heart"></i></a>
+                                        @if(Auth::check())
+                                         <?php
+
+                                        $f = App\Favourite::where('property_id','=',$row->id)
+                                        ->where('user_id','=',Auth::user()->id)->first();
+                                         ?>
+                                        @endif
+                                       
+                                        
+                                         
+                                        @if(Auth::check() && $f == null)
+                                            <a type="button"
+                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim f"><i
+                                                class="far fa-heart" onclick="getProperty(this)" id="{{$row->id}}"></i></a>
+                                        @elseif(Auth::check() && $f != null)
+                                         <a type="button"
+                                            class="linkToFavourite roundedCircle   icnHeartBeatAnim f" style="background-color: #dcf2f7; color:#f1c967"><i
+                                                class="far fa-heart" onclick="getProperty(this)" id="{{$row->id}}"></i></a>
+                                        @else 
+                                        <a  href="#popup1" 
+                                            class="linkToFavourite roundedCircle bg-primary textWhite icnHeartBeatAnim lightbox"><i
+                                                class="far fa-heart" id="{{$row->id}}"></i></a>
+                                        @endif
                                     </div>
                                     <h2 class="fontNeuron text-capitalize" ><a href="{{route('single_property',['id' => $row->id])}}" style="color: black">{{$row->propert_title}}</a></h2>
-                                    <address>
+                                     <address>
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
-                                        <p>The Village, Jersey City, NJ 07302, USA </p>
+                                        <p>{{$row->address}}</p>
                                     </address>
+                                        {{-- <input type="button" value="Get Address" onclick="GetAddress()" /> --}}
                                     <span class="btn btnSmall  text-capitalize"
                                         style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$row->property_type}}</span>
                                     <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span> <span
@@ -620,6 +635,7 @@ a:visited {
                                         </footer>
                                     </a>
                                 </article>
+                                <span id="result"></span>
                          
 
                             </div>
@@ -630,7 +646,7 @@ a:visited {
 
                     <nav class="navigation pagination pagination1 fontNeuron" role="navigation">
                         <div class="nav-links">
-                            {{$property_for_sale->links()}}
+                            {{-- {{$property_for_sale->links()}} --}}
                         </div>
                     </nav>
                 </div>
@@ -722,60 +738,11 @@ a:visited {
             </div>
 
         </div>
+
 </main>
 @endsection
-
-
-
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" defer></script>
-
-<script>
-    $(document).ready(function () {
-
-        $('#status').bootstrapToggle({
-            on: 'Map',
-            off: 'Search',
-            onstyle: 'info',
-            offstyle: 'primary'
-        });
-
-        $('#status').change(function () {
-            if ($(this).prop('checked')) {
-                $('#form').show();
-                $('#map').hide();
-
-            } else {
-                $('#map').show();
-                $('#form').hide();
-            }
-
-        });
-
-    });
-
-</script> --}}
-{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB&callback=initMap&libraries=&v=weekly" async></script>
-<script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.036 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
-}
-</script> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
-<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB'></script>
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
 <script defer>
     var mainurl = "{{url('/')}}";
     function initialize() {
@@ -803,7 +770,6 @@ function initMap() {
         for(place in places)
         {
             place = places[place];
-            console.log(place.propert_title);
             if(place.latitude && place.longitude)
             {
                 var marker = new google.maps.Marker({
@@ -871,4 +837,29 @@ function initMap() {
         return content;
 
     }
+</script>
+<script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+             function getProperty(elem){
+            var property_id = $(elem).attr("id");
+            $.ajax({
+                url: "{{ route('property.favourite.store') }}",
+                method: "POST",
+                dataType: "json",
+
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    property_id: property_id,
+                },
+
+                success: function (data) {
+                    toastr.success(data.success);
+                }
+            });
+            };
+
 </script>

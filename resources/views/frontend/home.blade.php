@@ -37,6 +37,7 @@
                                                     <div class="form-group">
                                                         <input type="text" name="item" class="form-control elemenBlock"
                                                             placeholder="Search Buy..." autocomplete="off">
+                                                            <input type="hidden" name="property_type" value="For Sale">
                                                     </div>
                                                 </div>
 
@@ -61,6 +62,7 @@
                                                     <div class="form-group">
                                                         <input type="text" name="item" class="form-control elemenBlock"
                                                             placeholder="Search Rent..." autocomplete="off">
+                                                            <input type="hidden" name="property_type" value="For Rent">
                                                     </div>
                                                 </div>
 
@@ -83,6 +85,7 @@
                                                     <div class="form-group">
                                                         <input type="text" name="item" class="form-control elemenBlock"
                                                             placeholder="Search Investment..." autocomplete="off">
+                                                            <input type="hidden" name="property_type" value="For Investment">
                                                     </div>
                                                 </div>
 
@@ -135,7 +138,7 @@
                     home or apartment for rent that you'll love.</p>
 
                 <div class="col text-center">
-                     <a href="{{route('home_for_rent')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                     <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Find a home </a>
                 </div>
@@ -151,7 +154,7 @@
                     captured the color and diversity of communities.</p>
 
                 <div class="col text-center">
-                    <a href="{{route('investment')}}" type="button" class="btn" style="border:none;background: #f1c967; 
+                    <a href="{{route('home_for_sale')}}" type="button" class="btn" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Learn more </a>
                 </div>
@@ -356,7 +359,7 @@
                     <h4 class="fontNeuron" style="color: white;">Everything you need to know <br> when you're looking to buy,rent, or investment - all in one place.
                     </h4>
 
-                    <a href="{{route('home_for_sale')}}" style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('all_guide')}}" style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:7%"  type="button" class="btn  text-uppercase fontNeuron">See all the guides</a>
                 </div>
@@ -364,19 +367,19 @@
                     <div class="row" style="margin-top: 6%">
                         <div class="col-xs-6 col-sm-6 col-md-6 ">
                             <div class="imgHolder" style="display: block; margin-left: 40%; width: 50%;">
-                                <a href="{{route('home_for_sale')}}">
+                                <a href="{{route('buy_a_home')}}">
                                     <img src="{{asset('frontend/images/homes1.png')}}" class="pic" style="height: 90px" alt="image description">
                                 </a>
                             </div>
                             <div class="imgHolder"
                                 style="display: block; margin-left: 40%; margin-right: auto; width: 50%;">
-                                <a href="{{route('home_for_sale')}}">
+                                <a href="{{route('rent_a_home')}}">
                                     <img src="{{asset('frontend/images/homes2.png')}}" class="pic" style="height: 90px" alt="image description">
                                 </a>
                             </div>
                             <div class="imgHolder"
                                 style="display: block; margin-left: 40%; margin-right: auto; width: 50%;">
-                                <a href="{{route('home_for_sale')}}">
+                                <a href="{{route('invest_a_home')}}">
                                     <img src="{{asset('frontend/images/homes3.png')}}" class="pic"  style="height: 90px" alt="image description">
                                 </a>
                             </div>
@@ -384,11 +387,11 @@
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <h2 class="fontNeuron" style="color: white;">Buyer Guides</h2>
-                            <a href="{{route('home_for_sale')}}"><p style="color: white;">How to buy <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
+                            <a href="{{route('buy_a_home')}}"><p style="color: white;">How to buy <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                             <h2 class="fontNeuron" style="color: white;">Renter Guides</h2>
-                            <a href="{{route('home_for_sale')}}"><p style="color: white;">How to rent <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
+                            <a href="{{route('rent_a_home')}}"><p style="color: white;">How to rent <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                             <h2 class="fontNeuron" style="color: white;">Invester Guides</h2>
-                            <a href="{{route('home_for_sale')}}"><p style="color: white;">How to invest <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
+                            <a href="{{route('invest_a_home')}}"><p style="color: white;">How to invest <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                         </div>
                     </div>
                 </div>
