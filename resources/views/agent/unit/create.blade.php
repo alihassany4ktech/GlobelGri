@@ -1,15 +1,24 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-<style>
-    .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
-    z-index: 2;
-    color: #fff;
-    border:1px solid #f1c967 ;
-    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
-    /* border-color: #13293d; */
-}
 
+
+<style>
+    #kuchbe
+{
+    height: 25px;
+    line-height: 26px;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+     border-radius: 3px;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967);
+}
 </style>
 <!-- main -->
 <main>
@@ -46,7 +55,7 @@
                             data-toggle="collapse" href="#otherFeaturescollapse" aria-expanded="false"
                             aria-controls="otherFeaturescollapse">
                             <i class="fas btnIcn fa-plus-circle text-info opener"></i>
-                            <i class="fas fa-minus-circle closer btnIcn text-info"></i>
+                            <i class="fas fa-minus-circle closer btnIcn text-info" style=""></i>
                             Advanced
                         </a>
                         <button type="button"
@@ -205,7 +214,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                    <button type="button" class="btn  text-uppercase fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white;">SEARCH</button>
+                    <button type="button" class="btn  text-uppercase fontNeuron" style="background-color: #8b5925; color:white;">SEARCH</button>
                 </div>
             </div>
         </div>
@@ -217,6 +226,14 @@
             <div class="col-xs-12 col-sm-10">
                 <h1 class="fontNeuron">Profile</h1>
             </div>
+            
+            {{-- <div class="col-xs-12 col-sm-2">
+                <!-- viewFilterLinks -->
+                <ul class="list-unstyled viewFilterLinks">
+                    <li><a href="#"><i class="fi flaticon-share"></i></a></li>
+                    <li><a href="#"><i class="fi flaticon-printer"></i></a></li>
+                </ul>
+            </div> --}}
         </header>
         <!-- userProfile -->
         <div class="userProfile">
@@ -234,6 +251,7 @@
                             </div>
                             <div class="info">
                                 <span class="text">{{Auth::user()->name}}</span>
+                                {{-- <span class="text"><a href="#" class="link">Change Password</a></span> --}}
                             </div>
                         </header>
                         <ul class="navUser list-unstyled">
@@ -256,13 +274,13 @@
                                 </a>
                             </li>
                            
-                                <li>
+                            <li>
                                 <a href="{{route('property.create')}}">
                                     <i class="fa fa-plus"></i>
-                                    <span>Saved Property</span>
+                                    <span>Submit Property</span>
                                 </a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="{{route('unit.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Submit Units</span>
@@ -274,14 +292,12 @@
                                     <span>Units Purchased</span>
                                 </a>
                             </li>
-                                <li>
+                             <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
                             </li>
-                        
-                         
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -295,34 +311,53 @@
                         </ul>
                     </aside>
                 </div>
-                </form>
-                  <div class="col-xs-12 col-sm-8 col-lg-9">
-                            <!-- accountData -->
-                            <div class="accountData">
-                              <div class="head">
-                                <h4 class="fontNeuron">My Contacts</h4>
-                              </div>
-                              <!-- propertiesList -->
-                              <div class="propertiesList">
-                                    @foreach ($contacts as $row)
-                                        <article class="propertyRow">
-                                  <div class="info">                                    
-                                    <div class="textBox">
-                                      <h4 class="fontNeuron"><a href=""><span class="status fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">{{$row->type}}</span></a></h4>
-                                      <address><i class="fa fa-envelope" aria-hidden="true"></i>{{$row->email}} &nbsp; <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; {{$row->phone}} &nbsp; <i class="fa fa-calendar" aria-hidden="true"></i> {{$row->date}} &nbsp; Time: {{$row->time}}</address>
-                                    </div>
-                                  </div>
-            
-                                </article>
-                                    @endforeach
-                                
-
-                              </div>
+                <div class="col-xs-12 col-sm-8 col-lg-9">
+                  
+                    <!-- accountData -->
+                    <div class="accountData">
+                        <form id="saveunit">
+                            @csrf
+                            <div class="head">
+                                <h4 class="fontNeuron">Add Unit</h4>
                             </div>
-                            <!-- pagination -->
-                            {{-- {{ $data->links() }} --}}
-                          </div>
+                            <div class="accountHolder">
+                                <div class="accountContent">
+                                    <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group">
+                                    <label for="itemN-6">Select Property</label>
+                                    <input type="text" autocomplete="off" class="form-control autocomplete_txt"
+                                    data-type='countryname' id="countryname" name="property_title"
+                                    placeholder="Search Property..">
+                                    <input type="hidden" name="property_id" id="country_code">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="itemN-7">Unit Name</label>
+                                        <input type="text" class="form-control" name="unit_name"
+                                            id="itemN-7" required 
+                                            placeholder="Enter Unit Name..">
+                                    </div>
+                                </div>
+                                 <div class="col-xs-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="itemN-7">Unit Price</label>
+                                        <input type="text" class="form-control" name="unit_price"
+                                            id="itemN-7" required 
+                                            placeholder="Enter Unit price..">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn alighRight  buttonL fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">
+                                Submit</button>
+                    </div>
+                </div>
+                </form>
             </div>
+
         </div>
         </div>
         </div>
@@ -331,43 +366,20 @@
 
 
 @endsection
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
 <script>
     $(document).ready(function () {
-
-        $('#agentform').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("agent.profile.update")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
-
-                }
-            });
-        });
-
         // change password
-         $('#changepassword').on('submit', function (event) {
+         $('#saveunit').on('submit', function (event) {
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
 
-                url: '{{route("agent.password.update")}}',
+                url: '{{route("unit.store")}}',
                 method: 'post',
                 processData: false,
                 contentType: false,
@@ -376,60 +388,64 @@
                     $('#add').attr('disabled', 'disabled');
                 },
                 success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
+                     if (data.success) {
+                        toastr.success(data.success);
                     } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
+                        toastr.error(data.error[0]);
                     }
 
                 }
             });
         });
 
-   // social media update
-         $('#social_media_form').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
+      //autocomplete script
+        $(document).on('focus', '.autocomplete_txt', function () {
+            type = $(this).data('type');
+            var _token = $('input[name="_token"]').val();
 
-                url: '{{route("agent.social_media.update")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
+            if (type == 'countryname') autoType = 'name';
+            $(this).autocomplete({
+                minLength: 0,
+                source: function (request, response) {
+                    $.ajax({
+                        url: "{{ route('property.searchs') }}",
+                        method: "POST",
+                        dataType: "json",
+
+                        data: {
+                            term: request.term,
+                            type: type,
+                            _token: _token,
+                        },
+                        success: function (data) {
+                            var array = $.map(data, function (item) {
+                                return {
+                                    label: item[autoType],
+                                    value: item[autoType],
+                                    data: item
+                                }
+                            });
+                            response(array)
+                        }
+                    });
                 },
-                success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
-
+                select: function (event, ui) {
+                    var data = ui.item.data;
+                    id_arr = $(this).attr('id');
+                    id = id_arr.split("_");
+                    elementId = id[id.length - 1];
+                    $('#countryname_' + elementId).val(data.product_name);
+                    $('#country_code').val(data.id);
                 }
             });
+
+
         });
+        // end new
+
+
 
     });
 
 </script>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#one')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(150);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
-</script>

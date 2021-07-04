@@ -280,6 +280,19 @@
                                     <span>Submit Property</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('unit.create')}}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Submit Units</span>
+                                </a>
+                            </li>
+
+                             <li>
+                                <a href="{{route('unit.purchased')}}">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <span>Units Purchased</span>
+                                </a>
+                            </li>
                              <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>

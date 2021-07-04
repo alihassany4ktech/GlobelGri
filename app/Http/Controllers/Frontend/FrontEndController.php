@@ -71,6 +71,31 @@ class FrontEndController extends Controller
         return view('frontend.single-blog', compact('blog'));
     }
 
+    public function AboutUs()
+    {
+        return view('frontend.about-us');
+    }
+
+    public function TermOfUse()
+    {
+        return view('frontend.term-of-use');
+    }
+
+    public function PrivacyPolicy()
+    {
+        return view('frontend.privacy-policy');
+    }
+
+    public function ContactSupport()
+    {
+        return view('frontend.contact-support');
+    }
+
+    public function HowItWork()
+    {
+        return view('frontend.how-it-work');
+    }
+
     public function ContactStore(Request $request)
     {
         if ($request->ajax()) {
@@ -177,19 +202,18 @@ class FrontEndController extends Controller
         return view('frontend.home.allguide.property-manager-guide');
     }
 
-     public function LenderGuide()
+    public function LenderGuide()
     {
         return view('frontend.home.allguide.lender-guide');
     }
 
-     public function BuilderGuide()
+    public function BuilderGuide()
     {
         return view('frontend.home.allguide.builder-guide');
     }
 
-     public function PlateformAdministratorGuide()
+    public function PlateformAdministratorGuide()
     {
         return view('frontend.home.allguide.plateform-administrator-guide');
     }
-
 }

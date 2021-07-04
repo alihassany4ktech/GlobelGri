@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Unit;
 use App\Favourite;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,5 +18,10 @@ class Property extends Model
     public function favourites()
     {
         return $this->belongsToMany(Favourite::class);
+    }
+
+    public function units()
+    {
+        return $this->hasMany(Unit::class);
     }
 }

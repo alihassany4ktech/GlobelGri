@@ -115,8 +115,8 @@ class AgentController extends Controller
     public function SingleProperty($id)
     {
         $property = Property::find($id);
-        $data = new PropertyResource($property);
-        return view('agent.property.single', compact('data'));
+        $mapShops = new PropertyResource($property);
+        return view('agent.property.single', compact('mapShops'));
     }
 
     public function EditProperty($id)

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Property;
 
-use App\Http\Controllers\Controller;
 use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PropertyController extends Controller
 {
@@ -17,6 +18,13 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
+            $unit_total_price = array_sum($request->unit_price);
+            $price = $request->price;
+            // if ($unit_total_price > $price) {
+            //     return response()->json([
+            //         'error' => 'Price Must Be Greate then Unit Price!',
+            //     ]);
+            // }
             $propert = new Property();
             $propert->user_id = $request->agent_id;
             $propert->propert_title = $request->propert_title;
@@ -49,6 +57,11 @@ class PropertyController extends Controller
             $propert->garages = $request->garages;
             $propert->area = $request->area;
             $propert->property_type = $request->property_type;
+            if ($request->status) {
+                $propert->status = implode(',', $request->status);
+                $propert->unit_name = implode(',', $request->unit_name);
+                $propert->unit_price = implode(',', $request->unit_price);
+            }
             $propert->description = $request->description;
             $propert->latitude = $request->latitude;
             $propert->longitude = $request->longitude;
@@ -106,6 +119,29 @@ class PropertyController extends Controller
             return response()->json([
                 'success' => 'Property Update Successfully!',
             ], 200);
+        }
+    }
+
+    // property search
+
+    public function SearchProperty(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = $request->get('term', '');
+            $products = DB::table('properties');
+            if ($request->type == 'countryname') {
+                $products->where('property_type', '=', 'For Investment')
+                    ->where('propert_title', 'LIKE', '%' . $query . '%');
+            }
+            $products = $products->get();
+            $data = array();
+            foreach ($products as $product) {
+                $data[] = array('name' => $product->propert_title, 'id' => $product->id);
+            }
+            if (count($data))
+                return $data;
+            else
+                return ['name' => '', 'id' => ''];
         }
     }
 }

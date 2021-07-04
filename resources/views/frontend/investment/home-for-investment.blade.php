@@ -504,7 +504,7 @@ a:visited {
     <!-- latestPostsBlock -->
     <div class="container-fluid">
         <div class="row">
-            <h1 class="fontNeuron" style="margin-left: 0.9%;">San Francisco, CA Homes For Sale & Real Estate</h1>
+            {{-- <h1 class="fontNeuron" style="margin-left: 0.9%;">San Francisco, CA Homes For Sale & Real Estate</h1> --}}
             <div class="col-xs-12 col-md-12">
                 <!-- content -->
                 <div id="content">
@@ -523,10 +523,11 @@ a:visited {
                     $property_for_investment = App\Property::where('property_type' , '=', 'For Investment')->paginate(8);
                     $total_for_investment = count($property_for_investment);
                     ?>
+                    
                     <div class="isoContentHolder">
                         <div class="row">
                             @foreach ($property_for_investment as $row)
-                            
+                           
                             <div class="col-xs-12 col-sm-6 col-md-3 col isoCol">
                                 <!-- postColumn -->
                                 <article class="postColumn hasOver bgWhite">
@@ -610,10 +611,14 @@ a:visited {
                                         <span class="icn"><i class="fi flaticon-pin-1"></i></span>
                                         <p>{{$row->address}}</p>
                                     </address>
+                                    <?php
+                                        $units = App\Unit::where('property_id','=',$row->id)->get(); 
+                                        $total_unit = count($units);
+                                    ?>
+                                    
                                     <span class="btn btnSmall  text-capitalize"
                                         style="border:none;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$row->property_type}}</span>
-                                    <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span> <span
-                                            class="textUnit fwNormal"></span></h3>
+                                      <a href="{{route('single_property',['id' => $row->id])}}"><h4 class="fontNeuron"><span class="textSecondary">Total Units {{$total_unit}}</span></h4></a>
                                     <!-- postColumnFoot -->
                                     <a href="{{route('single_property',['id' => $row->id])}}">
                                         <footer class="postColumnFoot">
@@ -702,64 +707,25 @@ a:visited {
                     
                 </section>
             </div>
-
+   @foreach ($property_for_investment as $row)
+                <input type="hidden" id="lt" value="{{$row->latitude}}">
+                <input type="hidden" id="lng" value="{{$row->longitude}}">
+            @endforeach
         </div>
 </main>
 @endsection
 
 
-
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" defer></script>
-
-<script>
-    $(document).ready(function () {
-
-        $('#status').bootstrapToggle({
-            on: 'Map',
-            off: 'Search',
-            onstyle: 'info',
-            offstyle: 'primary'
-        });
-
-        $('#status').change(function () {
-            if ($(this).prop('checked')) {
-                $('#form').show();
-                $('#map').hide();
-
-            } else {
-                $('#map').show();
-                $('#form').hide();
-            }
-
-        });
-
-    });
-
-</script> --}}
-{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB&callback=initMap&libraries=&v=weekly" async></script>
-<script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.036 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
-}
-</script> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
 <script defer>
+    $(document).ready(function(){
     var mainurl = "{{url('/')}}";
+    var lt = $('#lt').val();
+    var lng = $('#lng').val();
+    var newlt = parseFloat(lt);
+    var newlng = parseFloat(lng);
     function initialize() {
         var mapOptions = {
             zoom: 6,
@@ -769,7 +735,7 @@ function initMap() {
             zoomControlOptions: {
                 style:google.maps.ZoomControlStyle.DEFAULT
             },
-            center: new google.maps.LatLng(-25.344,131.036),
+            center: new google.maps.LatLng(newlt,newlng),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: true,
             panControl:false,
@@ -853,6 +819,7 @@ function initMap() {
         return content;
 
     }
+    });
 </script>
 <script>
         $.ajaxSetup({

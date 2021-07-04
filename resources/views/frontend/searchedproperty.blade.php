@@ -651,151 +651,27 @@ a:visited {
                         </div>
                     </nav>
                 </div>
-                
-                {{-- <p style="text-align: center"><a href="" style="color: #bd7f0a"> United States </a> <i class="fa fa-angle-right"></i> <a
-                        href="" style="color: #bd7f0a"> California </a><i class="fa fa-angle-right"></i> San Francisco</p>
-                <h3 class="fontNeuron">San Francisco, CA Real Estate Trends</h3>
-                <p style="color: black">Learn about the San Francisco, CA housing market through trends and averages.
-                </p> --}}
-                {{-- <h3 class="fontNeuron">See Homes in Neighborhoods Near San Francisco, CA</h3> --}}
-                <!-- introBanner -->
-                {{-- <section class="threeBanner"> --}}
-                    <!-- bannerImageSlideshow -->
-                    {{-- <div class="banner-slider slickSlider">
-                        @foreach($property_for_sale as $row)
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    @if ($row->featured_photo)
-                                        <img src="{{asset($row->featured_photo)}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    @else
-                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 462px; width:489px;"
-                                        alt="image description">
-                                    @endif
-                                    
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">{{$row->propert_title}}</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>{{$total_for_sale}} total homes available</p>
-                                            </address>
-
-                                            <button type="button"
-                                                style="border:none;margin-left:10%; margin-top:10%;background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white"
-                                                class="btn">See home {{$row->property_type}}</button>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div> --}}
-                {{-- </section> --}}
-                <!-- findFormBlock -->
-                {{-- <h3 class="fontNeuron">Explore Neighborhoods in San Francisco, CA</h3>
-                <!-- introBanner -->
-                <section class="threeBanner" id="kuchbe" style="margin-bottom: 3%">
-                    <!-- bannerImageSlideshow -->
-                    <div class="banner-slider slickSlider">
-                        @foreach($mapShops as $row)
-                        <div>
-                            <div class="banner-content" style="padding: 1%">
-                                <figure class="imgHolder">
-                                    @if($row->featured_photo)
-                                    <img src="{{asset($row->featured_photo)}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    @else
-                                    <img src="{{asset('frontend/images/c.jpg')}}" alt="image description"
-                                        style="height: 226px; width:600px;">
-                                    @endif
-                                    
-                                    <figcaption class="captionWrap">
-                                        <h2 class="fontNeuron text-capitalize">{{$row->propert_title}}</h2>
-                                        <div class="textwrap ">
-                                            <address>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <p>{{$total_for_sale}} Homes for You</p><br>
-                                                <i class="fas fa-shopping-cart"></i>
-                                                <p>$ {{$row->price}}</p><br>
-                                            </address>
-
-
-                                            <a href="">
-                                                <h6 class="" style="margit-left:20px; color:white">See Local Highlights
-                                                </h6>
-                                            </a>
-                                        </div>
-
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    
-                </section> --}}
             </div>
-
+            @foreach ($mapShops as $row)
+                <input type="hidden" id="lt" value="{{$row->latitude}}">
+                <input type="hidden" id="lng" value="{{$row->longitude}}">
+            @endforeach
         </div>
 
 </main>
 @endsection
 
-
-
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" defer></script>
-
-<script>
-    $(document).ready(function () {
-
-        $('#status').bootstrapToggle({
-            on: 'Map',
-            off: 'Search',
-            onstyle: 'info',
-            offstyle: 'primary'
-        });
-
-        $('#status').change(function () {
-            if ($(this).prop('checked')) {
-                $('#form').show();
-                $('#map').hide();
-
-            } else {
-                $('#map').show();
-                $('#form').hide();
-            }
-
-        });
-
-    });
-
-</script> --}}
-{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv7dMSNHFPH9vYrCnozeqXzz_4Wy725EE&libraries=places&region=GB&callback=initMap&libraries=&v=weekly" async></script>
-<script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.036 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
-}
-</script> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
 <script defer>
+    $(document).ready(function(){
     var mainurl = "{{url('/')}}";
+    var lt = $('#lt').val();
+    var lng = $('#lng').val();
+    var newlt = parseFloat(lt);
+    var newlng = parseFloat(lng);
+
     function initialize() {
         var mapOptions = {
             zoom: 6,
@@ -805,7 +681,7 @@ function initMap() {
             zoomControlOptions: {
                 style:google.maps.ZoomControlStyle.DEFAULT
             },
-            center: new google.maps.LatLng(-25.344,131.036),
+            center: new google.maps.LatLng(newlt,newlng),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: true,
             panControl:false,
@@ -817,7 +693,6 @@ function initMap() {
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
         var places = @json($mapShops);
-        console.log(places);
         for(place in places)
         {
             place = places[place];
@@ -888,4 +763,5 @@ function initMap() {
         return content;
 
     }
+    });
 </script>

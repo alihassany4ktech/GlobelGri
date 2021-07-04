@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 
 @section('content')
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+
 <style>
     .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
     z-index: 2;
@@ -9,6 +11,49 @@
     background-color: #f1c967;background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967);background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;
     /* border-color: #13293d; */
 }
+
+/* .popupColsHolder .form-control{
+    max-width: 200px !important;
+} */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content1 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #bd7f0a;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 </style>
 <!-- main -->
@@ -216,8 +261,11 @@
         <header class="contentFiltersHeadingWrap row">
             <div class="col-xs-12 col-sm-10">
                 <h1 class="fontNeuron">Profile</h1>
+
             </div>
+ 
         </header>
+ 
         <!-- userProfile -->
         <div class="userProfile">
             <div class="row">
@@ -255,6 +303,7 @@
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
+                          
                            
                                 <li>
                                 <a href="{{route('property.create')}}">
@@ -268,19 +317,12 @@
                                     <span>Submit Units</span>
                                 </a>
                             </li>
-                                <li>
-                                <a href="{{route('unit.purchased')}}">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <span>Units Purchased</span>
-                                </a>
-                            </li>
-                                <li>
+                              <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
                             </li>
-                        
                          
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -300,136 +342,171 @@
                             <!-- accountData -->
                             <div class="accountData">
                               <div class="head">
-                                <h4 class="fontNeuron">My Contacts</h4>
+                                <h4 class="fontNeuron">My Properties</h4>
+                                @if(session()->has('delete_property'))
+                                    <div class="alert alert-success" style="float: right">
+                                        {{ session()->get('delete_property') }}
+                                    </div>
+                                @endif
                               </div>
+  
                               <!-- propertiesList -->
                               <div class="propertiesList">
-                                    @foreach ($contacts as $row)
+                                    @foreach ($units as $row)
                                         <article class="propertyRow">
-                                  <div class="info">                                    
+                                  <div class="info">
+                                    <div class="imgThumbnail">
+                                      <a href="{{route('agent.single_property',['id' => $row->id])}}"><img src="{{asset($row->property->featured_photo)}}" style="height: 85px; width:110px" alt="Featured Image"></a>
+                                    </div>
                                     <div class="textBox">
-                                      <h4 class="fontNeuron"><a href=""><span class="status fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">{{$row->type}}</span></a></h4>
-                                      <address><i class="fa fa-envelope" aria-hidden="true"></i>{{$row->email}} &nbsp; <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; {{$row->phone}} &nbsp; <i class="fa fa-calendar" aria-hidden="true"></i> {{$row->date}} &nbsp; Time: {{$row->time}}</address>
+                                      <h4 class="fontNeuron"><a href="{{route('agent.single_property',['id' => $row->id])}}">{{$row->property->propert_title}}</a></h4>
+                                      <address><i class="fi flaticon-pin-1"></i>{{$row->property->address}}</address>
+                                      <div class="priceArea">
+                                            <span class="price fontNeuron" style="font-size: 20px;">Unit Name: {{$row->unit_name}}</span>
+                                        <span class="price fontNeuron" style="font-size: 20px;">Price: $ {{$row->unit_price}}</span>
+                                        <time class="date" datetime="2017-02-27">{{$row->property->created_at->format('Y-m-d')}}</time>
+                                      </div>
                                     </div>
                                   </div>
-            
+                                  <div class="btnArea">
+                                      @if ($row->status == '2')
+                                        <button class="status fontNeuron" onclick="getUnitId(this)" id="{{$row->id}}" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">Resaled</button>
+                                    @else
+                                        <button class="status fontNeuron" onclick="getUnitId(this)" id="{{$row->id}}" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">ReSale</button>
+
+                                      @endif
+                                    <ul class="links list-unstyled">
+                                      <li><a href="{{route('agent.single_property',['id' => $row->id])}}"><i class="fa fa-eye"></i>View</a></li>
+                                      <li><a href="{{route('agent.edit_property',['id' => $row->id])}}"><i class="fa fa-edit"></i>Edit</a></li>
+                                      <li><a href="{{route('agent.delete_property',['id' => $row->id])}}" class="delete"><i class="far fa-window-close"></i></a></li>
+                                    </ul>
+                                  </div>
                                 </article>
                                     @endforeach
                                 
-
+                                <span id="result"></span>
                               </div>
                             </div>
                             <!-- pagination -->
-                            {{-- {{ $data->links() }} --}}
+                            {{ $units->links() }}
                           </div>
             </div>
         </div>
         </div>
         </div>
+            <!-- pagePopupWrap -->
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content1">
+    <span class="close">&times;</span>
+    <form id="myform"
+                class="popupHolderWrap bgLightDark">
+                @csrf
+                <div class="tab-content bgWhite">
+                                          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                    <input type="hidden" name="status"  value="2">
+                    <input type="hidden" name="unit_id" id="unitid">
+            
+                        <h3 id="headingform" style="margin-left: 35px;">Unit Details</h3>
+                        <div class="popupColsHolder mo">
+                            <div class="col bgWhite">
+                                <label for="">New Price</label>
+                                <input type="text" name="unit_price" id="newp" style="width: 40%"  class="form-control" placeholder="Enter New Price.. ">
+                                <div class="col-xs-12">
+                                    
+                                        <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                            style="color:#bd7f0a "> privacy policy. </a>
+                                        By pressing Submit, you agree that Zillow Group may contact you via phone/text
+                                        about
+                                        your inquiry, which may involve the use of automated means. You are not required
+                                        to
+                                        consent as a condition of purchasing any goods or services. Message/data rates
+                                        may
+                                        apply.</p>
+                                    <button type="submit"
+                                        class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
+                                        style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
+                               
+                                </div>
+
+
+                            </div>
+                        </div>
+            </form>
+  </div>
+
+</div>
     </section>
+  
 </main>
 
 
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script>
-    $(document).ready(function () {
+   
 
-        $('#agentform').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("agent.profile.update")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
-
-                }
-            });
-        });
-
-        // change password
-         $('#changepassword').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("agent.password.update")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
-
-                }
-            });
-        });
-
-   // social media update
-         $('#social_media_form').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("agent.social_media.update")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#result').html('<div class="alert alert-success">' + data
-                            .success + '</div>');
-                    } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
-                            '</div>');
-                    }
-
-                }
-            });
-        });
-
-    });
-
-</script>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#one')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(150);
+         function getUnitId(elem){
+            var unit_id = $(elem).attr("id");
+            $('#unitid').val(unit_id);
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
             };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+   
+</script>
+
+<script>
+        // add property
+        $(document).ready(function(){
+        $('#myform').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+
+                url: '{{route("unit.newstatus.update")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                     if (data.success) {
+                        toastr.success(data.success);
+                    } else {
+                        toastr.error(data.error);
+
+                    }
+
+
+                }
+            });
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+                    setTimeout(function(){
+       location.reload();
+   },2);
+            
+        });
+        });
 
 </script>

@@ -2,34 +2,97 @@
 @section('content')
 {{-- <link rel="stylesheet" href="frontend/css/style.css"> --}}
 <style>
-     @media only screen and (max-width: 600px) {
-            #mp {
-                margin-left: -25px !important;
-                width:283px !important;
-            }
-     }
 
-     .geodir_post_meta {
-    text-indent: .25px;
-    margin-top: 6px;
+          @media only screen and (max-width: 600px) {
+          .modal-content {
+        background-color: #fefefe;
+        margin: 48px;
+        padding: 29px;
+        border: 1px solid #888;
+        width: 85%;
+    }
+          }
+
+
+    #map,
+    #pano {
+        float: left;
+        height: 100%;
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #mp {
+            margin-left: -25px !important;
+            width: 283px !important;
+        }
+    }
+
+    .geodir_post_meta {
+        text-indent: .25px;
+        margin-top: 6px;
+    }
+
+    /* .popupColsHolder .form-control{
+    max-width: 200px !important;
+} */
+
+
+    .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #bd7f0a;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>
 <main>
     <!-- propertyIntroBlock -->
-    <section class="propertyIntroBlock" >
- 
-        <div class="slick-fade slickSlider introSlider propertyIntroImageSlider"  >
-            @if($data->gallery_photos)  
-            @foreach(json_decode($data->gallery_photos, true) as $row)
-       
-            <div >
-                <span class="bgCover elemenBlock introSlide" style="background-image: url({{asset('/gallery/'.$row)}});" ></span>
-            </div>
-           
-            @endforeach
-            @endif
+    <section class="propertyIntroBlock">
+        <!-- propertyIntroImageSlider -->
+        <div class="slick-fade slickSlider introSlider propertyIntroImageSlider">
+            @if($mapShops->gallery_photos)
+            @foreach(json_decode($mapShops->gallery_photos, true) as $row)
             <div>
-                 <span class="bgCover elemenBlock introSlide" style="background-image: url({{asset('frontend/images/d.jpg')}});" ></span>
+                <span class="bgCover elemenBlock introSlide"
+                    style="background-image: url({{asset('/gallery/'.$row)}});"></span>
+            </div>
+            @endforeach
+            @else
+            <div>
+                <span class="bgCover elemenBlock introSlide"
+                    style="background-image: url({{asset('frontend/images/d.jpg')}});"></span>
             </div>
             <div>
                 <span class="bgCover elemenBlock introSlide"
@@ -39,13 +102,14 @@
                 <span class="bgCover elemenBlock introSlide"
                     style="background-image: url({{asset('frontend/images/3.jpg')}});"></span>
             </div>
+            @endif
+
         </div>
-       
         <!-- rightPanelList -->
         <ul class="list-unstyled rightPanelList hidden-xs">
             <li>
                 <a href="#" class="hasOver">
-                    <span class="fi flaticon-photo icn"></span>
+                    <span class="fi flaticon-photo icn" style=""></span>
                     <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">View
                             Photos</span></strong>
                 </a>
@@ -80,53 +144,110 @@
                 <article id="content">
                     <!-- boxPanelBlock -->
                     <section id="Detail" class="accountData" style="background-color: #f0f9fb">
-                        <div class="col-xs-12 col-sm-12 col-md-4">
-                            <h3>{{$data->propert_title}}</h3>
-                            <p style="font-size:12px">{{$data->address}} <a href="" style="color: #bd7f0a"> Oceanview </a></p>
-                            <p style="margin-top: 20px; font-size:11px"><i class="fa fa-bed" aria-hidden="true"></i> {{$data->bedroom}}
-                                Bed <i class="fa fa-bath" aria-hidden="true"></i> {{$data->bathroom}} Baths <i
-                                    class="fa fa-chart-area"></i>{{$data->area}} sqft</p>
+                        <div class="col-xs-12 col-sm-12 col-md-4" style="">
+                            <h3>{{$mapShops->propert_title}}</h3>
+                            <p style="font-size:12px">{{$mapShops->address}} <a href="" style="color: #bd7f0a">
+                                    Oceanview </a></p>
+                            <p style="margin-top: 20px; font-size:11px"><i class="fa fa-bed" aria-hidden="true"></i>
+                                {{$mapShops->bedroom}}
+                                Bed <i class="fa fa-bath" aria-hidden="true"></i> {{$mapShops->bathroom}} Baths <i
+                                    class="fa fa-chart-area"></i> {{$mapShops->area}} sqft</p>
 
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="col-xs-12 col-sm-12 col-md-4" style="">
+                            @if ($mapShops->property_type == 'For Investment')
+                            <h3>Type</h3>
+                            <a href="#" class="btn"
+                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px">{{$mapShops->property_type}}</a>
+
+                            @else
                             <h3>Price</h3>
-                            <p style="font-size:12px;">${{$data->price}}</p>
-                            <a href="#" class="btn" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px">{{$data->property_type}}</a>
+                            <p style="font-size:12px;">${{$mapShops->price}}</p>
+                            <a href="#" class="btn"
+                                style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px">{{$mapShops->property_type}}</a>
+                            @endif
+
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4" style=" margin-top:10px">
-                           
-                         <div class="map-area" id="mp" style="height:200px; margin-left: -95px;width: 324px;">
+                            {{-- <figure class="hb-author-img"> --}}
+                            {{-- <a href="#"><img src="https://via.placeholder.com/150x150" alt="image description"></a> --}}
+                            <div class="map-area" id="mp" style="height:200px; margin-left: -95px;width: 324px;">
                                 <div id="map-container">
-                                    <div id="map-canvas" style="height: 525px; width: 100%; position: relative; overflow: hidden;">
-                                </div>
+                                    <div id="map-canvas"
+                                        style="height: 525px; width: 100%; position: relative; overflow: hidden;">
+                                    </div>
                                 </div>
                             </div>
                             {{-- </figure> --}}
                         </div>
 
-                      
+                        {{-- <h1>Description</h1> --}}
 
                     </section>
-                    <section id="Video" class="accountData aboutBlock overlaychange">
+                    @if($mapShops->property_type == 'For Investment')
+                    <?php
+                        $units = App\Unit::where('property_id','=',$mapShops->id)->where('current','=','1')->get(); 
+                        $total_unit = count($units);
+                    ?>
+                    @if (Auth::check())
+                        <section>
+                        <table class="table table table-bordered table-striped ptable" id="ptable"
+                            style="font-size: 13px;  text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="text-align: center;">#</th>
+                                    <th scope="col" style="text-align: center;">Unit Name</th>
+                                    <th scope="col" style="text-align: center;">Unit Price</th>
+                                    <th scope="col" style="text-align: center;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($units as $row)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$row->unit_name}}</td>
+                                    <td>$ {{$row->unit_price}}</td>
+                                    @if ($row->status == '0')
+                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="color: #bd7f0a">Available</button></td>
+                                    @else
+                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="color: #bd7f0a">Purchased</button></td>
+                                    @endif
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </section>
+                    @endif
+                    
+                    @endif
+                    @if($mapShops->property_type == 'For Investment')
+                    <section class="bgWhite">
+                        <canvas id="myChart" width="400" height="201" style="margin-bottom: 20px"></canvas>
+                    </section>
+                    @endif
+
+                    <section id="featured" class="accountData aboutBlock overlaychange">
                         <div class="head">
+
                             <h4 class="fontNeuron">Featured Image</h4>
                         </div>
-                        <div class="video-holder ">
-                             @if ($data->featured_photo)
-                            <img src="{{asset($data->featured_photo)}}" alt="image description"
+                        <div class="video-holder">
+
+                            @if ($mapShops->featured_photo)
+                            <img src="{{asset($mapShops->featured_photo)}}" alt="image description"
                                 class="img-responsive" style="height: 362px; width:645px;">
-                                    @else
-                                        <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 362px; width:687px;"
-                                        alt="image description">
-                                    @endif
-                           
+                            @else
+                            <img src="{{asset('frontend/images/home01.jpeg')}}" style="height: 362px; width:687px;"
+                                alt="image description">
+                            @endif
                         </div>
                     </section>
                     <section id="PageViews" class="Pageviews">
-                        <div class="head">
+                        <div class="head" style="margin-left: 0px">
                             <h4 class="fontNeuron">Description</h4>
                         </div>
-                        <p class="" style="color:black">{{$data->description}}
+                        <p class="" style="margin-left: 0px; color:black">{{$mapShops->description}}
                         </p>
                     </section>
 
@@ -147,34 +268,38 @@
                                         Info</b></a>
                             </li>
                         </ul>
-                        
-	                            <div class="hb-headarea" style="margin-top: 5%">
-											<div class="holder">
-												<figure class="hb-author-img pull-left">
-                                                                              @if ($data->user->image)
-                                                                                    <a href="#"><img src="{{asset($data->user->image)}}" style="height:75px;width:100px" alt="image description"></a>
-                                                                              @else
-													    <a href="#"><img src="https://via.placeholder.com/100x75" alt="image description"></a>
-                                                                          @endif
-												</figure>
-												<div class="pull-left">
-													<div class="hb-headcontent">
-														<h3>{{$data->user->name}}</h3>
-														<span>{{$data->user->address}}</span>
-														<a href="mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#111;&#109;&#101;&#115;&#119;&#101;&#101;&#116;&#046;&#099;&#111;&#109;">{{$data->user->email}}</a>
-													</div>
-												</div>
-											</div>
-											<div class="hb-numberbox text-center">
-												<h3><i class="fi flaticon-24-hours"></i>{{$data->user->phone}}</h3>
-											</div>
-										</div>      
+
+                        <div class="hb-headarea" style="margin-top: 5%">
+                            <div class="holder">
+                                <figure class="hb-author-img pull-left">
+
+                                    <a href="#"><img src="{{asset($mapShops->user->image)}}"
+                                            style="height:75px; width:100px" alt="image description"></a>
+
+                                </figure>
+                                <div class="pull-left">
+                                    <div class="hb-headcontent">
+                                        <h3>{{$mapShops->user->name}}</h3>
+                                        <span>{{$mapShops->user->address}}</span>
+                                        <a
+                                            href="mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#111;&#109;&#101;&#115;&#119;&#101;&#101;&#116;&#046;&#099;&#111;&#109;">{{$mapShops->user->email}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hb-numberbox text-center">
+                                <h3><i class="fi flaticon-24-hours"></i>{{$mapShops->user->phone}}</h3>
+                            </div>
+                        </div>
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home">
                                 <h4 style="margin-top: 30px">Tour Type <i class="fa fa-question-circle"
                                         aria-hidden="true"></i></h4>
-                                <form class="widgetCalcForm">
+                                <form id="contact_form">
+                                    @csrf
+                                    <input type="hidden" name="owner_id" value="{{$mapShops->user->id}}">
+                                    <input type="hidden" name="property_id" value="{{$mapShops->id}}">
+                                    <input type="hidden" name="type" value="Tour">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <label for="" class="fwNormal ">Choose a Date</label>
@@ -186,7 +311,7 @@
                                         <div class="col-xs-12">
                                             <label for="" class="fwNormal ">Choose a time</label>
                                             <div class="form-group">
-                                                <input type="time" name="time" class="form-control" required>
+                                                <input type="time" name="time" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -211,40 +336,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btnDark fontNeuron buttonXL"
-                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Schedule a
+                                    <button type="submit" class="btn  fontNeuron buttonXL"
+                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Schedule
+                                        a
                                         Tour</button>
-                                    <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                        Public Health Advisory</h6>
-                                    <p class="fontNeuron" style="font-size: 11px;">By pressing Schedule A Tour, you agree
-                                        that Trulia and real estate professionals may contact you via phone/text about
-                                        your inquiry, which may involve the use of automated means. You are not required
-                                        to consent as a condition of purchasing any property, goods or services.
-                                        Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
-                                        Trulia does not endorse any <a href="" style="color: #bd7f0a" > real estate professionals</a> </p>
-
                                 </form>
+                                <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    Public Health Advisory</h6>
+                                <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
+                                    that Trulia and real estate professionals may contact you via phone/text about
+                                    your inquiry, which may involve the use of automated means. You are not required
+                                    to consent as a condition of purchasing any property, goods or services.
+                                    Message/data rates may apply. You also agree to our <a href=""
+                                        style="color: #bd7f0a"> Terms of Use</a>
+                                    Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate
+                                        professionals</a> </p>
                             </div>
                             <div class="tab-pane" id="menu1">
-                                <form class="widgetCalcForm">
+                                <form class="widgetCalcForm" id="contact_form_info">
+                                    @csrf
+                                    <input type="hidden" name="owner_id" value="{{$mapShops->user->id}}">
+                                    <input type="hidden" name="property_id" value="{{$mapShops->id}}">
+                                    <input type="hidden" name="type" value="Info">
                                     <div class="row" style="margin-top: 30px">
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" name="phone" placeholder="Phone" class="form-control"
-                                                    required>
+                                                <input type="text" name="phone" placeholder="Phone"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="" class="fwNormal ">Message</label>
-                                                <textarea name="" id="" cols="10" rows="1" class="form-control"
-                                                    required>I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
+                                                <textarea name="message" id="" cols="10" rows="1"
+                                                    class="form-control">I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <input type="email" name="email" placeholder="Email"
-                                                    class="form-control" required>
+                                                    class="form-control">
                                                 <p style="font-size: 12px; color:red; margin-top:5px"><i
                                                         class="fas fa-exclamation-circle"></i> Enter a valid email.</p>
                                             </div>
@@ -257,145 +388,347 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btnDark fontNeuron buttonXL"
-                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Request Info</button>
-                                    <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                        Public Health Advisory</h6>
-                                    <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
-                                        that Trulia and real estate professionals may contact you via phone/text about
-                                        your inquiry, which may involve the use of automated means. You are not required
-                                        to consent as a condition of purchasing any property, goods or services.
-                                        Message/data rates may apply. You also agree to our <a href="" style="color: #bd7f0a"> Terms of Use</a>
-                                        Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate professionals</a> </p>
+                                    <button type="submit" class="btn fontNeuron buttonXL"
+                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Request
+                                        Info</button>
+
 
                                 </form>
+                                <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    Public Health Advisory</h6>
+                                <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
+                                    that Trulia and real estate professionals may contact you via phone/text about
+                                    your inquiry, which may involve the use of automated means. You are not required
+                                    to consent as a condition of purchasing any property, goods or services.
+                                    Message/data rates may apply. You also agree to our <a href=""
+                                        style="color: #bd7f0a"> Terms of Use</a>
+                                    Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate
+                                        professionals</a> </p>
                             </div>
 
                         </div>
-                        <input type="hidden" name="" value="{{$data->latitude}}" id="lt">
-                        <input type="hidden" name="" value="{{$data->longitude}}" id="lng">
+                        <input type="hidden" name="" value="{{$mapShops->latitude}}" id="lt">
+                        <input type="hidden" name="" value="{{$mapShops->longitude}}" id="lng">
+
                     </section>
 
                 </aside>
             </div>
+
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12 bgWhite" style="margin-left: 5%; width:1096px;">
+
+                <div class="head">
+                    <h4 class="fontNeuron">Floor Plans</h4>
+
+                </div>
+
+            </div> --}}
+
+                <?php
+                 $newoldunits  = App\Unit::where('property_id','=',$mapShops->id)->get(); 
+                 $items=[];
+                 $dates = [];
+                 foreach ($newoldunits as $key => $row) {
+                    
+                     array_push($items, $row->unit_price,);
+                     array_push($dates, $row->created_at->format('d/m/y'),);
+                 }
+             ?>
+        
+            <div id="map"></div>
+            <div id="pano"></div>
+
         </div>
     </div>
-</main>
-@endsection
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    @if (Auth::check())
+            <!-- pagePopupWrap -->
+    <div id="myModal" class="modal">
 
-<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="myform">
+                @csrf
+                <div class="bgWhite">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    <input type="hidden" name="status"  value="1">
+                    <input type="hidden" name="unit_id" id="unitid">
+                    
+                        <h3 id="headingform" style="margin-left: 35px;">Unit Details</h3>
+                        <div class="popupColsHolder mo">
+                            <div class="col bgWhite">
+                                <div class="col-xs-12">
+                                        <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                            style="color:#bd7f0a "> privacy policy. </a>
+                                        By pressing Submit, you agree that Zillow Group may contact you via phone/text
+                                        about
+                                        your inquiry, which may involve the use of automated means. You are not required
+                                        to
+                                        consent as a condition of purchasing any goods or services. Message/data rates
+                                        may
+                                        apply.</p>
+                                    <button type="submit"
+                                        class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
+                                        style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
+                               
+                                </div>
+
+
+                            </div>
+                        </div>
+            </form>
+  </div>
+
+</div>
+    @endif
+
+
+</main>
+
+@endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<script type='text/javascript'
+    src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc&callback=initialize&libraries=&v=weekly'
+    async></script>
 <script defer>
-    $(document).ready(function(){
-    var lt = $('#lt').val();
-    var lng = $('#lng').val();
-    var mainurl = "{{url('/')}}";
-    function initialize() {
-        var mapOptions = {
-            zoom: 6,
-            // minZoom: 6,
-            maxZoom: 16,
-            zoomControl:true,
-            zoomControlOptions: {
-                style:google.maps.ZoomControlStyle.DEFAULT
-            },
-            center: new google.maps.LatLng(lt,lng),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: true,
-            panControl:false,
-            mapTypeControl:false,
-            scaleControl:false,
-            overviewMapControl:false,
-            rotateControl:false
-        }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
-        var place = @json($data);
-            if(place.latitude && place.longitude)
-            {
+    $(document).ready(function () {
+        var lt = $('#lt').val();
+        var lng = $('#lng').val();
+        var mainurl = "{{url('/')}}";
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 6,
+                // minZoom: 6,
+                maxZoom: 15,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.DEFAULT
+                },
+                center: new google.maps.LatLng(lt, lng),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: true,
+                panControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                overviewMapControl: false,
+                rotateControl: false
+            }
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps
+                .Size(40, 52));
+            var place = @json($mapShops);
+            if (place.latitude && place.longitude) {
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(place.latitude, place.longitude),
-                    icon:image,
+                    icon: image,
                     map: map,
                     title: place.name
                 });
-                // var infowindow = new google.maps.InfoWindow();
-                // google.maps.event.addListener(marker, 'click', (function (marker, place) {
-                //     return function () {
-                //         infowindow.setContent(generateContent(place))
-                //         infowindow.open(map, marker);
-                //     }
-                // })(marker, place));
             }
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    // function generateContent(place)
-    // {
-    //     var content = `
-    //         <div class="gd-bubble" style="">
-    //             <div class="gd-bubble-inside">
-    //                 <div class="geodir-bubble_desc">
-    //                 <div class="geodir-bubble_image">
-    //                     <div class="geodir-post-slider">
-    //                         <div class="geodir-image-container geodir-image-sizes-medium_large ">
-    //                             <div id="geodir_images_5de53f2a45254_189" class="geodir-image-wrapper" data-controlnav="1">
-    //                                 <ul class="geodir-post-image geodir-images clearfix">
-    //                                     <li>
-    //                                         <div class="geodir-post-title">
-    //                                             <h4 class="geodir-entry-title">
-    //                                                 <a href="">`+place.propert_title+`</a>
-    //                                             </h4>
-    //                                         </div>
-    //                                         <a href=""><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
-    //                                     </li>
-    //                                 </ul>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 </div>
-    //             </div>
-    //             <div class="geodir-bubble-meta-side">
-    //                 <div class="geodir-output-location">
-    //                 <div class="geodir-output-location geodir-output-location-mapbubble">
-    //                     <div class="geodir_post_meta  geodir-field-post_title"><span class="geodir_post_meta_icon geodir-i-text">
-    //                         <i class="fas fa-minus" aria-hidden="true"></i>
-    //                         <span class="geodir_post_meta_title">Property Type: </span></span>`+place.property_type+`</div>
-    //                     <div class="geodir_post_meta  geodir-field-address" itemscope="" itemtype="http://schema.org/PostalAddress">
-    //                         <span class="geodir_post_meta_icon geodir-i-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-    //                         <span class="geodir_post_meta_title">Address: </span></span><span itemprop="streetAddress">`+place.address+`</span>
-    //                     </div>
-    //                 </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         </div>
-    //         </div>`;
-
-    //     return content;
-
-    // }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
     });
+
+</script>
+
+<script>
+    function initialize() {
+        var lt = $('#lt').val();
+        var lng = $('#lng').val();
+        var newlt = parseFloat(lt);
+        var newlng = parseFloat(lng);
+        const fenway = {
+            lat: newlt,
+            lng: newlng
+        };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: fenway,
+            zoom: 14,
+            scrollwheel: true,
+        });
+        const panorama = new google.maps.StreetViewPanorama(
+            document.getElementById("pano"), {
+                position: fenway,
+                pov: {
+                    heading: 34,
+                    pitch: 10,
+                },
+            }
+        );
+        map.setStreetView(panorama);
+    }
+
 </script>
 <script>
     $(document).ready(function () {
-        // Select all tabs
-        $('.nav-tabs a').click(function () {
-            $(this).tab('show');
-        })
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // Contact Add
+        $('#contact_form').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+            $.ajax({
 
-        // Select tab by name
-        $('.nav-tabs a[href="#home"]').tab('show')
+                url: '{{route("contact.store")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.success);
+                    }
 
-        // Select first tab
-        $('.nav-tabs a:first').tab('show')
-
-        // Select last tab
-        $('.nav-tabs a:last').tab('show')
-
-        // Select fourth tab (zero-based)
-        $('.nav-tabs li:eq(3) a').tab('show')
+                }
+            });
+        });
     });
 
+</script>
+
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#contact_form_info').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+            $.ajax({
+
+                url: '{{route("contact.info.store")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.success);
+                    }
+
+                }
+            });
+        });
+    });
+
+</script>
+
+<script>
+   
+
+         function getProperty(elem){
+            var unit_id = $(elem).attr("id");
+            $('#unitid').val(unit_id);
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+            };
+   
+</script>
+
+<script>
+        // add property
+        $(document).ready(function(){
+        $('#myform').on('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+
+                url: '{{route("unit.status.update")}}',
+                method: 'post',
+                processData: false,
+                contentType: false,
+                data: formData,
+                beforeSend: function () {
+                    $('#add').attr('disabled', 'disabled');
+                },
+                success: function (data) {
+                     if (data.success) {
+                        toastr.success(data.success);
+                    } else {
+                        toastr.error(data.error);
+
+                    }
+
+
+                }
+            });
+         var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        });
+        });
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+    function init(){
+            var prices = @json($items);
+            var dates = @json($dates);
+            console.log(dates);
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels:dates,
+        datasets: [{
+            label: 'Share Details',
+            data: prices,
+            backgroundColor:['rgb(210, 232, 186)'],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// 2nd chart 
+
+
+
+};
+window.onload = init;
 </script>

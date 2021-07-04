@@ -5,7 +5,7 @@
         min-width: 239px;
     }
 
-     #mybtn {
+    #mybtn {
         min-width: 60px;
         /* height: 1vh; */
     }
@@ -29,9 +29,11 @@
                     <div class="col-xs-8 col-sm-2 col-md-8 introSlideCaption captionwithtabs"
                         style="margin-top: 170px;">
                         <p style="color: white" id="bp">SOLUTIONS FOR REAL ESTATE AGENTS</p>
-                        <h1 class="fontNeuron" style="font-size:50px; margin-top:12px" id="bheading">Real Estate Agent <br> Advertising</h1>
-                        <p style="color: white; margin-top:-45px" id="bp">Get access to the largest network of real estate sites,<br style="display: none" id="hide"> and start <br id="noshow"> 
-                            connecting live with active home shoppers. </p> 
+                        <h1 class="fontNeuron" style="font-size:50px; margin-top:12px" id="bheading">Real Estate Agent
+                            <br> Advertising</h1>
+                        <p style="color: white; margin-top:-45px" id="bp">Get access to the largest network of real
+                            estate sites,<br style="display: none" id="hide"> and start <br id="noshow">
+                            connecting live with active home shoppers. </p>
                     </div>
                     {{-- </div> --}}
                 </div>
@@ -42,13 +44,13 @@
     <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-7">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Agent</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -60,16 +62,16 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('agent_guide')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('agent_guide')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup3" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup3" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-5">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
@@ -83,7 +85,7 @@
 
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </section>
@@ -91,16 +93,17 @@
     <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row text-center btnHolder holder">
-            <button  id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <button id="mybtn"
+                    style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn  text-uppercase fontNeuron"></button>
-        </div>
+                    class="btn  text-uppercase fontNeuron"></button>
+            </div>
             <h1 style="text-align: center" class="fontNeuron">Leverage tools that help you do your best work</h1>
-            <p style="text-align: center" class="fontNeuron">Each home-buying journey is unique, and Zillow Premier Agent gives you the resources to exceed <br> clients’ expectations at every step.</p>
+            <p style="text-align: center" class="fontNeuron">Each home-buying journey is unique, and Zillow Premier
+                Agent gives you the resources to exceed <br> clients’ expectations at every step.</p>
             <div class="row">
-               <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;" >
+                <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
                         <div>
                             <!-- testimonialColumn -->
@@ -112,13 +115,13 @@
 
                     </div>
                 </div>
-              <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Property Manager</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -130,32 +133,32 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('property_manager_guide')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('property_manager_guide')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup4" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup4" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
-             
-              
+
+
             </div>
         </div>
     </section>
-  <section class="aboutBlock bgWhite">
+    <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-7">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Lender</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -167,16 +170,16 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('lender_guide')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('lender_guide')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup5"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup5"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-5">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
@@ -190,14 +193,14 @@
 
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </section>
     <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
-               <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;" >
+                <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
                         <div>
                             <!-- testimonialColumn -->
@@ -209,13 +212,13 @@
 
                     </div>
                 </div>
-              <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Builder</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -227,32 +230,32 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('bulider_guide')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('bulider_guide')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup6"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup6"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
-             
-              
+
+
             </div>
         </div>
     </section>
-     <section class="aboutBlock bgWhite">
+    <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-7">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Investor</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -264,16 +267,16 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('invest_a_home')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('invest_a_home')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup7"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup7"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-5">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
@@ -287,14 +290,14 @@
 
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </section>
-      <section class="aboutBlock bgWhite">
+    <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
-               <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;" >
+                <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
                         <div>
                             <!-- testimonialColumn -->
@@ -306,13 +309,13 @@
 
                     </div>
                 </div>
-              <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Platform Administrator</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -324,50 +327,51 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('plateform_administrator_guide')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('plateform_administrator_guide')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup8"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup8"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
-             
-              
+
+
             </div>
         </div>
     </section>
     <section class="latestPostsBlock container">
         <!-- isoContentHolder -->
-            <div class="row text-center btnHolder holder">
+        <div class="row text-center btnHolder holder">
             <button id="mybtn"
                 style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px"
-                 class="btn  btn-xs   text-uppercase fontNeuron"></button>
+                class="btn  btn-xs   text-uppercase fontNeuron"></button>
         </div>
         <div class="isoContentHolder">
             <div class="row">
-                
+
                 <div class="col-xs-12 col-sm-6 col-md-12 col isoCol sale">
-                    <h1 style="text-align: center" class="fontNeuron">In the months since you’ve started calling with <br> connections, my conversion rate has been much  higher, and muc <br> quicker.</h1>
+                    <h1 style="text-align: center" class="fontNeuron">In the months since you’ve started calling with
+                        <br> connections, my conversion rate has been much higher, and muc <br> quicker.</h1>
                     <p style="text-align: center" class="fontNeuron">Lacey Blackman | Richmond, Washington</p>
 
                 </div>
 
             </div>
         </div>
-        
+
 
     </section>
 
     <section class="aboutBlock bgWhite">
-       <div class="container">
+        <div class="container">
             <div class="row">
-               <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;" >
+                <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;">
                     <div class="slickSlider testimonial-carousel testimonialSlider">
                         <div>
                             <!-- testimonialColumn -->
@@ -379,13 +383,13 @@
 
                     </div>
                 </div>
-              <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
-               
-                        <button id="mybtn"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                <div class="col-xs-12 col-sm-8 col-md-7" style="margin-top:100px;">
+
+                    <button id="mybtn"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
-                 class="btn     text-uppercase fontNeuron"></button>
+                        class="btn     text-uppercase fontNeuron"></button>
 
                     <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Renter</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
@@ -397,19 +401,19 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                                <a href="{{route('rent_a_home')}}" type="button"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                    <a href="{{route('rent_a_home')}}" type="button"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
-                                   <a href="#popup9"
-                style="border:none;font-size: 20px; background: #f1c967; 
+                        class="btn   btn-sm  text-uppercase fontNeuron">More Info</a>
+                    <a href="#popup9"
+                        style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
-                 class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
+                        class="btn  btn-sm   text-uppercase fontNeuron lightbox">Get Started</a>
                 </div>
-             
-              
+
+
             </div>
         </div>
     </section>
@@ -420,18 +424,19 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-12 col isoCol sale">
                     <h1 style="text-align: center" class="fontNeuron">Become a buyer</h1>
-                    <p style="text-align: center" class="fontNeuron">Reach more clients. Become a Zillow Premier Agent today.</p>
+                    <p style="text-align: center" class="fontNeuron">Reach more clients. Become a Zillow Premier Agent
+                        today.</p>
 
                 </div>
 
             </div>
         </div>
         <div class="row text-center btnHolder">
-                         <a href="{{route('buy_a_home')}}" type="button"
+            <a href="{{route('buy_a_home')}}" type="button"
                 style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px;"
-                 class="btn  btn-sm text-uppercase fontNeuron">More Info</a>
+                class="btn  btn-sm text-uppercase fontNeuron">More Info</a>
             <a href="#popup2"
                 style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
@@ -466,17 +471,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="8">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -486,7 +491,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -528,17 +534,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="1">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -548,7 +554,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -564,7 +571,7 @@
 
     </div>
 
-     <!-- pagePopupWrap 4 -->
+    <!-- pagePopupWrap 4 -->
     <div class="popup-holder">
         <div id="popup4" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -590,17 +597,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="2">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -610,7 +617,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -626,7 +634,7 @@
 
     </div>
 
-     <!-- pagePopupWrap 5 -->
+    <!-- pagePopupWrap 5 -->
     <div class="popup-holder">
         <div id="popup5" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -652,17 +660,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="3">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -672,7 +680,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -688,7 +697,7 @@
 
     </div>
 
-     <!-- pagePopupWrap 6 -->
+    <!-- pagePopupWrap 6 -->
     <div class="popup-holder">
         <div id="popup6" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -714,17 +723,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="4">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -734,7 +743,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -750,7 +760,7 @@
 
     </div>
 
-     <!-- pagePopupWrap 7 -->
+    <!-- pagePopupWrap 7 -->
     <div class="popup-holder">
         <div id="popup7" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -776,17 +786,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="5">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -796,7 +806,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -812,7 +823,7 @@
 
     </div>
 
-     <!-- pagePopupWrap 8 -->
+    <!-- pagePopupWrap 8 -->
     <div class="popup-holder">
         <div id="popup8" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -838,17 +849,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="6">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -858,7 +869,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to
@@ -874,7 +886,7 @@
 
     </div>
 
-  <!-- pagePopupWrap 9-->
+    <!-- pagePopupWrap 9-->
     <div class="popup-holder">
         <div id="popup9" class="lightbox-demo">
             <!-- popupLoginFrom -->
@@ -900,17 +912,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
-                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                    <input type="password" class="form-control elemenBlock" name="password_confirmation"
                                         required autocomplete="new-password" placeholder="..and confirm it!">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
-                                      <input type="email" class="form-control elemenBlock" name="email"
+                                    <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="7">
-                                 <div class="form-group"> 
+                                <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>
                                         <span class="fakeCheckbox"></span>
@@ -920,7 +932,8 @@
                                 <button type="submit"
                                     class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                     style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#"
+                                        style="color:#bd7f0a "> privacy policy. </a>
                                     <br><br>
                                     By pressing Submit, you agree that Zillow Group may contact you via phone/text about
                                     your inquiry, which may involve the use of automated means. You are not required to

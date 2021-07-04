@@ -67,6 +67,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
 
     Route::post('blog/store', 'Blog\BlogController@store')->name('blog.store');
 
+
     /****************************** General Setting ***************************/
 
     Route::get('/setting', 'GeneralSetting\GeneralSettingController@create')->name('generalsetting');
@@ -125,6 +126,24 @@ Route::namespace('Property')->as('property.')->group(function () {
     Route::post('property/store', 'PropertyController@store')->name('store');
 
     Route::post('property/update', 'PropertyController@update')->name('update');
+
+    Route::post('property/search', 'PropertyController@SearchProperty')->name('searchs');
+});
+
+
+/****************************** Property Unit  ************************/
+
+Route::namespace('Unit')->as('unit.')->group(function () {
+
+    Route::get('unit/create', 'UnitController@create')->name('create');
+
+    Route::post('unit/store', 'UnitController@store')->name('store');
+
+    Route::post('unit/status/update', 'UnitController@StatusUpdate')->name('status.update');
+
+    Route::post('unit/newstatus/update', 'UnitController@NewStatusUpdate')->name('newstatus.update');
+
+    Route::get('unit/purchased', 'UnitController@unitPurchased')->name('purchased');
 });
 
 /****************************** Frontend ************************/
@@ -151,6 +170,16 @@ Route::get('/contact-us', 'Frontend\FrontEndController@ContactUs')->name('contac
 Route::get('/blog', 'Frontend\FrontEndController@blogs')->name('blog');
 
 Route::get('/single-blog/{id}', 'Frontend\FrontEndController@SingleBlog')->name('single_blog');
+
+Route::get('/about-us', 'Frontend\FrontEndController@AboutUs')->name('about_us');
+
+Route::get('/term-of-use', 'Frontend\FrontEndController@TermOfUse')->name('term_of_use');
+
+Route::get('/privacy-policy', 'Frontend\FrontEndController@PrivacyPolicy')->name('privacy_policy');
+
+Route::get('/contact-support', 'Frontend\FrontEndController@ContactSupport')->name('contact_support');
+
+Route::get('/how-it-work', 'Frontend\FrontEndController@HowItWork')->name('how_it_work');
 
 // Contact 
 
@@ -183,23 +212,23 @@ Route::get('/all-guide', 'Frontend\FrontEndController@AllGuide')->name('all_guid
 
 // Agent guide
 
-Route::get('/agent-guid','Frontend\FrontEndController@AgentGuide')->name('agent_guide');
+Route::get('/agent-guid', 'Frontend\FrontEndController@AgentGuide')->name('agent_guide');
 
 // Property Manager guide
 
-Route::get('/property-manager-guid','Frontend\FrontEndController@PropertyManagerGuide')->name('property_manager_guide');
+Route::get('/property-manager-guid', 'Frontend\FrontEndController@PropertyManagerGuide')->name('property_manager_guide');
 
 // Lender guide
 
-Route::get('/lender-guid','Frontend\FrontEndController@LenderGuide')->name('lender_guide');
+Route::get('/lender-guid', 'Frontend\FrontEndController@LenderGuide')->name('lender_guide');
 
 // Builder guide
 
-Route::get('/builder-guid','Frontend\FrontEndController@BuilderGuide')->name('bulider_guide');
+Route::get('/builder-guid', 'Frontend\FrontEndController@BuilderGuide')->name('bulider_guide');
 
 // Platform Administrator guide
 
-Route::get('/platform-administrator-guid','Frontend\FrontEndController@PlateformAdministratorGuide')->name('plateform_administrator_guide');
+Route::get('/platform-administrator-guid', 'Frontend\FrontEndController@PlateformAdministratorGuide')->name('plateform_administrator_guide');
 
 
 

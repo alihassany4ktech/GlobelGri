@@ -504,7 +504,7 @@ a:visited {
     <!-- latestPostsBlock -->
     <div class="container-fluid">
         <div class="row">
-            <h1 class="fontNeuron" style="margin-left: 0.9%;">San Francisco, CA Homes For Sale & Real Estate</h1>
+            {{-- <h1 class="fontNeuron" style="margin-left: 0.9%;">San Francisco, CA Homes For Sale & Real Estate</h1> --}}
             <div class="col-xs-12 col-md-12">
                 <!-- content -->
                 <div id="content">
@@ -738,7 +738,10 @@ a:visited {
                     
                 </section>
             </div>
-
+  @foreach ($property_for_rent as $row)
+                <input type="hidden" id="lt" value="{{$row->latitude}}">
+                <input type="hidden" id="lng" value="{{$row->longitude}}">
+            @endforeach
         </div>
 </main>
 @endsection
@@ -746,7 +749,12 @@ a:visited {
 
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc'></script>
 <script defer>
+  $(document).ready(function(){
     var mainurl = "{{url('/')}}";
+    var lt = $('#lt').val();
+    var lng = $('#lng').val();
+    var newlt = parseFloat(lt);
+    var newlng = parseFloat(lng);
     function initialize() {
         var mapOptions = {
             zoom: 6,
@@ -756,7 +764,7 @@ a:visited {
             zoomControlOptions: {
                 style:google.maps.ZoomControlStyle.DEFAULT
             },
-            center: new google.maps.LatLng(-25.344,131.036),
+            center: new google.maps.LatLng(newlt,newlng),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: true,
             panControl:false,
@@ -838,6 +846,7 @@ a:visited {
         return content;
 
     }
+  });
 </script>
 <script>
         $.ajaxSetup({

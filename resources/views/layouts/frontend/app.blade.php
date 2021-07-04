@@ -32,10 +32,73 @@
         }
 
         @media only screen and (max-width: 600px) {
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 85% !important;
+    height: 50%;
+}
+
+.modal-content1 {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 85% !important;
+    /* height: 50%; */
+    height: 17%;
+    margin-top: 90% !important;
+}
+
+#newp{
+    width: 100% !important;
+}
+            #sheading {
+                margin-top:-3050px !important;
+            }
+
+            #s1heading{
+                margin-top: -1780px !important;
+            }
+
+               #sform {
+                    /* margin-top: -4000px !important;
+                    padding-bottom: 25px !important; */
+                    display: none !important;
+                }
+
+            #s1{
+                margin-top:-3000px;
+            }
+
+              #s2{
+                margin-top:-2610px;
+            }
+
+              #s3{
+                margin-top:-2200px;
+            }
             #pageHeader {
                 display: none;
             }
 
+
+            #homeapp{
+                margin-top: -3200px !important;
+                height: 100% !important;
+            }
+
+            #allguid{
+                margin-top:-1100px !important;
+                margin-left: 50px !important;
+            }
+
+             #allguid1{
+                margin-top:-850px !important;
+            }
             #mobile-container {
                 display: block !important;
             }
@@ -97,7 +160,7 @@
             }
     #pica {
     margin: 0px;
-    width: 259px !important;
+    width: 365px !important;
 }
         .pic {
         max-width: 100%;
@@ -524,48 +587,42 @@
                                 <h2 class="fontNeuron fwSemi text-uppercase">Useful Links</h2>
                                 <div class="ftNavListsHolder">
                                     <ul class="list-unstyled">
-                                        <li><a href="#">Terms of Use</a></li>
-                                        <li><a href="#">About US</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Contact Support</a></li>
-                                        <li><a href="#">Careers</a></li>
+                                        <li><a href="{{route('term_of_use')}}">Terms of Use</a></li>
+                                        <li><a href="{{route('about_us')}}">About US</a></li>
+                                        <li><a href="{{route('privacy_policy')}}">Privacy Policy</a></li>
+                                        <li><a href="{{route('contact_support')}}">Contact Support</a></li>
                                     </ul>
                                     <ul class="list-unstyled">
                                         <li><a href="{{route('blog')}}">Blog</a></li>
-                                        <li><a href="#">How It Works</a></li>
+                                        <li><a href="{{route('how_it_work')}}">How It Works</a></li>
                                         <li><a href="{{route('contact_us')}}">Contact</a></li>
                                     </ul>
                                 </div>
                             </nav>
+                           
                             <div class="col-xs-12 col-sm-4 col">
                                 <h2 class="fontNeuron fwSemi text-uppercase">LATEST PROPERTIES</h2>
                                 <!-- postsWidgetList -->
+                                 <?php
+                                $latestproperties = App\Property::orderBy('id','DESC')->Take(2)->get();
+                             ?>
+                             
                                 <ul class="list-unstyled postsWidgetList">
+                                    @foreach ($latestproperties as $row)
                                     <li>
                                         <div class="alignleft">
                                             <a href="{{route('home_for_sale')}}">
-                                                <img src="{{asset('frontend/images/3.jpg')}}" alt="image description">
+                                                <img src="{{asset($row->featured_photo)}}" alt="image description">
                                             </a>
                                         </div>
                                         <div class="descrWrap">
-                                            <h3 class="fwNormal"><a href="{{route('home_for_sale')}}">Do what you love
-                                                    and tomorrow will pay</a>
+                                            <h3 class="fwNormal"><a href="{{route('home_for_sale')}}">{{$row->propert_title}}</a>
                                             </h3>
-                                            <h4 class="fwSemi" style="color: white">$ 1,27,000</h4>
+                                            <h4 class="fwSemi" style="color: white">$ {{$row->price}}</h4>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="alignleft">
-                                            <a href="{{route('home_for_sale')}}">
-                                                <img src="{{asset('frontend/images/5.jpg')}}" alt="image description">
-                                            </a>
-                                        </div>
-                                        <div class="descrWrap">
-                                            <h3 class="fwNormal"><a href="{{route('home_for_sale')}}">We’re ready for
-                                                    the TRID rules!</a></h3>
-                                            <h4 class="fwSemi" style="color: white">$ 527,000</h4>
-                                        </div>
-                                    </li>
+                            
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -596,7 +653,7 @@
                 <a href="#pageWrapper" class="btnScrollToTop smooth textWhite">Scroll Top <i
                         class="fi flaticon-arrows btnScrollIcn"></i></a>
                 <span class="bgCover elemenBlock"
-                    style="background-image: url(https://via.placeholder.com/1920x520);"></span>
+                    style="background-image: url({{asset('frontend/images/hm.jpg')}});"></span>
             </div>
         </div>
         <!-- pagePopupWrap -->
@@ -709,16 +766,13 @@
         </div>
     </div>
     </div>
-    <!-- include jQuery library -->
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAziipzIN4zP3UtFIBC3-e6NcNfY2vIG48&callback=myMap">
-    </script> --}}
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/plugins.js')}}"></script>
     <!-- include bootstrap JavaScript -->
     <script src="{{asset('frontend/js/bootstrap-slider.min.js')}}"></script>
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
-    <script type="text/javascript" src="{{asset('frontend/js/map2.js')}}"></script>
+    {{-- <script type="text/javascript" src="{{asset('frontend/js/map2.js')}}"></script> --}}
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

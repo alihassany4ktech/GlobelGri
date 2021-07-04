@@ -221,10 +221,10 @@
                                                         placeholder="House" id="itemN-15">
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-8">
+                                            <div class="col-xs-12 col-sm-8" id="pricediv">
                                                 <div class="form-group">
                                                     <label for="itemN-16">Price</label>
-                                                    <input type="text" name="price" class="form-control"
+                                                    <input type="text" name="price" id="price" class="form-control"
                                                         placeholder="$158" id="itemN-16">
                                                 </div>
                                             </div>
@@ -261,27 +261,26 @@
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-23">Property Type</label>
-                                                    <select data-placeholder="Select Option" class="chosen-select"
-                                                        id="itemN-23" name="property_type">
+                                                    <select data-placeholder="Select Option" id="property_type" class="chosen-select"
+                                                        id="itemN-23" name="property_type" autocomplete="off">
                                                         <option value="For Sale">For Sale </option>
                                                         <option value="For Rent">For Rent </option>
-                                                        <option value="Forn Investment">For Investment </option>
-
+                                                        <option value="For Investment">For Investment </option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-xs-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="itemN-24">Property Status</label>
-                                                    <select data-placeholder="Select Option" class="chosen-select"
-                                                        id="itemN-24" name="propert_status">
-                                                        <option value="1">All Areas</option>
-                                                        <option value="2">All Areas</option>
-                                                        <option value="3">All Areas</option>
-                                                        <option value="4">All Areas</option>
-                                                    </select>
-                                                </div>
-                                            </div> --}}
+                                            {{-- <table class="table table table-bordered table-striped ptable" id="ptable" style="display: none;font-size: 13px;  text-align: center;">
+                                            <thead>
+                                                <tr>
+                                                <th></th>
+                                                <th scope="col">Unit Name</th>
+                                                <th scope="col">Unit Price</th>
+                                                <th scope="col" style="text-align: center;">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                            </table> --}}
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="itemN-25">Description</label>
@@ -739,7 +738,57 @@
 
     </script>
 
+    {{-- <script>
+         $(document).ready(function () {
 
+               var count = 1;
+    
+     dynamic_field(count);
+    
+     function dynamic_field(number)
+     {
+      html = '<tr>';
+            html += '<td><input type="hidden" name="status[]" class="form-control" value="Available"/></td>';
+            html += '<td><input type="text" name="unit_name[]" class="form-control" placeholder="Required"/></td>';
+            html += '<td><input type="text" name="unit_price[]"  class="unit_price form-control" placeholder="Required" /></td>';
+            if(number > 1)
+            {
+                html += '<td><button type="button" name="remove" id="" class="btn btn-danger removes"><i class="fa fa-window-close" aria-hidden="true"></i></button></td></tr>';
+                $('#ptable tbody').append(html);
+            }
+            else
+            {   
+                html += '<td><button type="button" name="add" id="add" class="btn btn-success"><i class="fa fa-plus"></i></button></button></td></tr>';
+                $('#ptable tbody').html(html);
+            }
+     }
+    
+     $(document).on('click', '#add', function(){
+      count++;
+      dynamic_field(count);
+     });
+    
+     $(document).on('click', '.removes', function(){
+      count--;
+      $(this).closest("tr").remove();
+     });
+             $('#property_type').on('change',function(){
+                 var v = $(this).val();
+                 if(v == 'For Investment')
+                 {
+                     $('#ptable').show();
+                     $('#pricediv').hide();
+
+                 }
+                 else{
+                     $('#ptable').hide();
+                     $('#pricediv').show();
+                 }
+            
+             });
+            
+         });
+    </script> --}}
 
     <script>
         $(document).ready(function () {
@@ -786,13 +835,18 @@
                 success: function (data) {
                      if (data.success) {
                         toastr.success(data.success);
-                    } 
+                    } else {
+                        toastr.error(data.error);
+
+                    }
+
 
                 }
             });
         });
 
     </script>
+
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -808,6 +862,7 @@
         }
 
     </script>
+
     {{-- <script>
         var x = document.getElementById("demo");
 
