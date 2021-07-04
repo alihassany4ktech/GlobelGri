@@ -243,7 +243,7 @@
                         </header>
                         <ul class="navUser list-unstyled">
                             <li>
-                                <a href="#">
+                                <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>

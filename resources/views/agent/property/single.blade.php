@@ -189,7 +189,7 @@
                         $units = App\Unit::where('property_id','=',$mapShops->id)->where('current','=','1')->get(); 
                         $total_unit = count($units);
                     ?>
-                    @if (Auth::check())
+                    
                         <section>
                         <table class="table table table-bordered table-striped ptable" id="ptable"
                             style="font-size: 13px;  text-align: center;">
@@ -208,9 +208,13 @@
                                     <td>{{$row->unit_name}}</td>
                                     <td>$ {{$row->unit_price}}</td>
                                     @if ($row->status == '0')
-                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="color: #bd7f0a">Available</button></td>
+                                   
+                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 15px; padding-right: 15px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Available</button></td>
+                        
                                     @else
-                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="color: #bd7f0a">Purchased</button></td>
+                                   
+                                    <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 15px; padding-right: 15px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Purchased</button></td>
+                                
                                     @endif
                                 </tr>
                                 @endforeach
@@ -218,7 +222,7 @@
                             </tbody>
                         </table>
                     </section>
-                    @endif
+                
                     
                     @endif
                     @if($mapShops->property_type == 'For Investment')
