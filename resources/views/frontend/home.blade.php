@@ -349,7 +349,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
+    {{-- <div class="container mt-5">
         <div class="row">
             <!-- findFormBlock -->
             <form action="#" class="findFormBlock findFormBlock4" id="sform" style="text-align: center">
@@ -365,7 +365,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
     <section class="homeapp" style="margin-top: -14%" id="homeapp">
         <div class="container">
             <div class="row" style="padding: 10%">

@@ -207,7 +207,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$row->unit_name}}</td>
                                     <td>$ {{$row->unit_price}}</td>
-                                    @if ($row->status == '0')
+                                    @if ($row->status == '0' || $row->status == '2')
                                      @if (Auth::check())
                                     <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 17px; padding-right: 17px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Available</button></td>
                                     @else 
@@ -436,13 +436,17 @@
                  $newoldunits  = App\Unit::where('property_id','=',$mapShops->id)->get(); 
                  $items=[];
                  $dates = [];
+                 $titles = [];
                  foreach ($newoldunits as $key => $row) {
                     
                      array_push($items, $row->unit_price,);
                      array_push($dates, $row->created_at->format('d/m/y'),);
+                     array_push($titles,$row->unit_name);
                  }
+
+                 $sumprice = array_sum($items);
              ?>
-        
+            {{-- {{dd($sumprice)}} --}}
             <div id="map"></div>
             <div id="pano"></div>
 
@@ -705,6 +709,7 @@
     function init(){
             var prices = @json($items);
             var dates = @json($dates);
+            var titles = @json($titles);
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -712,9 +717,9 @@ var myChart = new Chart(ctx, {
     data: {
         labels:dates,
         datasets: [{
-            label: 'Share Details',
+            label: 'Share Price',
             data: prices,
-            backgroundColor:['rgb(210, 232, 186)'],
+            backgroundColor:['#f1c967'],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
@@ -726,6 +731,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         }]
     },
+    
     options: {
         scales: {
             y: {

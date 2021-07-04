@@ -294,7 +294,7 @@
                             <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
-                                    <span>My Properties</span>
+                                    <span>My Purchased Units</span>
                                 </a>
                             </li>
                             <li>
@@ -315,6 +315,12 @@
                                 <a href="{{route('unit.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Submit Units</span>
+                                </a>
+                            </li>
+                                  <li>
+                                <a href="{{route('unit.purchased')}}">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <span>Units Purchased</span>
                                 </a>
                             </li>
                               <li>
@@ -342,7 +348,7 @@
                             <!-- accountData -->
                             <div class="accountData">
                               <div class="head">
-                                <h4 class="fontNeuron">My Properties</h4>
+                                <h4 class="fontNeuron">My Purchased Units</h4>
                                 @if(session()->has('delete_property'))
                                     <div class="alert alert-success" style="float: right">
                                         {{ session()->get('delete_property') }}
@@ -377,8 +383,7 @@
                                       @endif
                                     <ul class="links list-unstyled">
                                       <li><a href="{{route('agent.single_property',['id' => $row->id])}}"><i class="fa fa-eye"></i>View</a></li>
-                                      <li><a href="{{route('agent.edit_property',['id' => $row->id])}}"><i class="fa fa-edit"></i>Edit</a></li>
-                                      <li><a href="{{route('agent.delete_property',['id' => $row->id])}}" class="delete"><i class="far fa-window-close"></i></a></li>
+                
                                     </ul>
                                   </div>
                                 </article>
