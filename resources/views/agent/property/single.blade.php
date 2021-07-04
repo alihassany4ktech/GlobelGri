@@ -207,7 +207,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$row->unit_name}}</td>
                                     <td>$ {{$row->unit_price}}</td>
-                                    @if ($row->status == '0')
+                                    @if ($row->status == '0' || $row->status == '2')
                                    
                                     <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 15px; padding-right: 15px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Available</button></td>
                         
