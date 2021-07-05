@@ -432,21 +432,151 @@
 
             </div> --}}
 
-                <?php
-                 $newoldunits  = App\Unit::where('property_id','=',$mapShops->id)->get(); 
-                 $items=[];
-                 $dates = [];
-                 $titles = [];
-                 foreach ($newoldunits as $key => $row) {
-                    
-                     array_push($items, $row->unit_price,);
-                     array_push($dates, $row->created_at->format('d/m/y'),);
-                     array_push($titles,$row->unit_name);
-                 }
+            <?php
+                    // Jan 
+                    $year = date("Y");
+                    $janprice = [];
+                    $jan = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '1')->whereYear('created_at', $year)->get();
+                    if ($jan == null) {
+                        $newjprice = 0;
+                    }
+                    foreach ($jan as $key => $row) {
+                        array_push($janprice, $row->unit_price);
+                    }
+                    $newjanprice = array_sum($janprice);
 
-                 $sumprice = array_sum($items);
-             ?>
-            {{-- {{dd($sumprice)}} --}}
+                    // feb
+                      $febprice = [];
+                    $feb = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '2')->whereYear('created_at', $year)->get();
+                    if ($feb == null) {
+                        $newfebprice = 0;
+                    }
+                    foreach ($feb as $key => $row) {
+                        array_push($febprice, $row->unit_price);
+                    }
+                    $newfebprice = array_sum($febprice);
+
+
+                       // mar
+                      $marprice = [];
+                    $mar = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '3')->whereYear('created_at', $year)->get();
+                    if ($mar == null) {
+                        $newmarprice = 0;
+                    }
+                    foreach ($mar as $key => $row) {
+                        array_push($marprice, $row->unit_price);
+                    }
+                    $newmarprice = array_sum($marprice);
+
+
+                        // apr
+                      $aprprice = [];
+                    $apr = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '4')->whereYear('created_at', $year)->get();
+                    if ($apr == null) {
+                        $newaprprice = 0;
+                    }
+                    foreach ($apr as $key => $row) {
+                        array_push($aprprice, $row->unit_price);
+                    }
+                    $newaprprice = array_sum($aprprice);
+
+
+
+                      // may
+                      $mayprice = [];
+                    $may = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '5')->whereYear('created_at', $year)->get();
+                    if ($may == null) {
+                        $newmayprice = 0;
+                    }
+                    foreach ($may as $key => $row) {
+                        array_push($mayprice, $row->unit_price);
+                    }
+                    $newmayprice = array_sum($mayprice);
+
+
+                      // jun
+                      $junprice = [];
+                    $jun = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '6')->whereYear('created_at', $year)->get();
+                    if ($jun == null) {
+                        $newjunprice = 0;
+                    }
+                    foreach ($jun as $key => $row) {
+                        array_push($junprice, $row->unit_price);
+                    }
+                    $newjunprice = array_sum($junprice);
+
+
+
+                      // jul
+                      $julprice = [];
+                    $jul = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '7')->whereYear('created_at', $year)->get();
+                    if ($jul == null) {
+                        $newjulprice = 0;
+                    }
+                    foreach ($jul as $key => $row) {
+                        array_push($julprice, $row->unit_price);
+                    }
+                    $newjulprice = array_sum($julprice);
+
+
+                      // aug
+                      $augprice = [];
+                    $aug = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '8')->whereYear('created_at', $year)->get();
+                    if ($aug == null) {
+                        $newaugprice = 0;
+                    }
+                    foreach ($aug as $key => $row) {
+                        array_push($augprice, $row->unit_price);
+                    }
+                    $newaugprice = array_sum($augprice);
+
+
+                     // sept
+                      $septprice = [];
+                    $sept = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '9')->whereYear('created_at', $year)->get();
+                    if ($sept == null) {
+                        $newseptprice = 0;
+                    }
+                    foreach ($sept as $key => $row) {
+                        array_push($septprice, $row->unit_price);
+                    }
+                    $newseptprice = array_sum($septprice);
+
+
+                     // oct
+                      $octprice = [];
+                    $oct = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '10')->whereYear('created_at', $year)->get();
+                    if ($oct == null) {
+                        $newoctprice = 0;
+                    }
+                    foreach ($oct as $key => $row) {
+                        array_push($octprice, $row->unit_price);
+                    }
+                    $newoctprice = array_sum($octprice);
+
+                     // nov
+                      $novprice = [];
+                    $nov = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '11')->whereYear('created_at', $year)->get();
+                    if ($nov == null) {
+                        $newnovprice = 0;
+                    }
+                    foreach ($nov as $key => $row) {
+                        array_push($novprice, $row->unit_price);
+                    }
+                    $newnovprice = array_sum($novprice);
+
+                     // dec
+                      $decprice = [];
+                    $dec = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '12')->whereYear('created_at', $year)->get();
+                    if ($dec == null) {
+                        $newdecprice = 0;
+                    }
+                    foreach ($dec as $key => $row) {
+                        array_push($decprice, $row->unit_price);
+                    }
+                    $newdecprice = array_sum($decprice);
+                    
+            ?>
             <div id="map"></div>
             <div id="pano"></div>
 
@@ -707,18 +837,40 @@
 <script>
     
     function init(){
-            var prices = @json($items);
-            var dates = @json($dates);
-            var titles = @json($titles);
+        
+           var janprice = @json($newjanprice);
+
+           var febprice = @json($newfebprice);
+
+           var marprice = @json($newmarprice);
+
+           var aprprice = @json($newaprprice);
+
+           var mayprice = @json($newmayprice);
+
+           var junprice = @json($newjanprice);
+
+           var julprice = @json($newjulprice);
+
+           var augprice = @json($newaugprice);
+
+           var septprice = @json($newseptprice);
+
+           var octprice = @json($newoctprice);
+
+           var novprice = @json($newnovprice);
+
+           var decprice = @json($newdecprice);
+      
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels:dates,
+        labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'],
         datasets: [{
             label: 'Share Price',
-            data: prices,
+            data: [janprice,febprice,marprice,aprprice,mayprice,junprice,julprice,augprice,septprice,octprice,novprice,decprice],
             backgroundColor:['#f1c967'],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
