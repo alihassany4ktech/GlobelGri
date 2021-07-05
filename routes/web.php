@@ -19,6 +19,10 @@ Route::get('/', function () {
 });
 
 
+
+
+
+
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
     Auth::routes(['register' => false]);
 
@@ -102,6 +106,18 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/favourite/propreties', 'AgentController@favouriteProperty')->name('favourite.property');
 });
 
+
+
+// user login 
+
+Route::post('user/login', 'Agent\UserLoginController@UserLogin')->name('user.login');
+
+// user Sign up
+
+Route::post('user/signup', 'Agent\UserLoginController@UserSignUp')->name('user.register');
+
+
+// Route::get('signin', 'Agent\UserLoginController@signin')->name('/');
 
 
 /****************************** Socialite  ************************/

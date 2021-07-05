@@ -82,7 +82,6 @@ class LoginController extends Controller
             $user->provider_id = $data->id;
             $user->save();
         }
-
         Auth::login($user);
     }
 }

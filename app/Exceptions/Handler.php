@@ -76,7 +76,7 @@ class Handler extends ExceptionHandler
                 break;
 
             default:
-                $login = '/';
+                $login = 'index';
                 break;
         }
 

@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 @section('content')
+ 
 <style>
+    
     #sform {
     margin-top: -320px;
     padding-bottom: 25px;
@@ -124,6 +126,7 @@
     </section>
     <div class="container mt-5">
         <div class="row">
+                            
             <h1 class="text-center fontNeuron blockH text-uppercase" id="sheading" style="margin-top: -60px;">See how Globelgri can help
             </h1>
             <div class="col-xs-12 col-sm-6 col-md-4" id="s1">
@@ -480,14 +483,20 @@
                 accommodation, please let us know.</p>
 
         </div>
+         {{-- @if(Session::has('messege'))
+            toastr.success("{{ Session::get('messege') }}");
+        @endif --}}
+       
     </div>
 </main>
 @endsection
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc">
     </script>
+
+    
+
 
    {{-- buy  --}}
  <script>

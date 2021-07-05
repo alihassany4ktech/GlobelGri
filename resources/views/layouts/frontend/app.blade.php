@@ -344,7 +344,7 @@
                         <a href="#popup1" class="lightbox" style="color: #bd7f0a"><i class="fi flaticon-edit icn" style="color: #bd7f0a"></i> Registe </a>
                     </li>
                     <li>
-                         <a href="#" style="color: #bd7f0a" >
+                         <a href="#popup1" style="color: #bd7f0a" class="lightbox">
                                                     <i class="fa fa-plus" style="color:#bd7f0a"></i> Submit Property
                                                 </a>
                     </li>
@@ -524,7 +524,7 @@
                                             </li>
                                             @endif
                                         </ul>
-                                        <a href="" class="headerModalOpener text-uppercase fontNeuron fwBold"
+                                        <a href="#popup1" class="headerModalOpener text-uppercase fontNeuron fwBold lightbox"
                                             style=" background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967);">Submit Property</a>
@@ -535,6 +535,7 @@
                             <!-- pageNav -->
                         </div>
                     </div>
+                       
                 </header>
                 @yield('content')
             </div>
@@ -660,7 +661,7 @@
         <div class="popup-holder">
             <div id="popup1" class="lightbox-demo">
                 <!-- popupLoginFrom -->
-                <form action="{{ route('login') }}" method="post"
+                <form action="{{ route('user.login') }}" method="post"
                     class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                     @csrf
                     <ul class="list-unstyled popupTabsetList text-center fwBold text-uppercase fontNeuron">
@@ -674,6 +675,12 @@
                                     <div class="form-group">
                                         <input type="email" name="email" class="form-control elemenBlock"
                                             placeholder="Email">
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                    
+                                @endif
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control elemenBlock"
@@ -706,7 +713,7 @@
                             </div>
                         </div>
                 </form>
-                <form action="{{ route('register') }}" method="post">
+                <form action="{{ route('user.register') }}" method="post">
                     @csrf
                     <div id="tab02">
                         <div class="popupColsHolder">
@@ -714,20 +721,20 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter  name..">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <div class="form-group">
                                     
@@ -774,8 +781,33 @@
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     {{-- <script type="text/javascript" src="{{asset('frontend/js/map2.js')}}"></script> --}}
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    
+
+         <script>
+            @if(session()->has('error'))
+                                    
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+  		    toastr.error("{{ session('error') }}");       
+            @endif
+         </script>
+
+          <script>
+            @if(session()->has('message'))
+                                    
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+  		    toastr.success("{{ session('message') }}");       
+            @endif
+         </script>
     <script>
         function myFunction() {
             var x = document.getElementById("myLinks");

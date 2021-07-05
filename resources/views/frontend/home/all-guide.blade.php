@@ -449,7 +449,7 @@
     <div class="popup-holder">
         <div id="popup2" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -512,7 +512,7 @@
     <div class="popup-holder">
         <div id="popup3" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -525,23 +525,23 @@
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="1">
                                 <div class="form-group">
@@ -575,7 +575,7 @@
     <div class="popup-holder">
         <div id="popup4" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -584,27 +584,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="2">
                                 <div class="form-group">
@@ -638,7 +638,7 @@
     <div class="popup-holder">
         <div id="popup5" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -647,27 +647,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="3">
                                 <div class="form-group">
@@ -701,7 +701,7 @@
     <div class="popup-holder">
         <div id="popup6" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -710,27 +710,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="4">
                                 <div class="form-group">
@@ -764,7 +764,7 @@
     <div class="popup-holder">
         <div id="popup7" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -773,27 +773,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="5">
                                 <div class="form-group">
@@ -827,7 +827,7 @@
     <div class="popup-holder">
         <div id="popup8" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -836,27 +836,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="6">
                                 <div class="form-group">
@@ -890,7 +890,7 @@
     <div class="popup-holder">
         <div id="popup9" class="lightbox-demo">
             <!-- popupLoginFrom -->
-            <form action="{{ route('register') }}" method="post"
+            <form action="{{ route('user.register') }}" method="post"
                 class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
                 @csrf
                 <div class="tab-content bgWhite">
@@ -899,27 +899,27 @@
                         <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label class="fontNeuron" for="">Name</label>
                                     <input type="text" class="form-control elemenBlock" id="name" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="Enter a username..">
+                                        placeholder="Enter name..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password" required
-                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                        autocomplete="new-password" placeholder="Enter password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Confirm Password</label>
                                     <input type="password" class="form-control elemenBlock" name="password_confirmation"
-                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                        required autocomplete="new-password" placeholder="confirm password..">
                                 </div>
                                 <div class="form-group">
                                     <label class="fontNeuron" for="">Email</label>
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
-                                        placeholder="Your valid email..">
+                                        placeholder="Enter Your valid email..">
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="7">
                                 <div class="form-group">
