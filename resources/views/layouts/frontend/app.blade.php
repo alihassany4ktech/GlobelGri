@@ -26,6 +26,11 @@
             line-height: 1.2;
         }
 
+        a:hover, a:focus {
+            color: white;
+            text-decoration: none;
+        }
+
         .headerHolder {
             padding-top: 28px;
             padding-bottom: 0px;
