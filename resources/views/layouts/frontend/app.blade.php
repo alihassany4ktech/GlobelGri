@@ -165,7 +165,7 @@
             }
     #pica {
     margin: 0px;
-    width: 365px !important;
+    width: 428px !important;
 }
         .pic {
         max-width: 100%;
