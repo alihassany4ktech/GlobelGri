@@ -38,7 +38,7 @@ a:visited {
         </div>
     </div>
     <!-- findFormBlock -->
-    <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop"
+    {{-- <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop"
         style="margin-top: -3.5%">
         <div class="container">
             <div class="row align-center d-flex">
@@ -236,7 +236,7 @@ a:visited {
                 </div>
             </div>
         </div>
-    </form>
+    </form> --}}
     <form action="#" class="bgWhite findFormBlock hasShadow" id="form" style="height:460px;display:none">
         <div class="container-fluid" style="margin-top: 4%">
             <h2 class="fontNeuron">FIND YOUR <span class="text-info">HOME</span></h2>

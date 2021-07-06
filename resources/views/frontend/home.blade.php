@@ -192,12 +192,14 @@
                     <div>
                         <div class="col-xs-12">
                             <!-- postColumn -->
+                            
                             <article class="postColumn" style="border: none">
-                                <div class="aligncenter">
+                                @if($firstproperty == null)
+                                 <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
                                     <div class="imgHolder">
-                                        <a href="{{route('home_for_sale')}}">
-                                            <img  src="{{asset('frontend/images/home0.jpg')}}"
+                                        <a href="{{route('single_property',['id' => $firstproperty->id])}}">
+                                            <img  src="{{asset('frontend/images/5.jpg')}}"
                                                             style="height: 185px; width:368px;" id="pica" alt="image description" >
                                         </a>
                                     </div>
@@ -205,146 +207,290 @@
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Demo</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 49,000</span>
+                        
                                     </div>
-
-
                                 </div>
+                            @else 
+                             <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $firstproperty->id])}}">
+                                            <img  src="{{asset($firstproperty->featured_photo)}}"
+                                                            style="height: 185px; width:368px;" id="pica" alt="image description" >
+                                        </a>
+                                    </div>
+                                   <a href="{{route('single_property',['id' => $firstproperty->id])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$firstproperty->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $firstproperty->id])}}">{{$firstproperty->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$firstproperty->price}}</span>
+                        
+                                    </div>
+                                </div>
+                            @endif
+                               
 
                                 <!-- postColumnFoot -->
-                                <div class="aligncenter">
+                              @if ($secondproperty->isEmpty())
+                               
+                                  <div class="aligncenter">
                                     <!-- postColumnImageSlider -->
                                     <div class="imgHolder">
-                                        <a href="#">
-                                            <img src="{{asset('frontend/images/home01.jpeg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
-                                        </a>
-                                    </div>
-                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
-                                    <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' =>1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-xs-12">
-                            <!-- postColumn -->
-                            <article class="postColumn" style="border: none">
-                                <div class="aligncenter">
-                                    <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
-                                        <a href="#">
-                                            <img src="{{asset('frontend/images/p1.jpg')}}" id="pica" style="height: 391px; width:368px;" alt="image description">
-                                        </a>
-                                    </div>
-                                   <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Investmet</span></a>
-                                    <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-xs-12">
-                            <!-- postColumn -->
-                            <article class="postColumn" style="border: none">
-                                <div class="aligncenter">
-                                    <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
-                                        <a href="#">
-                                            <img src="{{asset('frontend/images/2.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
-                                        </a>
-                                    </div>
-                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
-                                    <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
-                                    </div>
-
-
-                                </div>
-
-                                <!-- postColumnFoot -->
-                                <div class="aligncenter">
-                                    <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
-                                        <a href="#">
-                                            <img src="{{asset('frontend/images/3.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
-                                        </a>
-                                    </div>
-                                <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >For Sale</span></a>
-                                    <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-xs-12">
-                            <!-- postColumn -->
-                            <article class="postColumn" style="border: none">
-                                <div class="aligncenter">
-                                    <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
-                                        <a href="#">
-                                            <img src="{{asset('frontend/images/4.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
-                                        </a>
-                                    </div>
-                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Sale</span></a>
-                                    <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury
-                                                Family Home</a></h2>
-                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
-                                    </div>
-
-
-                                </div>
-
-                                <!-- postColumnFoot -->
-                                <div class="aligncenter">
-                                    <!-- postColumnImageSlider -->
-                                    <div class="imgHolder">
-                                        <a href="#">
+                                        <a href="{{route('single_property',['id' => 2])}}">
                                             <img src="{{asset('frontend/images/5.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
                                         </a>
                                     </div>
-                                    <a href="{{route('single_property',['id' => 1])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                    <a href="{{route('single_property',['id' => 2])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
                                     <div class="postion">
-                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 1])}}">Luxury Family Home</a></h2>
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 2])}}">Luxury Family Home</a></h2>
                                         <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
-                                            <span class="textUnit fwNormal">/ monthly</span></h3>
+                                          
                                     </div>
                                 </div>
+                                 @else 
+                                @foreach ($secondproperty as $row)
+                                 <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                         
+                                    </div>
+                                </div>
+                                  @endforeach
+                                @endif
+                            </article>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-12">
+                            <!-- postColumn -->
+                            <article class="postColumn" style="border: none">
+                                @if($thirdproperty->isEmpty())
+                                  @foreach ($thirdproperty as $row)
+                                <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => 3])}}">
+                                            <img src="{{asset('frontend/images/5.jpg')}}" id="pica" style="height: 391px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                   <a href="{{route('single_property',['id' => 3])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 3])}}">Demo</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 49,000</span>
+                                            
+                                    </div>
+                                </div>
+                                 @endforeach
+                                @else 
+                                  @foreach ($thirdproperty as $row)
+                                <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 391px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                   <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                            
+                                    </div>
+                                </div>
+                                 @endforeach
+                                @endif
+                              
+                            </article>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-12">
+                            <!-- postColumn -->
+                            <article class="postColumn" style="border: none">
+                          @if ($property4->isEmpty())
+                               
+                                  <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => 4])}}">
+                                            <img src="{{asset('frontend/images/5.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                    <a href="{{route('single_property',['id' => 4])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 4])}}">Luxury Family Home</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
+                                          
+                                    </div>
+                                </div>
+                                 @else 
+                                @foreach ($property4 as $row)
+                                 <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                         
+                                    </div>
+                                </div>
+                                  @endforeach
+                                @endif
+
+                                <!-- postColumnFoot -->
+                                   @if ($property5->isEmpty())
+                               
+                                  <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => 5])}}">
+                                            <img src="{{asset('frontend/images/3.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                    <a href="{{route('single_property',['id' => 5])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 5])}}">Luxury Family Home</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
+                                          
+                                    </div>
+                                </div>
+                                 @else 
+                                @foreach ($property5 as $row)
+                                 <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                         
+                                    </div>
+                                </div>
+                                  @endforeach
+                                @endif
+                            </article>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-12">
+                            <!-- postColumn -->
+                            
+                                
+                            
+                            <article class="postColumn" style="border: none">
+                                 @if ($property6->isEmpty())
+                               
+                                  <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => 6])}}">
+                                            <img src="{{asset('frontend/images/4.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                    <a href="{{route('single_property',['id' => 6])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 6])}}">Luxury Family Home</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
+                                          
+                                    </div>
+                                </div>
+                                 @else 
+                                @foreach ($property6 as $row)
+                                 <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                         
+                                    </div>
+                                </div>
+                                  @endforeach
+                                @endif
+                                <!-- postColumnFoot -->
+                                @if ($property7->isEmpty())
+                               
+                                  <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => 6])}}">
+                                            <img src="{{asset('frontend/images/5.jpg')}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                    <a href="{{route('single_property',['id' => 6])}}"> <span class="btn btnSmall  text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">For Rent</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => 6])}}">Luxury Family Home</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ 490,000</span>
+                                          
+                                    </div>
+                                </div>
+                                 @else 
+                                @foreach ($property7 as $row)
+                                 <div class="aligncenter">
+                                    <!-- postColumnImageSlider -->
+                                    <div class="imgHolder">
+                                        <a href="{{route('single_property',['id' => $row->id])}}">
+                                            <img src="{{asset($row->featured_photo)}}" id="pica" style="height: 185px; width:368px;" alt="image description">
+                                        </a>
+                                    </div>
+                                <a href="{{route('single_property',['id' => $row->id])}}"> <span class="btn btnSmall text-capitalize" style="border:none;background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white" >{{$row->property_type}}</span></a>
+                                    <div class="postion">
+                                        <h2 class="fontNeuron text-capitalize"><a href="{{route('single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h2>
+                                        <h3 class="fontNeuron fwSemi"><span class="textSecondary">$ {{$row->price}}</span>
+                                         
+                                    </div>
+                                </div>
+                                  @endforeach
+                                @endif
                             </article>
                         </div>
                     </div>
@@ -424,45 +570,41 @@
             <div class="col-xs-6 col-sm-6 col-md-3"  style="text-align: center; margin-left:-2%">       
                 <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Real Estate Markets</h6></li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
+                    <li>New York</li>
+                    <li>Los Angeles</li>
+                    <li>San Francisco</li>
+                    <li>Chicago</li>
+                    <li>San Antonio</li>
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center;margin-left:-2%">
                 <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Popular Searches</h6></li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
+                    <li><a href="{{route('home_for_sale')}}" style="color:black">Homes For Sale</a></li>
+                    <li><a href="{{route('home_for_sale')}}" style="color:black">Open Houses</a></li>
+                    <li><a href="{{route('home_for_sale')}}" style="color:black">New Homes</a></li>
+                    <li><a href="{{route('home_for_sale')}}" style="color:black">Recently Sold</a></li>
+                    <li><a href="{{route('home_for_sale')}}" style="color:black">See Newest Listing</a></li>
+                    
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-3"  style="text-align: center;margin-left:-2%">                
                 <ul style="list-style-type:none;color: black" id="l">
                     <li><h6>Explore Globel Gri</h6></li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
+                    <li><a href="{{route('home_for_rent')}}" style="color:black"> All Rentals </a></li>
+                    <li><a href="{{route('home_for_rent')}}" style="color:black">Apartments For Rent</a></li>
+                    <li><a href="{{route('home_for_rent')}}" style="color:black">Houses For Rent</a></li>
+                    <li><a href="{{route('home_for_rent')}}" style="color:black">See Newest Listing</a></li>
+                    <li><a href="{{route('home_for_rent')}}" style="color:black">Post Rental Listing</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-3" style="text-align: center;margin-left:-2%">
                 <ul style="list-style-type:none; color: black" id="l">
                     <li><h6>For Professionals</h6></li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
-                    <li>For Professionals</li>
+                    <li><a href="{{route('buy_a_home')}}" style="color:black">Buyer Guides</a></li>
+                    <li><a href="{{route('rent_a_home')}}" style="color:black">Renter Guides</a></li>
+                    <li><a href="{{route('invest_a_home')}}" style="color:black">Invester Guides</a></li>
+                    <li><a href="{{route('all_guide')}}" style="color:black">See All The Guide</a></li>
                 </ul>
             </div>
 

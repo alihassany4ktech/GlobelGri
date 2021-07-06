@@ -26,7 +26,15 @@ class FrontEndController extends Controller
     public function index()
     {
         $agents = User::all();
-        return view('frontend.home', compact('agents'));
+        $firstproperty =  Property::first();
+        $secondproperty =  Property::skip(1)->take(1)->get();
+        $thirdproperty =  Property::skip(2)->take(1)->get();
+        $property4 =  Property::skip(3)->take(1)->get();
+        $property5 =  Property::skip(4)->take(1)->get();
+        $property6 =  Property::skip(5)->take(1)->get();
+        $property7 =  Property::skip(6)->take(1)->get();
+
+        return view('frontend.home', compact('agents', 'firstproperty', 'secondproperty', 'thirdproperty', 'property4', 'property5', 'property6', 'property7'));
     }
 
     public function HomeForSale()
