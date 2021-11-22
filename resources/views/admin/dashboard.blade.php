@@ -30,14 +30,14 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3>{{$subscriptionCount}}</h3>
 
-                                    <p>New Orders</p>
+                                    <p>Subscriptions</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="fa fa-comment-dollar"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="{{route('admin.all.subscription')}}" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -46,14 +46,14 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                    <h3>{{$purchasedsubscriptionCount}}</h3>
 
-                                    <p>Bounce Rate</p>
+                                    <p>Active Subscriptions</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="fa fa-comment-dollar"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="{{route('admin.active.subscription')}}" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -62,15 +62,16 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3 class="text-white">{{$agentsCount}}</h3>
 
-                                    <p>User Registrations</p>
+                                    <p class="text-white">Agent Registrations</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
+                                 <a href="{{route('admin.agents')}}" class="small-box-footer"><span class="text-white"> More info</span> <i
+                                        class="fas fa-arrow-circle-right text-white"></i></a>
+                               
                             </div>
                         </div>
                         <!-- ./col -->
@@ -78,14 +79,14 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                    <h3>{{$requestCount}}</h3>
 
-                                    <p>Unique Visitors</p>
+                                    <p>Agent Requests</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
+                                    <i class="fa fa-reply"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="{{route('admin.agent.request')}}" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

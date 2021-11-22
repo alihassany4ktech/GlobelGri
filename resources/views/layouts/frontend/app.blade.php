@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- set the page title -->
-    <title>Globelgri</title>
+    <title>globelgri</title>
     <!-- include google roboto font cdn link -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <!-- include the site bootstrap stylesheet -->
@@ -259,8 +259,8 @@
 
         <!-- Top Navigation Menu -->
         <div class="topnav">
-            <a href="{{route('index')}}" class="active1"><img src="{{asset('frontend/images/mobilelogo.png')}}"
-                    style="width:110px;height:17px; margin-top:0%" alt=""></a>
+            <a href="{{route('index')}}" class="active1"><img src="{{asset('frontend/images/logo5.png')}}"
+                    style="width:110px;height:33px; margin-top:-3%" alt="globelgri logo"></a>
             <div id="myLinks">
                 <ul class="nav navbar-nav pageMainNav pageMainNav1">
                     <li class="active">

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\PurchasedSubscription;
+use App\Subscription;
+use App\Threesixty;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -16,8 +20,11 @@ class AdminController extends Controller
 
     public function index()
     {
-
-        return view('admin.dashboard');
+        $agentsCount = User::all()->count();
+        $subscriptionCount = Subscription::where('status', '=', 1)->count();
+        $purchasedsubscriptionCount = PurchasedSubscription::all()->count();
+        $requestCount = Threesixty::all()->count();
+        return view('admin.dashboard', compact('agentsCount', 'subscriptionCount', 'requestCount', 'purchasedsubscriptionCount'));
     }
 
 
