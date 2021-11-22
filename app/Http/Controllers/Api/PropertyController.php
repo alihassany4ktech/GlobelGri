@@ -57,7 +57,7 @@ class PropertyController extends Controller
         $propert->price = $request->price;
         $propert->bedroom = $request->bedroom;
         $propert->bathroom = $request->bathroom;
-        $propert->garages = $request->garages;
+        $request->garages ? $propert->garages = $request->garages : '';
         $propert->area = $request->area;
         $propert->property_type = $request->property_type;
         $propert->description = $request->description;

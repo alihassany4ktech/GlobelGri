@@ -47,7 +47,7 @@
                                     <?php $i = 1; ?>
                                   
                                     @foreach ($agents as $row)
-                                      
+                                      {{-- {{dd($row->status)}} --}}
                                     <tr>
                                         <td class="text-center">{{$i}}</td>
                                         <td class="font-w600">{{$row->name}}</td>
@@ -88,7 +88,10 @@
                                                 {{$row->role->agent_role}}
                                                 </span>
                                                      @elseif($row->role->agent_role == 'Platform Administrator')
-                                                <span class="badge badge-warning">
+                                                <span class="badge badge-warning text-white">
+                                                {{$row->role->agent_role}}
+                                                     @elseif($row->role->agent_role == 'Buyer')
+                                                <span class="badge text-white" style="background-color: #b548d0">
                                                 {{$row->role->agent_role}}
                                                 </span>
                                                 @endif

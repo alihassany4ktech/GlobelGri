@@ -315,7 +315,7 @@
 
                     </li>
                     <li>
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
 
                         <a href="#" class="dropdown-toggle" style="color: #bd7f0a"
                             onclick="menufunction2()">Investment<span class="caret"></span></a>
@@ -329,7 +329,7 @@
                             </ul>
                         </div>
 
-                    </li>
+                    </li> --}}
                      @if(Auth::check())
                       <li>
                                                 <a href="{{route('property.create')}}" style="color: #bd7f0a" >
@@ -459,7 +459,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                            <li class="dropdown">
+                                            {{-- <li class="dropdown">
 
                                                 <a href="#" class="dropdown-toggle" style="color: #bd7f0a">Investment<span
                                                         class="caret"></span></a>
@@ -476,7 +476,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
 
                                     </div>

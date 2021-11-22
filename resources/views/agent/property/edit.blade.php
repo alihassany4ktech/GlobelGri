@@ -253,14 +253,15 @@
                                                         <option value="{{$property->property_type}}" selected>{{$property->property_type}}</option>
                                                         @if($property->property_type == 'For Rent')
                                                          <option value="For Sale">For Sale </option>
-                                                        <option value="Forn Investment">For Investment </option>
-                                                        @elseif($property->property_type == 'For Sale')
+                                                        {{-- <option value="Forn Investment">For Investment </option> --}}
+                                                        @else($property->property_type == 'For Sale')
                                                          <option value="For Rent">For Rent </option>
-                                                        <option value="Forn Investment">For Investment </option>
-                                                        @else
+                                                        {{-- <option value="Forn Investment">For Investment </option> --}}
+                                                        {{-- @else
                                                           <option value="For Rent">For Rent </option>
                                                          <option value="For Sale">For Sale </option>
-                                                        @endif
+                                                        @endif --}}
+                                                        @endif 
                                                        
                                                     </select>
                                                 </div>

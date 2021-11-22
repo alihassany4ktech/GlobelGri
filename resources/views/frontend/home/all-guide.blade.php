@@ -257,7 +257,7 @@
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
                         class="btn     text-uppercase fontNeuron"></button>
 
-                    <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Investor</h3>
+                    <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Platform Administrator</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
                         ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet
                         rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum,
@@ -267,7 +267,7 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                    <a href="{{route('invest_a_home')}}" type="button"
+                    <a href="{{route('plateform_administrator_guide')}}" type="button"
                         style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
@@ -294,7 +294,7 @@
             </div>
         </div>
     </section>
-    <section class="aboutBlock bgWhite">
+    {{-- <section class="aboutBlock bgWhite">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-5" style="margin-top:100px;">
@@ -317,7 +317,7 @@
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
                         class="btn     text-uppercase fontNeuron"></button>
 
-                    <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Platform Administrator</h3>
+                    <h3 class="fontNeuron fwBold text-capitalize" style="margin-top:10px;">Investor</h3>
                     <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris
                         ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet
                         rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum,
@@ -327,7 +327,7 @@
                         tempor, rhoncus commodo sapien auctor himenaeos laoreet maecenas tempor venenatis accumsan
                         lacinia congue dolor laoreet, ut nostra nulla nunc aptent dolor quisque, lorem sociosqu nunc
                         convallis curabitur faucibus.</p>
-                    <a href="{{route('plateform_administrator_guide')}}" type="button"
+                    <a href="{{route('invest_a_home')}}" type="button"
                         style="border:none;font-size: 20px; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px;margin-bottom:10px;"
@@ -342,7 +342,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="latestPostsBlock container">
         <!-- isoContentHolder -->
         <div class="row text-center btnHolder holder">

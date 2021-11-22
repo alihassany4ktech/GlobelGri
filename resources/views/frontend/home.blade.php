@@ -23,17 +23,17 @@
                             <h1 class="fontNeuron" style="text-align: center; line-height: 0.9;">Discover a place you'll love to live</h1>
                             <div class="tabSetholder bgWhite">
                                 <ul class="list-unstyled tabset">
-                                    <li class="active color1">
+                                    <li class="active color1" style="width: 50%">
                                         <a href="#tab1-0">Buy</a>
                                     </li>
                                     <li class="color2" style="border:none; background: #f1c967; 
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; width: 50%">
                                         <a href="#tab2-0">Rent</a>
                                     </li>
-                                    <li class="color3">
+                                    {{-- <li class="color3">
                                         <a href="#tab3-0">Investment</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                                 <div class="tab-content">
                                     <div id="tab1-0" class="active">
@@ -90,7 +90,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div id="tab3-0" class="js-tab-hidden">
+                                    {{-- <div id="tab3-0" class="js-tab-hidden">
                                         <!-- findFormBlock -->
                                         <form action="{{route('BuySearch')}}" class="findFormBlock findFormBlock4" method="POST">
                                             @csrf
@@ -115,7 +115,7 @@
 
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -129,10 +129,10 @@
                             
             <h1 class="text-center fontNeuron blockH text-uppercase" id="sheading" style="margin-top: -60px;">See how Globelgri can help
             </h1>
-            <div class="col-xs-12 col-sm-6 col-md-4" id="s1">
+            <div class="col-xs-12 col-sm-6 col-md-6" id="s1">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
-                        <img src="{{asset('frontend/images/homes1.png')}}"  style="margin-top: 20%; height:160px;" alt="image description">
+                        <img src="{{asset('frontend/images/homes1.png')}}"  style="margin-top: 20%; height:200px;" alt="image description">
                     </a>
                 </div>
                 <h4 class="text-center">Buy a home</h4>
@@ -145,10 +145,10 @@
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Find a home </a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4" id="s2">
+            <div class="col-xs-12 col-sm-6 col-md-6" id="s2">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
-                        <img src="{{asset('frontend/images/homes2.png')}}" style="margin-top: 20%;height:160px" alt="image description">
+                        <img src="{{asset('frontend/images/homes2.png')}}" style="margin-top: 20%;height:200px" alt="image description">
                     </a>
                 </div>
                 <h4 class="text-center">Rent a home</h4>
@@ -161,7 +161,7 @@
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Find a home </a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4" id="s3">
+            {{-- <div class="col-xs-12 col-sm-6 col-md-4" id="s3">
                 <div class="imgHolder" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
                     <a href="{{route('home_for_sale')}}">
                         <img src="{{asset('frontend/images/homes3.png')}}" style="margin-top: 20%;height:160px" alt="image description">
@@ -176,7 +176,7 @@
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Learn more </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -528,7 +528,7 @@
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:7%"  type="button" class="btn  text-uppercase fontNeuron">See all the guides</a>
                 </div>
                 <div class="col-xs-12 col-sm-6  col-md-6 float-right" id="allguid1">
-                    <div class="row" style="margin-top: 6%">
+                    <div class="row" style="margin-top: 7%">
                         <div class="col-xs-6 col-sm-6 col-md-6 ">
                             <div class="imgHolder" style="display: block; margin-left: 40%; width: 50%;">
                                 <a href="{{route('buy_a_home')}}">
@@ -541,12 +541,12 @@
                                     <img src="{{asset('frontend/images/homes2.png')}}" class="pic" style="height: 90px" alt="image description">
                                 </a>
                             </div>
-                            <div class="imgHolder"
+                            {{-- <div class="imgHolder"
                                 style="display: block; margin-left: 40%; margin-right: auto; width: 50%;">
                                 <a href="{{route('invest_a_home')}}">
                                     <img src="{{asset('frontend/images/homes3.png')}}" class="pic"  style="height: 90px" alt="image description">
                                 </a>
-                            </div>
+                            </div> --}}
 
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -554,8 +554,8 @@
                             <a href="{{route('buy_a_home')}}"><p style="color: white;">How to buy <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
                             <h2 class="fontNeuron" style="color: white;">Renter Guides</h2>
                             <a href="{{route('rent_a_home')}}"><p style="color: white;">How to rent <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
-                            <h2 class="fontNeuron" style="color: white;">Invester Guides</h2>
-                            <a href="{{route('invest_a_home')}}"><p style="color: white;">How to invest <i class="fi flaticon-arrows readMoreIcn"></i></p></a>
+                            {{-- <h2 class="fontNeuron" style="color: white;">Invester Guides</h2>
+                            <a href="{{route('invest_a_home')}}"><p style="color: white;">How to invest <i class="fi flaticon-arrows readMoreIcn"></i></p></a> --}}
                         </div>
                     </div>
                 </div>
@@ -603,7 +603,7 @@
                     <li><h6>For Professionals</h6></li>
                     <li><a href="{{route('buy_a_home')}}" style="color:black">Buyer Guides</a></li>
                     <li><a href="{{route('rent_a_home')}}" style="color:black">Renter Guides</a></li>
-                    <li><a href="{{route('invest_a_home')}}" style="color:black">Invester Guides</a></li>
+                    {{-- <li><a href="{{route('invest_a_home')}}" style="color:black">Invester Guides</a></li> --}}
                     <li><a href="{{route('all_guide')}}" style="color:black">See All The Guide</a></li>
                 </ul>
             </div>

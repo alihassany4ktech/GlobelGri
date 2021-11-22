@@ -1,9 +1,29 @@
 
+@php
 
+        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+        {
+          $link = "https";
+        }
+        else
+        {
+          $link = "http";
+
+          // Here append the common URL characters.
+          $link .= "://";
+
+          // Append the host(domain name, ip) to the URL.
+          $link .= $_SERVER['HTTP_HOST'];
+
+          // Append the requested resource location to the URL
+          $link .= $_SERVER['REQUEST_URI'];
+        }
+
+    @endphp
  <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="{{route('admin.home')}}" class="brand-link">
                 <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">globelgri</span>
@@ -20,7 +40,7 @@
                         
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">admin</a>
+                        <a href="{{route('admin.profile')}}" class="d-block">admin</a>
                     </div>
                 </div>
 
@@ -44,7 +64,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="{{route('admin.home')}}" class="nav-link">
+                            <a href="{{route('admin.home')}}" class="nav-link {{ $link == route('home') ? 'active':'' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -54,7 +74,7 @@
                         </li>
                         {{-- Profile --}}
                          <li class="nav-item">
-                            <a href="{{route('admin.profile')}}" class="nav-link">
+                            <a href="{{route('admin.profile')}}" class="nav-link {{ $link == route('admin.profile') ? 'active':'' }}">
 
                                 <i class="nav-icon  fas fa-user"></i>
                                 <p>
@@ -62,10 +82,19 @@
                                 </p>
                             </a>
                         </li>      
-                        {{-- end Ptofile  --}}  
+                        {{-- end Ptofile  --}}
+                        
+                         <li class="nav-item">
+                            <a href="{{route('admin.agent.request')}}" class="nav-link {{ $link == route('admin.agent.request') ? 'active':'' }}">
+                                <i class="nav-icon fa fa-reply" aria-hidden="true"></i>
+                                <p>
+                                    Agent Requests
+                                </p>
+                            </a>
+                        </li> 
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{ $link == route('admin.agents') || $link == route('admin.addagent') || $link == route('admin.trash')  ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{ $link == route('admin.agents') || $link == route('admin.addagent') || $link == route('admin.trash')  ? 'active':'' }}">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Agents
@@ -74,19 +103,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.agents')}}" class="nav-link">
+                                    <a href="{{route('admin.agents')}}" class="nav-link {{ $link == route('admin.agents') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>All Agents</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.addagent')}}" class="nav-link">
+                                    <a href="{{route('admin.addagent')}}" class="nav-link {{ $link == route('admin.addagent') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Agent</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.trash')}}" class="nav-link">
+                                    <a href="{{route('admin.trash')}}" class="nav-link {{ $link == route('admin.trash') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Trashed Agents</p>
                                     </a>
@@ -96,8 +125,8 @@
                         
                         
                         {{-- Blogs  --}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{$link == route('admin.create.blog') ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{$link == route('admin.create.blog')  ? 'active':'' }}">
                                 {{-- <i class="nav-icon fa fa-setting"></i> --}}
                                 <i class="nav-icon  fa fa-blog"></i>
                                 <p>
@@ -107,7 +136,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.generalsetting')}}" class="nav-link">
+                                    <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>All Blogs</p>
                                     </a>
@@ -116,7 +145,7 @@
 
                              <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.create.blog')}}" class="nav-link">
+                                    <a href="{{route('admin.create.blog')}}" class="nav-link {{ $link == route('admin.create.blog') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Blog</p>
                                     </a>
@@ -125,9 +154,39 @@
                         </li>
                          
 
+                        {{-- subscription --}}
+                        <li class="nav-item {{ $link == route('admin.all.subscription') || $link == route('admin.active.subscription') || $link == route('admin.subscription.create') ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{ $link == route('admin.all.subscription') || $link == route('admin.active.subscription') || $link == route('admin.subscription.create')? 'active':'' }}">
+                                <i class="nav-icon fa fa-comment-dollar"></i>
+                                <p>
+                                    Subscriptions
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.all.subscription')}}" class="nav-link {{ $link == route('admin.all.subscription') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Subscriptions</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.active.subscription')}}" class="nav-link {{ $link == route('admin.active.subscription') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Active Subscriptions</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.subscription.create')}}" class="nav-link {{ $link == route('admin.subscription.create') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Subscription</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> 
                         {{-- General Settings --}}
-                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                         <li class="nav-item {{ $link == route('admin.generalsetting') ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{ $link == route('admin.generalsetting') ? 'active':'' }}">
                                 {{-- <i class="nav-icon fa fa-setting"></i> --}}
                                 <i class="nav-icon  fas fa-cog"></i>
                                 <p>
@@ -137,7 +196,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.generalsetting')}}" class="nav-link">
+                                    <a href="{{route('admin.generalsetting')}}" class="nav-link {{ $link == route('admin.generalsetting') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Setting</p>
                                     </a>

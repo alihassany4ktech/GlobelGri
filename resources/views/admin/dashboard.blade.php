@@ -95,6 +95,7 @@
                 </div>
                 <!-- /.container-fluid -->
             </section>
+{{-- <div id="demos4"><script type="text/javascript" async data-short="demos4" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div> --}}
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

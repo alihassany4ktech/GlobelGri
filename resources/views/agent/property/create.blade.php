@@ -265,7 +265,7 @@
                                                         id="itemN-23" name="property_type" autocomplete="off">
                                                         <option value="For Sale">For Sale </option>
                                                         <option value="For Rent">For Rent </option>
-                                                        <option value="For Investment">For Investment </option>
+                                                        {{-- <option value="For Investment">For Investment </option> --}}
                                                     </select>
                                                 </div>
                                             </div>

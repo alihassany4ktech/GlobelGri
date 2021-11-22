@@ -6,6 +6,8 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Property;
+use App\Threesixty;
 use Illuminate\Support\Facades\Hash;
 
 class AgentController extends Controller
@@ -43,7 +45,7 @@ class AgentController extends Controller
 
             $password = $request->password;
             $agent = new User();
-            $agent->role = $request->agent_role;
+            $agent->role_id = $request->agent_role;
             $agent->name = $request->name;
             $agent->email = $request->email;
             $agent->password = Hash::make('password');
@@ -144,6 +146,31 @@ class AgentController extends Controller
             $unbanagent->update();
             return response()->json([
                 'success'  => 'Agent UnBaned Successfully!'
+            ]);
+        }
+    }
+
+    public function allRequest()
+    {
+        $threesixtyRequests = Threesixty::all();
+        return view('admin.request.all', compact('threesixtyRequests'));
+    }
+
+
+    public function propertyEdit($id)
+    {
+        return view('admin.property.edit', compact('id'));
+    }
+
+
+    public function propertyUpdate(Request $request)
+    {
+        if ($request->ajax()) {
+            $property = Property::find($request->property_id);
+            $property->threesixty_link = $request->threesixty_link;
+            $property->update();
+            return response()->json([
+                'success'  => 'Property Update Successfully!'
             ]);
         }
     }

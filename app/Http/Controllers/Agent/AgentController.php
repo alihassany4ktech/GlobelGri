@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Agent;
 
 use App\User;
 use App\Contact;
-use App\Favourite;
 use App\Property;
+use App\Favourite;
+use App\Threesixty;
+use App\Subscription;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
+use App\PurchasedSubscription;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\PropertyResource;
-use App\Http\Resources\PropertyCollection;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\PropertyCollection;
+use App\Notifications\ThreesixtyNotification;
 
 class AgentController extends Controller
 {
@@ -143,5 +147,47 @@ class AgentController extends Controller
     {
         $contacts = Contact::all();
         return view('agent.contacts', compact('contacts'));
+    }
+
+    // new 
+
+    public function agentSubscription()
+    {
+        $data = Subscription::where('agent_role', '=', Auth::user()->role->agent_role)->where('status', '=', 1)->paginate(5);
+        return view('agent.subscription.all', compact('data'));
+    }
+
+    public function purchasedSubscription()
+    {
+        $purchasedSubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
+        return view('agent.subscription.purchased', compact('purchasedSubscription'));
+    }
+
+    public function storeRequest(Request $request)
+    {
+        if ($request->ajax()) {
+            if (Threesixty::where('property_id', $request->property_id)->exists()) {
+                return response()->json([
+                    'success' => 'Request Already Send',
+                ]);
+            } else {
+                $property = Property::find($request->property_id);
+                $saverequest = new Threesixty();
+                $saverequest->agent_id = Auth::user()->id;
+                $saverequest->property_id = $request->property_id;
+                $saverequest->property_title = $property->propert_title;
+                $saverequest->agent_name = Auth::user()->name;
+                $saverequest->agent_email = Auth::user()->email;
+                $saverequest->agent_phone = Auth::user()->phone;
+                $saverequest->agent_address = Auth::user()->address;
+                $saverequest->save();
+                $user = User::find(Auth::user()->id);
+                $message = $user->name . ' Request For 360 Voide';
+                $user->notify(new ThreesixtyNotification($message));
+                return response()->json([
+                    'success' => 'Request Send Successfully!',
+                ]);
+            }
+        }
     }
 }

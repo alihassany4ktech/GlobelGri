@@ -29,7 +29,7 @@ class UserController extends Controller
             $success['name'] =  $user->name;
             $success['user_id'] = $user->id;
             $success['success'] = true;
-            return response()->json(['response' => $success], $this->successStatus);
+            return response()->json($success, $this->successStatus);
         } else {
             return response()->json(['error' => 'Unauthorised', 'success' => false], 401);
         }
@@ -56,7 +56,7 @@ class UserController extends Controller
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
         $success['success'] = true;
-        return response()->json(['response' => $success], $this->successStatus);
+        return response()->json($success, $this->successStatus);
     }
 
     /** 

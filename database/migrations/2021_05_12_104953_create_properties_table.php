@@ -16,6 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('threesixty_link')->default('0');
             $table->string('propert_title')->default('0');
             $table->string('price')->default('0');
             $table->string('featured_photo')->default('0');

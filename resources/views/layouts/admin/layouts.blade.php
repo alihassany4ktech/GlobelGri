@@ -102,10 +102,14 @@
     {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
     {{-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
     <script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  });
+
+    $('.description').summernote(
+                {
+                    placeholder: 'Enter ...',
+                    tabsize:2,
+                    height:140
+                }
+            ); 
 </script>
     <script>
         

@@ -62,7 +62,7 @@
                   <select class="form-control" name="agent_role" style="width: 100%;" autocomplete="off">
                     <option selected="selected">Select Role</option>
                     @foreach ($roles as $row)
-                        <option>{{$row->agent_role}}</option>
+                        <option value="{{$row->id}}" >{{$row->agent_role}}</option>
                     @endforeach
                     
                   </select>

@@ -25,9 +25,9 @@ class RoleSeeder extends Seeder
             [
                 'agent_role' => ('Builder'),
             ],
-            [
-                'agent_role' => ('Investor'),
-            ],
+            // [
+            //     'agent_role' => ('Investor'),
+            // ],
             [
                 'agent_role' => ('Renter'),
             ],

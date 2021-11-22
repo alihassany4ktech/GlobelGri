@@ -273,6 +273,19 @@
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
+                               <li>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
+                                </a>
+                            </li>
+
+                               <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
+                                </a>
+                            </li>
                            
                             <li>
                                 <a href="{{route('property.create')}}">

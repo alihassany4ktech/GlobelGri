@@ -81,7 +81,7 @@
     <!-- propertyIntroBlock -->
     <section class="propertyIntroBlock">
         <!-- propertyIntroImageSlider -->
-        <div class="slick-fade slickSlider introSlider propertyIntroImageSlider">
+        <div class="slick-fade slickSlider introSlider propertyIntroImageSlider" id="imgslider">
             @if($mapShops->gallery_photos)
             @foreach(json_decode($mapShops->gallery_photos, true) as $row)
             <div>
@@ -105,6 +105,8 @@
             @endif
 
         </div>
+                <iframe width='100%' height='610px' id="turevideo" style="display: none" src='{{$mapShops->threesixty_link}}' frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>
+
         <!-- rightPanelList -->
         <ul class="list-unstyled rightPanelList hidden-xs">
             <li>
@@ -127,13 +129,26 @@
                             View</span></strong>
                 </a>
             </li>
+            
+            
             <li>
+                 @if ($mapShops->threesixty_link == '0')
                 <a href="#" class="hasOver">
                     <span class="fi flaticon-360-degrees icn"></span>
                     <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">360 Virtual
                             Tour</span></strong>
                 </a>
+                 @else
+                 <a type="button" id="threesixtybtn" class="hasOver">
+                    <span class="fi flaticon-360-degrees icn"></span>
+                    <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">360 Virtual
+                            Tour</span></strong>
+                </a>
+                  @endif
             </li>
+             
+              
+           
         </ul>
     </section>
 
@@ -899,4 +914,16 @@ var myChart = new Chart(ctx, {
 
 };
 window.onload = init;
+</script>
+<script>
+    $(document).ready(function () {
+    
+    $('#threesixtybtn').on('click',function(){
+        $("#imgslider").css("display", "none");
+        $("#turevideo").css("display", "block");
+    });
+      
+        
+    });
+
 </script>

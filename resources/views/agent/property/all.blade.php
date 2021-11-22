@@ -241,23 +241,37 @@
                                 <span class="text">{{Auth::user()->name}}</span>
                             </div>
                         </header>
-                        <ul class="navUser list-unstyled">
+                                 <ul class="navUser list-unstyled">
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
-                            <li>
+                               <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
-                            <li>
+                              <li>
                                 <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
+                                </a>
+                            </li>
+                          
+                               <li>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
+                                </a>
+                            </li>
+
+                              <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
                                 </a>
                             </li>
                           
@@ -274,7 +288,7 @@
                                     <span>Submit Units</span>
                                 </a>
                             </li>
-                                <li>
+                                  <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
@@ -312,8 +326,11 @@
                                     </div>
                                 @endif
                               </div>
-  
-                              <!-- propertiesList -->
+  {{-- {{dd($data->isEmpty())}}    --}}
+                            @if($data->isEmpty())
+                                <p>Not Found</p>
+                            @else
+                                 <!-- propertiesList -->
                               <div class="propertiesList">
                                     @foreach ($data as $row)
                                         <article class="propertyRow">
@@ -324,14 +341,18 @@
                                     <div class="textBox">
                                       <h4 class="fontNeuron"><a href="{{route('agent.single_property',['id' => $row->id])}}">{{$row->propert_title}}</a></h4>
                                       <address><i class="fi flaticon-pin-1"></i>{{$row->address}}</address>
+                                      
                                       <div class="priceArea">
                                         <span class="price fontNeuron">${{$row->price}}</span>
                                         <time class="date" datetime="2017-02-27">{{$row->created_at->format('Y-m-d')}}</time>
                                       </div>
                                     </div>
                                   </div>
+                                  
                                   <div class="btnArea">
                                     <span class="status fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">{{$row->property_type}}</span>
+                                    <button type="button" id="{{$row->id}}" onclick="sendRequest(this)" class="status fontNeuron" style="border:none ;margin-left:5px; background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);">360 Video</button>
+
                                     <ul class="links list-unstyled">
                                       <li><a href="{{route('agent.single_property',['id' => $row->id])}}"><i class="fa fa-eye"></i>View</a></li>
                                       <li><a href="{{route('agent.edit_property',['id' => $row->id])}}"><i class="fa fa-edit"></i>Edit</a></li>
@@ -346,6 +367,8 @@
                             </div>
                             <!-- pagination -->
                             {{ $data->links() }}
+                            @endif
+                             
                           </div>
             </div>
         </div>
@@ -356,13 +379,39 @@
 
 
 @endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+             function sendRequest(elem){
+            var property_id = $(elem).attr("id");
+            $.ajax({
+                url: "{{ route('agent.store.threesixty.request') }}",
+                method: "POST",
+                dataType: "json",
+
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    property_id: property_id,
+                },
+
+                success: function (data) {
+                    toastr.success(data.success);
+                }
+            });
+            };
+
+</script>
 {{-- @if(Session::has('delete_property'))
 <script>
     toastr.success("{!!Session::get('delete_property')!!}");
     $('#result').html('<div class="alert alert-success">' "{!!Session::get('delete_property')!!}"'</div>');
 </script>
+
 @endif --}}
 {{-- <script>
     $(document).ready(function () {

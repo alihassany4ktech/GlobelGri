@@ -1,5 +1,8 @@
 <?php
 
+use App\PurchasedSubscription;
+use App\Subscription;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +67,17 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
 
     Route::post('agent/unban', 'Agent\AgentController@unbanAgent')->name('agent.unban');
 
+    // new 
+
+    Route::get('agent/requests', 'Agent\AgentController@allRequest')->name('agent.request');
+
+    // property edit for threesixty
+
+    Route::get('property/edit/{id}', 'Agent\AgentController@propertyEdit')->name('property.edit');
+
+    Route::post('property/update', 'Agent\AgentController@propertyUpdate')->name('property.update');
+
+
 
     /****************************** Blog ***************************/
 
@@ -71,6 +85,22 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
 
     Route::post('blog/store', 'Blog\BlogController@store')->name('blog.store');
 
+    /****************************** subscription ***************************/
+
+    Route::get('subscriptions', 'Subscription\SubscriptionController@allSubscription')->name('all.subscription');
+
+    Route::get('active/subscriptions', 'Subscription\SubscriptionController@activeSubscription')->name('active.subscription');
+
+    Route::get('subscription/create', 'Subscription\SubscriptionController@subscriptionCreate')->name('subscription.create');
+
+    Route::post('subscription/store', 'Subscription\SubscriptionController@subscriptionStore')->name('subscription.store');
+
+    Route::get('subscription/delete/{id}', 'Subscription\SubscriptionController@deleteSubscription')->name('subscription.delete');
+
+    Route::get('subscription/edit/{id}', 'Subscription\SubscriptionController@editSubscription')->name('subscription.edit');
+
+
+    Route::post('subscription/update', 'Subscription\SubscriptionController@subscriptionUpdate')->name('subscription.update');
 
     /****************************** General Setting ***************************/
 
@@ -104,6 +134,84 @@ Route::namespace('Agent')->as('agent.')->group(function () {
     Route::get('/agent/contacts', 'AgentController@contacts')->name('contact');
 
     Route::get('/favourite/propreties', 'AgentController@favouriteProperty')->name('favourite.property');
+
+    // new 
+    Route::get('/agent/subscriptions', 'AgentController@agentSubscription')->name('subscription');
+
+    Route::get('/agent/purchased/subscriptions', 'AgentController@purchasedSubscription')->name('purchased.subscription');
+
+    Route::post('threesixty/request/store', 'AgentController@storeRequest')->name('store.threesixty.request');
+
+    Route::get('/subscription/purchase/{id}', function ($id) {
+        $gateway = new Braintree\Gateway([
+            'environment' => env('BTREE_ENVIRONMENT'),
+            'merchantId' => env('BTREE_MERCHANT_ID'),
+            'publicKey' => env('BTREE_PUBLIC_KEY'),
+            'privateKey' => env('BTREE_PRIVATE_KEY')
+        ]);
+
+        $token = $gateway->ClientToken()->generate();
+        $subscription = Subscription::find($id);
+        $user = Auth::user();
+        return view('agent.subscription.pruchase', compact('subscription', 'user', 'token'));
+    });
+});
+
+Route::post('/checkout', function (Request $request) {
+    $gateway = new Braintree\Gateway([
+        'environment' => env('BTREE_ENVIRONMENT'),
+        'merchantId' => env('BTREE_MERCHANT_ID'),
+        'publicKey' => env('BTREE_PUBLIC_KEY'),
+        'privateKey' => env('BTREE_PRIVATE_KEY')
+    ]);
+
+    $amount = $request->amount;
+    $nonce = $request->payment_method_nonce;
+
+    $result = $gateway->transaction()->sale([
+        'amount' => $amount,
+        'paymentMethodNonce' => $nonce,
+        'customer' => [
+            'firstName' => $request->agent_name,
+            'email' => $request->agent_email,
+        ],
+        'options' => [
+            'submitForSettlement' => true
+        ]
+    ]);
+
+    if ($result->success) {
+        $transaction = $result->transaction;
+        $purchasedsubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
+        if ($purchasedsubscription == null) {
+            $subscription = new PurchasedSubscription();
+            $subscription->agent_id = Auth::user()->id;
+            $subscription->subscription_id = $request->subscription_id;
+            $subscription->title = $request->title;
+            $subscription->price = $request->amount;
+            $subscription->valid_property = $request->valid_property;
+            $subscription->status = $request->status;
+            $subscription->description = $request->description;
+            $subscription->save();
+        } else {
+            $purchasedsubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
+            $purchasedsubscription->subscription_id = $request->subscription_id;
+            $purchasedsubscription->title = $request->title;
+            $purchasedsubscription->price = $request->amount;
+            $purchasedsubscription->status = $request->status;
+            $purchasedsubscription->description = $request->description;
+            $purchasedsubscription->valid_property += $request->valid_property;
+            $purchasedsubscription->update();
+        }
+        return back()->with('success_message', 'Transaction successful.');
+    } else {
+        $errorString = "";
+
+        foreach ($result->errors->deepAll() as $error) {
+            $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+        }
+        return back()->withErrors('An error occurred with the message: ' . $result->message);
+    }
 });
 
 

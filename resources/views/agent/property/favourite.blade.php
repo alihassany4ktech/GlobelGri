@@ -52,151 +52,80 @@
                 </div>
             </div>
             <!-- orderRow -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12">
                     <!-- otherFeaturesCollapse -->
                     <div class="collapse otherFeaturesCollapse" id="otherFeaturescollapse">
                         <!-- checkList -->
-                        <ul class="list-unstyled checkList text-primary">
+                    <ul class="navUser list-unstyled">
                             <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Air conditioning</span>
-                                </label>
+                                <a href="{{route('agent.dashboard')}}">
+                                    <i class="far fa-user"></i>
+                                    <span>Account Settings</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cofee pot</span>
-                                </label>
+                               <li>
+                                <a href="{{route('agent.property')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Properties</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Fan</span>
-                                </label>
+                              <li>
+                                <a href="{{route('agent.favourite.property')}}">
+                                    <i class="far fa-heart"></i>
+                                    <span>Favorited Properties</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Hi-fi</span>
-                                </label>
+                          
+                               <li>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Balcony</span>
-                                </label>
+
+                              <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Computer</span>
-                                </label>
+                          
+                           
+                                <li>
+                                <a href="{{route('property.create')}}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Saved Property</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Fridge</span>
-                                </label>
+                             <li>
+                                <a href="{{route('unit.create')}}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Submit Units</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Internet</span>
-                                </label>
+                                  <li>
+                                <a href="{{route('unit.purchased')}}">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <span>Units Purchased</span>
+                                </a>
                             </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Bedding</span>
-                                </label>
+                              <li>
+                                <a href="{{route('agent.contact')}}">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                    <span>Contacts</span>
+                                </a>
                             </li>
+                         
                             <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cot</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Grill</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Iron</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cable TV</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Dishwasher</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Hairdryer</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Juicer</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cleaning after exit</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">DVD</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Heating</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Lift</span>
-                                </label>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -204,7 +133,7 @@
                 <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
                     <button type="button" class="btn  text-uppercase fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white;">SEARCH</button>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </form>
     <!-- content -->
@@ -236,23 +165,37 @@
                                 <span class="text">{{Auth::user()->name}}</span>
                             </div>
                         </header>
-                        <ul class="navUser list-unstyled">
+                       <ul class="navUser list-unstyled">
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
-                            <li>
+                               <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                              <li>
+                                <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
+                                </a>
+                            </li>
+                          
+                               <li>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
+                                </a>
+                            </li>
+
+                              <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
                                 </a>
                             </li>
                           
@@ -269,7 +212,7 @@
                                     <span>Submit Units</span>
                                 </a>
                             </li>
-                                <li>
+                                  <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
@@ -300,14 +243,16 @@
                             <!-- accountData -->
                             <div class="accountData">
                               <div class="head">
-                                <h4 class="fontNeuron">My Properties</h4>
+                                <h4 class="fontNeuron">My favourite Properties</h4>
                                 @if(session()->has('delete_property'))
                                     <div class="alert alert-success" style="float: right">
                                         {{ session()->get('delete_property') }}
                                     </div>
                                 @endif
                               </div>
-  
+                                @if($data->isEmpty())
+                                <p>Not Found</p>
+                            @else
                               <!-- propertiesList -->
                               <div class="propertiesList">
                                     @foreach ($data as $row)
@@ -341,6 +286,7 @@
                             </div>
                             <!-- pagination -->
                             {{ $data->links() }}
+                            @endif
                           </div>
             </div>
         </div>

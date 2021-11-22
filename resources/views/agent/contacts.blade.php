@@ -236,25 +236,40 @@
                                 <span class="text">{{Auth::user()->name}}</span>
                             </div>
                         </header>
-                        <ul class="navUser list-unstyled">
+                                 <ul class="navUser list-unstyled">
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
-                            <li>
+                               <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
-                            <li>
+                              <li>
                                 <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
+                          
+                              <li>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
+                                </a>
+                            </li>
+
+                               <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
+                                </a>
+                            </li>
+                          
                            
                                 <li>
                                 <a href="{{route('property.create')}}">
@@ -268,19 +283,18 @@
                                     <span>Submit Units</span>
                                 </a>
                             </li>
-                                <li>
+                                  <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
                                 </a>
                             </li>
-                                <li>
+                              <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
                             </li>
-                        
                          
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -303,7 +317,11 @@
                                 <h4 class="fontNeuron">My Contacts</h4>
                               </div>
                               <!-- propertiesList -->
-                              <div class="propertiesList">
+                              
+                              <p>Not Found</p>
+                              @if ($contacts->isEmpty())
+                              @else
+                                     <div class="propertiesList">
                                     @foreach ($contacts as $row)
                                         <article class="propertyRow">
                                   <div class="info">                                    
@@ -318,6 +336,8 @@
                                 
 
                               </div>
+                              @endif
+                           
                             </div>
                             <!-- pagination -->
                             {{-- {{ $data->links() }} --}}

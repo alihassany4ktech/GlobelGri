@@ -254,51 +254,66 @@
                                 {{-- <span class="text"><a href="#" class="link">Change Password</a></span> --}}
                             </div>
                         </header>
-                        <ul class="navUser list-unstyled">
+                                <ul class="navUser list-unstyled">
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
-                            <li>
+                               <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
-                            <li>
+                              <li>
                                 <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
-                           
+                          
                             <li>
-                                <a href="{{route('property.create')}}">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Submit Property</span>
+                                <a href="{{route('agent.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>Subscriptions</span>
                                 </a>
                             </li>
+
                             <li>
+                                <a href="{{route('agent.purchased.subscription')}}">
+                                    <i class="fi flaticon-house"></i>
+                                    <span>My Purchased Subscription</span>
+                                </a>
+                            </li>
+                          
+                           
+                                <li>
+                                <a href="{{route('property.create')}}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Saved Property</span>
+                                </a>
+                            </li>
+                             <li>
                                 <a href="{{route('unit.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Submit Units</span>
                                 </a>
                             </li>
-
-                             <li>
+                                  <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
                                 </a>
                             </li>
-                             <li>
+                              <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
                             </li>
+                         
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -375,28 +390,29 @@
                                         @else 
 
                                         <input type="tel" class="form-control" name="phone"
-                                            value="{{Auth::user()->phone}}" id="itemN-3" placeholder="Enter Phone...">
+                                            value="{{Auth::user()->phone}}" id="itemN-3">
                                             @endif
                                     </div>
                                      <div class="form-group">
                                          <label for="itemN-3">Address</label>
-                                         @if(Auth::user()->address == 0)
-                                         <input type="tel" class="form-control" name="address"
+                                         @if(Auth::user()->address == '0')
+                                         <input type="text" class="form-control" name="address"
                                              id="itemN-3" placeholder="Enter Your Address...">
                                          @else 
-                                         <input type="tel" class="form-control" name="address"
-                                            value="{{Auth::user()->address}}" id="itemN-3" placeholder="Enter Your Address...">
+                                         <input type="text" class="form-control" name="address"
+                                            value="{{Auth::user()->address}}" id="itemN-3">
                                          @endif
                                         
                                     </div>
+                                
                                     <div class="form-group">
                                         <label for="itemN-4">Biography</label>
-                                          @if(Auth::user()->biography == 0)
+                                          @if(Auth::user()->biography == '0')
                                             <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
                                             placeholder="Biography.."></textarea>
                                             @else 
                                               <textarea id="itemN-4" rows="1" cols="50" class="form-control" name="biography"
-                                            placeholder="Biography..">{{Auth::user()->biography}}</textarea>
+                                            >{{Auth::user()->biography}}</textarea>
                                             @endif
                                       
                                     </div>
@@ -462,14 +478,26 @@
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
                                         <label for="itemN-8">Facebook URL</label>
-                                        <input type="text" class="form-control"
-                                            placeholder="Enter your facebook url..." id="itemN-8" name="facebook_url ">
+                                        @if (Auth::user()->facebook_url == '0')
+                                            <input type="text" class="form-control"
+                                            placeholder="Enter your facebook url..." id="itemN-8" name="facebook_url">
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->facebook_url}}" id="itemN-8" name="facebook_url">
+                                        @endif
+                                        
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
                                         <label for="itemN-9">Twitter URL</label>
+                                        @if (Auth::user()->twitter_url == '0')
                                         <input type="text" class="form-control" placeholder="Enter your twitter url..." id="itemN-9" name="twitter_url">
+
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->twitter_url}}" id="itemN-8" name="twitter_url">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -477,15 +505,28 @@
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
                                         <label for="itemN-10">Linkedin URL</label>
-                                        <input type="text" class="form-control" placeholder="Enter your linkedin url..."
-                                            id="itemN-10" name="linkedin_url">
+                                        
+                                                 @if (Auth::user()->linkedin_url == '0')
+                                                <input type="text" class="form-control" placeholder="Enter your linkedin url..."
+                                                                id="itemN-10" name="linkedin_url">
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->linkedin_url}}" id="itemN-8" name="linkedin_url">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="itemN-11">Instagram URL</label>
-                                        <input type="text" class="form-control" placeholder="Enter your instagram url..."
+                                       
+
+                                                    @if (Auth::user()->instagram_url == '0')
+                                                 <input type="text" class="form-control" placeholder="Enter your instagram url..."
                                             id="itemN-11" name="instagram_url">
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->instagram_url}}" id="itemN-8" name="instagram_url">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -493,15 +534,28 @@
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
                                         <label for="itemN-12">Google Plus URL</label>
-                                        <input type="text" class="form-control" placeholder="Enter your google plus url..."
+                                                    @if (Auth::user()->google_url == '0')
+                                             <input type="text" class="form-control" placeholder="Enter your google plus url..."
                                             id="itemN-12" name="google_url">
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->google_url}}" id="itemN-8" name="google_url">
+                                        @endif
+                                        
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
                                         <label for="itemN-13">Skype</label>
-                                        <input type="text" class="form-control" placeholder="Enter your skype url..."
+                                        
+
+                                                        @if (Auth::user()->skype_url == '0')
+                                         <input type="text" class="form-control" placeholder="Enter your skype url..."
                                             id="itemN-13" name="skype_url">
+                                        @else
+                                            <input type="text" class="form-control"
+                                            value="{{Auth::user()->skype_url}}" id="itemN-8" name="skype_url">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
