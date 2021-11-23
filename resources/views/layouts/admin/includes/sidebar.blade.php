@@ -34,14 +34,14 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Auth::user()->image)
+                        {{-- @if (Auth::user()->image)
                             <img src="{{asset(Auth::user()->image)}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
-                        @else
+                        @else --}}
                             <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
-                        @endif
+                        {{-- @endif --}}
                     </div>
                     <div class="info">
-                        <a href="{{route('admin.profile')}}" class="d-block">{{Auth::user()->name}}</a>
+                        <a href="{{route('admin.profile')}}" class="d-block">Admin</a>
                     </div>
                 </div>
 

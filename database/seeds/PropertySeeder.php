@@ -16,6 +16,7 @@ class PropertySeeder extends Seeder
             //For Sale
             [
                 'user_id' => '3',
+                'threesixty_link' => 'https://my.matterport.com/show/?m=BswfThZ38kh',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',
@@ -35,6 +36,7 @@ class PropertySeeder extends Seeder
 
             [
                 'user_id' => '3',
+                'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',
@@ -177,6 +179,7 @@ class PropertySeeder extends Seeder
 
             [
                 'user_id' => '3',
+                'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',
@@ -196,6 +199,7 @@ class PropertySeeder extends Seeder
 
             [
                 'user_id' => '3',
+                'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',
@@ -338,6 +342,7 @@ class PropertySeeder extends Seeder
 
             [
                 'user_id' => '3',
+                'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',
@@ -357,6 +362,7 @@ class PropertySeeder extends Seeder
 
             [
                 'user_id' => '3',
+                'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
                 'featured_photo' => 'property_featured_image/1623835677property.jpg',

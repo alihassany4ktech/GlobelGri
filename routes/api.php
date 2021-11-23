@@ -72,4 +72,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/agent/property', 'Api\PropertyController@property');
 
     Route::get('/single/property/{id}', 'Api\PropertyController@SingleProperty');
+
+
+    // subscription route
+
+    // get all subscription
+
+    Route::get('/all/subscriptions', 'Api\SubscriptionController@allSubscription');
+
+    // get single subscription
+
+    Route::get('/single/subscription/{id}', 'Api\SubscriptionController@singleSubscription');
 });

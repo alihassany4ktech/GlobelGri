@@ -103,7 +103,7 @@ p {
             <a type="button" href="{{route('agent.dashboard')}}" class="btn btn-sm btn-success mb-3">Go To Dashboard</a>
         @endif
 
-        @if(count($errors) > 0)
+        {{-- @if(count($errors) > 0)
             <div class="alert alert-danger mt-5">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -111,13 +111,13 @@ p {
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
         <div class="row gx-3">
            <form method="post" id="payment-form" action="{{url('/checkout')}}">
                @csrf
             <div class="col-12">
                 <div class="d-flex flex-column">
-                    <p class="text mb-1">Person Name</p> <input class="form-control mb-3" type="text" name="agent_name"  value="{{$user->name}}">
+                    <p class="text mb-1">Person Name</p> <input class="form-control mb-3" type="text" name="agent_name"  value="{{Auth::user()->name}}">
                 </div>
             </div>
             <div class="row">
@@ -132,8 +132,8 @@ p {
                 </div>
             </div>
             </div>
-            <input name="agent_id" value="{{$user->id}}" type="hidden" />
-            <input name="agent_email" value="{{$user->email}}" type="hidden" />
+            <input name="agent_id" value="{{Auth::user()->id}}" type="hidden" />
+            <input name="agent_email" value="{{Auth::user()->email}}" type="hidden" />
             <input name="subscription_id" value="{{$subscription->id}}" type="hidden" />
             <input name="valid_property" value="{{$subscription->valid_property}}" type="hidden" />
             <input name="status" value="{{$subscription->status}}" type="hidden" />

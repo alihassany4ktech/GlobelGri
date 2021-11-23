@@ -152,8 +152,7 @@ Route::namespace('Agent')->as('agent.')->group(function () {
 
         $token = $gateway->ClientToken()->generate();
         $subscription = Subscription::find($id);
-        $user = Auth::user();
-        return view('agent.subscription.pruchase', compact('subscription', 'user', 'token'));
+        return view('agent.subscription.pruchase', compact('subscription', 'token'));
     });
 });
 
