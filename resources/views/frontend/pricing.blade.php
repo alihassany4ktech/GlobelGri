@@ -48,15 +48,16 @@
                         style="margin-left:10px;margin-top: 50px;background-color: #dcf2f7;width:95%;">
                         <h3 class="fontNeuron fwBold text-capitalize" style="text-align: center;margin-top:50px">{{$row->title}}</h3>
                         <p style="text-align: center">{!!$row->description!!}</p>
-                        {{-- <div class="row text-center btnHolder">
-                            <a href="#"
-                                style="margin-bottom:50px; border:none;font-size: 20px; background: #f1c967; 
-                                                                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px"
-                                type="button" class="btn  text-uppercase fontNeuron">Learn More</a>
-                        </div> --}}
+                        
                         <div class="row text-center" style="margin-bottom: 10px">
                             <span class="textSecondary">Price:</span>  ${{$row->price}} | <span class="textSecondary">Valid Property:</span> {{$row->valid_property}} 
+                        </div>
+                        <div class="row text-center btnHolder">
+                            <a href="#"
+                                style="margin-bottom:20px; border:none;font-size: 16px; background: #f1c967; 
+                                    background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                    background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px"
+                                type="button" class="btn btn-sm  text-uppercase fontNeuron">Purchase</a>
                         </div>
 
                     </div>
