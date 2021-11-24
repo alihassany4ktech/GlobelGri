@@ -16,6 +16,7 @@
 
 </style>
 <main>
+      
 <section class="slick-fade slickSlider introSlider">
         <div>
             <!-- introSlide -->
@@ -24,7 +25,7 @@
                 <div class="container introSlideHolder">
                     {{-- <div class="align"> --}}
                     <!-- introSlideCaption -->
-                    {{-- <div class="col-xs-8 col-sm-2 col-md-8 introSlideCaption captionwithtabs"
+                    <div class="col-xs-8 col-sm-2 col-md-8 introSlideCaption captionwithtabs"
                         style="margin-top: 170px;">
                         <p style="color: white" id="bp">SOLUTIONS FOR REAL ESTATE BROKERS</p>
                         <h1 class="fontNeuron" style="font-size:50px; margin-top:12px" id="bheading">One integrated solution.</h1>
@@ -38,10 +39,25 @@
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:20px"
                             type="button" class="btn  text-uppercase  fontNeuron lightbox">Get Started</a>
-                    </div> --}}
+                    </div>
                     {{-- </div> --}}
                 </div>
             </article>
+        </div>
+    </section>
+     <section class="aboutBlock bgWhite">
+        <div class="container">
+            <div class="row text-center btnHolder holder">
+                <button id="mybtn"
+                    style="border:none;font-size: 20px; background: #f1c967; 
+                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
+                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:0px"
+                    class="btn  text-uppercase fontNeuron"></button>
+            </div>
+            <h1 style="text-align: center" class="fontNeuron">Leverage tools that help you do your best work</h1>
+            <p style="text-align: center" class="fontNeuron">Each home-buying journey is unique, and Zillow Premier
+                Agent gives you the resources to exceed <br> clients’ expectations at every step.</p>
+            
         </div>
     </section>
 <section class="bgWhite ourAgentBlock">
