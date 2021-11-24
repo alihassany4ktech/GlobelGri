@@ -72,9 +72,9 @@
             <div class="four-slider slickSlider profilesSlider">
                 @foreach ($subscription as $row)
                 <div>
-                    <div class="col-xs-12 col-sm-2 col-md-4" id="d1"
-                        style="margin-left:10px;margin-top: 50px;background-color: #dcf2f7;width:95%;">
-                        <h3 class="fontNeuron fwBold text-capitalize" style="text-align: center;margin-top:50px">{{$row->title}}</h3>
+                    <div class="col-xs-12 col-sm-2 col-md-4" 
+                        style="margin-left:10px;background-color: #dcf2f7;width:95%;">
+                        <h3 class="fontNeuron fwBold text-capitalize" style="text-align: center;margin-top:20px">{{$row->title}}</h3>
                         <p style="text-align: center">{!!$row->description!!}</p>
                         
                         <div class="row text-center" style="margin-bottom: 10px">
