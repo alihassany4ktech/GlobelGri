@@ -260,7 +260,17 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
-                                <input type="hidden" name="agent_role" id="" value="8">
+                                <div class="form-group">
+                                    
+                                  <?php $roles = App\Role::all(); ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->id}}">{{$row->agent_role}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                  <div class="form-group"> 
                                     <label class="fwNormal customLabelCheck">
                                         <input type="checkbox" class="customFormInputReset" checked>

@@ -1,6 +1,20 @@
 @extends('layouts.frontend.app')
 @section('content')
+<style>
+    .latestPostsBlock .btnHolder .btn {
+        min-width: 239px;
+    }
 
+     .latestPostsBlock .holder .btn {
+        min-width: 60px;
+        /* height: 1vh; */
+    }
+
+    .mo .col {
+        width: 600px;
+    }
+
+</style>
 <main>
 <section class="slick-fade slickSlider introSlider">
         <div>
@@ -36,11 +50,9 @@
                 class="textSecondary">SCRIPTIONS</span></h1>
         <div class="row">
             <?php
-
-                                                $subscription = App\Subscription::all()
-                                                 ?>
-            <!-- profilesSlider -->
-            {{-- {{dd($subscription)}} --}}
+            $subscription = App\Subscription::all()
+            ?>
+            <!-- subscriptionSlider -->
             <div class="four-slider slickSlider profilesSlider">
                 @foreach ($subscription as $row)
                 <div>
@@ -53,11 +65,14 @@
                             <span class="textSecondary">Price:</span>  ${{$row->price}} | <span class="textSecondary">Valid Property:</span> {{$row->valid_property}} 
                         </div>
                         <div class="row text-center btnHolder">
-                            <a href="#"
+                            <a href="#popup2"
                                 style="margin-bottom:20px; border:none;font-size: 16px; background: #f1c967; 
                                     background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                     background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px"
-                                type="button" class="btn btn-sm  text-uppercase fontNeuron">Purchase</a>
+                                type="button" class="btn btn-sm  text-uppercase fontNeuron lightbox">Purchase</a>
+
+                     
+                              
                         </div>
 
                     </div>
@@ -68,5 +83,76 @@
         </div>
     </div>
 </section>
+<!-- pagePopupWrap -->
+    <div class="popup-holder">
+        <div id="popup2" class="lightbox-demo">
+            <!-- popupLoginFrom -->
+            <form action="{{ route('register') }}" method="post"
+                class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
+                @csrf
+                <div class="tab-content bgWhite">
+
+                    <div class="tab-active">
+                        <h3 id="headingform" style="margin-left: 35px;">Sign Up</h3>
+                        <div class="popupColsHolder mo">
+                            <div class="col bgWhite">
+                                <div class="form-group">
+                                    <label class="fontNeuron" for="">Name</label>
+                                    <input type="text" class="form-control elemenBlock" id="name" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus
+                                        placeholder="Enter a username..">
+                                </div>
+                                <div class="form-group">
+                                    <label class="fontNeuron" for="">Password</label>
+                                    <input type="password" class="form-control elemenBlock" name="password" required
+                                        autocomplete="new-password" placeholder="Choose a safe one..">
+                                </div>
+                                <div class="form-group">
+                                    <label class="fontNeuron" for="">Confirm Password</label>
+                                                  <input type="password" class="form-control elemenBlock" name="password_confirmation"
+                                        required autocomplete="new-password" placeholder="..and confirm it!">
+                                </div>
+                                <div class="form-group">
+                                    <label class="fontNeuron" for="">Email</label>
+                                      <input type="email" class="form-control elemenBlock" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email"
+                                        placeholder="Your valid email..">
+                                </div>
+                                <div class="form-group">
+                                    
+                                  <?php $roles = App\Role::all(); ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->id}}">{{$row->agent_role}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                 <div class="form-group"> 
+                                    <label class="fwNormal customLabelCheck">
+                                        <input type="checkbox" class="customFormInputReset" checked>
+                                        <span class="fakeCheckbox"></span>
+                                        <span class="fakeLabel">I have read and agree to the Term of Service.</span>
+                                    </label>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
+                                    style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
+                                <p class="fontNeuron">We respect your privacy. See our <a href="#" style="color:#bd7f0a "> privacy policy. </a>
+                                    <br><br>
+                                    By pressing Submit, you agree that Zillow Group may contact you via phone/text about
+                                    your inquiry, which may involve the use of automated means. You are not required to
+                                    consent as a condition of purchasing any goods or services. Message/data rates may
+                                    apply.</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+    </div>
 </main>
 @endsection
