@@ -353,7 +353,11 @@ Route::get('/builder-guid', 'Frontend\FrontEndController@BuilderGuide')->name('b
 
 Route::get('/platform-administrator-guid', 'Frontend\FrontEndController@PlateformAdministratorGuide')->name('plateform_administrator_guide');
 
+// new 
 
+// pricing
+
+Route::get('/pricing', 'Frontend\FrontEndController@pricing')->name('pricing');
 
 
 Auth::routes(['verify' => true]);

@@ -224,4 +224,9 @@ class FrontEndController extends Controller
     {
         return view('frontend.home.allguide.plateform-administrator-guide');
     }
+
+    public function pricing()
+    {
+        return view('frontend.pricing');
+    }
 }
