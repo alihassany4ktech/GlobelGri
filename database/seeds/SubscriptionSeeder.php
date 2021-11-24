@@ -21,7 +21,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
             [
                 'status' => 1,
@@ -31,7 +32,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
             [
                 'status' => 1,
@@ -41,7 +43,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
             [
                 'status' => 1,
@@ -51,7 +54,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
             [
                 'status' => 1,
@@ -61,7 +65,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
             [
                 'status' => 1,
@@ -71,7 +76,8 @@ class SubscriptionSeeder extends Seeder
                 'agent_role' => 'Lender',
                 'description' => 'The Zillow Premier Agent app makes it easier to be a mind-reading agent. 
                 Your clients can opt in to share the homes they are viewing, saving and searching for on our 
-                network of site'
+                network of site',
+                'created_at' => '2021-11-24 04:49:51'
             ],
         ]);
     }
