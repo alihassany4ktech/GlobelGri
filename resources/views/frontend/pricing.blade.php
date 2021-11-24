@@ -21,7 +21,7 @@
         <div>
             <!-- introSlide -->
             <article class="introSlide bgCover" id="cover"
-                style="background-image: url({{asset('frontend/images/hm.jpg')}});background-position: -0px -80px ;background-repeat: no-repeat;  background-attachment: fixed;">
+                style="background-image: url({{asset('frontend/images/hom1.jpg')}});background-position: -0px -160px -160px ;background-repeat: no-repeat;  background-attachment: fixed;">
                 <div class="container introSlideHolder">
                     {{-- <div class="align"> --}}
                     <!-- introSlideCaption -->
