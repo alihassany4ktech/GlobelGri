@@ -1,5 +1,6 @@
 <?php
 
+use App\Subscription;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,11 +12,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminSeeder::class);
-        $this->call(RoleSeeder::class);
-        $this->call(AgentSeeder::class);
-        $this->call(PropertySeeder::class);
-        $this->call(UnitSeeder::class);
-        $this->call(SubscriptionSeeder::class);
+        $this->call([
+            AdminSeeder::class,
+            RoleSeeder::class,
+            AgentSeeder::class,
+            PropertySeeder::class,
+            UnitSeeder::class,
+            SubscriptionSeeder::class
+        ]);
+
+        // factory(Subscription::class)->times(10)->create();
     }
 }

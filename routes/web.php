@@ -153,65 +153,65 @@ Route::namespace('Agent')->as('agent.')->group(function () {
         $token = $gateway->ClientToken()->generate();
         $subscription = Subscription::find($id);
         return view('agent.subscription.pruchase', compact('subscription', 'token'));
+        });
     });
-});
 
-Route::post('/checkout', function (Request $request) {
-    $gateway = new Braintree\Gateway([
-        'environment' => env('BTREE_ENVIRONMENT'),
-        'merchantId' => env('BTREE_MERCHANT_ID'),
-        'publicKey' => env('BTREE_PUBLIC_KEY'),
-        'privateKey' => env('BTREE_PRIVATE_KEY')
-    ]);
+    Route::post('/checkout', function (Request $request) {
+        $gateway = new Braintree\Gateway([
+            'environment' => env('BTREE_ENVIRONMENT'),
+            'merchantId' => env('BTREE_MERCHANT_ID'),
+            'publicKey' => env('BTREE_PUBLIC_KEY'),
+            'privateKey' => env('BTREE_PRIVATE_KEY')
+        ]);
 
-    $amount = $request->amount;
-    $nonce = $request->payment_method_nonce;
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
 
-    $result = $gateway->transaction()->sale([
-        'amount' => $amount,
-        'paymentMethodNonce' => $nonce,
-        'customer' => [
-            'firstName' => $request->agent_name,
-            'email' => $request->agent_email,
-        ],
-        'options' => [
-            'submitForSettlement' => true
-        ]
-    ]);
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'customer' => [
+                'firstName' => $request->agent_name,
+                'email' => $request->agent_email,
+            ],
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
 
-    if ($result->success) {
-        $transaction = $result->transaction;
-        $purchasedsubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
-        if ($purchasedsubscription == null) {
-            $subscription = new PurchasedSubscription();
-            $subscription->agent_id = Auth::user()->id;
-            $subscription->subscription_id = $request->subscription_id;
-            $subscription->title = $request->title;
-            $subscription->price = $request->amount;
-            $subscription->valid_property = $request->valid_property;
-            $subscription->status = $request->status;
-            $subscription->description = $request->description;
-            $subscription->save();
-        } else {
+        if ($result->success) {
+            $transaction = $result->transaction;
             $purchasedsubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
-            $purchasedsubscription->subscription_id = $request->subscription_id;
-            $purchasedsubscription->title = $request->title;
-            $purchasedsubscription->price = $request->amount;
-            $purchasedsubscription->status = $request->status;
-            $purchasedsubscription->description = $request->description;
-            $purchasedsubscription->valid_property += $request->valid_property;
-            $purchasedsubscription->update();
-        }
-        return back()->with('success_message', 'Transaction successful.');
-    } else {
-        $errorString = "";
+            if ($purchasedsubscription == null) {
+                $subscription = new PurchasedSubscription();
+                $subscription->agent_id = Auth::user()->id;
+                $subscription->subscription_id = $request->subscription_id;
+                $subscription->title = $request->title;
+                $subscription->price = $request->amount;
+                $subscription->valid_property = $request->valid_property;
+                $subscription->status = $request->status;
+                $subscription->description = $request->description;
+                $subscription->save();
+            } else {
+                $purchasedsubscription = PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->first();
+                $purchasedsubscription->subscription_id = $request->subscription_id;
+                $purchasedsubscription->title = $request->title;
+                $purchasedsubscription->price = $request->amount;
+                $purchasedsubscription->status = $request->status;
+                $purchasedsubscription->description = $request->description;
+                $purchasedsubscription->valid_property += $request->valid_property;
+                $purchasedsubscription->update();
+            }
+            return back()->with('success_message', 'Transaction successful.');
+        } else {
+            $errorString = "";
 
-        foreach ($result->errors->deepAll() as $error) {
-            $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            foreach ($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+            return back()->withErrors('An error occurred with the message: ' . $result->message);
         }
-        return back()->withErrors('An error occurred with the message: ' . $result->message);
-    }
-});
+    });
 
 
 

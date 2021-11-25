@@ -103,7 +103,7 @@ p {
             <a type="button" href="{{route('agent.dashboard')}}" class="btn btn-sm btn-success mb-3">Go To Dashboard</a>
         @endif
 
-        {{-- @if(count($errors) > 0)
+        @if(count($errors) > 0)
             <div class="alert alert-danger mt-5">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -111,7 +111,7 @@ p {
                     @endforeach
                 </ul>
             </div>
-        @endif --}}
+        @endif
         <div class="row gx-3">
            <form method="post" id="payment-form" action="{{url('/checkout')}}">
                @csrf
