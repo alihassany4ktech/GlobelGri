@@ -11,14 +11,16 @@ class ThreesixtyNotification extends Notification
 {
     use Queueable;
     public $message;
+    public $agent;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($message, $agent)
     {
         $this->message = $message;
+        $this->agent = $agent;
     }
 
     /**
@@ -40,10 +42,10 @@ class ThreesixtyNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->line('The introduction to the notification.' . $this->message)
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+        return (new MailMessage)->view('agent.threesixtyemail', ['m' => $this->message, 'agent' => $this->agent]);
+        // ->line('The introduction to the notification.' . $this->message)
+        // ->action('Notification Action', url('/'))
+        // ->line('Thank you for using our application!');
     }
 
     /**

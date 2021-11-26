@@ -182,8 +182,8 @@ class AgentController extends Controller
                 $saverequest->agent_address = Auth::user()->address;
                 $saverequest->save();
                 $user = User::find(Auth::user()->id);
-                $message = $user->name . ' Request For 360 Voide';
-                $user->notify(new ThreesixtyNotification($message));
+                $message = 'Request For 360 Voide';
+                $user->notify(new ThreesixtyNotification($message, $user));
                 return response()->json([
                     'success' => 'Request Send Successfully!',
                 ]);

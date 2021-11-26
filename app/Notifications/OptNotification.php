@@ -42,9 +42,9 @@ class OptNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
+            ->line('OTP Verification and your otp code is : ' . $this->otp)
             ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application! and your otp code is : ' . $this->otp);
+            ->line('Thank you for using our application!');
     }
 
     /**
