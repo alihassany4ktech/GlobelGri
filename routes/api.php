@@ -1,5 +1,6 @@
 <?php
 
+use App\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -83,4 +84,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     // get single subscription
 
     Route::get('/single/subscription/{id}', 'Api\SubscriptionController@singleSubscription');
+
+    // Get current Purchased Subscription  Route
+
+    Route::get('/current/purchased/subscription', 'Api\SubscriptionController@CurrentPruchasedSubscription');
+
+    // purchase subscription 
+
+    Route::get('/subscription/purchase', 'Api\SubscriptionController@checkoutForm');
 });
