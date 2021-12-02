@@ -43,7 +43,6 @@ class OptNotification extends Notification
     {
         return (new MailMessage)
             ->line('OTP Verification and your otp code is : ' . $this->otp)
-            ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }
 

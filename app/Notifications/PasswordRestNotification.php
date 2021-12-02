@@ -43,7 +43,6 @@ class PasswordRestNotification extends Notification
     {
         return (new MailMessage)
             ->line('Here is your reset email Token: => ' . $this->token)
-            ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }
 
