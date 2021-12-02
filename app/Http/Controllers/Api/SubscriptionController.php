@@ -48,7 +48,6 @@ class SubscriptionController extends Controller
 
     public function checkoutForm()
     {
-
-        return redirect()->route('payment');
+        return redirect()->route('agent.payment');
     }
 }

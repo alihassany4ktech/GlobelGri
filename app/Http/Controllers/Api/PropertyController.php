@@ -13,7 +13,7 @@ class PropertyController extends Controller
 {
     public function property()
     {
-        $properties = Property::where('user_id', '=', Auth::user()->id)->paginate(5);
+        $properties = Property::where('user_id', '=', Auth::guard('api')->user()->id)->get();
         $data = PropertyCollection::collection($properties);
         return response()->json(PropertyCollection::collection($data));
     }
@@ -67,8 +67,7 @@ class PropertyController extends Controller
         $propert->zipcode = $request->zipcode;
         $propert->private_note = $request->private_note;
         $propert->save();
-        return response()->json([
-            'success' => 'Property Add Successfully!',
-        ], 200);
+        $success['success'] = 'Property Add Successfully!';
+        return response()->json($success, 200);
     }
 }

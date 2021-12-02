@@ -24,11 +24,11 @@ Route::get('/verified-only', function (Request $request) {
     dd('your are verified', $request->user()->name);
 })->middleware('auth:api', 'verified');
 
-Route::post('login', 'Api\UserController@login');
-Route::post('register', 'Api\UserController@register');
+Route::post('/login', 'Api\UserController@login');
+Route::post('/register', 'Api\UserController@register');
 
-Route::post('password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
-Route::post('password/reset', 'Api\ResetPasswordController@reset');
+Route::post('/password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
+Route::post('/password/reset', 'Api\ResetPasswordController@reset');
 
 Route::get('/email/resend', 'Api\VerificationController@resend');
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify');
@@ -46,19 +46,19 @@ Route::get('/login/facebook/callback', 'Api\UserController@handleFacebookCallbac
 
 // Contact 
 
-Route::post('contact/store', 'Api\FrontendController@ContactStore');
+Route::post('/contact/store', 'Api\FrontendController@ContactStore');
 
-Route::post('contact/info/store', 'Api\FrontendController@ContacInfotStore');
+Route::post('/contact/info/store', 'Api\FrontendController@ContacInfotStore');
 
 // blog
 
-Route::get('/blog', 'Api\FrontendController@blogs');
+Route::get('/blogs', 'Api\FrontendController@blogs');
 
 Route::get('/single-blog/{id}', 'Api\FrontendController@SingleBlog');
 
 Route::group(['middleware' => 'auth:api'], function () {
 
-    Route::post('details', 'Api\UserController@details');
+    Route::get('/details', 'Api\UserController@details');
 
     Route::post('/profile/update', 'Api\UserController@profileupdate');
 

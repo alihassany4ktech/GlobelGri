@@ -31,7 +31,7 @@ class UserController extends Controller
             $success['success'] = true;
             return response()->json($success, $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised', 'success' => false], 401);
+            return response()->json(['error' => 'Invalid Login Credentials', 'success' => false], 401);
         }
     }
     /**
@@ -42,13 +42,21 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors(), 'success' => false], 401);
+        $rules = array('email' => 'required|email|unique:users');
+        $error = Validator::make($request->all(), $rules);
+        if ($error->fails()) {
+            $invalid = $error->errors()->all()[0];
+            $message['error'] = $invalid;
+            return response()->json($message, 401);
+        }
+
+
+        if (!$request->name) {
+            $success['error'] = "Name is Required ";
+            return response()->json($success, 401);
+        } elseif (!$request->password) {
+            $success['password'] = "Password is Required ";
+            return response()->json($success, 401);
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -75,7 +83,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'min:3|max:50'
         ]);
-        $id = $request->user()->id;
+        $id = Auth::guard('api')->user()->id;
         $profile = User::find($id);
         $profile->name = $request->name;
         $profile->phone = $request->phone;
@@ -94,9 +102,9 @@ class UserController extends Controller
         }
 
         $profile->update();
-        return response()->json([
-            'success' => 'Profile Updated Successfully!',
-        ]);
+        $success['success'] = 'Profile Updated Successfully!';
+        $success['success'] = true;
+        return response()->json($success, 200);
     }
 
     public function passwordupdate(Request $request)
@@ -105,19 +113,19 @@ class UserController extends Controller
         $this->validate($request, [
             'password' => 'confirmed|min:6',
         ]);
-        $id = $request->user()->id;
+        $id = Auth::guard('api')->user()->id;
         $profile = User::find($id);
         $profile->password = Hash::make($request->password);
         $profile->update();
-        return response()->json([
-            'success' => 'Password Updated Successfully!',
-        ]);
+        $success['success'] = 'Password Updated Successfully!';
+        $success['success'] = true;
+        return response()->json($success, 200);
     }
 
     public function social_media_update(Request $request)
     {
 
-        $id = $request->user()->id;
+        $id = Auth::guard('api')->user()->id;
         $profile = User::find($id);
         $profile->facebook_url = $request->facebook_url;
         $profile->twitter_url = $request->twitter_url;
@@ -126,9 +134,9 @@ class UserController extends Controller
         $profile->google_url = $request->google_url;
         $profile->skype_url = $request->skype_url;
         $profile->update();
-        return response()->json([
-            'success' => 'Social Media Updated Successfully!',
-        ]);
+        $success['success'] = 'Social Media Updated Successfully!';
+        $success['success'] = true;
+        return response()->json($success, 200);
     }
 
 

@@ -7,9 +7,10 @@ use App\User;
 use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BlogCollection;
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\BlogCollection;
 use App\Notifications\ContactNotification;
+use App\Notifications\ContactInfoNotification;
 
 class FrontendController extends Controller
 {
@@ -26,10 +27,17 @@ class FrontendController extends Controller
         $contact->email = $request->email;
         $contact->check = $request->check;
         $contact->save();
+        $type = $request->type;
+        $date = $request->date;
+        $time = $request->time;
+        $phone = $request->phone;
+        $email = $request->email;
         $user = User::find($request->owner_id);
-        $message = 'Notification For Tour';
-        $user->notify(new ContactNotification($message));
-        return response()->json(['success' => 'Contact Add Successfully!']);
+        $message = 'Notification For Tour.';
+        $user->notify(new ContactNotification($message, $date, $time, $email, $phone, $type));
+        $success['success'] =  'Contact Add Successfully!';
+        $success['success'] = true;
+        return response()->json($success, 200);
     }
 
 
@@ -46,9 +54,11 @@ class FrontendController extends Controller
         $contact->message = $request->message;
         $contact->save();
         $user = User::find($request->owner_id);
-        $message = 'Notification For Info';
-        $user->notify(new ContactNotification($message));
-        return response()->json(['success' => 'Contact Info Add Successfully!']);
+        $msg = 'Notification For Contact Info.';
+        $user->notify(new ContactInfoNotification($msg, $request->email, $request->phone, $request->type, $request->message));
+        $success['success'] =  'Contact Info Add Successfully';
+        $success['success'] = true;
+        return response()->json($success, 200);
     }
 
 
