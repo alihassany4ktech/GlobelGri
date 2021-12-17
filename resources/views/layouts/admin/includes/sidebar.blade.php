@@ -28,20 +28,20 @@
                     style="opacity: 3;height: 76px;width:235px" />
                 {{-- <span class="brand-text font-weight-light">globelgri</span> --}}
             </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Auth::guard('admin')->user()->image)
-                            <img src="{{asset(Auth::guard('admin')->user()->image)}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
+                        @if (Auth::guard('admin')->user())
+                            <img src='{{asset(Auth::guard('admin')->user()->image)}}' class="img-circle elevation-2" alt="admin pic" style="height: 50px;width:50px">
+
                         @else
-                            <img src="{{asset('dist/img/adminPic.png')}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
+                            <img src="{{asset('dist/img/adminPic.png')}}" class="img-circle elevation-2" alt="admin img" style="height: 50px;width:50px">
                         @endif
                     </div>
                     <div class="info">
-                        <a href="{{route('admin.profile')}}" class="d-block">{{Auth::guard('admin')->user()->name}}</a>
+                        <span  class="d-block text-white mt-2"> {{Auth::guard('admin')->user() ? Auth::guard('admin')->user()->name:"Admin"}} </span>
                     </div>
                 </div>
 
@@ -57,7 +57,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -74,7 +73,9 @@
                          
                         </li>
                         {{-- Profile --}}
-                         <li class="nav-item">
+                      
+                      @if(Auth::guard('admin')->user()->can('edit profile'))
+                             <li class="nav-item">
                             <a href="{{route('admin.profile')}}" class="nav-link {{ $link == route('admin.profile') ? 'active':'' }}">
 
                                 <i class="nav-icon  fas fa-user"></i>
@@ -82,49 +83,113 @@
                                     Profile
                                 </p>
                             </a>
-                        </li>      
+                        </li> 
+                      @endif     
                         {{-- end Ptofile  --}}
-                        
-                         <li class="nav-item">
+                        @if(Auth::guard('admin')->user()->can('view request'))
+                              <li class="nav-item">
                             <a href="{{route('admin.agent.request')}}" class="nav-link {{ $link == route('admin.agent.request') ? 'active':'' }}">
                                 <i class="nav-icon fa fa-reply" aria-hidden="true"></i>
                                 <p>
-                                    Agent Requests
+                                    User Requests
                                 </p>
                             </a>
                         </li> 
+                        @endif
+                          @if(Auth::guard('admin')->user()->can('view subadmin'))
+                        {{-- subadmin  --}}
+                          <li class="nav-item">
+                            <a href="{{route('admin.subadmins')}}" class="nav-link {{ $link == route('admin.subadmins') ? 'active':'' }}">
+                                <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+                                <p>
+                                    SubAdmins
+                                </p>
+                            </a>
+                        </li> 
+                        @endif 
+                        {{-- users --}}
 
-                        <li class="nav-item {{ $link == route('admin.agents') || $link == route('admin.addagent') || $link == route('admin.trash')  ? 'menu-open':'' }}">
-                            <a href="#" class="nav-link {{ $link == route('admin.agents') || $link == route('admin.addagent') || $link == route('admin.trash')  ? 'active':'' }}">
+                        <li class="nav-item {{ $link == route('admin.agents') ||$link == route('admin.agents') ||$link == route('admin.addagent') || $link == route('admin.trash') || $link == route('admin.backend.agents') ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{ $link == route('admin.agents')|| $link == route('admin.agents')|| $link == route('admin.addagent') || $link == route('admin.trash') || $link == route('admin.backend.agents') ? 'active':'' }}">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
-                                    Agents
+                                    Users
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                  @if(Auth::guard('admin')->user()->can('view frontend user'))
                                 <li class="nav-item">
                                     <a href="{{route('admin.agents')}}" class="nav-link {{ $link == route('admin.agents') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>All Agents</p>
+                                        <p>FrontEnd Users</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                @endif
+                                @if(Auth::guard('admin')->user()->can('view backend user'))
+                                 <li class="nav-item">
+                                    <a href="{{route('admin.backend.agents')}}" class="nav-link {{ $link == route('admin.backend.agents') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>BackEnd Users</p>
+                                    </a>
+                                </li>
+                                @endif
+                                {{-- <li class="nav-item">
                                     <a href="{{route('admin.addagent')}}" class="nav-link {{ $link == route('admin.addagent') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Agent</p>
+                                        <p>Add User</p>
                                     </a>
-                                </li>
+                                </li> --}}
+                                 @if(Auth::guard('admin')->user()->can('view trashed user'))
                                 <li class="nav-item">
                                     <a href="{{route('admin.trash')}}" class="nav-link {{ $link == route('admin.trash') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Trashed Agents</p>
+                                        <p>Trashed Users</p>
                                     </a>
                                 </li>
+                                  @endif
                             </ul>
                         </li>      
                         
-                        
+
+                        {{--frontend role and permission  --}}
+                         <li class="nav-item {{ $link == route('admin.all.roles') || $link == route('admin.all.permissions') || $link == route('admin.role.create')  ||$link == route('admin.backend.roles') ||$link == route('admin.backend.role.create')   ? 'menu-open':'' }}">
+                            <a href="#" class="nav-link {{ $link == route('admin.all.roles') || $link == route('admin.all.permissions') || $link == route('admin.role.create') ||$link == route('admin.backend.roles')||$link == route('admin.backend.role.create') ? 'active':'' }}">
+                                <i class="nav-icon fa fa-tasks"></i>
+                                <p>
+                                    Roles & Permissions
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::guard('admin')->user()->can('view frontend role'))
+                                <li class="nav-item">
+                                    <a href="{{route('admin.all.roles')}}" class="nav-link {{ $link == route('admin.all.roles') || $link == route('admin.role.create') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FrontEnd Roles</p>
+                                    </a>
+                                </li>
+                                @endif
+                                @if(Auth::guard('admin')->user()->can('view backend role'))
+                                <li class="nav-item">
+                                    <a href="{{route('admin.backend.roles')}}" class="nav-link {{ $link == route('admin.backend.roles') || $link == route('admin.backend.role.create') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>BackEnd Roles</p>
+                                    </a>
+                                </li>
+                                 @endif
+                                  @if(Auth::guard('admin')->user()->can('view permissions'))
+                                <li class="nav-item">
+                                    <a href="{{route('admin.all.permissions')}}" class="nav-link {{ $link == route('admin.all.permissions')  ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permissions</p>
+                                    </a>
+                                </li>
+                                     @endif
+                            </ul>
+                        </li>      
+                       
+                         @if(Auth::guard('admin')->user()->can('create blog'))
                         {{-- Blogs  --}}
                         <li class="nav-item {{$link == route('admin.create.blog') ? 'menu-open':'' }}">
                             <a href="#" class="nav-link {{$link == route('admin.create.blog')  ? 'active':'' }}">
@@ -135,14 +200,14 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            {{-- <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>All Blogs</p>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> --}}
 
                              <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -153,6 +218,7 @@
                                 </li>
                             </ul>
                         </li>
+                          @endif
                          
 
                         {{-- subscription --}}
@@ -165,27 +231,34 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                 @if(Auth::guard('admin')->user()->can('view subscriptions'))
                                 <li class="nav-item">
                                     <a href="{{route('admin.all.subscription')}}" class="nav-link {{ $link == route('admin.all.subscription') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>All Subscriptions</p>
                                     </a>
                                 </li>
+                                     @endif
+                                     @if(Auth::guard('admin')->user()->can('view active subscriptions'))
                                 <li class="nav-item">
                                     <a href="{{route('admin.active.subscription')}}" class="nav-link {{ $link == route('admin.active.subscription') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Active Subscriptions</p>
                                     </a>
                                 </li>
+                                 @endif
+                                @if(Auth::guard('admin')->user()->can('create subscription'))
                                 <li class="nav-item">
                                     <a href="{{route('admin.subscription.create')}}" class="nav-link {{ $link == route('admin.subscription.create') ? 'active':'' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Subscription</p>
                                     </a>
                                 </li>
+                                 @endif
                             </ul>
                         </li> 
                         {{-- General Settings --}}
+                        @if(Auth::guard('admin')->user()->can('edit setting'))
                          <li class="nav-item {{ $link == route('admin.generalsetting') ? 'menu-open':'' }}">
                             <a href="#" class="nav-link {{ $link == route('admin.generalsetting') ? 'active':'' }}">
                                 {{-- <i class="nav-icon fa fa-setting"></i> --}}
@@ -204,6 +277,7 @@
                                 </li>
                             </ul>
                         </li>      
+                           @endif
                         {{-- end general setting  --}}
 
                     </ul>

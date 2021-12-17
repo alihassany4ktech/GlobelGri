@@ -160,7 +160,15 @@
 
                         <form class="form-horizontal" id="multistep_form">
                           @csrf
-                          <input type="hidden" name="agent_id" value="{{Auth::user()->id}}">
+                             <?php
+                                    $role = Auth::guard('web')->user()->getRoleNames()->isEmpty() ? '' :  Auth::user()->getRoleNames()[0];
+                             ?>
+                            
+                               @if ($role == 'Property Manager')
+                                <input type="hidden" name="agent_id" value="{{Auth::user()->creater_id}}">
+                            @else
+                            <input type="hidden" name="agent_id" value="{{Auth::user()->id}}">
+                            @endif
                           <input type="hidden" name="property_id" value="{{$property->id}}">
 
                             <fieldset id="account">
@@ -251,17 +259,17 @@
                                                     <select class="chosen-select"
                                                          name="property_type">
                                                         <option value="{{$property->property_type}}" selected>{{$property->property_type}}</option>
-                                                        @if($property->property_type == 'For Rent')
-                                                         <option value="For Sale">For Sale </option>
+                                                        {{-- @if($property->property_type == 'For Rent') --}}
+                                                         {{-- <option value="For Sale">For Sale </option> --}}
                                                         {{-- <option value="Forn Investment">For Investment </option> --}}
-                                                        @else($property->property_type == 'For Sale')
-                                                         <option value="For Rent">For Rent </option>
+                                                        {{-- @else($property->property_type == 'For Sale') --}}
+                                                         {{-- <option value="For Rent">For Rent </option> --}}
                                                         {{-- <option value="Forn Investment">For Investment </option> --}}
                                                         {{-- @else
                                                           <option value="For Rent">For Rent </option>
                                                          <option value="For Sale">For Sale </option>
                                                         @endif --}}
-                                                        @endif 
+                                                        {{-- @endif  --}}
                                                        
                                                     </select>
                                                 </div>

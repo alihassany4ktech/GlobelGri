@@ -4,24 +4,39 @@ namespace App\Http\Controllers\Agent;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\PurchasedSubscription;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Redirect;
 
 class UserLoginController extends Controller
 {
     public function UserLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:8|max:30'
+        ], [
+            'email.exists' => 'This email is not exists in admins table'
         ]);
-
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/agent/profile')
-                ->with('message', 'Login Successfull');
+            $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
+            if ($role == 'Property Manager') {
+                return redirect()->intended('/agent/profile')
+                    ->with('message', 'Login Successfull');
+            } else {
+                if (PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->exists()) {
+                    // dd('exist');
+                    return redirect()->intended('/agent/profile')
+                        ->with('message', 'Login Successfull');
+                } else {
+                    // dd('not exist');
+                    return redirect()->intended('/agent/subscription');
+                }
+            }
         }
         return redirect("/")->with('error', 'Login Details Are inValid');
     }
@@ -36,10 +51,20 @@ class UserLoginController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-
         $data = $request->all();
         $check = $this->create($data);
-        return redirect()->route('agent.dashboard')->with('message', 'Singup Successfully');
+        $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
+        if ($role == 'Property Manager') {
+            return redirect()->route('agent.dashboard')->with('message', 'Singup Successfully');
+        } else {
+            if (PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->exists()) {
+                // dd('exist');
+                return redirect()->route('agent.dashboard')->with('message', 'Singup Successfully');
+            } else {
+                // dd('not exist');
+                return redirect()->intended('/agent/subscription');
+            }
+        }
     }
 
 
@@ -48,13 +73,14 @@ class UserLoginController extends Controller
     {
         $otp = mt_rand(100000, 999999);
         $user =  User::create([
-            'role_id' => (int)$data['agent_role'],
+            'role' => $data['agent_role'],
             'user_otp' => $otp,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
         Auth::login($user);
+        $user->assignRole($data['agent_role']);
         return $user;
     }
 }

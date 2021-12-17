@@ -16,7 +16,7 @@
         </div><!-- /.container-fluid -->
         <span id="result"></span>
     </section>
-
+        {{-- {{dd(Auth::guard('admin')->user()->getAllPermissions())}} --}}
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

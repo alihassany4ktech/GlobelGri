@@ -21,7 +21,8 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            if (PurchasedSubscription::where('agent_id', Auth::user()->id)->exists()) {
+            $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
+            if (PurchasedSubscription::where('agent_id', Auth::user()->id)->exists() || $role == 'Property Manager') {
                 // $unit_total_price = array_sum($request->unit_price);
                 // $price = $request->price;
                 // if ($unit_total_price > $price) {

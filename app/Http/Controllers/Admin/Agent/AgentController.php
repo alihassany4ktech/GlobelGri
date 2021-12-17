@@ -4,33 +4,54 @@ namespace App\Http\Controllers\Admin\Agent;
 
 use App\Role;
 use App\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Admin;
 use App\Property;
 use App\Threesixty;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AgentController extends Controller
 {
     public function index()
     {
 
-        $agents = User::all();
+        $agents = User::where('role', '!=', 'Property Manager')->orderBy('id', 'DESC')->get();
         return view('admin.agents.index', compact('agents'));
+    }
+
+    // single agent 
+
+    public function singleAgent($id)
+    {
+        $agent = User::find($id);
+        return view('admin.agents.single', compact('agent'));
+    }
+
+    public function backendIndex()
+    {
+        $agents = Admin::where('type', '=', 'BackEnd')->orderBy('id', 'DESC')->get();
+        return view('admin.backendagents.index', compact('agents'));
     }
 
 
     public function trash()
     {
-        $agents = User::onlyTrashed()->get();
+        $agents = User::onlyTrashed()->orderBy('id', 'DESC')->get();
         return view('admin.agents.trashed', compact('agents'));
     }
 
 
     public function agentForm()
     {
-        $roles = Role::all();
-        return view('admin.agents.create', compact('roles'));
+        return view('admin.agents.create');
+    }
+
+    public function backendAgentForm()
+    {
+        return view('admin.backendagents.create');
     }
 
 
@@ -38,20 +59,52 @@ class AgentController extends Controller
     {
 
         if ($request->ajax()) {
-            $this->validate($request, [
+            $validator = Validator::make($request->all(), [
                 'password' => 'min:6',
-                'confirm-password' => 'required_with:password|same:password|min:6'
+                'confirm-password' => 'required_with:password|same:password|min:6',
+                'email' => 'required|email|unique:users,email',
             ]);
+            if ($validator->fails()) {
+                return $validator->errors()->all();
+            }
 
             $password = $request->password;
             $agent = new User();
-            $agent->role_id = $request->agent_role;
+            $agent->type = 'FrontEnd';
+            $agent->role = $request->role_name;
             $agent->name = $request->name;
             $agent->email = $request->email;
-            $agent->password = Hash::make('password');
+            $agent->password = Hash::make($request->password);
             $agent->save();
+            $agent->assignRole($request->role_name);
             return response()->json([
-                'success'  => 'Agent Add successfully.'
+                'success'  => 'User Add successfully.'
+            ]);
+        }
+    }
+
+    public function backendAgentStore(Request $request)
+    {
+        if ($request->ajax()) {
+            $validator = Validator::make($request->all(), [
+                'password' => 'min:6',
+                'confirm-password' => 'required_with:password|same:password|min:6',
+                'email' => 'required|email|unique:admins,email',
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors()->all();
+            }
+
+            $password = $request->password;
+            $agent = new Admin();
+            $agent->type = 'BackEnd';
+            $agent->name = $request->name;
+            $agent->email = $request->email;
+            $agent->password = Hash::make($request->password);
+            $agent->save();
+            $agent->assignRole($request->role_name);
+            return response()->json([
+                'success'  => 'User Add successfully.'
             ]);
         }
     }
@@ -61,9 +114,18 @@ class AgentController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::all();
-        return view('admin.agents.edit', compact('user', 'roles'));
+        return view('admin.agents.edit', compact('user'));
     }
+
+
+    public function BackendEdit($id)
+    {
+        $user = Admin::find($id);
+        return view('admin.backendagents.edit', compact('user'));
+    }
+
+
+
 
 
     public function agentUpdate(Request $request)
@@ -71,16 +133,60 @@ class AgentController extends Controller
         if ($request->ajax()) {
             $id = $request->id;
             $agent = User::find($id);
-            $agent->role = $request->agent_role;
-            $agent->name = $request->name;
-            $agent->email = $request->email;
-            if ($password = $request->has('password')) {
+            $delrole = '';
+            $oldrole = $agent->getRoleNames();
+            foreach ($oldrole as $row) {
+                $delrole = $row;
+            }
+            if ($request->role_name != $delrole) {
 
-                $agent->password = $password;
+                $agent->removeRole($delrole);
+                $agent->assignRole($request->role_name);
+            }
+            $agent->name = $request->name;
+            $agent->type = 'FrontEnd';
+            $agent->role = $request->role_name;
+            $agent->email = $request->email;
+            if ($request->has('password')) {
+
+                $agent->password =  Hash::make($request->password);
             }
             $agent->update();
             return response()->json([
-                'success'  => 'Agent Update successfully.'
+                'success'  => 'User Update successfully.'
+            ]);
+        }
+    }
+
+    // backend agent update
+
+
+    public function backendAgentUpdate(Request $request)
+    {
+        if ($request->ajax()) {
+            $id = $request->id;
+            $agent = Admin::find($id);
+            $delrole = '';
+            $oldrole = $agent->getRoleNames();
+
+            foreach ($oldrole as $row) {
+                $delrole = $row;
+            }
+            if ($request->role_name != $delrole) {
+
+                $agent->removeRole($delrole);
+                $agent->assignRole($request->role_name);
+            }
+            $agent->name = $request->name;
+            $agent->type = 'BackEnd';
+            $agent->email = $request->email;
+            if ($request->has('password')) {
+
+                $agent->password =  Hash::make($request->password);
+            }
+            $agent->update();
+            return response()->json([
+                'success'  => 'User Update successfully.'
             ]);
         }
     }
@@ -94,7 +200,7 @@ class AgentController extends Controller
             $agent = User::find($request->id);
             $agent->delete();
             return response()->json([
-                'success'  => 'Agent Trashed!'
+                'success'  => 'User Trashed!'
             ]);
         }
     }
@@ -106,7 +212,7 @@ class AgentController extends Controller
             $agent = User::onlyTrashed()->findOrFail($request->id);
             $agent->restore();
             return response()->json([
-                'success'  => 'Agent Restore Successfully!'
+                'success'  => 'User Restore Successfully!'
             ]);
         }
     }
@@ -119,7 +225,20 @@ class AgentController extends Controller
             $agent = User::onlyTrashed()->findOrFail($request->id);
             $agent->forceDelete();
             return response()->json([
-                'success'  => 'Agent Deleted Successfully!'
+                'success'  => 'User Deleted Successfully!'
+            ]);
+        }
+    }
+
+    // delete backend agent 
+
+    public function deleteBackEndAgent(Request $request)
+    {
+        if ($request->ajax()) {
+            $agent = Admin::findOrFail($request->id);
+            $agent->delete();
+            return response()->json([
+                'success'  => 'User Deleted Successfully!'
             ]);
         }
     }
@@ -132,7 +251,7 @@ class AgentController extends Controller
             $banagent->status = 0;
             $banagent->update();
             return response()->json([
-                'success'  => 'Agent Baned Successfully!'
+                'success'  => 'User Baned Successfully!'
             ]);
         }
     }
@@ -145,7 +264,7 @@ class AgentController extends Controller
             $unbanagent->status = 1;
             $unbanagent->update();
             return response()->json([
-                'success'  => 'Agent UnBaned Successfully!'
+                'success'  => 'User UnBaned Successfully!'
             ]);
         }
     }

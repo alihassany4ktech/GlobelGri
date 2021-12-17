@@ -24,24 +24,6 @@
             <article class="introSlide bgCover" id="cover"
                 style="background-image: url({{asset('frontend/images/hm.jpg')}});background-position: -0px -80px ;background-repeat: no-repeat;  background-attachment: fixed;">
                 <div class="container introSlideHolder">
-                    {{-- <div class="align"> --}}
-                    <!-- introSlideCaption -->
-                    {{-- <div class="col-xs-8 col-sm-2 col-md-8 introSlideCaption captionwithtabs"
-                        style="margin-top: 170px;">
-                        <p style="color: white" id="bp">SOLUTIONS FOR REAL ESTATE BROKERS</p>
-                        <h1 class="fontNeuron" style="font-size:50px; margin-top:12px" id="bheading">One integrated solution.</h1>
-                        <h1 class="fontNeuron" style="font-size:50px; margin-top:-50px" id="bheading1">Endless ways to
-                            succeed.</h1>
-                        <p style="color: white; margin-top:-45px" id="bp">Convert more leads, build stronger teams and 
-                            drive <br style="display: none" id="hide">
-                            more  growth with Zillow Premier Agent.</p>
-                        <a href="#popup2"
-                            style="border:none;font-size: 20px; background: #f1c967; 
-                                                background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                                background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:20px"
-                            type="button" class="btn  text-uppercase  fontNeuron lightbox">Get Started</a>
-                    </div> --}}
-                    {{-- </div> --}}
                 </div>
             </article>
         </div>

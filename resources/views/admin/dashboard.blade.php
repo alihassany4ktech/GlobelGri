@@ -1,7 +1,6 @@
 @extends('layouts.admin.layouts')
 @section('content')
 @include('layouts.admin.includes.sidebar')
-
 <!-- Header -->
 @include('layouts.admin.includes.header')
 

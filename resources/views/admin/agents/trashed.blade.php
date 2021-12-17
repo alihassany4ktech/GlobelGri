@@ -12,6 +12,7 @@
                 <div class="col-sm-6">
                     <h1>Trashed Agents</h1>
                 </div>
+                @if(Auth::guard('admin')->user()->can('create frontend user'))
                 <div class="col-sm-6">
                       <div class="float-sm-right">
                         <a type="button" href="{{route('admin.addagent')}}" class="btn btn-success text-white">
@@ -19,6 +20,7 @@
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
         </div><!-- /.container-fluid -->
         <span id="result"></span>
@@ -58,12 +60,16 @@
                                                 @endif
                                             </span></td>
                                         <td class="text-center">
+                                            @if(Auth::guard('admin')->user()->can('recover frontend user'))
                                           <button class="btn btn-success btn-sm" type="button" id="recover" data-toggle="tooltip"  value="{{$row->id}}" title="Restore User">
                                           <i class="fa fa-share"></i>
-                                          </button>                           
+                                          </button>
+                                          @endif
+                                          @if(Auth::guard('admin')->user()->can('delete frontend user'))                           
                                           <button  id="unban" value="{{$row->id}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete User">
                                                 <i class="fas fa-user-times"></i>
                                           </button>
+                                          @endif
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

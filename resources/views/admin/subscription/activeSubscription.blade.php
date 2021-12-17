@@ -12,13 +12,15 @@
                 <div class="col-sm-6">
                     <h1>Active Subscriptions</h1>
                 </div>
+                @if(Auth::guard('admin')->user()->can('create subscription'))
                 <div class="col-sm-6">
                     <div class="float-sm-right">
                         <a type="button" href="{{route('admin.subscription.create')}}" class="btn btn-success text-white">
-                            <i class="fa fa-plus"></i>Add Subscription
+                            <i class="fa fa-plus"></i> Add Subscription
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
         </div><!-- /.container-fluid -->
         @if(Session::has('message'))
@@ -43,13 +45,20 @@
                                         <th>Title</th>
                                         <th>Price</th>
                                         <th>Valid Property</th>
-                                        <th>Agent Role</th>
-                                        <th>Action</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     
-                                  
+                                  @foreach ($activeSubscriptions as $row)
+                                      <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td style="width:12%">{{$row->title}}</td>
+                                        <td style="width:10%">${{$row->price}}</td>
+                                        <td style="width:12%">{{$row->valid_property}}</td>
+                                        <td>{{$row->description}}</td>
+                                      </tr>
+                                  @endforeach
                               
                                 </tbody>
                         </div>

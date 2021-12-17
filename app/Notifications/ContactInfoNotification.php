@@ -50,7 +50,9 @@ class ContactInfoNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->msg . 'with ' . $this->email . ',' . $this->phone . ' type ' . $this->type . ' and message ' . $this->message)
+            ->line($this->msg)
+            ->line(' Email ' . $this->email . ' Phone ' . $this->phone . ' Type ' . $this->type)
+            ->line($this->message)
             ->line('Thank you for using our application!');
     }
 

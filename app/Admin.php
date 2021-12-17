@@ -2,14 +2,13 @@
 
 namespace App;
 
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\ResetPasswordNotification;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
     // The authentication guard for admin
     protected $guard = 'admin';
     /**
@@ -18,7 +17,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'name', 'image',
+        'email', 'password', 'name', 'image', 'role'
     ];
     /**
      * The attributes that should be hidden for arrays.

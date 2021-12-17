@@ -12,14 +12,16 @@
                 <div class="col-sm-6">
                     <h1>Subscriptions</h1>
                 </div>
+                @if(Auth::guard('admin')->user()->can('create subscription'))
                 <div class="col-sm-6">
                     <div class="float-sm-right">
                         <a type="button" href="{{route('admin.subscription.create')}}"
                             class="btn btn-success text-white">
-                            <i class="fa fa-plus"></i>Add Subscription
+                            <i class="fa fa-plus"></i> Add Subscription
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
         </div><!-- /.container-fluid -->
         @if(Session::has('message'))
@@ -95,16 +97,20 @@
                                                 @endif
                                         </td>
                                         <td class="text-center">
+                                            @if(Auth::guard('admin')->user()->can('edit subscription'))
                                             <a href="{{route('admin.subscription.edit',['id' => $row->id])}}"
                                                 type="button" class="btn btn-sm btn-primary text-white"
                                                 data-toggle="tooltip" title="Edit Subscription">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                            @endif
+                                            @if(Auth::guard('admin')->user()->can('delete subscription'))
                                             <a href="{{route('admin.subscription.delete',['id' => $row->id])}}"
                                                 type="button" class="btn btn-sm btn-danger text-white"
                                                 data-toggle="tooltip" title="Delete Subscription">
                                                 <i class="fa fa-trash"></i>
                                             </a>
+                                            @endif
 
 
 

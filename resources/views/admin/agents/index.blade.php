@@ -10,15 +10,17 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Agents</h1>
+                    <h1>FrontEnd Users</h1>
                 </div>
+                  @if(Auth::guard('admin')->user()->can('create frontend user'))
                 <div class="col-sm-6">
                     <div class="float-sm-right">
                         <a type="button" href="{{route('admin.addagent')}}" class="btn btn-success text-white">
-                            <i class="fa fa-plus"></i>Add Agent
+                            <i class="fa fa-plus"></i> Add FrontEnd User 
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
         </div><!-- /.container-fluid -->
         <span id="result"></span>
@@ -36,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Access</th>
@@ -44,12 +47,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1; ?>
-                                  
                                     @foreach ($agents as $row)
-                                      {{-- {{dd($row->status)}} --}}
                                     <tr>
-                                        <td class="text-center">{{$i}}</td>
+                                        <td class="text-center">{{$loop->iteration}}</td>
+                                           <td class="text-center" style="width: 5%">
+                                           <div class="image">
+                                        @if ($row->image)
+                                            <img src="{{asset($row->image)}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
+                                        @else
+                                            <img src="{{asset('dist/img/avatar.png')}}" class="img-circle elevation-2" alt="admin Image" style="height: 35px;width:35px">
+                                        @endif
+                                    </div>
+                                        </td>
                                         <td class="font-w600">{{$row->name}}</td>
                                         <td class="d-none d-sm-table-cell">{{$row->email}}</td>
                                         @if ($row->status == 1)
@@ -60,72 +69,51 @@
                                                 DeActive
                                                 @endif
                                             </span></td>
-                                            <td class="text-center">
-                                                @if($row->role->agent_role == 'Agent')
-                                                <span class="badge badge-danger">
-                                                {{$row->role->agent_role}}
-                                                </span>
-                                                @elseif($row->role->agent_role == 'Property Manager')
-                                                <span class="badge badge-success">
-                                                {{$row->role->agent_role}}
-                                                </span>
-                                                 @elseif($row->role->agent_role == 'Lender')
-                                                <span class="badge badge-info">
-                                                {{$row->role->agent_role}}
-                                                </span>
-                                                  @elseif($row->role->agent_role == 'Builder')
-                                                <span class="badge badge-dark">
-                                                {{$row->role->agent_role}}
-                                                </span>
-
-                                                 @elseif($row->role->agent_role == 'Investor')
-                                                <span class="badge badge-light ">
-                                                {{$row->role->agent_role}}
-                                                </span>
-
-                                                   @elseif($row->role->agent_role == 'Renter')
-                                                <span class="badge badge-secondary">
-                                                {{$row->role->agent_role}}
-                                                </span>
-                                                     @elseif($row->role->agent_role == 'Platform Administrator')
-                                                <span class="badge badge-warning text-white">
-                                                {{$row->role->agent_role}}
-                                                     @elseif($row->role->agent_role == 'Buyer')
-                                                <span class="badge text-white" style="background-color: #b548d0">
-                                                {{$row->role->agent_role}}
-                                                </span>
-                                                @endif
-                                            </td>
                                         <td class="text-center">
-                                            <a href="" type="button" class="btn btn-sm btn-info text-white"
+                                            @if ($row->getRoleNames()->isEmpty())
+                                            No Role
+                                            @else
+                                            {{$row->getRoleNames()[0]}}
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                             @if(Auth::guard('admin')->user()->can('view frontend user'))
+                                            <a href="{{route('admin.agent' , ['id'=>$row->id])}}" type="button" class="btn btn-sm btn-info text-white"
                                                 data-toggle="tooltip" title="View User">
                                                 <i class="fa fa-eye"></i>
                                             </a>
+                                            @endif
+                                             @if(Auth::guard('admin')->user()->can('edit frontend user'))
                                             <a href="{{route('admin.agent.edit' , ['id'=>$row->id])}}" type="button"
                                                 class="btn btn-sm btn-primary text-white" data-toggle="tooltip"
                                                 title="Edit User">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                            @endif
+                                             @if(Auth::guard('admin')->user()->can('trash frontend user'))
                                             <button value="{{ $row->id }}" class="btn btn-sm btn-danger"
                                                 data-toggle="tooltip" id="trash" title="Trash User">
                                                 <i class="fa fa-trash"></i>
 
                                             </button>
-
+                                            @endif
                                             @if ($row->status == 0)
+                                             @if(Auth::guard('admin')->user()->can('unban frontend user'))
                                             <button value="{{$row->id}}" id="unban" class="btn btn-sm btn-success"
                                                 data-toggle="tooltip" title="UnBan User">
                                                 <i class="fa fa-unlock"></i>
                                             </button>
+                                            @endif
                                             @else
+                                             @if(Auth::guard('admin')->user()->can('ban frontend user'))
                                             <button value="{{$row->id}}" id="ban" class="btn btn-sm btn-dark"
                                                 data-toggle="tooltip" title="Ban User">
                                                 <i class="fa fa-ban"></i>
                                             </button>
                                             @endif
+                                            @endif
                                         </td>
                                     </tr>
-                                    <?php $i++; ?>
                                     @endforeach
                                 </tbody>
                         </div>

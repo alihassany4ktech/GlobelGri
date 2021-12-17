@@ -24,7 +24,10 @@
       </div><!-- /.container-fluid -->
       <span id="result"></span>
     </section>
-
+<?php
+                                          $roles  = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->get(); 
+                                        
+                                     ?>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -34,7 +37,7 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add Agent</h3>
+                <h3 class="card-title">Add FrontEnd User</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -59,13 +62,21 @@
                   </div>
                   <div class="form-group">
                   <label>Role</label>
-                  <select class="form-control" name="agent_role" style="width: 100%;" autocomplete="off">
-                    <option selected="selected">Select Role</option>
-                    @foreach ($roles as $row)
-                        <option value="{{$row->id}}" >{{$row->agent_role}}</option>
-                    @endforeach
-                    
-                  </select>
+                  <select name="role_name" class="form-control" style="width: 100%" data-placeholder="Choose" required>
+                                           
+                                                       
+                                                       @foreach ($roles as $row)
+                                                       
+                                                        @if ($row->name == 'Property Manager')
+                                                             <option value="{{$row->name}}" style="display: none">{{$row->name}}</option>
+                                                        @else
+                                                             <option value="{{$row->name}}">{{$row->name}}</option>
+                                                        @endif
+                                                        
+                                                         
+                                                          
+                                                        @endforeach                                              
+                                                </select>
                 </div>
                 </div>
                 <!-- /.card-body -->
@@ -111,7 +122,7 @@
                         $('#result').html('<div class="alert alert-success">' + data
                             .success + '</div>');
                     } else {
-                        $('#result').html('<div class="alert alert-danger">' + data.error +
+                        $('#result').html('<div class="alert alert-danger">' +  data +
                             '</div>');
                     }
 

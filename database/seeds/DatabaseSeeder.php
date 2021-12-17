@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             AgentSeeder::class,
             PropertySeeder::class,
             UnitSeeder::class,
-            SubscriptionSeeder::class
+            SubscriptionSeeder::class,
+            PermissionSeeder::class,
+            BlogSeeder::class,
         ]);
 
         // factory(Subscription::class)->times(10)->create();

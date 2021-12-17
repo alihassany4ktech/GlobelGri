@@ -15,7 +15,7 @@ class PropertySeeder extends Seeder
         DB::table('properties')->insert([
             //For Sale
             [
-                'user_id' => '3',
+                'user_id' => '1',
                 'threesixty_link' => 'https://my.matterport.com/show/?m=BswfThZ38kh',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
@@ -35,7 +35,7 @@ class PropertySeeder extends Seeder
             ],
 
             [
-                'user_id' => '3',
+                'user_id' => '1',
                 'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
@@ -178,7 +178,7 @@ class PropertySeeder extends Seeder
 
 
             [
-                'user_id' => '3',
+                'user_id' => '4',
                 'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
@@ -198,7 +198,7 @@ class PropertySeeder extends Seeder
             ],
 
             [
-                'user_id' => '3',
+                'user_id' => '4',
                 'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',
@@ -341,7 +341,7 @@ class PropertySeeder extends Seeder
             // for Investment
 
             [
-                'user_id' => '3',
+                'user_id' => '4',
                 'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 1',
                 'price' => '10000',
@@ -361,7 +361,7 @@ class PropertySeeder extends Seeder
             ],
 
             [
-                'user_id' => '3',
+                'user_id' => '4',
                 'threesixty_link' => '0',
                 'propert_title' => 'Demo Tile 2',
                 'price' => '10000',

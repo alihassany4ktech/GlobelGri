@@ -18,6 +18,11 @@ class AdminController extends Controller
         $this->middleware('auth:admin');
     }
 
+    public function login(Request $request)
+    {
+        dd($request);
+    }
+
     public function index()
     {
         $agentsCount = User::all()->count();
@@ -48,7 +53,7 @@ class AdminController extends Controller
             $profile->email = $request->email;
             $profile->name = $request->name;
             if ($request->hasfile('image')) {
-                if (!empty($profile->image)) {
+                if (!empty($profile->image) && ($profile->image != "dist/img/adminPic.png")) {
                     $image_path = $profile->image;
                     unlink($image_path);
                 }

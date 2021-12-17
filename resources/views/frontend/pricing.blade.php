@@ -80,17 +80,6 @@
                         <div class="row text-center" style="margin-bottom: 10px">
                             <span class="textSecondary">Price:</span>  ${{$row->price}} | <span class="textSecondary">Valid Property:</span> {{$row->valid_property}} 
                         </div>
-                        <div class="row text-center btnHolder">
-                            <a href="#popup2"
-                                style="margin-bottom:20px; border:none;font-size: 16px; background: #f1c967; 
-                                    background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
-                                    background: linear-gradient(to right, #bd7f0a, #f1c967); color:white; margin-top:10px"
-                                type="button" class="btn btn-sm  text-uppercase fontNeuron lightbox">Purchase</a>
-
-                     
-                              
-                        </div>
-
                     </div>
                 </div>
                 @endforeach
@@ -136,12 +125,12 @@
                                 </div>
                                 <div class="form-group">
                                     
-                                  <?php $roles = App\Role::all(); ?> 
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get(); ?> 
                                     <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
                                         <option selected="selected">Select Role</option>
 
                                         @foreach ($roles as $row)
-                                        <option value="{{$row->id}}">{{$row->agent_role}}</option>
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

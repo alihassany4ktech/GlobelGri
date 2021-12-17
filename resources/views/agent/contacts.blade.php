@@ -13,203 +13,10 @@
 </style>
 <!-- main -->
 <main>
-    <!-- findFormBlock -->
-    <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop">
-        <div class="container">
-            <div class="row align-center d-flex">
-                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-5">
-                    <div class="form-group">
-                        <input type="text" class="form-control elemenBlock noBdr sizeMedium"
-                            placeholder="Enter address e.g. street, city and state or zip">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-2">
-                    <div class="form-group">
-                        <i class="fi flaticon-target icnInput"></i>
-                        <input type="text" class="form-control elemenBlock noBdr sizeMedium" placeholder="All Cities">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 col-md-2">
-                    <div class="form-group">
-                        <select data-placeholder="All Areas" class="chosen-select noBdr sizeMedium">
-                            <option value="1">All Areas</option>
-                            <option value="2">All Areas</option>
-                            <option value="2">All Areas</option>
-                            <option value="2">All Areas</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3">
-                    <div class="btnsWrap">
-                        <!-- otherFeaturesOpener -->
-                        <a class="btnPlus otherFeaturesOpener text-capitalize noTopBottom" role="button"
-                            data-toggle="collapse" href="#otherFeaturescollapse" aria-expanded="false"
-                            aria-controls="otherFeaturescollapse">
-                            <i class="fas btnIcn fa-plus-circle text-info opener"></i>
-                            <i class="fas fa-minus-circle closer btnIcn text-info"></i>
-                            Advanced
-                        </a>
-                        <button type="button"
-                            class="btn  buttonSmall text-uppercase fontNeuron hidden-xs" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">SEARCH</button>
-                    </div>
-                </div>
-            </div>
-            <!-- orderRow -->
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- otherFeaturesCollapse -->
-                    <div class="collapse otherFeaturesCollapse" id="otherFeaturescollapse">
-                        <!-- checkList -->
-                        <ul class="list-unstyled checkList text-primary">
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Air conditioning</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cofee pot</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Fan</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Hi-fi</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Balcony</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Computer</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Fridge</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Internet</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Bedding</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cot</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Grill</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Iron</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cable TV</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Dishwasher</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Hairdryer</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Juicer</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Cleaning after exit</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">DVD</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Heating</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fwNormal customLabelCheck">
-                                    <input type="checkbox" class="customFormInputReset">
-                                    <span class="fakeCheckbox"></span>
-                                    <span class="fakeLabel">Lift</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                    <button type="button" class="btn  text-uppercase fontNeuron" style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white;">SEARCH</button>
-                </div>
-            </div>
-        </div>
-    </form>
+
+ <div class="container"></div>
+     <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop"></form>
+
     <!-- content -->
     <section id="content" class="container pabIndent">
         <!-- contentFiltersHeadingWrap -->
@@ -234,61 +41,85 @@
                             </div>
                             <div class="info">
                                 <span class="text">{{Auth::user()->name}}</span>
+                                {{-- <span class="text"><a href="#" class="link">Change Password</a></span> --}}
                             </div>
                         </header>
-                                 <ul class="navUser list-unstyled">
+                            <ul class="navUser list-unstyled">
+                                 @can('edit profile')
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
+                             @endcan
+                             @can('create property manager')
+                            <li>
+                                <a href="{{route('agent.all.propertyManager')}}">
+                                  <i class="fa fa-users"></i>
+                                    <span>Property Managers</span>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('property list')
                                <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
+                            @endcan
+                             @can('favorite property list')
                               <li>
                                 <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
+                             @endcan
+                            
+                            <li>
+                                <a href="{{route('agent.subscriptions')}}">
+                                    <i class="fa fa-dollar-sign"></i>
+                                    <span>Update Subscription</span>
+                                </a>
+                            </li>
+                             
                           
-                              <li>
+                            {{-- <li>
                                 <a href="{{route('agent.subscription')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>Subscriptions</span>
                                 </a>
-                            </li>
-
-                               <li>
+                            </li> --}}
+                                     @can('subscription list')
+                            <li>
                                 <a href="{{route('agent.purchased.subscription')}}">
-                                    <i class="fi flaticon-house"></i>
+                                    <i class="fa fa-dollar-sign"></i>
                                     <span>My Purchased Subscription</span>
                                 </a>
                             </li>
-                          
-                           
-                                <li>
+                            @endcan
+                           @can('create property')
+                                  <li>
                                 <a href="{{route('property.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Saved Property</span>
                                 </a>
                             </li>
-                             <li>
+                            @endcan
+                             {{-- <li>
                                 <a href="{{route('unit.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Submit Units</span>
                                 </a>
-                            </li>
-                                  <li>
+                            </li> --}}
+                                  {{-- <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
                                 </a>
-                            </li>
+                            </li> --}}
                               <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>

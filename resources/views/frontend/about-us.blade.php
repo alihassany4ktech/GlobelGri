@@ -142,17 +142,16 @@
 											<!-- profileColumn -->
 											<article class="profileColumn hasOver">
 												<div class="aligncenter">
-													<a href="agent-detail.html">
+													<a href="#">
                                                                                     @if (!$row->image == 0)      
-                                                                                    <img src="{{asset($row->image)}}" style="width: 265px; height:260px" alt="Veronica Green Sales Executive">
+                                                                                    <img src="{{asset($row->image)}}" style="width: 265px; height:260px" alt="img">
                                                                                     @else
                                                                                     <img src="https://via.placeholder.com/265x260" alt="Veronica Green Sales Executive">
                                                                                     @endif
 													</a>
 												</div>
 												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a href="agent-detail.html">{{$row->name}}</a></h2>
-													<h3 class="fwNormal text-capitalize">{{$row->role->agent_role}}</h3>
+													<h2 class="fontNeuron text-capitalize"><a href="#">{{$row->name}}</a></h2>
 													<div class="collapseWrap">
 														<!-- profileColumnSocial -->
 														<ul class="list-unstyled socialNetworks profileColumnSocial">

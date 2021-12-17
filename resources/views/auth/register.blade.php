@@ -94,14 +94,14 @@
 
                                         </div>
                                     </div>
-                                    <?php $roles = App\Role::all(); ?>
+                                    <?php $roles = Spatie\Permission\Models\Role::all(); ?>
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <select class="form-control" name="agent_role" style="width: 100%;"
                                                 autocomplete="off">
                                                 <option selected="selected">Select Role</option>
                                                 @foreach ($roles as $row)
-                                                    <option>{{$row->agent_role}}</option>
+                                                    <option>{{$row->name}}</option>
                                                 @endforeach
 
                                             </select>

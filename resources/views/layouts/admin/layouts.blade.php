@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}" />
+      <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}" />
     <!-- JQVMap -->
@@ -37,13 +40,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60" />
-        </div>
-
         @yield('content')
-    
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -77,6 +74,8 @@
     <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <!-- Select2 -->
+    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
     <!-- Summernote -->
     <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
     <!-- overlayScrollbars -->
@@ -98,9 +97,6 @@
     <script src="{{asset('dist/js/adminlte.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dist/js/demo.js')}}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
-    {{-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
     <script>
 
     $('.description').summernote(
@@ -133,174 +129,18 @@
             });
         });
 </script>
-</body>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+  });
+</script>
+</body>
 </html>
 
-
-{{-- <!doctype html>
-<html lang="en" class="no-focus">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-        <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework</title>
-
-        <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
-
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework">
-        <meta property="og:site_name" content="Codebase">
-        <meta property="og:description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
-        <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{asset('assets/media/favicons/favicon.png')}}">
-<link rel="icon" type="image/png" sizes="192x192" href="{{asset('assets/media/favicons/favicon-192x192.png')}}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/media/favicons/apple-touch-icon-180x180.png')}}">
-<!-- END Icons -->
-
-<!-- Stylesheets -->
-
-<!-- Page JS Plugins CSS -->
-<link rel="stylesheet" href="{{asset('assets/js/plugins/slick/slick.css')}}">
-<link rel="stylesheet" href="{{asset('assets/js/plugins/slick/slick-theme.css')}}">
-<link rel="stylesheet" href="{{asset('assets/js/plugins/datatables/dataTables.bootstrap4.css')}}">
-<link rel="stylesheet" href="{{asset('assets/js/plugins/select2/css/select2.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/js/plugins/jquery-tags-input/jquery.tagsinput.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/js/plugins/dropzonejs/dist/min/dropzone.min.css')}}">
-
-
-<!-- Fonts and Codebase framework -->
-<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700')}}">
-<link rel="stylesheet" id="css-main" href="{{asset('assets/css/codebase.min.css')}}">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-
-<!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-<!-- <link rel="stylesheet" id="css-theme" href="{{asset('assets/css/themes/flat.min.css')}}"> -->
-<!-- END Stylesheets -->
-</head>
-
-<body>
-
-
-
-    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">
-        @yield('content')
-
-    </div>
-
-    <script src="{{asset('assets/js/codebase.core.min.js')}}"></script>
-
-    <!--
-          Codebase JS
-
-          Custom functionality including Blocks/Layout API as well as other vital and optional helpers
-          webpack is putting everything together at assets/_es6/main/app.js
-      -->
-    <script src="{{asset('assets/js/codebase.app.min.js')}}"></script>
-
-    <!-- Page JS Plugins -->
-    <script src="{{asset('assets/js/plugins/chartjs/Chart.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/slick/slick.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <!-- new -->
-    <script src="{{asset('assets/js/plugins/ckeditor/ckeditor.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery-tags-input/jquery.tagsinput.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/dropzonejs/dropzone.min.js')}}"></script>
-
-    <!-- Page JS Helpers (CKEditor + BS Maxlength + Select + Tags Inputs plugins) -->
-    <script>
-        jQuery(function () {
-            Codebase.helpers(['ckeditor', 'maxlength', 'select2', 'tags-inputs']);
-        });
-
-    </script>
-
-    <!-- Page JS Code -->
-    <script src="{{asset('assets/js/pages/be_pages_dashboard.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/be_tables_datatables.min.js')}}"></script>
-    <!-- toastr -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
-    </script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-    <script>
-        @if(Session::has('messege'))
-        var type = "{{Session::get('alert-type','info')}}"
-        switch (type) {
-            case 'info':
-                toastr.info("{{ Session::get('messege') }}");
-                break;
-            case 'success':
-                toastr.success("{{ Session::get('messege') }}");
-                break;
-            case 'warning':
-                toastr.warning("{{ Session::get('messege') }}");
-                break;
-            case 'error':
-                toastr.error("{{ Session::get('messege') }}");
-                break;
-        }
-        @endif
-
-    </script>
-
-    <script>
-        $(document).on("click", "#delete", function (e) {
-            e.preventDefault();
-            var link = $(this).attr("href");
-            swal({
-                    title: "Are you Want to delete?",
-                    text: "Once Delete, This will be Permanently Delete!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location.href = link;
-                    } else {
-                        swal("Safe Data!");
-                    }
-                });
-        });
-
-    </script>
-
-    <script>
-        $(document).on("click", "#trash", function (e) {
-            e.preventDefault();
-            var link = $(this).attr("href");
-            swal({
-                    title: "Are you Want to Move  this user in trash?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location.href = link;
-                    } else {
-                        swal("Safe Data!");
-                    }
-                });
-        });
-
-    </script>
-
-
-
-
-</body>
-
-</html> --}}

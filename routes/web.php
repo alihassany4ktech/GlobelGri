@@ -42,22 +42,68 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
     Route::post('/profile/update', 'AdminController@update')->name('profile.update');
 
 
+    /****************************** SubAdmin ***************************/
+
+    Route::get('/subadmins', 'SubAdminController@all')->name('subadmins');
+
+    Route::get('subadmin/create', 'SubAdminController@create')->name('add.subadmin');
+
+    Route::post('subadmin/store', 'SubAdminController@Store')->name('subadmin.store');
+
+    Route::post('subadmin/delete', 'SubAdminController@delete')->name('subadmin.delete');
+
+    Route::get('subadmin/edit/{id}', 'SubAdminController@edit')->name('subadmin.edit');
+
+    Route::post('subadmin/update', 'SubAdminController@update')->name('subadmin.update');
+
+
+
 
     /****************************** Agent ***************************/
 
     Route::get('/agents', 'Agent\AgentController@index')->name('agents');
 
+    // single agent view 
+
+    Route::get('single/agent/{id}', 'Agent\AgentController@singleAgent')->name('agent');
+
+    // backend agents 
+
+    Route::get('backend/agents', 'Agent\AgentController@backendIndex')->name('backend.agents');
+
     Route::get('agent/create', 'Agent\AgentController@agentForm')->name('addagent');
 
+    // back end user 
+
+    Route::get('backend/agent/create', 'Agent\AgentController@backendAgentForm')->name('backend.addagent');
+
     Route::post('agent/store', 'Agent\AgentController@agentStore')->name('agent.store');
+
+    // backend agent srore 
+
+    Route::post('backend/agent/store', 'Agent\AgentController@backendAgentStore')->name('backend.agent.store');
 
     Route::post('agent/destroy', 'Agent\AgentController@destroyAgent')->name('agent.destroy');
 
     Route::post('agent/delete/', 'Agent\AgentController@deleteAgent')->name('agent.delete');
 
+    // backend aget delete 
+
+    Route::post('backend/agent/delete/', 'Agent\AgentController@deleteBackEndAgent')->name('backend.agent.delete');
+
     Route::get('agent/edit/{id}', 'Agent\AgentController@edit')->name('agent.edit');
 
+    // backend agent edit
+
+    Route::get('backend/agent/edit/{id}', 'Agent\AgentController@BackendEdit')->name('backend.agent.edit');
+
+
     Route::post('agent/update', 'Agent\AgentController@agentUpdate')->name('agent.update');
+
+    // backend agent update
+
+
+    Route::post('backend/agent/update', 'Agent\AgentController@backendAgentUpdate')->name('backend.agent.update');
 
     Route::post('agent/recover', 'Agent\AgentController@recoverAgent')->name('agent.recover');
 
@@ -102,6 +148,46 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function () {
 
     Route::post('subscription/update', 'Subscription\SubscriptionController@subscriptionUpdate')->name('subscription.update');
 
+
+    /****************************** Role And Permissions ***************************/
+    // frontend role
+    Route::get('roles', 'RolePermission\RolePermissionController@allRoles')->name('all.roles');
+
+    Route::get('role/create', 'RolePermission\RolePermissionController@createRole')->name('role.create');
+
+    Route::post('/role/store', 'RolePermission\RolePermissionController@storeRole')->name('role.store');
+
+    Route::get('/role/edit/{id}', 'RolePermission\RolePermissionController@editRole')->name('role.edit');
+
+    Route::post('/role/update', 'RolePermission\RolePermissionController@updateRole')->name('role.update');
+
+    // delete role 
+    Route::get('/role/delete/{id}', 'RolePermission\RolePermissionController@deleteRole')->name('role.delete');
+
+    // backend role
+    Route::get('backend/roles', 'RolePermission\RolePermissionController@allBackendRoles')->name('backend.roles');
+
+    Route::get('backend/role/create', 'RolePermission\RolePermissionController@createBackEndRole')->name('backend.role.create');
+
+    Route::post('backend/role/store', 'RolePermission\RolePermissionController@storeBackEndRole')->name('backend.role.store');
+
+    Route::get('backend/role/delete/{id}', 'RolePermission\RolePermissionController@deleteBackEndRole')->name('backend.role.delete');
+
+    Route::get('backend/role/edit/{id}', 'RolePermission\RolePermissionController@editBackEndRole')->name('backend.role.edit');
+
+    Route::post('backend/role/update', 'RolePermission\RolePermissionController@updateBackEndRole')->name('backend.role.update');
+    // end 
+
+    // permissions 
+    Route::get('permissions', 'RolePermission\RolePermissionController@allPermissions')->name('all.permissions');
+
+    // Route::get('permission/create', 'RolePermission\RolePermissionController@createPermission')->name('permission.create');
+
+    // Route::post('/permission/store', 'RolePermission\RolePermissionController@storePermission')->name('permission.store');
+
+    // delete permission 
+    // Route::get('permission/delete/{id}', 'RolePermission\RolePermissionController@deletePermission')->name('permission.delete');
+
     /****************************** General Setting ***************************/
 
     Route::get('/setting', 'GeneralSetting\GeneralSettingController@create')->name('generalsetting');
@@ -116,6 +202,12 @@ Route::namespace('Agent')->as('agent.')->group(function () {
 
 
     Route::get('/agent/profile', 'AgentController@dashboard')->name('dashboard');
+
+    // agent purchase subscription route
+
+    Route::get('/agent/subscription', 'AgentController@subscription')->name('subscriptions');
+
+    // end
 
     Route::post('profile/update', 'AgentController@profileupdate')->name('profile.update');
 
@@ -154,7 +246,28 @@ Route::namespace('Agent')->as('agent.')->group(function () {
         $subscription = Subscription::find($id);
         return view('agent.subscription.pruchase', compact('subscription', 'token'));
     })->name('payment');
+
+    /****************************** Property Manager ***************************/
+
+
+    Route::get('/all/propertymanagers', 'AgentController@allPropertyManager')->name('all.propertyManager');
+
+    Route::get('/create/propertymanager', 'AgentController@createPropertyManager')->name('add.propertyManager');
+
+    Route::post('/store/propertymanager', 'AgentController@storePropertyManager')->name('store.propertyManager');
+
+    Route::post('/delete/propertymanager', 'AgentController@deletePropertManager')->name('delete.propertyManager');
+
+    Route::get('/edit/propertymanager/{id}', 'AgentController@editPropertyManager')->name('edit.propertyManager');
+
+    Route::post('/update/propertymanager', 'AgentController@updatePropertyManager')->name('update.propertyManager');
+
+    Route::get('/view/propertymanager/{id}', 'AgentController@viewPropertyManager')->name('view.propertyManager');
 });
+
+
+
+
 
 Route::post('/checkout', function (Request $request) {
     $gateway = new Braintree\Gateway([
@@ -202,14 +315,14 @@ Route::post('/checkout', function (Request $request) {
             $purchasedsubscription->valid_property += $request->valid_property;
             $purchasedsubscription->update();
         }
-        return back()->with('success_message', 'Transaction successful.');
+        return redirect()->route('agent.dashboard')->with('message', 'Subscription Purchase Successfully');
     } else {
         $errorString = "";
 
         foreach ($result->errors->deepAll() as $error) {
             $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
         }
-        return back()->withErrors('An error occurred with the message: ' . $result->message);
+        return back()->withErrors($result->message);
     }
 });
 
@@ -306,10 +419,7 @@ Route::get('/how-it-work', 'Frontend\FrontEndController@HowItWork')->name('how_i
 
 // Contact 
 
-Route::post('contact/store', 'Frontend\FrontEndController@ContactStore')->name('contact.store');
-
 Route::post('contact/info/store', 'Frontend\FrontEndController@ContacInfotStore')->name('contact.info.store');
-
 
 Route::post('result/buy', 'Frontend\FrontendController@searchBye')->name('BuySearch');
 

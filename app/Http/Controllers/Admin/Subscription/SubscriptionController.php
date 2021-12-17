@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Subscription;
 
-use App\Role;
 use App\Subscription;
 use Illuminate\Http\Request;
+use App\PurchasedSubscription;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 
 class SubscriptionController extends Controller
@@ -17,12 +18,13 @@ class SubscriptionController extends Controller
 
     public function activeSubscription()
     {
-        return view('admin.subscription.activeSubscription');
+        $activeSubscriptions = PurchasedSubscription::all();
+        return view('admin.subscription.activeSubscription', compact('activeSubscriptions'));
     }
 
     public function subscriptionCreate()
     {
-        $roles = Role::all();
+        $roles = Role::where('type', '=', 'FrontEnd')->get();
         return view('admin.subscription.create', compact('roles'));
     }
 

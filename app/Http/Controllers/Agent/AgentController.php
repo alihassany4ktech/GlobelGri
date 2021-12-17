@@ -52,7 +52,7 @@ class AgentController extends Controller
             $profile->address = $request->address;
             $profile->biography = $request->biography;
             if ($request->hasfile('image')) {
-                if (!empty($profile->image)) {
+                if (!empty($profile->image) && ($profile->image != "dist/img/agentPic.png")) {
                     $image_path = $profile->image;
                     unlink($image_path);
                 }
@@ -111,7 +111,15 @@ class AgentController extends Controller
 
     public function property()
     {
-        $properties = Property::where('user_id', '=', Auth::user()->id)->paginate(5);
+        $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
+
+        if ($role == "Property Manager") {
+            $properties = Property::where('user_id', '=', Auth::user()->creater_id)->paginate(5);
+        } else {
+            $properties = Property::where('user_id', '=', Auth::user()->id)->paginate(5);
+        }
+
+
         $data = PropertyCollection::collection($properties);
         return view('agent.property.all', compact('data'));
     }
@@ -189,5 +197,100 @@ class AgentController extends Controller
                 ]);
             }
         }
+    }
+
+    // purchase sub function
+
+    public function subscription()
+    {
+        return view('agent.subscription.ispurchase');
+    }
+
+    ///////////////////////// Property Manager Functions //////////
+
+    public function allPropertyManager()
+    {
+        $agents = User::where('creater_id', '=', Auth::user()->id)->get();
+        return view('agent.propertymanager.all', compact('agents'));
+    }
+
+    public function createPropertyManager()
+    {
+        return view('agent.propertymanager.create');
+    }
+
+    public function storePropertyManager(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'min:6',
+            'email' => 'required|email|unique:users,email',
+        ]);
+        if ($validator->fails()) {
+            return $validator->errors()->all();
+        }
+        $agent = new User();
+        $agent->creater_id = Auth::user()->id;
+        $agent->type = 'FrontEnd';
+        $agent->role = $request->role_name;
+        $agent->name = $request->name;
+        $agent->email = $request->email;
+        $agent->password = Hash::make($request->password);
+        $agent->save();
+        $agent->assignRole($request->role_name);
+        return response()->json([
+            'success'  => 'Property Manager successfully.'
+        ]);
+    }
+
+    public function deletePropertManager(Request $request)
+    {
+        if ($request->ajax()) {
+            $agent = User::find($request->id);
+            $agent->forceDelete();
+            return response()->json([
+                'error'  => 'Property ManagerDeleted successfully.'
+            ]);
+        }
+    }
+
+    public function editPropertyManager($id)
+    {
+        $agent = User::find($id);
+        return view('agent.propertymanager.edit', compact('agent'));
+    }
+
+    public function updatePropertyManager(Request $request)
+    {
+        if ($request->ajax()) {
+            $id = $request->id;
+            $agent = User::find($id);
+            $delrole = '';
+            $oldrole = $agent->getRoleNames();
+            foreach ($oldrole as $row) {
+                $delrole = $row;
+            }
+            if ($request->role_name != $delrole) {
+
+                $agent->removeRole($delrole);
+                $agent->assignRole($request->role_name);
+            }
+            $agent->name = $request->name;
+            $agent->type = 'FrontEnd';
+            // $agent->role = $request->role_name;
+            $agent->email = $request->email;
+            if ($request->has('password')) {
+
+                $agent->password =  Hash::make($request->password);
+            }
+            $agent->update();
+            return response()->json([
+                'success'  => 'Property Manager Update successfully.'
+            ]);
+        }
+    }
+    public function viewPropertyManager($id)
+    {
+        $agent = User::find($id);
+        return view('agent.propertymanager.view', compact('agent'));
     }
 }

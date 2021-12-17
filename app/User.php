@@ -2,21 +2,23 @@
 
 namespace App;
 
-use App\Notifications\PasswordRestNotification;
 use App\Role;
-use Illuminate\Auth\Notifications\ResetPassword;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\PasswordRestNotification;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, HasRoles;
     use SoftDeletes;
 
+    protected $guard = 'web';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'role_id', 'provider_id', 'user_otp', 'name', 'email', 'password', 'status', 'image', 'phone', 'about',
+        'role', 'provider_id', 'user_otp', 'name', 'email', 'password', 'status', 'image', 'phone', 'about',
     ];
 
     /**
@@ -47,10 +49,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
-    {
-        return $this->belongsTo('App\Role');
-    }
+    // public function role()
+    // {
+    //     return $this->belongsTo('App\Role');
+    // }
 
     public function properties()
     {

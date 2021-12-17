@@ -110,28 +110,6 @@
         <!-- rightPanelList -->
         <ul class="list-unstyled rightPanelList hidden-xs">
             <li>
-                <a href="#" class="hasOver">
-                    <span class="fi flaticon-photo icn" style=""></span>
-                    <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">View
-                            Photos</span></strong>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="hasOver">
-                    <span class="fi flaticon-placeholder icn"></span>
-                    <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">Map View</span></strong>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="hasOver">
-                    <span class="fi flaticon-street-view icn"></span>
-                    <strong class="fwNormal textCaption"><span class="indentWrap elemenBlock">Street
-                            View</span></strong>
-                </a>
-            </li>
-            
-            
-            <li>
                  @if ($mapShops->threesixty_link == '0')
                 <a href="#" class="hasOver">
                     <span class="fi flaticon-360-degrees icn"></span>
@@ -283,11 +261,7 @@
                     <section class="contactFormPage widget">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" style="color:#bd7f0a"><b>
-                                        Schedule a Tour</b></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#menu1" style="color:#bd7f0a"><b>Request
+                                <a class="nav-link active" data-toggle="tab" href="#menu1" style="color:#bd7f0a"><b>Request
                                         Info</b></a>
                             </li>
                         </ul>
@@ -315,68 +289,8 @@
                         </div>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="home">
-                                <h4 style="margin-top: 30px">Tour Type <i class="fa fa-question-circle"
-                                        aria-hidden="true"></i></h4>
-                                <form id="contact_form">
-                                    @csrf
-                                    <input type="hidden" name="owner_id" value="{{$mapShops->user->id}}">
-                                    <input type="hidden" name="property_id" value="{{$mapShops->id}}">
-                                    <input type="hidden" name="type" value="Tour">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <label for="" class="fwNormal ">Choose a Date</label>
-                                            <div class="form-group">
-                                                <input type="date" name="date" placeholder="Your Name"
-                                                    class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <label for="" class="fwNormal ">Choose a time</label>
-                                            <div class="form-group">
-                                                <input type="time" name="time" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <input type="text" name="phone" placeholder="Phone" class="form-control"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <input type="email" name="email" placeholder="Email"
-                                                    class="form-control" required>
-                                                <p style="font-size: 12px; color:red; margin-top:5px"><i
-                                                        class="fas fa-exclamation-circle"></i> Enter a valid email.</p>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <input type="checkbox" name="check"> I want to talk about financing
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn  fontNeuron buttonXL"
-                                        style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Schedule
-                                        a
-                                        Tour</button>
-                                </form>
-                                <h6 class="fontNeuron"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                    Public Health Advisory</h6>
-                                <p class="fontNeuron" style="font-size: 11px">By pressing Schedule A Tour, you agree
-                                    that Trulia and real estate professionals may contact you via phone/text about
-                                    your inquiry, which may involve the use of automated means. You are not required
-                                    to consent as a condition of purchasing any property, goods or services.
-                                    Message/data rates may apply. You also agree to our <a href=""
-                                        style="color: #bd7f0a"> Terms of Use</a>
-                                    Trulia does not endorse any <a href="" style="color: #bd7f0a"> real estate
-                                        professionals</a> </p>
-                            </div>
-                            <div class="tab-pane" id="menu1">
-                                <form class="widgetCalcForm" id="contact_form_info">
+                            <div class="tab-pane active" id="menu1">
+                                <form class="widgetCalcForm" method="POST" action="{{route('contact.info.store')}}">
                                     @csrf
                                     <input type="hidden" name="owner_id" value="{{$mapShops->user->id}}">
                                     <input type="hidden" name="property_id" value="{{$mapShops->id}}">
@@ -407,7 +321,7 @@
 
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="check"> I want to talk about financing
+                                                <input type="checkbox" name="check" required> I want to talk about financing
                                             </div>
                                         </div>
                                     </div>
@@ -437,16 +351,6 @@
 
                 </aside>
             </div>
-
-            {{-- <div class="col-xs-12 col-sm-12 col-md-12 bgWhite" style="margin-left: 5%; width:1096px;">
-
-                <div class="head">
-                    <h4 class="fontNeuron">Floor Plans</h4>
-
-                </div>
-
-            </div> --}}
-
             <?php
                     // Jan 
                     $year = date("Y");
@@ -720,71 +624,6 @@
     }
 
 </script>
-<script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        // Contact Add
-        $('#contact_form').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("contact.store")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        toastr.success(data.success);
-                    }
-
-                }
-            });
-        });
-    });
-
-</script>
-
-<script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('#contact_form_info').on('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-
-                url: '{{route("contact.info.store")}}',
-                method: 'post',
-                processData: false,
-                contentType: false,
-                data: formData,
-                beforeSend: function () {
-                    $('#add').attr('disabled', 'disabled');
-                },
-                success: function (data) {
-                    if (data.success) {
-                        toastr.success(data.success);
-                    }
-
-                }
-            });
-        });
-    });
-
-</script>
-
 <script>
    
 

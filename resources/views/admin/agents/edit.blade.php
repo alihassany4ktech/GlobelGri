@@ -22,7 +22,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add Agent</li>
+              <li class="breadcrumb-item active">Add FrontEnd User</li>
             </ol>
           </div>
         </div>
@@ -39,10 +39,14 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Agent</h3>
+                <h3 class="card-title">Edit User</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              <?php
+                $roles  = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get(); 
+                                        
+                                     ?>
               <form id="agentform">
                   @csrf
                   <input type="hidden" name="id" value="{{$user->id}}">
@@ -65,12 +69,23 @@
                   </div>
                   <div class="form-group">
                   <label>Role</label>
-                  <select class="form-control" name="agent_role" style="width: 100%;" autocomplete="off">
-                    <option selected="selected" value="{{$user->role->agent_role}}">{{$user->role->agent_role}}</option>
-                    @foreach ($roles as $row)
-                        <option value="{{$row->agent_role}}">{{$row->agent_role}}</option>
-                    @endforeach
-                  </select>
+                        <select name="role_name" class="selectpicker form-control"
+                                                data-style="form-control btn-secondary">
+                                                @if ($user->getRoleNames()->isEmpty())
+                                                <option disabled selected>No Role</option>
+                                                @else
+                                                <option value="{{$user->getRoleNames()[0]}}" selected>
+                                                    {{$user->getRoleNames()[0]}}</option>
+                                                @foreach ($roles as $role)
+                                                @if ($user->getRoleNames()[0] == $role->name )
+                                                <option style="display: none" value="{{$role->name}}">{{$role->name}}
+                                                </option>
+                                                @else
+                                                <option value="{{$role->name}}">{{$role->name}}</option>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                            </select>
                 </div>
                 </div>
                 <!-- /.card-body -->

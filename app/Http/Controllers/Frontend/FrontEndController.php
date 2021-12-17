@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Blog;
 use App\User;
 use App\Contact;
-use App\Favourite;
 use App\Property;
+use App\Favourite;
 use App\GeneralSetting;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
@@ -16,6 +16,7 @@ use App\Http\Resources\BlogResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\PropertyResource;
 use App\Notifications\ContactNotification;
+use App\Notifications\ContactInfoNotification;
 
 class FrontEndController extends Controller
 {
@@ -104,43 +105,22 @@ class FrontEndController extends Controller
         return view('frontend.how-it-work');
     }
 
-    public function ContactStore(Request $request)
-    {
-        if ($request->ajax()) {
-            $contact  =  new Contact();
-            $contact->owner_id = $request->owner_id;
-            $contact->property_id = $request->property_id;
-            $contact->type = $request->type;
-            $contact->date = $request->date;
-            $contact->time = $request->time;
-            $contact->phone = $request->phone;
-            $contact->email = $request->email;
-            $contact->check = $request->check;
-            $contact->save();
-            $user = User::find($request->owner_id);
-            $message = 'Notification For Tour';
-            $user->notify(new ContactNotification($message));
-            return response()->json(['success' => 'Contact Add Successfully!']);
-        }
-    }
-
     public function ContacInfotStore(Request $request)
     {
-        if ($request->ajax()) {
-            $contact  =  new Contact();
-            $contact->owner_id = $request->owner_id;
-            $contact->property_id = $request->property_id;
-            $contact->type = $request->type;
-            $contact->phone = $request->phone;
-            $contact->email = $request->email;
-            $contact->check = $request->check;
-            $contact->message = $request->message;
-            $contact->save();
-            $user = User::find($request->owner_id);
-            $message = 'Notification For Info';
-            $user->notify(new ContactNotification($message));
-            return response()->json(['success' => 'Contact Info Add Successfully!']);
-        }
+
+        $contact  =  new Contact();
+        $contact->owner_id = $request->owner_id;
+        $contact->property_id = $request->property_id;
+        $contact->type = $request->type;
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->check = $request->check;
+        $contact->message = $request->message;
+        $contact->save();
+        $user = User::find($request->owner_id);
+        $message = 'Notification For Info';
+        $user->notify(new ContactInfoNotification($message, $request->email, $request->phone, $request->type, $request->message));
+        return redirect()->back()->with(['message' => 'Contact Info Add Successfully!']);
     }
 
     // Search 
@@ -207,7 +187,7 @@ class FrontEndController extends Controller
 
     public function PropertyManagerGuide()
     {
-        return view('frontend.home.allguide.property-manager-guide');
+        return view('frontend.home.allguide.property-manager-giude');
     }
 
     public function LenderGuide()

@@ -23,7 +23,10 @@
 <!-- main -->
 <main>
     <!-- findFormBlock -->
-    <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop">
+    <div class="container"></div>
+        <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop"></form>
+
+    {{-- <form action="#" class="findFormBlock findFormBlock2 bgLightDark hasShadowTop offsetHeaderTop">
         <div class="container">
             <div class="row align-center d-flex">
                 <div class="col-xs-12 col-sm-5 col-md-4 col-lg-5">
@@ -218,7 +221,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form> --}}
     <!-- content -->
     <section id="content" class="container pabIndent">
         <!-- contentFiltersHeadingWrap -->
@@ -254,63 +257,89 @@
                                 {{-- <span class="text"><a href="#" class="link">Change Password</a></span> --}}
                             </div>
                         </header>
-                        <ul class="navUser list-unstyled">
+                            <ul class="navUser list-unstyled">
+                                 @can('edit profile')
                             <li>
                                 <a href="{{route('agent.dashboard')}}">
                                     <i class="far fa-user"></i>
                                     <span>Account Settings</span>
                                 </a>
                             </li>
+                             @endcan
+                             @can('create property manager')
                             <li>
+                                <a href="{{route('agent.all.propertyManager')}}">
+                                  <i class="fa fa-users"></i>
+                                    <span>Property Managers</span>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('property list')
+                               <li>
                                 <a href="{{route('agent.property')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>My Properties</span>
                                 </a>
                             </li>
-                            <li>
+                            @endcan
+                             @can('favorite property list')
+                              <li>
                                 <a href="{{route('agent.favourite.property')}}">
                                     <i class="far fa-heart"></i>
                                     <span>Favorited Properties</span>
                                 </a>
                             </li>
-                               <li>
+                             @endcan
+                            
+                            <li>
+                                <a href="{{route('agent.subscriptions')}}">
+                                    <i class="fa fa-dollar-sign"></i>
+                                    <span>Update Subscription</span>
+                                </a>
+                            </li>
+                             
+                          
+                            {{-- <li>
                                 <a href="{{route('agent.subscription')}}">
                                     <i class="fi flaticon-house"></i>
                                     <span>Subscriptions</span>
                                 </a>
-                            </li>
-
-                               <li>
+                            </li> --}}
+                                     @can('subscription list')
+                            <li>
                                 <a href="{{route('agent.purchased.subscription')}}">
-                                    <i class="fi flaticon-house"></i>
+                                    <i class="fa fa-dollar-sign"></i>
                                     <span>My Purchased Subscription</span>
                                 </a>
                             </li>
-                           
-                            <li>
+                            @endcan
+                           @can('create property')
+                                  <li>
                                 <a href="{{route('property.create')}}">
                                     <i class="fa fa-plus"></i>
-                                    <span>Submit Property</span>
+                                    <span>Saved Property</span>
                                 </a>
                             </li>
-                            <li>
+                            @endcan
+                             {{-- <li>
                                 <a href="{{route('unit.create')}}">
                                     <i class="fa fa-plus"></i>
                                     <span>Submit Units</span>
                                 </a>
-                            </li>
-                                <li>
+                            </li> --}}
+                                  {{-- <li>
                                 <a href="{{route('unit.purchased')}}">
                                     <i class="fa fa-shopping-basket"></i>
                                     <span>Units Purchased</span>
                                 </a>
-                            </li>
-                             <li>
+                            </li> --}}
+                              <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
                             </li>
+                         
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

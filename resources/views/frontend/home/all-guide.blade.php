@@ -480,6 +480,17 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <input type="hidden" name="agent_role" id="" value="8">
                                 <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
@@ -542,6 +553,17 @@
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
+                                </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get()?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="1">
                                 <div class="form-group">
@@ -606,6 +628,17 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
                                 </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <input type="hidden" name="agent_role" id="" value="2">
                                 <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
@@ -668,6 +701,17 @@
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
+                                </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="3">
                                 <div class="form-group">
@@ -732,6 +776,17 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
                                 </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <input type="hidden" name="agent_role" id="" value="4">
                                 <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
@@ -794,6 +849,17 @@
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
+                                </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="5">
                                 <div class="form-group">
@@ -858,6 +924,17 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
                                 </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <input type="hidden" name="agent_role" id="" value="6">
                                 <div class="form-group">
                                     <label class="fwNormal customLabelCheck">
@@ -920,6 +997,17 @@
                                     <input type="email" class="form-control elemenBlock" name="email"
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Enter Your valid email..">
+                                </div>
+                                  <div class="form-group">
+                                    
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get(); ?> 
+                                    <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
+                                        <option selected="selected">Select Role</option>
+
+                                        @foreach ($roles as $row)
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <input type="hidden" name="agent_role" id="" value="7">
                                 <div class="form-group">

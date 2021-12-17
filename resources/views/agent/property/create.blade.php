@@ -174,7 +174,16 @@
 
                         <form class="form-horizontal" id="multistep_form">
                             @csrf
+                            <?php
+                                    $role = Auth::guard('web')->user()->getRoleNames()->isEmpty() ? '' :  Auth::user()->getRoleNames()[0];
+                             ?>
+                            
+                            @if ($role == 'Property Manager')
+                                <input type="hidden" name="agent_id" value="{{Auth::user()->creater_id}}">
+                            @else
                             <input type="hidden" name="agent_id" value="{{Auth::user()->id}}">
+                            @endif
+                            
                             <fieldset id="account">
 
                                 <div class="addProperty">
@@ -257,14 +266,29 @@
                                                         placeholder="1500" id="itemN-21">
                                                 </div>
                                             </div>
-
+                                                <?php 
+                                                $role = Auth::guard('web')->user()->getRoleNames()->isEmpty() ? ' ' :  Auth::user()->getRoleNames()[0];
+                                                $createrId = Auth::user()->creater_id;
+                                                $creater = App\User::find($createrId);
+                                                if($creater == null){
+                                                            $createrRoler = '';
+                                                }else{
+                                                     $createrRoler = $creater->getRoleNames()->isEmpty() ? ' ':$creater->getRoleNames()[0] ;
+                                                }
+                                               
+                                                 ?>
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="itemN-23">Property Type</label>
                                                     <select data-placeholder="Select Option" id="property_type" class="chosen-select"
                                                         id="itemN-23" name="property_type" autocomplete="off">
-                                                        <option value="For Sale">For Sale </option>
-                                                        <option value="For Rent">For Rent </option>
+                                                        @if ($role == 'Agent'|| $createrRoler == 'Agent')
+                                                             <option value="For Sale">For Sale </option>
+                                                        @elseif($role == 'Renter' || $createrRoler == 'Renter')
+                                                            <option value="For Rent">For Rent </option>
+                                                        @endif
+                                                       
+                                                        
                                                         {{-- <option value="For Investment">For Investment </option> --}}
                                                     </select>
                                                 </div>
@@ -684,8 +708,11 @@
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
+    <script>
+        var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
+    </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

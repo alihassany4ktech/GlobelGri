@@ -260,14 +260,14 @@
                                         value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Your valid email..">
                                 </div>
-                                <div class="form-group">
+                              <div class="form-group">
                                     
-                                  <?php $roles = App\Role::all(); ?> 
+                                  <?php $roles = Spatie\Permission\Models\Role::where('type','=','FrontEnd')->where('name','!=','Property Manager')->get() ?> 
                                     <select data-placeholder="Type" class="form-control elemenBlock" name="agent_role">
                                         <option selected="selected">Select Role</option>
 
                                         @foreach ($roles as $row)
-                                        <option value="{{$row->id}}">{{$row->agent_role}}</option>
+                                        <option value="{{$row->name}}">{{$row->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
