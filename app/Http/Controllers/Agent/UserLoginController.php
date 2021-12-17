@@ -19,7 +19,7 @@ class UserLoginController extends Controller
             'email' => 'required|email|exists:users,email',
             'password' => 'required|min:8|max:30'
         ], [
-            'email.exists' => 'This email is not exists in admins table'
+            'email.exists' => 'This email is not exists'
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
