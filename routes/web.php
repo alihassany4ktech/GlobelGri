@@ -236,7 +236,7 @@ Route::namespace('Agent')->as('agent.')->group(function () {
 
     Route::get('/subscription/purchase/{id}', function ($id) {
         $gateway = new Braintree\Gateway([
-            'environment' => env('BTREE_ENVIRONMENT'),
+            'environment' => env('BTREE_ENVIRONMENT') ? env('BTREE_ENVIRONMENT') : '',
             'merchantId' => env('BTREE_MERCHANT_ID'),
             'publicKey' => env('BTREE_PUBLIC_KEY'),
             'privateKey' => env('BTREE_PRIVATE_KEY')
@@ -271,7 +271,7 @@ Route::namespace('Agent')->as('agent.')->group(function () {
 
 Route::post('/checkout', function (Request $request) {
     $gateway = new Braintree\Gateway([
-        'environment' => env('BTREE_ENVIRONMENT'),
+        'environment' => env('BTREE_ENVIRONMENT') ? env('BTREE_ENVIRONMENT') : '',
         'merchantId' => env('BTREE_MERCHANT_ID'),
         'publicKey' => env('BTREE_PUBLIC_KEY'),
         'privateKey' => env('BTREE_PRIVATE_KEY')
