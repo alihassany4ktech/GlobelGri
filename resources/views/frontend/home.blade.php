@@ -632,9 +632,12 @@
     </div>
 </main>
 @endsection
+<script>
+        var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
+    </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDxL17Fyl5fOmZ13z3xDVdxBAOEF6ZwKKc">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey>
     </script>
 
     
