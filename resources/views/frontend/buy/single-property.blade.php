@@ -124,9 +124,9 @@
                 </a>
                   @endif
             </li>
-             
-              
-           
+
+
+
         </ul>
     </section>
 
@@ -179,10 +179,10 @@
                     </section>
                     @if($mapShops->property_type == 'For Investment')
                     <?php
-                        $units = App\Unit::where('property_id','=',$mapShops->id)->where('current','=','1')->get(); 
+                        $units = App\Unit::where('property_id','=',$mapShops->id)->where('current','=','1')->get();
                         $total_unit = count($units);
                     ?>
-                   
+
                         <section>
                         <table class="table table table-bordered table-striped ptable" id="ptable"
                             style="font-size: 13px;  text-align: center;">
@@ -203,13 +203,13 @@
                                     @if ($row->status == '0' || $row->status == '2')
                                      @if (Auth::check())
                                     <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 17px; padding-right: 17px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Available</button></td>
-                                    @else 
+                                    @else
                                     <td><span class="status fontNeuron" style="border:none ;padding:7px;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);"><a href="#popup1" class="lightbox btn btn-sm" type="button" style="color: white; font-size:14px;">Available</a></span></td>
                                     @endif
                                     @else
                                     @if (Auth::check())
                                     <td><button  onclick="getProperty(this)" id="{{$row->id}}" style="border:none ;background: #f1c967; padding-left: 17px; padding-right: 17px;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white;">Purchased</button></td>
-                                    @else 
+                                    @else
                                     <td><span class="status fontNeuron" style="border:none ;padding:7px;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);"><a href="#popup1" class="lightbox btn btn-sm" type="button" style="color: white;font-size:14px;">Purchased</a></span></td>
                                     @endif
                                     @endif
@@ -219,8 +219,8 @@
                             </tbody>
                         </table>
                     </section>
-                    
-                    
+
+
                     @endif
                     @if($mapShops->property_type == 'For Investment')
                     <section class="bgWhite">
@@ -352,7 +352,7 @@
                 </aside>
             </div>
             <?php
-                    // Jan 
+                    // Jan
                     $year = date("Y");
                     $janprice = [];
                     $jan = \App\Unit::where('property_id', $mapShops->id)->whereMonth('created_at', '1')->whereYear('created_at', $year)->get();
@@ -494,7 +494,7 @@
                         array_push($decprice, $row->unit_price);
                     }
                     $newdecprice = array_sum($decprice);
-                    
+
             ?>
             <div id="map"></div>
             <div id="pano"></div>
@@ -514,7 +514,7 @@
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <input type="hidden" name="status"  value="1">
                     <input type="hidden" name="unit_id" id="unitid">
-                    
+
                         <h3 id="headingform" style="margin-left: 35px;">Unit Details</h3>
                         <div class="popupColsHolder mo">
                             <div class="col bgWhite">
@@ -531,7 +531,7 @@
                                     <button type="submit"
                                         class="btn btn-sm  elemenBlock fontNeuron fwNormal text-uppercase btnSubmit"
                                         style="width:20%;border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967);color:white; font-size:18px;">Submit</button>
-                               
+
                                 </div>
 
 
@@ -553,8 +553,8 @@
 <script>
         var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
     </script>
-<script type='text/javascript'
-    src='https://maps.google.com/maps/api/js?language=en&key='+googleApiKey+'&callback=initialize&libraries=&v=weekly'
+<script type="text/javascript"
+    src=`https://maps.google.com/maps/api/js?language=en&key= ${googleApiKey} &callback=initialize&libraries=&v=weekly`
     async></script>
 <script defer>
     $(document).ready(function () {
@@ -627,7 +627,7 @@
 
 </script>
 <script>
-   
+
 
          function getProperty(elem){
             var unit_id = $(elem).attr("id");
@@ -648,7 +648,7 @@
             }
             }
             };
-   
+
 </script>
 
 <script>
@@ -691,9 +691,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    
+
     function init(){
-        
+
            var janprice = @json($newjanprice);
 
            var febprice = @json($newfebprice);
@@ -717,7 +717,7 @@
            var novprice = @json($newnovprice);
 
            var decprice = @json($newdecprice);
-      
+
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -739,7 +739,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         }]
     },
-    
+
     options: {
         scales: {
             y: {
@@ -749,7 +749,7 @@ var myChart = new Chart(ctx, {
     }
 });
 
-// 2nd chart 
+// 2nd chart
 
 
 
@@ -758,13 +758,13 @@ window.onload = init;
 </script>
 <script>
     $(document).ready(function () {
-    
+
     $('#threesixtybtn').on('click',function(){
         $("#imgslider").css("display", "none");
         $("#turevideo").css("display", "block");
     });
-      
-        
+
+
     });
 
 </script>
