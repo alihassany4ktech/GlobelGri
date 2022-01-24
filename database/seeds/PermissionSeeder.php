@@ -449,6 +449,33 @@ class PermissionSeeder extends Seeder
                 'role_id' => 8,
             ],
 
+            // buyer permissions
+
+            [
+                'permission_id' => 5,
+                'role_id' => 6,
+            ],
+            [
+                'permission_id' => 10,
+                'role_id' => 6,
+            ]
+            // [
+            //     'permission_id' => 45,
+            //     'role_id' => 6,
+            // ],
+            // [
+            //     'permission_id' => 45,
+            //     'role_id' => 6,
+            // ],
+            // [
+            //     'permission_id' => 45,
+            //     'role_id' => 6,
+            // ],
+            // [
+            //     'permission_id' => 45,
+            //     'role_id' => 6,
+            // ]
+
         ]);
     }
 }

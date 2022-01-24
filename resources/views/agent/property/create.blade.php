@@ -710,9 +710,12 @@
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
     <script>
         var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
+        // console.log(googleApiKey);
+        console.log('https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key='+googleApiKey);
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey>
+        
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

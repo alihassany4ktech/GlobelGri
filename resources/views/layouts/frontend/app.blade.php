@@ -501,6 +501,9 @@
                     </div>
                     <div class="col-xs-6 col-sm-4 d-flex" style="margin-left:0%">
                         @if(Auth::check())
+                         <?php
+                                $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0]
+                            ?>
                         @if (App\PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->exists())
                          <!-- headerModalOpener -->
                         <ul class="list-unstyled UserLinksList">
@@ -516,7 +519,8 @@
                             class="headerModalOpener text-uppercase fontNeuron fwBold"
                             style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Dashboard</a>
                         @else 
-                         <ul class="list-unstyled UserLinksList">
+                        @if ($role != 'Buyer')
+                             <ul class="list-unstyled UserLinksList">
                             <li>
                                 <a href="#popup1" class="lightbox">
                                     <i class="fi flaticon-social icn" style=" color: #bd7f0a;"></i>
@@ -538,6 +542,11 @@
                                                 background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); 
                                                 background: linear-gradient(to right, #bd7f0a, #f1c967);">Submit
                             Property</a>
+                        @else
+                            <a href="{{route('agent.dashboard')}}"
+                            class="headerModalOpener text-uppercase fontNeuron fwBold"
+                            style="border:none ;background: #f1c967;  background: -webkit-linear-gradient(to right, #bd7f0a, #f1c967); background: linear-gradient(to right, #bd7f0a, #f1c967); color:white">Dashboard</a>
+                        @endif
                         @endif
                        
                         @else

@@ -24,7 +24,7 @@ class UserLoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
-            if ($role == 'Property Manager') {
+            if ($role == 'Property Manager' || $role == 'Buyer') {
                 return redirect()->intended('/agent/profile')
                     ->with('message', 'Login Successfull');
             } else {
@@ -54,7 +54,7 @@ class UserLoginController extends Controller
         $data = $request->all();
         $check = $this->create($data);
         $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
-        if ($role == 'Property Manager') {
+        if ($role == 'Property Manager' || $role == 'Buyer') {
             return redirect()->route('agent.dashboard')->with('message', 'Singup Successfully');
         } else {
             if (PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->exists()) {

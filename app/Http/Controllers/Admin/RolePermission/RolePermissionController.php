@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use PhpParser\Node\Expr\Ternary;
+use Spatie\Permission\Contracts\Role as ContractsRole;
 use Spatie\Permission\Models\Permission;
 
 class RolePermissionController extends Controller
@@ -14,14 +15,15 @@ class RolePermissionController extends Controller
     // FrontEnd role
     public function allRoles()
     {
-        $roles = Role::where('type', '=', 'FrontEnd')->get();
+        $roles = Role::where('type', '=', 'FrontEnd')->where('name', '!=', 'Buyer')->get();
         return view('admin.role.all', compact('roles'));
     }
 
     public function createRole()
     {
         $permissions = Permission::where('type', '=', 'FrontEnd')->get();
-        return view('admin.role.create', compact('permissions'));
+        $roles = Role::where('type', '=', 'FrontEnd')->where('name', '!=', 'Buyer')->get();
+        return view('admin.role.create', compact('permissions', 'roles'));
     }
 
     public function editRole($id)

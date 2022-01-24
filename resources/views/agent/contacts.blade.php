@@ -77,13 +77,18 @@
                                 </a>
                             </li>
                              @endcan
-                            
-                            <li>
+
+                               <?php
+                            $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0]
+                             ?>
+                           @if ($role != 'Buyer')
+                                <li>
                                 <a href="{{route('agent.subscriptions')}}">
                                     <i class="fa fa-dollar-sign"></i>
                                     <span>Update Subscription</span>
                                 </a>
-                            </li>
+                            </li>         
+                           @endif
                              
                           
                             {{-- <li>

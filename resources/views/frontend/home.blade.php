@@ -634,6 +634,7 @@
 @endsection
 <script>
         var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
+        alert("https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey);
     </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script

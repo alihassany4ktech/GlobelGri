@@ -49,7 +49,12 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" name="role_name" class="form-control" placeholder="Enter name..">
+                    {{-- <input type="text" name="role_name" class="form-control" placeholder="Enter name.."> --}}
+                    <select name="role_name" id="" class="form-control">
+                      @foreach ($roles as $role)
+                          <option value="{{$role->name}}">{{$role->name}}</option>
+                      @endforeach
+                    </select>
                     @error('role_name')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
