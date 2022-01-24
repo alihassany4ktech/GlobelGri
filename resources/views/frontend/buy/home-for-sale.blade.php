@@ -746,6 +746,8 @@ a:visited {
 @endsection
 <script>
         var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
+                alert("https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey);
+
     </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key='+googleApiKey></script>
