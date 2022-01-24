@@ -748,7 +748,7 @@ a:visited {
         var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
     </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script type='text/javascript' src=`https://maps.google.com/maps/api/js?language=en&key= ${googleApiKey}`></script>
+<script type='text/javascript' src="https://maps.google.com/maps/api/js?language=en&key={{ env('GOOGLE_API_KEY') }}"></script>
 <script defer>
     $(document).ready(function(){
     var mainurl = "{{url('/')}}";
