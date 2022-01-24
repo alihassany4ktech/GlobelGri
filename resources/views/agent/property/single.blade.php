@@ -640,11 +640,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script>
-        var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
-    </script>
 <script type='text/javascript'
-    src='https://maps.google.com/maps/api/js?language=en&key='+googleApiKey+'&callback=initialize&libraries=&v=weekly'
+    src="https://maps.google.com/maps/api/js?language=en&key={{ env('GOOGLE_API_KEY') }}&callback=initialize&libraries=&v=weekly"
     async></script>
 <script defer>
     $(document).ready(function () {

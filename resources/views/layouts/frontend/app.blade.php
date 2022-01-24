@@ -333,6 +333,9 @@
                         <a href="{{route('pricing')}}" style="color: #bd7f0a">Pricing<span></span></a>
                     </li>
                     @if(Auth::check())
+                     <?php
+                                $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0]
+                            ?>
                     @if (App\PurchasedSubscription::where('agent_id', '=', Auth::user()->id)->exists())
                          <li>
                         <a href="{{route('property.create')}}" style="color: #bd7f0a">
@@ -344,10 +347,12 @@
 
                     </li>
                     @else
-                         <li class="">
+                   @if ($role != 'Buyer')
+                             <li class="">
                         <a href="#popup1" class="lightbox" style="color: #bd7f0a"><i class="fi flaticon-social icn"
                                 style="color: #bd7f0a"></i> Login</a>
                     </li>
+                    
                     @if (Route::has('register'))
                     <li class="">
                         <a href="#popup1" class="lightbox" style="color: #bd7f0a"><i class="fi flaticon-edit icn"
@@ -359,6 +364,14 @@
                         </a>
                     </li>
                     @endif
+                   @else
+                         <li>
+                        <a href="{{route('agent.dashboard')}}" style="color: #bd7f0a"> Dashboard</a>
+
+                    </li>
+                   @endif
+
+
                     @endif
                    
                     @else

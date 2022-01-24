@@ -708,13 +708,8 @@
     <!-- include custom JavaScript -->
     <script src="{{asset('frontend/js/jquery.main.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/js/init.js')}}"></script>
-    <script>
-        var googleApiKey = "{{ env('GOOGLE_API_KEY') }}";
-        // console.log(googleApiKey);
-        console.log('https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key='+googleApiKey);
-    </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key="+googleApiKey>
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ env('GOOGLE_API_KEY') }}">
         
     </script>
 
