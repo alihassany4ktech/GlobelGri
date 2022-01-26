@@ -26,22 +26,28 @@ Route::get('/verified-only', function (Request $request) {
 
 Route::post('/login', 'Api\UserController@login');
 Route::post('/register', 'Api\UserController@register');
+// Forgot Password Route
+Route::post('/forgot/password', 'Api\UserController@forgot_password');
+// Otp Verify Route for  Forgot Password
+Route::post('otp/verify', 'Api\UserController@opt_verify');
+Route::post('/reset/password', 'Api\UserController@reset_password');
 
-Route::post('/password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
-Route::post('/password/reset', 'Api\ResetPasswordController@reset');
 
-Route::get('/email/resend', 'Api\VerificationController@resend');
-Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify');
+
+
+// Route::post('/password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
+// Route::post('/password/reset', 'Api\ResetPasswordController@reset');
+
+// Route::get('/email/resend', 'Api\VerificationController@resend');
+// Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify');
 
 // google
-Route::get('/login/google', 'Api\UserController@redirectToGoogle');
-
-Route::get('/login/google/callback', 'Api\UserController@handleGoogleCallback');
+// Route::get('/login/google', 'Api\UserController@redirectToGoogle');
+// Route::get('/login/google/callback', 'Api\UserController@handleGoogleCallback');
 
 // // facebook
-Route::get('/login/facebook', 'Api\UserController@redirectToFacebook');
-
-Route::get('/login/facebook/callback', 'Api\UserController@handleFacebookCallback');
+// Route::get('/login/facebook', 'Api\UserController@redirectToFacebook');
+// Route::get('/login/facebook/callback', 'Api\UserController@handleFacebookCallback');
 
 
 // Contact 
@@ -56,6 +62,21 @@ Route::get('/blogs', 'Api\FrontendController@blogs');
 
 Route::get('/single-blog/{id}', 'Api\FrontendController@SingleBlog');
 
+// Properties  for rent
+Route::get('/properties-for-rent', 'Api\FrontendController@propertiesForRent');
+// Properties  for sale
+Route::get('/properties-for-sale', 'Api\FrontendController@propertiesForSale');
+
+// single property 
+Route::get('/property/{id}', 'Api\FrontendController@singleProperty');
+
+// get all  properties against  agent 
+Route::get('/agent/all/properties/{id}', 'Api\FrontendController@agentAllProperty');
+
+// search property 
+
+Route::post('/search/property', 'Api\FrontendController@searchProperty');
+
 Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('/details', 'Api\UserController@details');
@@ -66,6 +87,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('social-media/update', 'Api\UserController@social_media_update');
 
+    // favorite  property 
+    Route::get('/favorite/properties', 'Api\PropertyController@favoriteProperties');
+    // single favorite property 
+    Route::get('/favorite-property/{id}', 'Api\PropertyController@singleFavoriteProperty');
     // property
 
     Route::post('/property/store', 'Api\PropertyController@store');
@@ -91,5 +116,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // purchase subscription 
 
-    Route::get('/subscription/purchase', 'Api\SubscriptionController@checkoutForm');
+    // Route::get('/subscription/purchase', 'Api\SubscriptionController@checkoutForm');
 });

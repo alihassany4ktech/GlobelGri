@@ -369,7 +369,7 @@
                                         professionals</a> </p>
                             </div>
                             <div class="tab-pane" id="menu1">
-                                <form class="widgetCalcForm" id="contact_form_info">
+                                <form class="widgetCalcForm" method="POST" action="{{route('contact.info.store')}}">
                                     @csrf
                                     <input type="hidden" name="owner_id" value="{{$mapShops->user->id}}">
                                     <input type="hidden" name="property_id" value="{{$mapShops->id}}">
@@ -378,20 +378,20 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <input type="text" name="phone" placeholder="Phone"
-                                                    class="form-control">
+                                                    class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="" class="fwNormal ">Message</label>
                                                 <textarea name="message" id="" cols="10" rows="1"
-                                                    class="form-control">I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
+                                                    class="form-control" required>I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <input type="email" name="email" placeholder="Email"
-                                                    class="form-control">
+                                                    class="form-control" required>
                                                 <p style="font-size: 12px; color:red; margin-top:5px"><i
                                                         class="fas fa-exclamation-circle"></i> Enter a valid email.</p>
                                             </div>
@@ -400,7 +400,7 @@
 
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="check"> I want to talk about financing
+                                                <input type="checkbox" name="check" required> I want to talk about financing
                                             </div>
                                         </div>
                                     </div>
@@ -713,7 +713,7 @@
     }
 
 </script>
-<script>
+{{-- <script>
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -745,9 +745,9 @@
         });
     });
 
-</script>
+</script> --}}
 
-<script>
+{{-- <script>
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -778,7 +778,7 @@
         });
     });
 
-</script>
+</script> --}}
 
 <script>
    

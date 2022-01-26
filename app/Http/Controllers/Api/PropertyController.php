@@ -2,15 +2,35 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Favourite;
 use App\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FavoritePropertyCollection;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\PropertyResource;
 use App\Http\Resources\PropertyCollection;
 
 class PropertyController extends Controller
 {
+
+
+    public function favoriteProperties()
+    {
+        $properties_id = Favourite::where('user_id', '=', Auth::user()->id)->pluck('property_id');
+        $favoriteProperties = Property::whereIn('id', $properties_id)->paginate(5);
+        $data = FavoritePropertyCollection::collection($favoriteProperties);
+        return response()->json(FavoritePropertyCollection::collection($data));
+    }
+
+    public function singleFavoriteProperty($id)
+    {
+        $favoriteProperty = Property::find($id);
+        $data = new PropertyResource($favoriteProperty);
+        return $data->toJson();
+    }
+
+    // old 
     public function property()
     {
         $properties = Property::where('user_id', '=', Auth::guard('api')->user()->id)->get();

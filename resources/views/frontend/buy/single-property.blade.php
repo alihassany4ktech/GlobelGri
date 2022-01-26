@@ -299,19 +299,19 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <input type="text" name="phone" placeholder="Phone"
-                                                    class="form-control">
+                                                    class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="" class="fwNormal ">Message</label>
-                                                <textarea name="message" id="" cols="10" rows="1"
+                                                <textarea name="message" required id="" cols="10" rows="1"
                                                     class="form-control">I am interested in 828 Niagara Ave, San Francisco, CA 94112</textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="email" name="email" placeholder="Email"
+                                                <input type="email" name="email" required placeholder="Email"
                                                     class="form-control">
                                                 <p style="font-size: 12px; color:red; margin-top:5px"><i
                                                         class="fas fa-exclamation-circle"></i> Enter a valid email.</p>
@@ -321,7 +321,7 @@
 
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="checkbox" name="check" required> I want to talk about financing
+                                                <input type="checkbox" required name="check" required> I want to talk about financing
                                             </div>
                                         </div>
                                     </div>

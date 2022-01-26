@@ -132,12 +132,14 @@
                                     <span>Units Purchased</span>
                                 </a>
                             </li> --}}
-                              <li>
+                               @if ($role != 'Buyer')
+                                  <li>
                                 <a href="{{route('agent.contact')}}">
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                     <span>Contacts</span>
                                 </a>
-                            </li>
+                            </li>   
+                              @endif
                          
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();

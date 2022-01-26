@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\ForgotPasswordNotification;
 
 class UserController extends Controller
 {
@@ -58,9 +59,14 @@ class UserController extends Controller
             $success['password'] = "Password is Required ";
             return response()->json($success, 401);
         }
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
+        $user =  User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'Buyer'
+        ]);
+        Auth::login($user);
+        $user->assignRole('Buyer');
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
         $success['success'] = true;
@@ -102,7 +108,7 @@ class UserController extends Controller
         }
 
         $profile->update();
-        $success['success'] = 'Profile Updated Successfully!';
+        $success['message'] = 'Profile Updated Successfully!';
         $success['success'] = true;
         return response()->json($success, 200);
     }
@@ -117,7 +123,7 @@ class UserController extends Controller
         $profile = User::find($id);
         $profile->password = Hash::make($request->password);
         $profile->update();
-        $success['success'] = 'Password Updated Successfully!';
+        $success['message'] = 'Password Updated Successfully!';
         $success['success'] = true;
         return response()->json($success, 200);
     }
@@ -134,55 +140,106 @@ class UserController extends Controller
         $profile->google_url = $request->google_url;
         $profile->skype_url = $request->skype_url;
         $profile->update();
-        $success['success'] = 'Social Media Updated Successfully!';
+        $success['message'] = 'Social Media Updated Successfully!';
         $success['success'] = true;
         return response()->json($success, 200);
     }
 
+    public function forgot_password(Request $request)
+    {
+        $otp = mt_rand(100000, 999999);
+        $user = User::where('email', '=', $request->email)->first();
+        if ($user != null) {
+            $user->user_otp = $otp;
+            $user->update();
+            $user->notify(new ForgotPasswordNotification($otp));
+            $success['message'] = 'Otp Send Successfully On Your Email';
+            $success['success'] = true;
+            return response()->json($success, $this->successStatus);
+        } else {
+            return response()->json(['error' => 'Email Not Found', 'success' => false], 401);
+        }
+    }
+
+    public function opt_verify(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            if ($user->user_otp == $request->otp) {
+                $success['message'] = 'Your Otp Varify Successfull';
+                $success['token'] =  $user->createToken('MyApp')->accessToken;
+                $success['success'] = true;
+                $success['id'] =  $user->id;
+                return response()->json($success, $this->successStatus);
+            } else {
+
+                return response()->json(['error' => 'Otp Not Match, Please Try Again', 'success' => false], 401);
+            }
+        } else {
+            return response()->json(['error' => 'User Not Found', 'success' => false], 404);
+        }
+    }
+
+    public function reset_password(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+            $user->password = Hash::make($request->new_password);
+            $user->update();
+            $success['message'] = 'Password Updated Successfully';
+            $success['success'] = true;
+            $success['id'] =  $user->id;
+            return response()->json($success, $this->successStatus);
+        } else {
+            return response()->json(['error' => 'Email Not Exist', 'success' => false], 404);
+        }
+    }
+
 
     // google login
-    public function redirectToGoogle()
-    {
-        return Socialite::driver('google')->redirect();
-    }
+    // public function redirectToGoogle()
+    // {
+    //     return Socialite::driver('google')->redirect();
+    // }
     // google callback
-    public function handleGoogleCallback()
-    {
+    // public function handleGoogleCallback()
+    // {
 
-        $user = Socialite::driver('google')->user();
-        $this->_registerOrLoginUser($user);
-        return redirect('agent/profile');
-    }
+    //     $user = Socialite::driver('google')->user();
+    //     $this->_registerOrLoginUser($user);
+    //     return redirect('agent/profile');
+    // }
 
 
     // facebook login
-    public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
+    // public function redirectToFacebook()
+    // {
+    //     return Socialite::driver('facebook')->redirect();
+    // }
     // facebook callback
-    public function handleFacebookCallback()
-    {
+    // public function handleFacebookCallback()
+    // {
 
-        $user = Socialite::driver('facebook')->user();
-        $this->_registerOrLoginUser($user);
-        return redirect('agent.dashboard');
-    }
+    //     $user = Socialite::driver('facebook')->user();
+    //     $this->_registerOrLoginUser($user);
+    //     return redirect('agent.dashboard');
+    // }
 
-    public function _registerOrLoginUser($data)
-    {
-        $user = User::where('email', '=', $data->email)->first();
+    // public function _registerOrLoginUser($data)
+    // {
+    //     $user = User::where('email', '=', $data->email)->first();
 
-        if (!$user) {
+    //     if (!$user) {
 
-            $user = new User();
-            $user->name = $data->name;
-            $user->email = $data->email;
-            $user->provider_id = $data->id;
-            $success['token'] =  $user->createToken('MyApp')->accessToken;
-            $user->save();
-            return response()->json($success, $this->successStatus);
-        }
-        Auth::login($user);
-    }
+    //         $user = new User();
+    //         $user->name = $data->name;
+    //         $user->email = $data->email;
+    //         $user->provider_id = $data->id;
+    //         $success['token'] =  $user->createToken('MyApp')->accessToken;
+    //         $user->save();
+    //         return response()->json($success, $this->successStatus);
+    //     }
+    //     Auth::login($user);
+    // }
 }

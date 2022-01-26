@@ -107,7 +107,6 @@ class FrontEndController extends Controller
 
     public function ContacInfotStore(Request $request)
     {
-
         $contact  =  new Contact();
         $contact->owner_id = $request->owner_id;
         $contact->property_id = $request->property_id;

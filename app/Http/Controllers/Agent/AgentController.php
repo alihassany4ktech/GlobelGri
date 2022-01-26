@@ -153,7 +153,7 @@ class AgentController extends Controller
 
     public function contacts()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::where('owner_id', '=', Auth::user()->id)->get();
         return view('agent.contacts', compact('contacts'));
     }
 

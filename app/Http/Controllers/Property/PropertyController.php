@@ -20,6 +20,7 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
+
         if ($request->ajax()) {
             $role = Auth::user()->getRoleNames()->isEmpty() ? '' : Auth::user()->getRoleNames()[0];
             if (PurchasedSubscription::where('agent_id', Auth::user()->id)->exists() || $role == 'Property Manager') {

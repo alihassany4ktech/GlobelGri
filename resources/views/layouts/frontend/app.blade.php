@@ -732,12 +732,12 @@
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control elemenBlock"
                                         placeholder="Email">
-                                    @if(session()->has('message'))
+                                    {{-- @if(session()->has('message'))
                                     <div class="alert alert-success">
                                         {{ session()->get('message') }}
                                     </div>
 
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control elemenBlock"

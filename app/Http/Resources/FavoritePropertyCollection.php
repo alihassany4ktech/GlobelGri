@@ -4,10 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PropertyResource extends JsonResource
+class FavoritePropertyCollection extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -16,16 +16,13 @@ class PropertyResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user->id,
-            'user_name' => $this->user->name,
-            'user_phone' => $this->user->phone,
-            'user_image' => $this->user->image,
+            'agent_id' => $this->user_id,
+            'threesixty_link' => $this->threesixty_link,
             'propert_title' => $this->propert_title,
             'property_type' => $this->property_type,
+            'price' => $this->price,
             'featured_photo' => $this->featured_photo,
             'gallery_photos' => $this->gallery_photos,
-            'address' => $this->address,
-            'price' => $this->price,
             'zipcode' => $this->zipcode,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
@@ -33,8 +30,9 @@ class PropertyResource extends JsonResource
             'bathroom' => $this->bathroom,
             'garages' => $this->garages,
             'area' => $this->area,
+            'address' => $this->address,
             'description' => $this->description,
-            'private_note' => $this->private_note
+            'private_note' => $this->private_note,
         ];
     }
 }

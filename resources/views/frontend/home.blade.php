@@ -633,12 +633,7 @@
 </main>
 @endsection
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ env('GOOGLE_API_KEY') }}">
-    </script>
-
-    
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ env('GOOGLE_API_KEY') }}"></script>
 
    {{-- buy  --}}
  <script>

@@ -419,7 +419,7 @@ Route::get('/how-it-work', 'Frontend\FrontEndController@HowItWork')->name('how_i
 
 // Contact 
 
-Route::post('contact/info/store', 'Frontend\FrontEndController@ContacInfotStore')->name('contact.info.store');
+Route::post('contacts/info/store', 'Frontend\FrontEndController@ContacInfotStore')->name('contact.info.store');
 
 Route::post('result/buy', 'Frontend\FrontendController@searchBye')->name('BuySearch');
 

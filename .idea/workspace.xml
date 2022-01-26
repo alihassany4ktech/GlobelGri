@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b501794-4342-4f81-88d2-ab7b6a4c3cb6" name="Default Changelist" comment="" />
+    <list default="true" id="5b501794-4342-4f81-88d2-ab7b6a4c3cb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/GlobelGri.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GlobelGri.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_04_205115_create_roles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/buy/home-for-sale.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/buy/home-for-sale.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontend/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontend/app.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,6 +147,9 @@
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
+      <path value="$PROJECT_DIR$/vendor/braintree/braintree_php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1utZauzT7IJori5ER529MrT7aLZ" />
@@ -148,7 +160,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/mployaReact" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -169,6 +181,8 @@
       <workItem from="1625486914106" duration="719000" />
       <workItem from="1629386643975" duration="5000" />
       <workItem from="1629444559613" duration="25000" />
+      <workItem from="1643009720196" duration="1527000" />
+      <workItem from="1643011796254" duration="744000" />
     </task>
     <servers />
   </component>

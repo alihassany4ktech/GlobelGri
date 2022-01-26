@@ -563,7 +563,7 @@ a:visited {
                                         </div>
 
                                         <!-- postHoverLinskList -->
-                                        <ul class="list-unstyled postHoverLinskList">
+                                        {{-- <ul class="list-unstyled postHoverLinskList">
                                             <li><a href="#"><i class="fi flaticon-repeat"></i></a></li>
                                             <li class="hasOver">
                                                 <a href="#"><i class="fi flaticon-share"></i></a>
@@ -575,7 +575,7 @@ a:visited {
                                                     <li><a href="#"><i class="fab fa-google"></i></a></li>
                                                 </ul>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                         <!-- linkToFavourite -->
                                         @if(Auth::check())
                                          <?php
