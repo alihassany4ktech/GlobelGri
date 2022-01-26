@@ -17,6 +17,8 @@ use App\Http\Resources\AllPropertyCollection;
 use App\Notifications\ContactInfoNotification;
 use App\Http\Resources\PropertyForRentCollection;
 use App\Http\Resources\PropertyForSaleCollection;
+use App\Http\Resources\SubscriptionCollection;
+use App\Subscription;
 
 class FrontendController extends Controller
 {
@@ -117,5 +119,12 @@ class FrontendController extends Controller
             ->get();
         $data  = AllPropertyCollection::collection($properties);
         return response()->json(AllPropertyCollection::collection($data));
+    }
+
+    public function allSubscription()
+    {
+        $subscription = Subscription::all();
+        $data  = SubscriptionCollection::collection($subscription);
+        return response()->json(SubscriptionCollection::collection($data));
     }
 }

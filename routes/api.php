@@ -52,7 +52,7 @@ Route::post('/reset/password', 'Api\UserController@reset_password');
 
 // Contact 
 
-Route::post('/contact/store', 'Api\FrontendController@ContactStore');
+// Route::post('/contact/store', 'Api\FrontendController@ContactStore');
 
 Route::post('/contact/info/store', 'Api\FrontendController@ContacInfotStore');
 
@@ -76,6 +76,10 @@ Route::get('/agent/all/properties/{id}', 'Api\FrontendController@agentAllPropert
 // search property 
 
 Route::post('/search/property', 'Api\FrontendController@searchProperty');
+
+// get all subscription
+
+Route::get('/subscriptions', 'Api\FrontendController@allSubscription');
 
 Route::group(['middleware' => 'auth:api'], function () {
 
