@@ -780,6 +780,7 @@
                 success: function (data) {
                    if (data.success) {
                         toastr.success(data.success);
+                         window.location.href = "/agent/property";
                     }
 
                 }

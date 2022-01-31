@@ -55,7 +55,7 @@
                                         <td class="text-center" style="width:10px">{{$loop->iteration}}</td>
                                         <td class="font-w600" style="width:20%">{{$row->name}}</td>
                                         <td class="font-w600">{{$row->type}}</td>
-                                        <td class="d-none d-sm-table-cell" style="width:60%">
+                                        <td class="d-none d-sm-table-cell" style="width:50%">
                                                         @if ($row->getAllPermissions()->isEmpty())
                                             No Permissions
                                             @else

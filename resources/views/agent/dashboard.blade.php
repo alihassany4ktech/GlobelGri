@@ -50,8 +50,8 @@
                     <aside class="profileSidebar">
                         <header class="head">
                             <div class="imgProfile">
-                                @if(Auth::user()->image)
-                                <img src="{{asset(Auth::user()->image)}}" alt="" width="74" height="74">
+                                @if(Auth::guard('web')->user()->image)
+                                <img src="{{asset(Auth::guard('web')->user()->image)}}" alt="" width="74" height="74">
                                 @else 
                                 <img src="https://via.placeholder.com/74x74" alt="" width="74" height="74">
                                 @endif
@@ -190,7 +190,7 @@
 
                                             <div class="img-thumbnail  text-center" id="imagepreview">
                                                 @if(Auth::user()->image)
-                                                <img src="{{asset(Auth::user()->image)}}"
+                                                <img src="{{asset(Auth::guard('web')->user()->image)}}"
                                                     width="200" height="186.5"  alt="agent image" id="one">
                                                 @else 
                                                 <img src="https://via.placeholder.com/200x200" alt="" id="one" width="200" height="200">
