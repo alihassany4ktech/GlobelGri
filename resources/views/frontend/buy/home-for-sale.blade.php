@@ -816,7 +816,7 @@ a:visited {
                                                     <a href="">`+place.propert_title+`</a>
                                                 </h4>
                                             </div>
-                                            <a href=""><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
+                                            <a href="{{url('single-property/`+place.id+`')}}"><img src="`+mainurl+`/`+place.featured_photo+`" alt="`+place.featured_photo+`" class="align size-medium_large" width="1400" height="900"></a>
                                         </li>
                                     </ul>
                                 </div>
